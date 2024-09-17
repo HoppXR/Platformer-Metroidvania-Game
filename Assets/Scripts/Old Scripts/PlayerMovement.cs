@@ -284,7 +284,7 @@ namespace Platformer
 
             _moveSpeed = _desiredMoveSpeed;
             _speedChangeFactor = 1f;
-            _keepMomentum = false;
+            _keepMomentum = true;
         }
         
         private void MovePlayer()
