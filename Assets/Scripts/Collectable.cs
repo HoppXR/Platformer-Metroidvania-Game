@@ -1,7 +1,10 @@
 using UnityEngine;
+using FMODUnity;
 
 public class Collectable : MonoBehaviour
 {
+    [SerializeField] private EventReference tingerCollectedSound;
+    
     private float _initialY;
 
     private void Start()
@@ -19,6 +22,8 @@ public class Collectable : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             // add collectable logic
+            
+            AudioManager.instance.PlayOneShot(tingerCollectedSound, this.transform.position);
             
             Destroy(gameObject);
         }
