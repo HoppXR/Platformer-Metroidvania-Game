@@ -11,8 +11,10 @@ public class PlayerHealth : MonoBehaviour
         {
             health = 0;
         }
+        else
+            health -= amount;
         
-        health -= amount;
+        Debug.Log(health);
     }
 
     public void Heal(float amount)

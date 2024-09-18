@@ -15,12 +15,18 @@ public class GameManager : MonoBehaviour
     // Player Health
     [SerializeField] private PlayerHealth playerHealth;
     
+    // UI
+    [SerializeField] private GameObject gameOverUI;
+    
     void Start()
     {
-        _timeSinceStart.Start();
-
+        Time.timeScale = 1;
+        
         _count = 0;
         _maxCount = GameObject.FindGameObjectsWithTag("Collectable").Length;
+
+        _timeSinceStart = new StopwatchTimer();
+        _timeSinceStart.Start();
     }
 
     void Update()
@@ -40,6 +46,11 @@ public class GameManager : MonoBehaviour
         else if (HasPlayerLost())
         {
             // game over UI & restart or quit button
+            Time.timeScale = 0;
+            gameOverUI.SetActive(true);
+
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 
@@ -51,5 +62,10 @@ public class GameManager : MonoBehaviour
     private bool HasPlayerLost()
     {
         return playerHealth.GetPlayerHealth() <= 0;
+    }
+
+    public void IncreaseCount()
+    {
+        _count++;
     }
 }
