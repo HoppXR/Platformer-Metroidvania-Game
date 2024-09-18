@@ -10,7 +10,6 @@ public class PlayerHealth : MonoBehaviour
         if (amount >= health)
         {
             health = 0;
-            Die();
         }
         
         health -= amount;
@@ -26,8 +25,8 @@ public class PlayerHealth : MonoBehaviour
         health += amount;
     }
 
-    private void Die()
+    public float GetPlayerHealth()
     {
-        // add die function
+        return health;
     }
 }
