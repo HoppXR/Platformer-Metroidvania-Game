@@ -1,10 +1,19 @@
+using System;
+using TMPro;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private float health;
+    [SerializeField] private TMP_Text healthText;
     private float _maxHealth;
-    
+
+    private void Start()
+    {
+        _maxHealth = health;
+        UpdateHealthText();
+    }
+
     public void TakeDamage(float amount)
     {
         if (amount >= health)
@@ -14,7 +23,7 @@ public class PlayerHealth : MonoBehaviour
         else
             health -= amount;
         
-        Debug.Log(health);
+        UpdateHealthText();
     }
 
     public void Heal(float amount)
@@ -25,10 +34,17 @@ public class PlayerHealth : MonoBehaviour
         }
 
         health += amount;
+        
+        UpdateHealthText();
     }
 
     public float GetPlayerHealth()
     {
         return health;
+    }
+
+    private void UpdateHealthText()
+    {
+        healthText.text = health + "/" + _maxHealth;
     }
 }
