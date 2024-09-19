@@ -1,17 +1,29 @@
 using System;
+using System.Globalization;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private float health;
-    [SerializeField] private TMP_Text healthText;
+    [SerializeField] private Slider healthBarSlider;
+    [SerializeField] private Image healthBarColor;
+    private float _lerpSpeed;
     private float _maxHealth;
 
     private void Start()
     {
         _maxHealth = health;
-        UpdateHealthText();
+        healthBarSlider.maxValue = _maxHealth;
+        healthBarSlider.value = health;
+    }
+
+    private void Update()
+    {
+        _lerpSpeed = 3f * Time.fixedDeltaTime;
+        HealthBar();
+        ColorChanger();
     }
 
     public void TakeDamage(float amount)
@@ -22,8 +34,6 @@ public class PlayerHealth : MonoBehaviour
         }
         else
             health -= amount;
-        
-        UpdateHealthText();
     }
 
     public void Heal(float amount)
@@ -34,8 +44,6 @@ public class PlayerHealth : MonoBehaviour
         }
 
         health += amount;
-        
-        UpdateHealthText();
     }
 
     public float GetPlayerHealth()
@@ -43,8 +51,15 @@ public class PlayerHealth : MonoBehaviour
         return health;
     }
 
-    private void UpdateHealthText()
+    private void HealthBar()
     {
-        healthText.text = health + "/" + _maxHealth;
+        healthBarSlider.value = Mathf.Lerp(healthBarSlider.value, health, _lerpSpeed);
+    }
+
+    private void ColorChanger()
+    {
+        Color healthColor = Color.Lerp(Color.red, Color.green, healthBarSlider.value / _maxHealth);
+
+        healthBarColor.color = healthColor;
     }
 }
