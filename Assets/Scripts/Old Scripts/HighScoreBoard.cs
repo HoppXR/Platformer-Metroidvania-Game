@@ -27,7 +27,7 @@ public class HighScoreBoard : MonoBehaviour
 
         public void Sort()
         {
-            entries = entries.OrderByDescending(entry => entry.time).ToList();
+            entries = entries.OrderBy(entry => entry.time).ToList();
         }
     }
 

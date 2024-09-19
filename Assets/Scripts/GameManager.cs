@@ -60,13 +60,10 @@ public class GameManager : MonoBehaviour
         {
             _isRunning = false;
             Time.timeScale = 0;
-            
             gameWinUI.SetActive(true);
             
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            
-            // add stats to leaderboard
         }
         else if (HasPlayerLost())
         {
