@@ -1,53 +1,77 @@
-using Platformer;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    // Highscore
+    [SerializeField] private HighScoreBoard highScoreBoard;
+    [SerializeField] private TMP_Text playerTimeText;
+    [SerializeField] private TMP_InputField playerNameInput;
+    [SerializeField] private Button saveScoreButton;
+    private bool _hasSaved = false;
+    
     // Collectables
-    private int _count;
+    [SerializeField] private TMP_Text countText;
+    private int _count = 0;
     private int _maxCount;
 
     // Timer
-    private Timer _timer;
-    private StopwatchTimer _timeSinceStart;
-    private float _endTime;
+    [SerializeField] private TMP_Text timerText;
+    private float _timer = 0f;
+    private bool _isRunning = true;
     
     // Player Health
     [SerializeField] private PlayerHealth playerHealth;
     
     // UI
-    [SerializeField] private GameObject gameOverUI;
+    [SerializeField] private GameObject gameLoseUI;
+    [SerializeField] private GameObject gameWinUI;
     
-    void Start()
+    private void Start()
     {
         Time.timeScale = 1;
-        
-        _count = 0;
-        _maxCount = GameObject.FindGameObjectsWithTag("Collectable").Length;
 
-        _timeSinceStart = new StopwatchTimer();
-        _timeSinceStart.Start();
+        _maxCount = GameObject.FindGameObjectsWithTag("Collectable").Length;
+        SetCountText();
+        
+        saveScoreButton.onClick.AddListener(OnSaveClicked);
+        saveScoreButton.interactable = false;
+
+        playerNameInput.onValueChanged.AddListener(OnNameChanged);
     }
 
-    void Update()
+    private void Update()
     {
+        HandleTimer();
         GameOver();
+    }
+
+    private void HandleTimer()
+    {
+        if (!_isRunning) return;
+        _timer += Time.deltaTime;
+        timerText.text = _timer.ToString("F3");
     }
 
     private void GameOver()
     {
         if (HasPlayerWon())
         {
-            _timeSinceStart.Stop();
-            _endTime = _timeSinceStart.GetTime();
+            _isRunning = false;
+            Time.timeScale = 0;
+            
+            gameWinUI.SetActive(true);
+            
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             
             // add stats to leaderboard
         }
         else if (HasPlayerLost())
         {
-            // game over UI & restart or quit button
             Time.timeScale = 0;
-            gameOverUI.SetActive(true);
+            gameLoseUI.SetActive(true);
 
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -64,8 +88,26 @@ public class GameManager : MonoBehaviour
         return playerHealth.GetPlayerHealth() <= 0;
     }
 
+    private void SetCountText()
+    {
+        countText.text = _count + "/" + _maxCount;
+    }
+    
     public void IncreaseCount()
     {
         _count++;
+        SetCountText();
+    }
+
+    private void OnSaveClicked()
+    {
+        _hasSaved = true;
+        saveScoreButton.interactable = false;
+        highScoreBoard.AddHighScore(playerNameInput.text, _timer);
+    }
+
+    private void OnNameChanged(string playerName)
+    {
+        saveScoreButton.interactable = !_hasSaved && playerName.Length > 0;
     }
 }

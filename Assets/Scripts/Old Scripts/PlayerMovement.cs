@@ -45,7 +45,6 @@ namespace Platformer
         [SerializeField] private float crouchSpeed;
         [SerializeField] private float crouchYScale;
         private float _startYScale;
-        private bool _crouching;
         
         [Header("Keybinds")] 
         [SerializeField] private KeyCode jumpKey;
@@ -152,8 +151,6 @@ namespace Platformer
             // start crouch
             if (Input.GetKeyDown(crouchKey))
             {
-                _crouching = true;
-                
                 transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
                 _rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
             }
@@ -162,8 +159,6 @@ namespace Platformer
             if (Input.GetKeyUp(crouchKey))
             {
                 transform.localScale = new Vector3(transform.localScale.x, _startYScale, transform.localScale.z);
-
-                _crouching = false;
             }
         }
 
