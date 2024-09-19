@@ -19,19 +19,8 @@ public class AudioManager : MonoBehaviour
         instance = this;
     }
 
-    public void PlayOneShot(EventReference sound, Collectable key1, Vector3 worldPos)
+    public void PlayOneShot(EventReference sound, Collectable collectable, Vector3 worldPos)
     {
         RuntimeManager.PlayOneShot(sound, worldPos);
-    }
-
-    public EventInstance CreateInstance(EventReference eventReference)
-    {
-        EventInstance eventInstance = RuntimeManager.CreateInstance(eventReference);
-        return eventInstance;
-    }
-
-    public void PlayOneShot(EventReference tingerCollectedSound, Vector3 transformPosition)
-    {
-        throw new NotImplementedException();
     }
 }
