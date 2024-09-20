@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 public class Collectable : MonoBehaviour
 {
     private GameManager _gameManager;
@@ -22,6 +23,7 @@ public class Collectable : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             // add collectable logic
+            AudioManager.instance.PlayOneShot(FMODEvents.Instance.tingerCollected, this, transform.position);
             _gameManager.IncreaseCount();
             
             Destroy(gameObject);
