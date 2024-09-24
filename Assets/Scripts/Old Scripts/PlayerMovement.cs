@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMOD.Studio;
 
 namespace Platformer
 {
@@ -92,6 +93,9 @@ namespace Platformer
         [HideInInspector] public bool dashing;
         [HideInInspector] public bool sliding;
         
+        //audio
+        private EventInstance playerFootsteps;
+        
         private void Start()
         {
             _rb = GetComponent<Rigidbody>();
@@ -104,6 +108,8 @@ namespace Platformer
             _jumpTimer.OnTimerStart += () => _jumpCooldownTimer.Start();;
             
             _startYScale = transform.localScale.y;
+
+            playerFootsteps = AudioManager.instance.CreateInstance(FMODEvents.instance.playerFootsteps);
         }
 
         private void Update()
@@ -124,12 +130,14 @@ namespace Platformer
                 _rb.drag = groundDrag;
             else
                 _rb.drag = 0;
+            
         }
-
+        
         private void FixedUpdate()
         {
             MovePlayer();
             HandleJump();
+            UpdateSound();
         }
 
         private void MyInput()
@@ -445,6 +453,26 @@ namespace Platformer
             foreach (var timer in _timers)
             {
                 timer.Tick(Time.deltaTime);
+            }
+        }
+
+        private void UpdateSound()
+        {
+            if (state == MovementState.Walking && _grounded)
+            {
+                Debug.Log("asd");
+                PLAYBACK_STATE playbackState;
+                playerFootsteps.getPlaybackState(out playbackState);
+                if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
+                {
+                    playerFootsteps.start();
+                    Debug.Log("asdf");
+                }
+            }
+            else
+            {
+                playerFootsteps.stop(STOP_MODE.ALLOWFADEOUT);
+                Debug.Log("wtf");
             }
         }
     }

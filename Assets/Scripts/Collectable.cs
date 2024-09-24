@@ -23,7 +23,7 @@ public class Collectable : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             // add collectable logic
-            AudioManager.instance.PlayOneShot(FMODEvents.Instance.tingerCollected, this, transform.position);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.tingerCollected, this, transform.position);
             _gameManager.IncreaseCount();
             
             Destroy(gameObject);
