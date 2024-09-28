@@ -118,3 +118,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0bfeae6c15d47d46afbd6b0081e2edf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tingerCollectedSound:
+    Guid:
+      Data1: 288494751
+      Data2: 1170670813
+      Data3: 1728880273
+      Data4: -501470463
+    Path: event:/TingerCollectedSound
