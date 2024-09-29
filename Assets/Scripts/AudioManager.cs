@@ -12,7 +12,6 @@ public class AudioManager : MonoBehaviour
         {
             Debug.LogError("more than one audio manager in the scene rn");
         }
-
         instance = this;
     }
 
