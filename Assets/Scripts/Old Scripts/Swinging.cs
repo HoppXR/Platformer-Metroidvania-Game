@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Platformer
@@ -58,11 +55,6 @@ namespace Platformer
         {
             // return if predictionHit not found
             if (_predictionHit.point == Vector3.zero) return;
-
-            // deactivate active grapple
-            if (GetComponent<Grappling>() != null)
-                GetComponent<Grappling>().StopGrapple();
-            _pm.ResetRestrictions();
             
             _pm.swinging = true;
 

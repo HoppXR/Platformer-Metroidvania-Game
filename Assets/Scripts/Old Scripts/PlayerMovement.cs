@@ -1,16 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMOD.Studio;
 
 namespace Platformer
 {
     public class PlayerMovement : MonoBehaviour
     {
-        [Header("References")]
+        [Header("References")] 
         private Rigidbody _rb;
         private List<Timer> _timers;
         private CountdownTimer _jumpTimer;
         private CountdownTimer _jumpCooldownTimer;
+        
+        [Header("Audio")]
+        private EventInstance playerFootsteps;
         
         [Header("Movement")] 
         private float _moveSpeed;
@@ -86,8 +90,7 @@ namespace Platformer
         [HideInInspector] public bool freeze;
         [HideInInspector] public bool unlimited;
         [HideInInspector] public bool restricted;
-        
-        [HideInInspector] public bool activeGrapple;
+
         [HideInInspector] public bool swinging;
         [HideInInspector] public bool dashing;
         [HideInInspector] public bool sliding;
@@ -96,6 +99,8 @@ namespace Platformer
         {
             _rb = GetComponent<Rigidbody>();
             _rb.freezeRotation = true;
+
+            playerFootsteps = AudioManager.instance.CreateInstance(FMODEvents.Instance.PlayerFootsteps);
             
             _jumpTimer = new CountdownTimer(jumpDuration);
             _jumpCooldownTimer = new CountdownTimer(jumpCooldown);
@@ -120,7 +125,7 @@ namespace Platformer
             HandleTimers();
             
             // handle drag
-            if (state is MovementState.Walking or MovementState.Sprinting or MovementState.Crouching && !activeGrapple)
+            if (state is MovementState.Walking or MovementState.Sprinting or MovementState.Crouching)
                 _rb.drag = groundDrag;
             else
                 _rb.drag = 0;
@@ -130,6 +135,7 @@ namespace Platformer
         {
             MovePlayer();
             HandleJump();
+            UpdateSound();
         }
 
         private void MyInput()
@@ -284,7 +290,7 @@ namespace Platformer
         
         private void MovePlayer()
         {
-            if (state == MovementState.Dashing || activeGrapple || swinging || restricted) return;
+            if (state == MovementState.Dashing || swinging || restricted) return;
             
             // calculate movement direction
             _moveDirection = orientation.forward * _verticalInput + orientation.right * _horizontalInput;
@@ -312,7 +318,7 @@ namespace Platformer
 
         private void HandleJump()
         {
-            if (state == MovementState.Dashing || state == MovementState.Swinging || activeGrapple || _numberOfJumps >= maxNumberOfJumps)
+            if (state == MovementState.Dashing || state == MovementState.Swinging || _numberOfJumps >= maxNumberOfJumps)
             {
                 _jumpVelocity = _rb.velocity.y;
                 return;
@@ -348,8 +354,6 @@ namespace Platformer
 
         private void SpeedControl()
         {
-            if (activeGrapple) return;
-            
             // limiting speed on slope
             if (OnSlope() && !_exitingSlope)
             {
@@ -379,39 +383,6 @@ namespace Platformer
             _numberOfJumps = 0;
         }
 
-        private bool _enableMovementOnNextTouch;
-        public void JumpToPosition(Vector3 targetPosition, float trajectoryHeight)
-        {
-            activeGrapple = true;
-            
-            _velocityToSet = CalculateJumpVelocity(transform.position, targetPosition, trajectoryHeight);
-            Invoke(nameof(SetVelocity), 0.1f);
-            
-            Invoke(nameof(ResetRestrictions), 3f);
-        }
-
-        private Vector3 _velocityToSet;
-        private void SetVelocity()
-        {
-            _enableMovementOnNextTouch = true;
-            
-            _rb.velocity = _velocityToSet;
-        }
-
-        public void ResetRestrictions()
-        {
-            activeGrapple = false;
-        }
-        
-        private void OnCollisionEnter(Collision collision)
-        {
-            if (_enableMovementOnNextTouch)
-            {
-                _enableMovementOnNextTouch = false;
-                ResetRestrictions();
-            }
-        }
-
         public bool OnSlope()
         {
             if (Physics.Raycast(transform.position, Vector3.down, out _slopeHit, playerHeight * 0.5f + 0.3f))
@@ -428,24 +399,31 @@ namespace Platformer
             return Vector3.ProjectOnPlane(direction, _slopeHit.normal).normalized;
         }
 
-        public Vector3 CalculateJumpVelocity(Vector3 startPoint, Vector3 endPoint, float trajectoryHeight)
-        {
-            float gravity = Physics.gravity.y;
-            float displacementY = endPoint.y - startPoint.y;
-            Vector3 displacementXZ = new Vector3(endPoint.x - startPoint.x, 0f, endPoint.z - startPoint.z);
-            
-            Vector3 velocityY = Vector3.up * Mathf.Sqrt(-2 * gravity * trajectoryHeight);
-            Vector3 velocityXZ = displacementXZ / (Mathf.Sqrt(-2 * trajectoryHeight / gravity) + Mathf.Sqrt(2 * (displacementY - trajectoryHeight) / gravity));
-            
-            return velocityXZ + velocityY;
-        }
-
         private void HandleTimers()
         {
             foreach (var timer in _timers)
             {
                 timer.Tick(Time.deltaTime);
             }
+        }
+
+        private void UpdateSound()
+        {
+            if (_verticalInput != 0 || _horizontalInput != 0 && _grounded)
+            {
+                PLAYBACK_STATE playbackState;
+                playerFootsteps.getPlaybackState(out playbackState);
+                if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
+                {
+                    playerFootsteps.start();
+                }
+            }
+            else
+            {
+                playerFootsteps.stop(STOP_MODE.ALLOWFADEOUT);
+            }
+            
+            playerFootsteps.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
         }
     }
 }

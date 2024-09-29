@@ -1,8 +1,10 @@
 using UnityEngine;
-
+using FMODUnity;
 
 public class Collectable : MonoBehaviour
 {
+    [SerializeField] private EventReference tingerCollectedSound;
+    
     private GameManager _gameManager;
     
     private float _initialY;
@@ -23,7 +25,7 @@ public class Collectable : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             // add collectable logic
-            AudioManager.instance.PlayOneShot(FMODEvents.Instance.tingerCollected, this, transform.position);
+            AudioManager.instance.PlayOneShot(tingerCollectedSound, this.transform.position);
             _gameManager.IncreaseCount();
             
             Destroy(gameObject);
