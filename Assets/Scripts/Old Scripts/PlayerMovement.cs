@@ -59,6 +59,8 @@ namespace Platformer
         [SerializeField] private float playerHeight;
         [SerializeField] private LayerMask whatIsGround;
         private bool _grounded;
+        private Vector3 boxCastSize = new Vector3(1, 0.1f, 1);
+        private float _groundCheckDistance = 0.1f;
 
         [Header("Slope Handling")] 
         [SerializeField] private float maxSlopeAngle;
@@ -116,19 +118,26 @@ namespace Platformer
             // double jump check
             if (_numberOfJumps != 0) StartCoroutine(WaitForLanding());
             
-            // ground check
-            _grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
-            
             MyInput();
             SpeedControl();
             StateHandler();
             HandleTimers();
+            CheckIfGrounded();
             
             // handle drag
             if (state is MovementState.Walking or MovementState.Sprinting or MovementState.Crouching)
                 _rb.drag = groundDrag;
             else
                 _rb.drag = 0;
+        }
+
+        private void CheckIfGrounded()
+        {
+            Vector3 boxCenter = transform.position - new Vector3(0, (playerHeight - 0.2f) * 0.5f, 0);
+
+            _grounded = Physics.BoxCast(boxCenter, boxCastSize * 0.5f, Vector3.down, Quaternion.identity, _groundCheckDistance, whatIsGround);
+            
+            //Debug.DrawRay(boxCenter, Vector3.down * _groundCheckDistance, _grounded ? Color.green : Color.red);
         }
 
         private void FixedUpdate()
@@ -409,7 +418,7 @@ namespace Platformer
 
         private void UpdateSound()
         {
-            if (_verticalInput != 0 || _horizontalInput != 0 && _grounded)
+            if (_verticalInput != 0 && _grounded || _horizontalInput != 0 && _grounded)
             {
                 PLAYBACK_STATE playbackState;
                 playerFootsteps.getPlaybackState(out playbackState);
