@@ -19,7 +19,6 @@ namespace Platformer
         [Header("Movement")] 
         private float _moveSpeed;
         [SerializeField] private float walkSpeed;
-        [SerializeField] private float sprintSpeed;
         [SerializeField] private float slideSpeed;
         [SerializeField] private float swingSpeed;
 
@@ -52,15 +51,14 @@ namespace Platformer
         
         [Header("Keybinds")] 
         [SerializeField] private KeyCode jumpKey;
-        [SerializeField] private KeyCode sprintKey;
         [SerializeField] private KeyCode crouchKey;
         
         [Header("Ground Check")] 
         [SerializeField] private float playerHeight;
         [SerializeField] private LayerMask whatIsGround;
         private bool _grounded;
-        private Vector3 boxCastSize = new Vector3(1, 0.1f, 1);
-        private float _groundCheckDistance = 0.1f;
+        private Vector3 boxCastSize = new Vector3(0.8f, 0.1f, 0.6f);
+        private float _groundCheckDistance = 0.15f;
 
         [Header("Slope Handling")] 
         [SerializeField] private float maxSlopeAngle;
@@ -79,10 +77,8 @@ namespace Platformer
         public enum MovementState
         {
             Freeze,
-            Unlimited,
             Swinging,
             Walking,
-            Sprinting,
             Crouching,
             Sliding,
             Dashing,
@@ -90,7 +86,6 @@ namespace Platformer
         }
 
         [HideInInspector] public bool freeze;
-        [HideInInspector] public bool unlimited;
         [HideInInspector] public bool restricted;
 
         [HideInInspector] public bool swinging;
@@ -107,7 +102,6 @@ namespace Platformer
             _jumpTimer = new CountdownTimer(jumpDuration);
             _jumpCooldownTimer = new CountdownTimer(jumpCooldown);
             _timers = new List<Timer>(2) { _jumpTimer, _jumpCooldownTimer };
-
             _jumpTimer.OnTimerStart += () => _jumpCooldownTimer.Start();;
             
             _startYScale = transform.localScale.y;
@@ -125,7 +119,7 @@ namespace Platformer
             CheckIfGrounded();
             
             // handle drag
-            if (state is MovementState.Walking or MovementState.Sprinting or MovementState.Crouching)
+            if (state is MovementState.Walking or MovementState.Crouching)
                 _rb.drag = groundDrag;
             else
                 _rb.drag = 0;
@@ -134,7 +128,7 @@ namespace Platformer
         private void CheckIfGrounded()
         {
             Vector3 boxCenter = transform.position - new Vector3(0, (playerHeight - 0.2f) * 0.5f, 0);
-
+            
             _grounded = Physics.BoxCast(boxCenter, boxCastSize * 0.5f, Vector3.down, Quaternion.identity, _groundCheckDistance, whatIsGround);
             
             //Debug.DrawRay(boxCenter, Vector3.down * _groundCheckDistance, _grounded ? Color.green : Color.red);
@@ -161,15 +155,14 @@ namespace Platformer
             else if (Input.GetKeyUp(jumpKey) && _jumpTimer.IsRunning)
             {
                 _jumpTimer.Stop();
+                StartCoroutine(WaitForLanding());
             }
-            
             // start crouch
             if (Input.GetKeyDown(crouchKey))
             {
                 transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
                 _rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
             }
-            
             // stop crouch
             if (Input.GetKeyUp(crouchKey))
             {
@@ -186,22 +179,12 @@ namespace Platformer
                 _desiredMoveSpeed = 0;
                 _rb.velocity = Vector3.zero;
             }
-            
-            // Mode - Unlimited
-            else if (unlimited)
-            {
-                state = MovementState.Unlimited;
-                _desiredMoveSpeed = 999f;
-                return;
-            }
-            
             // Mode - Swinging
             else if (swinging)
             {
                 state = MovementState.Swinging;
                 _desiredMoveSpeed = swingSpeed;
             }
-            
             // Mode - Dashing
             else if (dashing)
             {
@@ -209,7 +192,6 @@ namespace Platformer
                 _desiredMoveSpeed = dashSpeed;
                 _speedChangeFactor = dashSpeedChangeFactor;
             }
-            
             // Mode - Sliding
             else if (sliding)
             {
@@ -217,56 +199,37 @@ namespace Platformer
 
                 if (OnSlope() && _rb.velocity.y < 0.1f)
                     _desiredMoveSpeed = slideSpeed;
-                
                 else
-                    _desiredMoveSpeed = sprintSpeed;
+                    _desiredMoveSpeed = walkSpeed;
             }
-            
             // Mode - Crouching
             else if (Input.GetKey(crouchKey))
             {
                 state = MovementState.Crouching;
                 _desiredMoveSpeed = crouchSpeed;
             }
-            
-            // Mode - Sprinting
-            else if (_grounded && Input.GetKey(sprintKey))
-            {
-                state = MovementState.Sprinting;
-                _desiredMoveSpeed = sprintSpeed;
-            }
-            
             // Mode - Walking
             else if (_grounded)
             {
                 state = MovementState.Walking;
                 _desiredMoveSpeed = walkSpeed;
             }
-            
             // Mode - Air
             else
             {
                 state = MovementState.Air;
-
-                if (_desiredMoveSpeed < sprintSpeed)
-                    _desiredMoveSpeed = walkSpeed;
-                else
-                    _desiredMoveSpeed = sprintSpeed;
+                _desiredMoveSpeed = walkSpeed;
             }
-
+            
             bool desiredMoveSpeedHasChanged = !Mathf.Approximately(_desiredMoveSpeed, _lastDesiredMoveSpeed);
             if (_lastState == MovementState.Dashing) _keepMomentum = true;
 
             if (desiredMoveSpeedHasChanged)
             {
                 if (_keepMomentum)
-                {
                     StartCoroutine(SmoothlyLerpMoveSpeed());
-                }
                 else
-                {
                     _moveSpeed = _desiredMoveSpeed;
-                }
             }
             
             _lastDesiredMoveSpeed = _desiredMoveSpeed;
@@ -280,7 +243,6 @@ namespace Platformer
             float time = 0;
             float difference = Mathf.Abs(_desiredMoveSpeed - _moveSpeed);
             float startValue = _moveSpeed;
-
             float boostFactor = _speedChangeFactor;
 
             while (time < difference)
@@ -291,7 +253,7 @@ namespace Platformer
                 
                 yield return null;
             }
-
+            
             _moveSpeed = _desiredMoveSpeed;
             _speedChangeFactor = 1f;
             _keepMomentum = true;
@@ -327,6 +289,8 @@ namespace Platformer
 
         private void HandleJump()
         {
+            _exitingSlope = true;
+            
             if (state == MovementState.Dashing || state == MovementState.Swinging || _numberOfJumps >= maxNumberOfJumps)
             {
                 _jumpVelocity = _rb.velocity.y;
@@ -339,8 +303,6 @@ namespace Platformer
                 return;
             }
             
-            _exitingSlope = true;
-            
             if (_jumpTimer.IsRunning)
             {
                 float launchPoint = 0.9f;
@@ -350,7 +312,7 @@ namespace Platformer
                 else
                     _jumpVelocity += (1 - _jumpTimer.Progress) * jumpForce * Time.fixedDeltaTime;
             }
-            else if (!_grounded && state != MovementState.Swinging || state != MovementState.Freeze)
+            else if (!_grounded && state != MovementState.Swinging || state != MovementState.Freeze || !OnSlope())
             {
                 _jumpVelocity += Physics.gravity.y * gravityMultiplier * Time.fixedDeltaTime;
             }
@@ -394,7 +356,10 @@ namespace Platformer
 
         public bool OnSlope()
         {
-            if (Physics.Raycast(transform.position, Vector3.down, out _slopeHit, playerHeight * 0.5f + 0.3f))
+            Vector3 boxCenter = transform.position - new Vector3(0, (playerHeight - 0.2f) * 0.5f, 0);
+            
+            //if (Physics.Raycast(boxCenter, Vector3.down * _groundCheckDistance, out _slopeHit))
+            if (Physics.BoxCast(boxCenter, boxCastSize * 0.5f, Vector3.down, out _slopeHit, Quaternion.identity, 0.1f))
             {
                 float angle = Vector3.Angle(Vector3.up, _slopeHit.normal);
                 return angle < maxSlopeAngle && angle != 0;
@@ -422,6 +387,7 @@ namespace Platformer
             {
                 PLAYBACK_STATE playbackState;
                 playerFootsteps.getPlaybackState(out playbackState);
+                
                 if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
                 {
                     playerFootsteps.start();
