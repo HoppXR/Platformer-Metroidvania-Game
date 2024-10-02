@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Platformer
 {
@@ -22,6 +23,7 @@ namespace Platformer
         
         [Header("Cooldown")] 
         [SerializeField] private float dashCd;
+        [SerializeField] private Image imageCd;
         private float _dashCdTimer;
 
         [Header("Input")]
@@ -31,6 +33,8 @@ namespace Platformer
         {
             _rb = GetComponent<Rigidbody>();
             _pm = GetComponent<PlayerMovement>();
+
+            imageCd.fillAmount = 0.0f;
         }
 
         private void Update()
@@ -40,6 +44,8 @@ namespace Platformer
 
             if (_dashCdTimer > 0)
                 _dashCdTimer -= Time.deltaTime;
+
+            imageCd.fillAmount = _dashCdTimer / dashCd;
         }
 
         private void Dash()
