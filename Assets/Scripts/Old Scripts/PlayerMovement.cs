@@ -58,7 +58,7 @@ namespace Platformer
         [SerializeField] private LayerMask whatIsGround;
         private bool _grounded;
         private Vector3 boxCastSize = new Vector3(0.8f, 0.1f, 0.6f);
-        private float _groundCheckDistance = 0.15f;
+        private float _groundCheckDistance = 0.25f;
 
         [Header("Slope Handling")] 
         [SerializeField] private float maxSlopeAngle;
