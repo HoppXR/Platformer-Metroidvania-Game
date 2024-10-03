@@ -12,33 +12,30 @@ public class Attacking : StateMachineBehaviour
     public float dashDistance = 5f; // Distance to dash
     private float dashTravelled = 0f; // Distance travelled during dash
     private NavMeshAgent AI;
-
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+    
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         AI = animator.GetComponent<NavMeshAgent>();
         AI.speed = 0f;
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        startPosition = animator.transform.position; // Record the start position
-        dashDirection = (player.position - startPosition).normalized; // Initial dash direction
+        startPosition = animator.transform.position; 
+        dashDirection = (player.position - startPosition).normalized; 
 
         // Reset dashTravelled when entering the state
         dashTravelled = 0f; 
 
-        animator.SetBool("isAttacking", true); // Ensure attacking state is active
-        animator.SetBool("hasAttacked", false); // Reset attack status
+        animator.SetBool("isAttacking", true); 
+        animator.SetBool("hasAttacked", false); 
     }
-
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
+    
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (dashTravelled < dashDistance)
         {
-            // Calculate movement for this frame
+
             float moveDistance = dashSpeed * Time.deltaTime;
             float remainingDistance = dashDistance - dashTravelled;
-
-            // Move the NPC in the dash direction but limit the movement to the remaining distance
+            
             float moveAmount = Mathf.Min(moveDistance, remainingDistance);
             animator.transform.position += dashDirection * moveAmount;
             dashTravelled += moveAmount;
@@ -51,10 +48,10 @@ public class Attacking : StateMachineBehaviour
         }
     }
 
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
+
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        // Ensure no movement continues after exiting the state
+
         animator.SetBool("hasAttacked", false); 
     }
 }

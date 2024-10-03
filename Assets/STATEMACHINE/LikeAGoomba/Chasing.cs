@@ -6,8 +6,10 @@ using UnityEngine.AI;
 public class Chasing : StateMachineBehaviour
 {
     NavMeshAgent AI;
-
+    
     private Transform player;
+    [SerializeField] private float rangeToStopChasingPlayer = 15f;
+    [SerializeField] private float rangeToAttackPlayer = 3.5f;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -21,9 +23,9 @@ public class Chasing : StateMachineBehaviour
     {
         AI.SetDestination(player.position);
         float distance = Vector3.Distance(player.position, animator.transform.position);
-        if (distance > 15)
+        if (distance > rangeToStopChasingPlayer)
             animator.SetBool("isChasing", false);
-        if (distance < 3.5f)
+        if (distance < rangeToAttackPlayer)
             animator.SetBool("isAttacking", true);
     }
 
