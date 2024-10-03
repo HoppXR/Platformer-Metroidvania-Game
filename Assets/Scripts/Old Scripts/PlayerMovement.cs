@@ -33,12 +33,12 @@ namespace Platformer
         [SerializeField] private float groundDrag;
 
         [Header("Jumping")]
+        [SerializeField] private float airMultiplier; // player speed in-air
         [SerializeField] private float jumpForce;
         [SerializeField] private float jumpBoostForce;
         [SerializeField] private float jumpDuration;
         [SerializeField] private float jumpCooldown;
         [SerializeField] private float jumpMaxHeight;
-        [SerializeField] private float airMultiplier; // player speed in-air
         [SerializeField] private float gravityMultiplier;
         [SerializeField] private int maxNumberOfJumps;
         private int _numberOfJumps;
@@ -56,9 +56,9 @@ namespace Platformer
         [Header("Ground Check")] 
         [SerializeField] private float playerHeight;
         [SerializeField] private LayerMask whatIsGround;
+        private float _groundCheckDistance = 0.8f;
         private bool _grounded;
-        private Vector3 boxCastSize = new Vector3(0.8f, 0.1f, 0.6f);
-        private float _groundCheckDistance = 0.25f;
+        private RaycastHit _groundHit;
 
         [Header("Slope Handling")] 
         [SerializeField] private float maxSlopeAngle;
@@ -96,26 +96,25 @@ namespace Platformer
         {
             _rb = GetComponent<Rigidbody>();
             _rb.freezeRotation = true;
-
-            playerFootsteps = AudioManager.instance.CreateInstance(FMODEvents.Instance.PlayerFootsteps);
             
             _jumpTimer = new CountdownTimer(jumpDuration);
             _jumpCooldownTimer = new CountdownTimer(jumpCooldown);
             _timers = new List<Timer>(2) { _jumpTimer, _jumpCooldownTimer };
-            _jumpTimer.OnTimerStart += () => _jumpCooldownTimer.Start();;
+            _jumpTimer.OnTimerStart += () => _jumpCooldownTimer.Start();
+
+            playerFootsteps = AudioManager.instance.CreateInstance(FMODEvents.Instance.PlayerFootsteps);
             
             _startYScale = transform.localScale.y;
         }
 
         private void Update()
         {
-            // double jump check
             if (_numberOfJumps != 0) StartCoroutine(WaitForLanding());
             
+            HandleTimers();
             MyInput();
             SpeedControl();
             StateHandler();
-            HandleTimers();
             CheckIfGrounded();
             
             // handle drag
@@ -127,31 +126,51 @@ namespace Platformer
 
         private void CheckIfGrounded()
         {
-            Vector3 boxCenter = transform.position - new Vector3(0, (playerHeight - 0.2f) * 0.5f, 0);
+            Vector3 center = transform.position - new Vector3(0, (playerHeight - 1.2f) * 0.5f, 0);
             
-            _grounded = Physics.BoxCast(boxCenter, boxCastSize * 0.5f, Vector3.down, Quaternion.identity, _groundCheckDistance, whatIsGround);
+            _grounded = Physics.SphereCast(center, 0.5f,Vector3.down, out _groundHit, _groundCheckDistance, whatIsGround);
             
-            //Debug.DrawRay(boxCenter, Vector3.down * _groundCheckDistance, _grounded ? Color.green : Color.red);
+            Debug.DrawRay(center, Vector3.down * _groundCheckDistance, _grounded ? Color.green : Color.red);
         }
 
         private void FixedUpdate()
         {
-            MovePlayer();
             HandleJump();
+            MovePlayer();
             UpdateSound();
+        }
+        
+        private void UpdateSound()
+        {
+            if (_verticalInput != 0 && _grounded || _horizontalInput != 0 && _grounded)
+            {
+                PLAYBACK_STATE playbackState;
+                playerFootsteps.getPlaybackState(out playbackState);
+                
+                if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
+                {
+                    playerFootsteps.start();
+                }
+            }
+            else
+            {
+                playerFootsteps.stop(STOP_MODE.ALLOWFADEOUT);
+            }
+            playerFootsteps.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
         }
 
         private void MyInput()
         {
             _horizontalInput = Input.GetAxisRaw("Horizontal");
             _verticalInput = Input.GetAxisRaw("Vertical");
-            
-            // when to jump
+
+            // Start Jump
             if (Input.GetKeyDown(jumpKey) && !_jumpTimer.IsRunning && !_jumpCooldownTimer.IsRunning)
             {
                 _jumpTimer.Start();
                 _numberOfJumps++;
             }
+            // Stop Jump
             else if (Input.GetKeyUp(jumpKey) && _jumpTimer.IsRunning)
             {
                 _jumpTimer.Stop();
@@ -168,6 +187,51 @@ namespace Platformer
             {
                 transform.localScale = new Vector3(transform.localScale.x, _startYScale, transform.localScale.z);
             }
+        }
+        
+        private void HandleJump()
+        {
+            if (state == MovementState.Dashing || state == MovementState.Swinging || _numberOfJumps >= maxNumberOfJumps)
+            {
+                _jumpVelocity = _rb.velocity.y;
+                return;
+            }
+            
+            if (!_jumpTimer.IsRunning && _grounded)
+            {
+                _jumpTimer.Stop();
+                return;
+            }
+            
+            if (_jumpTimer.IsRunning)
+            {
+                _exitingSlope = true;
+                
+                float launchPoint = 0.9f;
+                
+                if (_jumpTimer.Progress > launchPoint)
+                    _jumpVelocity = Mathf.Sqrt(2 * jumpMaxHeight * Mathf.Abs(Physics.gravity.y));
+                else
+                    _jumpVelocity += (1 - _jumpTimer.Progress) * jumpForce * Time.fixedDeltaTime;
+            }
+            else if (!_grounded && state != MovementState.Swinging || state != MovementState.Freeze || !OnSlope())
+            {
+                _jumpVelocity += Physics.gravity.y * gravityMultiplier * Time.fixedDeltaTime;
+            }
+            else
+                _jumpVelocity = 0;
+            
+            // applies the force
+            _rb.velocity = new Vector3(_rb.velocity.x, _jumpVelocity, _rb.velocity.z);
+        }
+        
+        private IEnumerator WaitForLanding()
+        {
+            yield return new WaitUntil(() => !_grounded);
+            yield return new WaitUntil(() => _grounded);
+
+            _numberOfJumps = 0;
+            _exitingSlope = false;
         }
 
         private void StateHandler()
@@ -235,7 +299,57 @@ namespace Platformer
             _lastDesiredMoveSpeed = _desiredMoveSpeed;
             _lastState = state;
         }
+        
+        private void MovePlayer()
+        {
+            if (state == MovementState.Dashing || swinging || restricted) return;
+            
+            // calculate movement direction
+            _moveDirection = orientation.forward * _verticalInput + orientation.right * _horizontalInput;
+            
+            // on slope
+            if (OnSlope() && !_exitingSlope)
+            {
+                _rb.AddForce(GetSlopeMoveDirection(_moveDirection) * (_moveSpeed * 20f), ForceMode.Force);
+                
+                if (_rb.velocity.y > 0)
+                    _rb.AddForce(Vector3.down * 80f, ForceMode.Force);
+            }
+            
+            // on ground
+            else if (_grounded)
+                _rb.AddForce(_moveDirection.normalized * (_moveSpeed * 10f), ForceMode.Force);
+            
+            // in air
+            else if (!_grounded)
+                _rb.AddForce(_moveDirection.normalized * (_moveSpeed * 10f * airMultiplier), ForceMode.Force);
+            
+            // turn gravity off while on slope
+            _rb.useGravity = !OnSlope();
+        }
 
+        private void SpeedControl()
+        {
+            // limiting speed on slope
+            if (OnSlope() && !_exitingSlope)
+            {
+                if (_rb.velocity.magnitude > _desiredMoveSpeed)
+                    _rb.velocity = _rb.velocity.normalized * _desiredMoveSpeed;
+            }
+            // limiting speed on ground or in air
+            else
+            {
+                Vector3 flatVel = new Vector3(_rb.velocity.x, 0f, _rb.velocity.z);
+            
+                // limit velocity if needed
+                if (flatVel.magnitude > _desiredMoveSpeed)
+                {
+                    Vector3 limitedVel = flatVel.normalized * _desiredMoveSpeed;
+                    _rb.velocity = new Vector3(limitedVel.x, _rb.velocity.y, limitedVel.z);
+                }
+            }
+        }
+        
         private float _speedChangeFactor;
         private IEnumerator SmoothlyLerpMoveSpeed()
         {
@@ -259,146 +373,29 @@ namespace Platformer
             _keepMomentum = true;
         }
         
-        private void MovePlayer()
-        {
-            if (state == MovementState.Dashing || swinging || restricted) return;
-            
-            // calculate movement direction
-            _moveDirection = orientation.forward * _verticalInput + orientation.right * _horizontalInput;
-            
-            // on slope
-            if (OnSlope() && !_exitingSlope)
-            {
-                _rb.AddForce(GetSlopeMoveDirection(_moveDirection) * (_moveSpeed * 20f), ForceMode.Force);
-                
-                if (_rb.velocity.y > 0)
-                    _rb.AddForce(Vector3.down * 80f, ForceMode.Force);
-            }    
-            
-            // on ground
-            else if (_grounded)
-                _rb.AddForce(_moveDirection.normalized * (_moveSpeed * 10f), ForceMode.Force);
-            
-            // in air
-            else if (!_grounded)
-                _rb.AddForce(_moveDirection.normalized * (_moveSpeed * 10f * airMultiplier), ForceMode.Force);
-            
-            // turn gravity off while on slope
-            _rb.useGravity = !OnSlope();
-        }
-
-        private void HandleJump()
-        {
-            _exitingSlope = true;
-            
-            if (state == MovementState.Dashing || state == MovementState.Swinging || _numberOfJumps >= maxNumberOfJumps)
-            {
-                _jumpVelocity = _rb.velocity.y;
-                return;
-            }
-            
-            if (!_jumpTimer.IsRunning && _grounded)
-            {
-                _jumpTimer.Stop();
-                return;
-            }
-            
-            if (_jumpTimer.IsRunning)
-            {
-                float launchPoint = 0.9f;
-                
-                if (_jumpTimer.Progress > launchPoint)
-                    _jumpVelocity = Mathf.Sqrt(2 * jumpMaxHeight * Mathf.Abs(Physics.gravity.y));
-                else
-                    _jumpVelocity += (1 - _jumpTimer.Progress) * jumpForce * Time.fixedDeltaTime;
-            }
-            else if (!_grounded && state != MovementState.Swinging || state != MovementState.Freeze || !OnSlope())
-            {
-                _jumpVelocity += Physics.gravity.y * gravityMultiplier * Time.fixedDeltaTime;
-            }
-            else
-                _jumpVelocity = 0;
-            
-            // applies the force
-            _rb.velocity = new Vector3(_rb.velocity.x, _jumpVelocity, _rb.velocity.z);
-        }
-
-        private void SpeedControl()
-        {
-            // limiting speed on slope
-            if (OnSlope() && !_exitingSlope)
-            {
-                if (_rb.velocity.magnitude > _desiredMoveSpeed)
-                    _rb.velocity = _rb.velocity.normalized * _desiredMoveSpeed;
-            }
-
-            // limiting speed on ground or in air
-            else
-            {
-                Vector3 flatVel = new Vector3(_rb.velocity.x, 0f, _rb.velocity.z);
-            
-                // limit velocity if needed
-                if (flatVel.magnitude > _desiredMoveSpeed)
-                {
-                    Vector3 limitedVel = flatVel.normalized * _desiredMoveSpeed;
-                    _rb.velocity = new Vector3(limitedVel.x, _rb.velocity.y, limitedVel.z);
-                }
-            }
-        }
-
-        private IEnumerator WaitForLanding()
-        {
-            yield return new WaitUntil(() => !_grounded);
-            yield return new WaitUntil(() => _grounded);
-
-            _numberOfJumps = 0;
-        }
-
         public bool OnSlope()
         {
-            Vector3 boxCenter = transform.position - new Vector3(0, (playerHeight - 0.2f) * 0.5f, 0);
-            
-            //if (Physics.Raycast(boxCenter, Vector3.down * _groundCheckDistance, out _slopeHit))
-            if (Physics.BoxCast(boxCenter, boxCastSize * 0.5f, Vector3.down, out _slopeHit, Quaternion.identity, 0.1f))
+            Vector3 center = transform.position - new Vector3(0, (playerHeight - 1.2f) * 0.5f, 0);
+
+            if (Physics.SphereCast(center, 0.5f, Vector3.down, out _slopeHit, _groundCheckDistance))
             {
                 float angle = Vector3.Angle(Vector3.up, _slopeHit.normal);
                 return angle < maxSlopeAngle && angle != 0;
             }
-
             return false;
         }
-
+        
         public Vector3 GetSlopeMoveDirection(Vector3 direction)
         {
             return Vector3.ProjectOnPlane(direction, _slopeHit.normal).normalized;
         }
-
+        
         private void HandleTimers()
         {
             foreach (var timer in _timers)
             {
                 timer.Tick(Time.deltaTime);
             }
-        }
-
-        private void UpdateSound()
-        {
-            if (_verticalInput != 0 && _grounded || _horizontalInput != 0 && _grounded)
-            {
-                PLAYBACK_STATE playbackState;
-                playerFootsteps.getPlaybackState(out playbackState);
-                
-                if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
-                {
-                    playerFootsteps.start();
-                }
-            }
-            else
-            {
-                playerFootsteps.stop(STOP_MODE.ALLOWFADEOUT);
-            }
-            
-            playerFootsteps.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
         }
     }
 }
