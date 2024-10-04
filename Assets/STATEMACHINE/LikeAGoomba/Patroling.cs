@@ -8,8 +8,8 @@ public class Patroling : StateMachineBehaviour
     private NavMeshAgent AI;
     private Transform player;
 
-    private float chaseRange = 8f;
-    private float patrolRadius = 5f; // Patrol radius for random movement
+    [SerializeField] private float chaseRange = 8f;
+    private float patrolRadius = 5f;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -21,6 +21,8 @@ public class Patroling : StateMachineBehaviour
         // Set a random destination within a 360-degree patrol radius
         SetRandomDestination(animator);
         animator.SetBool("isChasing", false);
+        
+        chaseRange = animator.GetFloat("RangeToChasePlayer");
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

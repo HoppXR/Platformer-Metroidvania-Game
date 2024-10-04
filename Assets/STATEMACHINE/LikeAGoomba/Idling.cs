@@ -6,7 +6,7 @@ public class Idling : StateMachineBehaviour
 {
     private float timer;
     private Transform player;
-    private float chaseRange = 8f;
+    [SerializeField] private float chaseRange = 8f;
     private float rotationSpeed = 60f; // Speed of rotation in degrees per second
     private float targetRotationY; // The target Y rotation
     private bool hasTurned = false; // To track if the turn has been completed
@@ -26,6 +26,7 @@ public class Idling : StateMachineBehaviour
         targetRotationY = animator.transform.eulerAngles.y + (randomAngle * direction);
 
         hasTurned = false; // Reset the turning status when entering the state
+        chaseRange = animator.GetFloat("RangeToChasePlayer");
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

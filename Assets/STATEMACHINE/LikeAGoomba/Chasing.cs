@@ -16,6 +16,8 @@ public class Chasing : StateMachineBehaviour
         AI = animator.GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         AI.speed = 7f;
+        rangeToStopChasingPlayer = animator.GetFloat("RangeToStopChasing");
+        rangeToAttackPlayer = animator.GetFloat("RangeToAttack");
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
