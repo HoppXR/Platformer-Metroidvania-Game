@@ -3,7 +3,9 @@ guid: 52eaad5e85b3b2846b082244165aa3e6
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Target: {instanceID: 0}
+  - AttackProjectile: {fileID: 8532231213697563871, guid: a79179039cb05e6449ce85beb51afa67, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
