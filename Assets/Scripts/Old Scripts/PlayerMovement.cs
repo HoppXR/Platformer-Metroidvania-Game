@@ -12,14 +12,10 @@ namespace Platformer
         private List<Timer> _timers;
         private CountdownTimer _jumpTimer;
         private CountdownTimer _jumpCooldownTimer;
-        
-        [Header("Audio")]
-        private EventInstance playerFootsteps;
-        
+
         [Header("Movement")] 
         private float _moveSpeed;
         [SerializeField] private float walkSpeed;
-        [SerializeField] private float sprintSpeed;
         [SerializeField] private float slideSpeed;
         [SerializeField] private float swingSpeed;
 
@@ -34,12 +30,12 @@ namespace Platformer
         [SerializeField] private float groundDrag;
 
         [Header("Jumping")]
+        [SerializeField] private float airMultiplier; // player speed in-air
         [SerializeField] private float jumpForce;
         [SerializeField] private float jumpBoostForce;
         [SerializeField] private float jumpDuration;
         [SerializeField] private float jumpCooldown;
         [SerializeField] private float jumpMaxHeight;
-        [SerializeField] private float airMultiplier; // player speed in-air
         [SerializeField] private float gravityMultiplier;
         [SerializeField] private int maxNumberOfJumps;
         private int _numberOfJumps;
@@ -52,18 +48,24 @@ namespace Platformer
         
         [Header("Keybinds")] 
         [SerializeField] private KeyCode jumpKey;
-        [SerializeField] private KeyCode sprintKey;
         [SerializeField] private KeyCode crouchKey;
         
         [Header("Ground Check")] 
         [SerializeField] private float playerHeight;
         [SerializeField] private LayerMask whatIsGround;
+        private float _groundCheckDistance = 0.8f;
         private bool _grounded;
+        private RaycastHit _groundHit;
 
         [Header("Slope Handling")] 
         [SerializeField] private float maxSlopeAngle;
         private RaycastHit _slopeHit;
         private bool _exitingSlope;
+        
+        [Header("Audio")]
+        [SerializeField] private CurrentTerrain currentTerrain;
+        private enum CurrentTerrain { Grass, Stone, Water, Pipe }
+        private EventInstance playerFootsteps;
         
         [SerializeField] private Transform orientation;
 
@@ -77,10 +79,8 @@ namespace Platformer
         public enum MovementState
         {
             Freeze,
-            Unlimited,
             Swinging,
             Walking,
-            Sprinting,
             Crouching,
             Sliding,
             Dashing,
@@ -88,7 +88,6 @@ namespace Platformer
         }
 
         [HideInInspector] public bool freeze;
-        [HideInInspector] public bool unlimited;
         [HideInInspector] public bool restricted;
 
         [HideInInspector] public bool swinging;
@@ -99,73 +98,201 @@ namespace Platformer
         {
             _rb = GetComponent<Rigidbody>();
             _rb.freezeRotation = true;
-
-            playerFootsteps = AudioManager.instance.CreateInstance(FMODEvents.Instance.PlayerFootsteps);
             
             _jumpTimer = new CountdownTimer(jumpDuration);
             _jumpCooldownTimer = new CountdownTimer(jumpCooldown);
             _timers = new List<Timer>(2) { _jumpTimer, _jumpCooldownTimer };
+            _jumpTimer.OnTimerStart += () => _jumpCooldownTimer.Start();
 
-            _jumpTimer.OnTimerStart += () => _jumpCooldownTimer.Start();;
+            playerFootsteps = AudioManager.instance.CreateInstance(FMODEvents.Instance.PlayerFootsteps);
             
             _startYScale = transform.localScale.y;
         }
 
         private void Update()
         {
-            // double jump check
             if (_numberOfJumps != 0) StartCoroutine(WaitForLanding());
             
-            // ground check
-            _grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
-            
+            HandleTimers();
             MyInput();
             SpeedControl();
             StateHandler();
-            HandleTimers();
+            CheckIfGrounded();
+            DetermineTerrain();
+            SelectAndPlayFootstep();
             
             // handle drag
-            if (state is MovementState.Walking or MovementState.Sprinting or MovementState.Crouching)
+            if (state is MovementState.Walking or MovementState.Crouching)
                 _rb.drag = groundDrag;
             else
                 _rb.drag = 0;
         }
 
+        private void CheckIfGrounded()
+        {
+            Vector3 center = transform.position - new Vector3(0, (playerHeight - 1.2f) * 0.5f, 0);
+            
+            _grounded = Physics.SphereCast(center, 0.5f,Vector3.down, out _groundHit, _groundCheckDistance, whatIsGround);
+            
+            Debug.DrawRay(center, Vector3.down * _groundCheckDistance, _grounded ? Color.green : Color.red);
+        }
+
         private void FixedUpdate()
         {
-            MovePlayer();
             HandleJump();
-            UpdateSound();
+            MovePlayer();
+        }
+
+        private void DetermineTerrain()
+        {
+            RaycastHit[] hit;
+
+            hit = Physics.RaycastAll(transform.position, Vector3.down, 10f);
+            
+            foreach (RaycastHit rayhit in hit)
+            {
+                if (rayhit.transform.gameObject.layer == LayerMask.NameToLayer("Grass"))
+                {
+                    currentTerrain = CurrentTerrain.Grass;
+                    break;
+                }
+                else if (rayhit.transform.gameObject.layer == LayerMask.NameToLayer("Stone"))
+                {
+                    currentTerrain = CurrentTerrain.Stone;
+                    break;
+                }
+                else if (rayhit.transform.gameObject.layer == LayerMask.NameToLayer("Water"))
+                {
+                    currentTerrain = CurrentTerrain.Water;
+                }
+                else if (rayhit.transform.gameObject.layer == LayerMask.NameToLayer("Pipe"))
+                {
+                    currentTerrain = CurrentTerrain.Pipe;
+                }
+            }
+        }
+
+        public void SelectAndPlayFootstep()
+        {
+            switch (currentTerrain)
+            {
+                case CurrentTerrain.Grass:
+                    PlayFootstep(0);
+                    break;
+                
+                case CurrentTerrain.Stone:
+                    PlayFootstep(1);
+                    break;
+                
+                case CurrentTerrain.Water:
+                    PlayFootstep(2);
+                    break;
+                
+                case CurrentTerrain.Pipe:
+                    PlayFootstep(3);
+                    break;
+                
+                default:
+                    PlayFootstep(0);
+                    break;
+            }
+        }
+
+        private void PlayFootstep(int terrain)
+        {
+            playerFootsteps.setParameterByName("Terrain", terrain);
+            playerFootsteps.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+            
+            if (_verticalInput != 0 && _grounded || _horizontalInput != 0 && _grounded)
+            {
+                PLAYBACK_STATE playbackState;
+                playerFootsteps.getPlaybackState(out playbackState);
+                
+                if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
+                {
+                    playerFootsteps.start();
+                }
+            }
+            else
+            {
+                playerFootsteps.stop(STOP_MODE.ALLOWFADEOUT);
+            }
         }
 
         private void MyInput()
         {
             _horizontalInput = Input.GetAxisRaw("Horizontal");
             _verticalInput = Input.GetAxisRaw("Vertical");
-            
-            // when to jump
-            if (Input.GetKeyDown(jumpKey) && !_jumpTimer.IsRunning && !_jumpCooldownTimer.IsRunning)
+
+            // Start Jump
+            if (Input.GetKeyDown(jumpKey) && !_jumpTimer.IsRunning && !_jumpCooldownTimer.IsRunning && _numberOfJumps < maxNumberOfJumps)
             {
                 _jumpTimer.Start();
                 _numberOfJumps++;
             }
+            // Stop Jump
             else if (Input.GetKeyUp(jumpKey) && _jumpTimer.IsRunning)
             {
                 _jumpTimer.Stop();
+                StartCoroutine(WaitForLanding());
             }
-            
             // start crouch
             if (Input.GetKeyDown(crouchKey))
             {
                 transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
                 _rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
             }
-            
             // stop crouch
             if (Input.GetKeyUp(crouchKey))
             {
                 transform.localScale = new Vector3(transform.localScale.x, _startYScale, transform.localScale.z);
             }
+        }
+        
+        private void HandleJump()
+        {
+            if (state == MovementState.Dashing || state == MovementState.Swinging)
+            {
+                _jumpVelocity = _rb.velocity.y;
+                return;
+            }
+            
+            if (!_jumpTimer.IsRunning && _grounded)
+            {
+                _jumpTimer.Stop();
+                return;
+            }
+            
+            if (_jumpTimer.IsRunning)
+            {
+                _exitingSlope = true;
+                
+                float launchPoint = 0.9f;
+                
+                if (_jumpTimer.Progress > launchPoint)
+                    _jumpVelocity = Mathf.Sqrt(2 * jumpMaxHeight * Mathf.Abs(Physics.gravity.y));
+                else
+                    _jumpVelocity += (1 - _jumpTimer.Progress) * jumpForce * Time.fixedDeltaTime;
+            }
+            else if (!_grounded && state != MovementState.Swinging || state != MovementState.Freeze || !OnSlope())
+            {
+                _jumpVelocity += Physics.gravity.y * gravityMultiplier * Time.fixedDeltaTime;
+            }
+            else
+                _jumpVelocity = 0;
+            
+            // applies the force
+            _rb.velocity = new Vector3(_rb.velocity.x, _jumpVelocity, _rb.velocity.z);
+        }
+        
+        private IEnumerator WaitForLanding()
+        {
+            yield return new WaitUntil(() => !_grounded);
+            yield return new WaitUntil(() => _grounded);
+
+            _numberOfJumps = 0;
+            _exitingSlope = false;
+            _jumpVelocity = 0;
         }
 
         private void StateHandler()
@@ -177,22 +304,12 @@ namespace Platformer
                 _desiredMoveSpeed = 0;
                 _rb.velocity = Vector3.zero;
             }
-            
-            // Mode - Unlimited
-            else if (unlimited)
-            {
-                state = MovementState.Unlimited;
-                _desiredMoveSpeed = 999f;
-                return;
-            }
-            
             // Mode - Swinging
             else if (swinging)
             {
                 state = MovementState.Swinging;
                 _desiredMoveSpeed = swingSpeed;
             }
-            
             // Mode - Dashing
             else if (dashing)
             {
@@ -200,7 +317,6 @@ namespace Platformer
                 _desiredMoveSpeed = dashSpeed;
                 _speedChangeFactor = dashSpeedChangeFactor;
             }
-            
             // Mode - Sliding
             else if (sliding)
             {
@@ -208,84 +324,41 @@ namespace Platformer
 
                 if (OnSlope() && _rb.velocity.y < 0.1f)
                     _desiredMoveSpeed = slideSpeed;
-                
                 else
-                    _desiredMoveSpeed = sprintSpeed;
+                    _desiredMoveSpeed = walkSpeed;
             }
-            
             // Mode - Crouching
             else if (Input.GetKey(crouchKey))
             {
                 state = MovementState.Crouching;
                 _desiredMoveSpeed = crouchSpeed;
             }
-            
-            // Mode - Sprinting
-            else if (_grounded && Input.GetKey(sprintKey))
-            {
-                state = MovementState.Sprinting;
-                _desiredMoveSpeed = sprintSpeed;
-            }
-            
             // Mode - Walking
             else if (_grounded)
             {
                 state = MovementState.Walking;
                 _desiredMoveSpeed = walkSpeed;
             }
-            
             // Mode - Air
             else
             {
                 state = MovementState.Air;
-
-                if (_desiredMoveSpeed < sprintSpeed)
-                    _desiredMoveSpeed = walkSpeed;
-                else
-                    _desiredMoveSpeed = sprintSpeed;
+                _desiredMoveSpeed = walkSpeed;
             }
-
+            
             bool desiredMoveSpeedHasChanged = !Mathf.Approximately(_desiredMoveSpeed, _lastDesiredMoveSpeed);
             if (_lastState == MovementState.Dashing) _keepMomentum = true;
 
             if (desiredMoveSpeedHasChanged)
             {
                 if (_keepMomentum)
-                {
                     StartCoroutine(SmoothlyLerpMoveSpeed());
-                }
                 else
-                {
                     _moveSpeed = _desiredMoveSpeed;
-                }
             }
             
             _lastDesiredMoveSpeed = _desiredMoveSpeed;
             _lastState = state;
-        }
-
-        private float _speedChangeFactor;
-        private IEnumerator SmoothlyLerpMoveSpeed()
-        {
-            // smoothly lerp movementSpeed to desired value
-            float time = 0;
-            float difference = Mathf.Abs(_desiredMoveSpeed - _moveSpeed);
-            float startValue = _moveSpeed;
-
-            float boostFactor = _speedChangeFactor;
-
-            while (time < difference)
-            {
-                _moveSpeed = Mathf.Lerp(startValue, _desiredMoveSpeed, time / difference);
-                
-                time += Time.deltaTime * boostFactor;
-                
-                yield return null;
-            }
-
-            _moveSpeed = _desiredMoveSpeed;
-            _speedChangeFactor = 1f;
-            _keepMomentum = true;
         }
         
         private void MovePlayer()
@@ -302,7 +375,7 @@ namespace Platformer
                 
                 if (_rb.velocity.y > 0)
                     _rb.AddForce(Vector3.down * 80f, ForceMode.Force);
-            }    
+            }
             
             // on ground
             else if (_grounded)
@@ -316,42 +389,6 @@ namespace Platformer
             _rb.useGravity = !OnSlope();
         }
 
-        private void HandleJump()
-        {
-            if (state == MovementState.Dashing || state == MovementState.Swinging || _numberOfJumps >= maxNumberOfJumps)
-            {
-                _jumpVelocity = _rb.velocity.y;
-                return;
-            }
-            
-            if (!_jumpTimer.IsRunning && _grounded)
-            {
-                _jumpTimer.Stop();
-                return;
-            }
-            
-            _exitingSlope = true;
-            
-            if (_jumpTimer.IsRunning)
-            {
-                float launchPoint = 0.9f;
-                
-                if (_jumpTimer.Progress > launchPoint)
-                    _jumpVelocity = Mathf.Sqrt(2 * jumpMaxHeight * Mathf.Abs(Physics.gravity.y));
-                else
-                    _jumpVelocity += (1 - _jumpTimer.Progress) * jumpForce * Time.fixedDeltaTime;
-            }
-            else if (!_grounded && state != MovementState.Swinging || state != MovementState.Freeze)
-            {
-                _jumpVelocity += Physics.gravity.y * gravityMultiplier * Time.fixedDeltaTime;
-            }
-            else
-                _jumpVelocity = 0;
-            
-            // applies the force
-            _rb.velocity = new Vector3(_rb.velocity.x, _jumpVelocity, _rb.velocity.z);
-        }
-
         private void SpeedControl()
         {
             // limiting speed on slope
@@ -360,7 +397,6 @@ namespace Platformer
                 if (_rb.velocity.magnitude > _desiredMoveSpeed)
                     _rb.velocity = _rb.velocity.normalized * _desiredMoveSpeed;
             }
-
             // limiting speed on ground or in air
             else
             {
@@ -374,56 +410,53 @@ namespace Platformer
                 }
             }
         }
-
-        private IEnumerator WaitForLanding()
+        
+        private float _speedChangeFactor;
+        private IEnumerator SmoothlyLerpMoveSpeed()
         {
-            yield return new WaitUntil(() => !_grounded);
-            yield return new WaitUntil(() => _grounded);
+            // smoothly lerp movementSpeed to desired value
+            float time = 0;
+            float difference = Mathf.Abs(_desiredMoveSpeed - _moveSpeed);
+            float startValue = _moveSpeed;
+            float boostFactor = _speedChangeFactor;
 
-            _numberOfJumps = 0;
+            while (time < difference)
+            {
+                _moveSpeed = Mathf.Lerp(startValue, _desiredMoveSpeed, time / difference);
+                
+                time += Time.deltaTime * boostFactor;
+                
+                yield return null;
+            }
+            
+            _moveSpeed = _desiredMoveSpeed;
+            _speedChangeFactor = 1f;
+            _keepMomentum = true;
         }
-
+        
         public bool OnSlope()
         {
-            if (Physics.Raycast(transform.position, Vector3.down, out _slopeHit, playerHeight * 0.5f + 0.3f))
+            Vector3 center = transform.position - new Vector3(0, (playerHeight - 1.2f) * 0.5f, 0);
+
+            if (Physics.SphereCast(center, 0.5f, Vector3.down, out _slopeHit, _groundCheckDistance))
             {
                 float angle = Vector3.Angle(Vector3.up, _slopeHit.normal);
                 return angle < maxSlopeAngle && angle != 0;
             }
-
             return false;
         }
-
+        
         public Vector3 GetSlopeMoveDirection(Vector3 direction)
         {
             return Vector3.ProjectOnPlane(direction, _slopeHit.normal).normalized;
         }
-
+        
         private void HandleTimers()
         {
             foreach (var timer in _timers)
             {
                 timer.Tick(Time.deltaTime);
             }
-        }
-
-        private void UpdateSound()
-        {
-            if (_verticalInput != 0 || _horizontalInput != 0 && _grounded)
-            {
-                PLAYBACK_STATE playbackState;
-                playerFootsteps.getPlaybackState(out playbackState);
-                if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
-                {
-                    playerFootsteps.start();
-                }
-            }
-            else
-            {
-                playerFootsteps.stop(STOP_MODE.ALLOWFADEOUT);
-            }
-            
-            playerFootsteps.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
         }
     }
 }

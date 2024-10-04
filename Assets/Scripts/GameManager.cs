@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     // UI
     [SerializeField] private GameObject gameLoseUI;
     [SerializeField] private GameObject gameWinUI;
+    [SerializeField] private GameObject gameUI;
     
     private void Start()
     {
@@ -61,6 +62,7 @@ public class GameManager : MonoBehaviour
             _isRunning = false;
             Time.timeScale = 0;
             gameWinUI.SetActive(true);
+            gameUI.SetActive(false);
             
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -69,6 +71,7 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0;
             gameLoseUI.SetActive(true);
+            gameUI.SetActive(false);
 
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
