@@ -225,7 +225,7 @@ namespace Platformer
             _verticalInput = Input.GetAxisRaw("Vertical");
 
             // Start Jump
-            if (Input.GetKeyDown(jumpKey) && !_jumpTimer.IsRunning && !_jumpCooldownTimer.IsRunning)
+            if (Input.GetKeyDown(jumpKey) && !_jumpTimer.IsRunning && !_jumpCooldownTimer.IsRunning && _numberOfJumps < maxNumberOfJumps)
             {
                 _jumpTimer.Start();
                 _numberOfJumps++;
@@ -251,7 +251,7 @@ namespace Platformer
         
         private void HandleJump()
         {
-            if (state == MovementState.Dashing || state == MovementState.Swinging || _numberOfJumps >= maxNumberOfJumps)
+            if (state == MovementState.Dashing || state == MovementState.Swinging)
             {
                 _jumpVelocity = _rb.velocity.y;
                 return;
@@ -292,6 +292,7 @@ namespace Platformer
 
             _numberOfJumps = 0;
             _exitingSlope = false;
+            _jumpVelocity = 0;
         }
 
         private void StateHandler()
