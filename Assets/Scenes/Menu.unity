@@ -536,63 +536,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410982182}
   m_CullTransparentMesh: 1
---- !u!1001 &540457023
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1760498126504802817, guid: 3b908ae8323f90846b454389d49a9554, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1760498126504802817, guid: 3b908ae8323f90846b454389d49a9554, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1760498126504802817, guid: 3b908ae8323f90846b454389d49a9554, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1760498126504802817, guid: 3b908ae8323f90846b454389d49a9554, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1760498126504802817, guid: 3b908ae8323f90846b454389d49a9554, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1760498126504802817, guid: 3b908ae8323f90846b454389d49a9554, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1760498126504802817, guid: 3b908ae8323f90846b454389d49a9554, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1760498126504802817, guid: 3b908ae8323f90846b454389d49a9554, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1760498126504802817, guid: 3b908ae8323f90846b454389d49a9554, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1760498126504802817, guid: 3b908ae8323f90846b454389d49a9554, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3290593328786506449, guid: 3b908ae8323f90846b454389d49a9554, type: 3}
-      propertyPath: m_Name
-      value: PostFX
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 3b908ae8323f90846b454389d49a9554, type: 3}
 --- !u!1 &677024476
 GameObject:
   m_ObjectHideFlags: 0
@@ -786,8 +729,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Leaderboard
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 191f5cf82d6c37a40b20c33db07d7a09, type: 2}
-  m_sharedMaterial: {fileID: -4177674134273933842, guid: 191f5cf82d6c37a40b20c33db07d7a09, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 04f0e19a99180a34ba484a70ee1673c4, type: 2}
+  m_sharedMaterial: {fileID: -1567786335197892400, guid: 04f0e19a99180a34ba484a70ee1673c4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -811,8 +754,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 90
-  m_fontSizeBase: 90
+  m_fontSize: 125
+  m_fontSizeBase: 125
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1128,10 +1071,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tinger or Bust
+  m_text: Wompus Jompus
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 191f5cf82d6c37a40b20c33db07d7a09, type: 2}
-  m_sharedMaterial: {fileID: -4177674134273933842, guid: 191f5cf82d6c37a40b20c33db07d7a09, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 04f0e19a99180a34ba484a70ee1673c4, type: 2}
+  m_sharedMaterial: {fileID: -1567786335197892400, guid: 04f0e19a99180a34ba484a70ee1673c4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1155,8 +1098,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 125
-  m_fontSizeBase: 125
+  m_fontSize: 200
+  m_fontSizeBase: 200
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2529,6 +2472,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &834817859994811517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3290593328250338030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: 1ca9627b62eeb6249a32397cfd468392, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
 --- !u!1 &919132148490232269
 GameObject:
   m_ObjectHideFlags: 0
@@ -2586,6 +2546,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &1760498125970702910
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3290593328250338030}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2076850631557148909
 GameObject:
   m_ObjectHideFlags: 0
@@ -2662,6 +2637,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8707273951882812556}
   m_Mesh: {fileID: 4493585093827132993, guid: 2c521790c083ccb479e7c1c64c09e57c, type: 3}
+--- !u!1 &3290593328250338030
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1760498125970702910}
+  - component: {fileID: 834817859994811517}
+  m_Layer: 7
+  m_Name: PostFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &3745622627137069074
 Transform:
   m_ObjectHideFlags: 0
@@ -3057,7 +3049,7 @@ SceneRoots:
   - {fileID: 1192407606}
   - {fileID: 2095051125}
   - {fileID: 1657051850}
-  - {fileID: 540457023}
+  - {fileID: 1760498125970702910}
   - {fileID: 1648497363}
   - {fileID: 882248433}
   - {fileID: 543450652225223543}
