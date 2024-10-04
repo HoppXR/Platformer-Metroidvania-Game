@@ -12,10 +12,7 @@ namespace Platformer
         private List<Timer> _timers;
         private CountdownTimer _jumpTimer;
         private CountdownTimer _jumpCooldownTimer;
-        
-        [Header("Audio")]
-        private EventInstance playerFootsteps;
-        
+
         [Header("Movement")] 
         private float _moveSpeed;
         [SerializeField] private float walkSpeed;
@@ -64,6 +61,11 @@ namespace Platformer
         [SerializeField] private float maxSlopeAngle;
         private RaycastHit _slopeHit;
         private bool _exitingSlope;
+        
+        [Header("Audio")]
+        [SerializeField] private CurrentTerrain currentTerrain;
+        private enum CurrentTerrain { Grass, Stone, Water, Pipe }
+        private EventInstance playerFootsteps;
         
         [SerializeField] private Transform orientation;
 
@@ -116,6 +118,8 @@ namespace Platformer
             SpeedControl();
             StateHandler();
             CheckIfGrounded();
+            DetermineTerrain();
+            SelectAndPlayFootstep();
             
             // handle drag
             if (state is MovementState.Walking or MovementState.Crouching)
@@ -137,11 +141,68 @@ namespace Platformer
         {
             HandleJump();
             MovePlayer();
-            UpdateSound();
         }
-        
-        private void UpdateSound()
+
+        private void DetermineTerrain()
         {
+            RaycastHit[] hit;
+
+            hit = Physics.RaycastAll(transform.position, Vector3.down, 10f);
+            
+            foreach (RaycastHit rayhit in hit)
+            {
+                if (rayhit.transform.gameObject.layer == LayerMask.NameToLayer("Grass"))
+                {
+                    currentTerrain = CurrentTerrain.Grass;
+                    break;
+                }
+                else if (rayhit.transform.gameObject.layer == LayerMask.NameToLayer("Stone"))
+                {
+                    currentTerrain = CurrentTerrain.Stone;
+                    break;
+                }
+                else if (rayhit.transform.gameObject.layer == LayerMask.NameToLayer("Water"))
+                {
+                    currentTerrain = CurrentTerrain.Water;
+                }
+                else if (rayhit.transform.gameObject.layer == LayerMask.NameToLayer("Pipe"))
+                {
+                    currentTerrain = CurrentTerrain.Pipe;
+                }
+            }
+        }
+
+        public void SelectAndPlayFootstep()
+        {
+            switch (currentTerrain)
+            {
+                case CurrentTerrain.Grass:
+                    PlayFootstep(0);
+                    break;
+                
+                case CurrentTerrain.Stone:
+                    PlayFootstep(1);
+                    break;
+                
+                case CurrentTerrain.Water:
+                    PlayFootstep(2);
+                    break;
+                
+                case CurrentTerrain.Pipe:
+                    PlayFootstep(3);
+                    break;
+                
+                default:
+                    PlayFootstep(0);
+                    break;
+            }
+        }
+
+        private void PlayFootstep(int terrain)
+        {
+            playerFootsteps.setParameterByName("Terrain", terrain);
+            playerFootsteps.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+            
             if (_verticalInput != 0 && _grounded || _horizontalInput != 0 && _grounded)
             {
                 PLAYBACK_STATE playbackState;
@@ -156,7 +217,6 @@ namespace Platformer
             {
                 playerFootsteps.stop(STOP_MODE.ALLOWFADEOUT);
             }
-            playerFootsteps.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
         }
 
         private void MyInput()
