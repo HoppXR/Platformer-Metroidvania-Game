@@ -6,16 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="27323533-f997-4ec2-9a96-8ab027cd610f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Mini-Interactive-Project-2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mini-Interactive-Project-2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/mac/lib/fmodstudio.bundle/Contents/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/mac/lib/fmodstudio.bundle/Contents/Info.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/mac/lib/fmodstudioL.bundle/Contents/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/mac/lib/fmodstudioL.bundle/Contents/Info.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/mac/lib/resonanceaudio.bundle/Contents/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/mac/lib/resonanceaudio.bundle/Contents/Info.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Collectable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Collectable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerHealth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerHealth.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/.cache/{72e980b1-51cc-4cf7-9443-5b6b218651a5}.pdc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/.cache/{72e980b1-51cc-4cf7-9443-5b6b218651a5}.pdc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/.cache/{954ee53f-6626-4576-b019-9ca4fd03170f}.pdc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/.cache/{954ee53f-6626-4576-b019-9ca4fd03170f}.pdc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/.cache/{99426ccc-d388-4491-9f03-dfb89d16aaa3}.pdc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/.cache/{99426ccc-d388-4491-9f03-dfb89d16aaa3}.pdc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/.cache/{ca0ec130-3742-4a53-b726-ff606e1c9a15}.pdc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/.cache/{ca0ec130-3742-4a53-b726-ff606e1c9a15}.pdc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/.cache/{e759c55e-0a61-4384-91b6-9d9e16a0e722}.pdc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/.cache/{e759c55e-0a61-4384-91b6-9d9e16a0e722}.pdc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/.cache/{f3e8552a-24d3-45ea-afde-14651a5b3704}.pdc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/.cache/{f3e8552a-24d3-45ea-afde-14651a5b3704}.pdc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/Event/{83e7baba-a286-437e-ba1c-704816e3aa1e}.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/Event/{83e7baba-a286-437e-ba1c-704816e3aa1e}.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +39,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Jaden",
+    "git-widget-placeholder": "Project-3-Latest",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -51,13 +49,21 @@
   },
   "keyToStringList": {
     "rider.external.source.directories": [
-      "C:\\Users\\brtlh\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
-      "C:\\Users\\brtlh\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
-      "C:\\Users\\brtlh\\AppData\\Local\\Symbols\\src"
+      "C:\\Users\\xoesm\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\xoesm\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\xoesm\\AppData\\Local\\Symbols\\src"
     ]
   }
 }]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../final\Mini-Interactive Project 2.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\xoesm\Desktop\unity projects\final" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2023.1.12f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath &quot;C:\Users\xoesm\Desktop\unity projects\maybe gaem\Mini-Interactive-Project-2&quot; -debugCodeOptimization" />
@@ -106,6 +112,7 @@
       <workItem from="1726551325973" duration="227000" />
       <workItem from="1726634308032" duration="532000" />
       <workItem from="1726693533761" duration="2830000" />
+      <workItem from="1728014493531" duration="78000" />
     </task>
     <servers />
   </component>
