@@ -54,7 +54,7 @@ namespace Platformer
         [SerializeField] private float playerHeight;
         [SerializeField] private LayerMask whatIsGround;
         private float _groundCheckDistance = 0.8f;
-        private bool _grounded;
+        public static bool Grounded;
         private RaycastHit _groundHit;
 
         [Header("Slope Handling")] 
@@ -132,9 +132,9 @@ namespace Platformer
         {
             Vector3 center = transform.position - new Vector3(0, (playerHeight - 1.2f) * 0.5f, 0);
             
-            _grounded = Physics.SphereCast(center, 0.5f,Vector3.down, out _groundHit, _groundCheckDistance, whatIsGround);
+            Grounded = Physics.SphereCast(center, 0.5f,Vector3.down, out _groundHit, _groundCheckDistance, whatIsGround);
             
-            Debug.DrawRay(center, Vector3.down * _groundCheckDistance, _grounded ? Color.green : Color.red);
+            Debug.DrawRay(center, Vector3.down * _groundCheckDistance, Grounded ? Color.green : Color.red);
         }
 
         private void FixedUpdate()
@@ -203,7 +203,7 @@ namespace Platformer
             playerFootsteps.setParameterByName("Terrain", terrain);
             playerFootsteps.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
             
-            if (_verticalInput != 0 && _grounded || _horizontalInput != 0 && _grounded)
+            if (_verticalInput != 0 && Grounded || _horizontalInput != 0 && Grounded)
             {
                 PLAYBACK_STATE playbackState;
                 playerFootsteps.getPlaybackState(out playbackState);
@@ -257,7 +257,7 @@ namespace Platformer
                 return;
             }
             
-            if (!_jumpTimer.IsRunning && _grounded)
+            if (!_jumpTimer.IsRunning && Grounded)
             {
                 _jumpTimer.Stop();
                 return;
@@ -274,7 +274,7 @@ namespace Platformer
                 else
                     _jumpVelocity += (1 - _jumpTimer.Progress) * jumpForce * Time.fixedDeltaTime;
             }
-            else if (!_grounded && state != MovementState.Swinging || state != MovementState.Freeze || !OnSlope())
+            else if (!Grounded && state != MovementState.Swinging || state != MovementState.Freeze || !OnSlope())
             {
                 _jumpVelocity += Physics.gravity.y * gravityMultiplier * Time.fixedDeltaTime;
             }
@@ -287,8 +287,8 @@ namespace Platformer
         
         private IEnumerator WaitForLanding()
         {
-            yield return new WaitUntil(() => !_grounded);
-            yield return new WaitUntil(() => _grounded);
+            yield return new WaitUntil(() => !Grounded);
+            yield return new WaitUntil(() => Grounded);
 
             _numberOfJumps = 0;
             _exitingSlope = false;
@@ -334,7 +334,7 @@ namespace Platformer
                 _desiredMoveSpeed = crouchSpeed;
             }
             // Mode - Walking
-            else if (_grounded)
+            else if (Grounded)
             {
                 state = MovementState.Walking;
                 _desiredMoveSpeed = walkSpeed;
@@ -378,11 +378,11 @@ namespace Platformer
             }
             
             // on ground
-            else if (_grounded)
+            else if (Grounded)
                 _rb.AddForce(_moveDirection.normalized * (_moveSpeed * 10f), ForceMode.Force);
             
             // in air
-            else if (!_grounded)
+            else if (!Grounded)
                 _rb.AddForce(_moveDirection.normalized * (_moveSpeed * 10f * airMultiplier), ForceMode.Force);
             
             // turn gravity off while on slope
