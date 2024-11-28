@@ -21,6 +21,7 @@ public class Patroling : StateMachineBehaviour
         // Set a random destination within a 360-degree patrol radius
         SetRandomDestination(animator);
         animator.SetBool("isChasing", false);
+        animator.SetBool("canAttack", true);
         
         chaseRange = animator.GetFloat("RangeToChasePlayer");
     }
