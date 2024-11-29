@@ -1,0 +1,997 @@
+fileFormatVersion: 2
+guid: 2fbbae691ae4fb94ea5e7a4f78079b86
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DrtWall
+    second: {fileID: 2100000, guid: 75c3b870ddb74de4cb2fca55f256078f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DrtWall.001
+    second: {fileID: 2100000, guid: d36fba24e8a2fa045ba047d7740e312f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DrtWall.002
+    second: {fileID: 2100000, guid: 68a8ed22114a4c04c91159c469583eb2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DrtWall.003
+    second: {fileID: 2100000, guid: ad78c95dde04fd246ac2ac3b8459493d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DrtWall.004
+    second: {fileID: 2100000, guid: bdfd54946bc2adb4a8ab18542034a162, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DrtWall.005
+    second: {fileID: 2100000, guid: 6a0ea94cc2570014d9a0f3c8d977c4ff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DrtWall.006
+    second: {fileID: 2100000, guid: c5ac70fadeae289499173483ed480f37, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DrtWall.007
+    second: {fileID: 2100000, guid: 6f307119d4da25e49804fcaeef4d3188, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DrtWall.008
+    second: {fileID: 2100000, guid: 0a7b340b32559c94b898877c1277281a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DrtWall.009
+    second: {fileID: 2100000, guid: 74821128339b6e5458c0ca3febb43090, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DrtWall.010
+    second: {fileID: 2100000, guid: 8b4e9113b2ee3d744aa29e0161e6d63c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DrtWall.011
+    second: {fileID: 2100000, guid: 0793723874294cc43943e95d3d0d88bf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DrtWall.012
+    second: {fileID: 2100000, guid: 1d6171e9dfe6c6944aee37cd37df3b99, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DrtWall.014
+    second: {fileID: 2100000, guid: 0d7e0a7ba0e7c134aae5e8e00acbd2db, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DrtWall.015
+    second: {fileID: 2100000, guid: 42316b0420d67c146b59c1747f71f55c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DrtWall.016
+    second: {fileID: 2100000, guid: 263c5d88515436c44a4908a6ccbc9dda, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DrtWall.017
+    second: {fileID: 2100000, guid: 666ecdc534371a14e914feb1cea26412, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DrtWall.018
+    second: {fileID: 2100000, guid: 930b81c416406334490aa12a8da062d6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DrtWall.022
+    second: {fileID: 2100000, guid: dea0990db9084f94faa94d8b9fbd7652, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Drt_StnWall
+    second: {fileID: 2100000, guid: 6ce82949de5a93e45999dac960950fac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Drt_StnWall.001
+    second: {fileID: 2100000, guid: 3caf164a935147042abe5a297f025ae4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Drt_StnWall.002
+    second: {fileID: 2100000, guid: da06b82121d0d55489bb14a2ea6fe624, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Drt_StnWall.003
+    second: {fileID: 2100000, guid: 7d9508bcea12715488f7e106869535b5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Drt_StnWall.004
+    second: {fileID: 2100000, guid: 57dbc0c5c12f5cd44ac761a9e8354426, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Drt_StnWall.005
+    second: {fileID: 2100000, guid: 10f12190933155449abef9b6f477b6d8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Drt_StnWall.007
+    second: {fileID: 2100000, guid: 9b20bc5c8214b6f41a90506f66a83416, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Drt_StnWall.008
+    second: {fileID: 2100000, guid: fd394dd79f0110b40b72c8ab85b37294, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Drt_StnWall.009
+    second: {fileID: 2100000, guid: a5e13a2cf97b4fe489f9a375b10242c9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Drt_StnWall.010
+    second: {fileID: 2100000, guid: ca583f3ca6dc60048a4952d715feff3d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Drt_StnWall.011
+    second: {fileID: 2100000, guid: 2e4aba14ccfb37f458bfbd61e60f6a95, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Drt_StnWall.012
+    second: {fileID: 2100000, guid: e62d72d3209b9dd4fafba4b6a2f6b2d7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Drt_StnWall.014
+    second: {fileID: 2100000, guid: 5db22de822205014cbfb8195c46c4b77, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Drt_StnWall.015
+    second: {fileID: 2100000, guid: 16d585dbabf3c4f45b3d47b104147c81, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Drt_StnWall.016
+    second: {fileID: 2100000, guid: 8b6486872184c8c46a2906d1d0c6b8a8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Drt_StnWall.017
+    second: {fileID: 2100000, guid: 63d264dcb297f5642adda094ea8c2404, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Drt_StnWall.018
+    second: {fileID: 2100000, guid: 6d98a9b53cea99d4683f6a4090c5608b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FloorWall
+    second: {fileID: 2100000, guid: 8c76aead6c02f8049844f6886774ddf6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FloorWall.001
+    second: {fileID: 2100000, guid: 66b30bd5b79ae494f821bb4b2af58543, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FloorWall.002
+    second: {fileID: 2100000, guid: e4e1ded7296cd2a4cab1a688ba60dcc0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FloorWall.006
+    second: {fileID: 2100000, guid: d07e081a5674ae147b38efa8eda965dc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FlowingWatter.001
+    second: {fileID: 2100000, guid: 870bee194534bc54e92ef3ad47f14fc1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FlowingWatter.002
+    second: {fileID: 2100000, guid: ea74b0cf085c9094ca65f3f4fbd8aa30, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FlowingWatter.003
+    second: {fileID: 2100000, guid: 6d61c7270adcacd46bf6c8af6495d4a7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FlowingWatter.004
+    second: {fileID: 2100000, guid: c7056cb14404ebe458b2f03c2718472d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grass
+    second: {fileID: 2100000, guid: fbaae0d22585f9e47819e27a0b82317b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: c3bc5f8ff4baff64988ab014375e8f26, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: d61b8a407024f8a409ecc216837cf083, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.005
+    second: {fileID: 2100000, guid: 91a5ee0f1570502409f2440868c48055, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PipeUpRight.001
+    second: {fileID: 2100000, guid: 1496b23fd61623543b4c731294da2ac7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PipeUpRight.003
+    second: {fileID: 2100000, guid: c14f558c61eca6d42b656229cc48421e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PipeUpRight.004
+    second: {fileID: 2100000, guid: 084e6d16c87af1545a7fb750714125c4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PipeUpRight.005
+    second: {fileID: 2100000, guid: b367cc0c8f5807d4497e2b966638ed44, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PipeUpRight.006
+    second: {fileID: 2100000, guid: 9016f389611b9ad4ab02ef18c971543b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PipeUpRight.007
+    second: {fileID: 2100000, guid: dfc92114242408e42948481769423832, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pole
+    second: {fileID: 2100000, guid: 344d5c6b4b2321c42947c00d3a6ee4e5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PowerupStand
+    second: {fileID: 2100000, guid: bbc84b0835196ce43be20ce0368c4036, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SidePipe.001
+    second: {fileID: 2100000, guid: c7f99ec1502f9184781b698e9b79dd51, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SidePipe.002
+    second: {fileID: 2100000, guid: 72f2453367f346d46b4befe2d25d88e2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SidePipe.003
+    second: {fileID: 2100000, guid: edc9b652ca96e174e8a4cf9218e5b678, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SidePipe.005
+    second: {fileID: 2100000, guid: 919b3ce4e4c481546a71802b5ebcde30, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SidePipe.006
+    second: {fileID: 2100000, guid: 1fbc0585b123ed64eb6ca96ee7302def, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SidePipe.007
+    second: {fileID: 2100000, guid: e9523b4381750444ca68f53f697a797b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SidePipe.008
+    second: {fileID: 2100000, guid: 68206c59db71c2b45a979df6f494ddc0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SidePipe.009
+    second: {fileID: 2100000, guid: 61ede4c5f90067c44aee047c19bd024f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SidePipe.010
+    second: {fileID: 2100000, guid: e1b1a9bd90412bb4e836f5da083dbc9e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone1.001
+    second: {fileID: 2100000, guid: 80a586f9dcb541240a99a096d5c3f34f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone1.002
+    second: {fileID: 2100000, guid: e72462312cbcc5f42af38ed3a865055c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone1.003
+    second: {fileID: 2100000, guid: 2dd0b752b8f13ab41a9e76bac22cb769, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone1.004
+    second: {fileID: 2100000, guid: f6a37b4f09af95b4caa270fc0a70025f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone1.005
+    second: {fileID: 2100000, guid: 89e539b5015506149b720c719152430f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone1.006
+    second: {fileID: 2100000, guid: a311fbc846bf309498f2509dd4c46b77, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone1.007
+    second: {fileID: 2100000, guid: 65daeb98b7d33cc4d8c99d8ac7e5d0c5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone1.008
+    second: {fileID: 2100000, guid: 810decc4cd5f47c47848d87d7cd47681, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone1.009
+    second: {fileID: 2100000, guid: e8ff1ebecdcc5b243aaca988d89a5053, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone1.013
+    second: {fileID: 2100000, guid: ed925ab81e126cb47a54efa7b94b5a71, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone1.014
+    second: {fileID: 2100000, guid: aa9ca8067dc230b4589153bdf148a963, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone1.015
+    second: {fileID: 2100000, guid: 2f59c7a55d67cdb41a2cec52b95072d1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone1.016
+    second: {fileID: 2100000, guid: 3efcac4581f92fb41a9e1d396169f749, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone1.017
+    second: {fileID: 2100000, guid: 233ca96eb71c42a4d86b0f55cdf7c4fd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone1.018
+    second: {fileID: 2100000, guid: 693c6d367677ed94aac61ffe8a0f2384, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone2.001
+    second: {fileID: 2100000, guid: a49055620ca723a4a9c35d2475d2de0c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone2.002
+    second: {fileID: 2100000, guid: 68ffb71303dc0ac4180023f9c9be73b7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone2.003
+    second: {fileID: 2100000, guid: 1dde6ccdb3a09c444a2c5d703f39ee21, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone2.004
+    second: {fileID: 2100000, guid: c483009cb46b3ce49964b9321b7bcabd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone2.005
+    second: {fileID: 2100000, guid: e10c8247aa8fb3549bfb0fa571c86800, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone2.006
+    second: {fileID: 2100000, guid: f268f626d4cbae64491c89f14d4310e8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone2.007
+    second: {fileID: 2100000, guid: 1ca61d1b30e783349bfda06c0d127d18, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone2.012
+    second: {fileID: 2100000, guid: f63d7717b592496488799a2f5071cf65, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone2.013
+    second: {fileID: 2100000, guid: 0841f9ec540e5e540b737ac0ad43ab5a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone2.014
+    second: {fileID: 2100000, guid: 28112dc10b3cd9842963bcb9f2e9d643, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone3.002
+    second: {fileID: 2100000, guid: 3154f2d1d23fd9c4f9a44f3cd0444d37, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone3.003
+    second: {fileID: 2100000, guid: 3677c3301d0709d4cb0fe2ddfc050cc0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone3.004
+    second: {fileID: 2100000, guid: 302952be115e0a94785035541c4069fa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone3.005
+    second: {fileID: 2100000, guid: 0429bca1f5792e14180f28d0dda190df, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone3.006
+    second: {fileID: 2100000, guid: 11ff23fe63710db4eaf2a582a673f6ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone3.007
+    second: {fileID: 2100000, guid: 08fe817fea74cd74aa49c7a083c5facc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone3.008
+    second: {fileID: 2100000, guid: e1f46e1cd411b4b44a5f666593267523, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone3.009
+    second: {fileID: 2100000, guid: 828910a61e1e9984c84c6a41f4a89697, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone3.010
+    second: {fileID: 2100000, guid: a8191a75c8148d844940d8956b843eb3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone3.016
+    second: {fileID: 2100000, guid: bda3c255863671e458494afa9bafc7d4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone3.017
+    second: {fileID: 2100000, guid: f6b77dfa7e97f3341a5d8c139ced36b2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone3.018
+    second: {fileID: 2100000, guid: 88c6f7aae5e2cd2439d22879f74afc0e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone3.019
+    second: {fileID: 2100000, guid: e7604cd5ceffd42459198e0873edd785, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneFloor
+    second: {fileID: 2100000, guid: a3e7d48a899620842a6b9fdd01cdd557, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneFloor.001
+    second: {fileID: 2100000, guid: ff20cb11dc578cd40a32df4c72fa32f4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneFloor.002
+    second: {fileID: 2100000, guid: 4718cfbef2157604bb1be10876463992, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneFloor.003
+    second: {fileID: 2100000, guid: 6f85f315c6056644589a5b32453111d8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneFloor.004
+    second: {fileID: 2100000, guid: d387fec1e87e0f54fa138c5bfaac33b9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneFloor.005
+    second: {fileID: 2100000, guid: 9531d9348a5e17a4b8ff14a3b500a9c6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneFloor.006
+    second: {fileID: 2100000, guid: c74b3394956c0da47a2d3ea670277f1d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneFloor.007
+    second: {fileID: 2100000, guid: 8d586d64d13f9ef4db6dee652c882ffb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneFloor.008
+    second: {fileID: 2100000, guid: 1765120a148656549b4954b9a3d98535, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneFloor.009
+    second: {fileID: 2100000, guid: 48e4664bc140a6840bbd3da853395089, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneFloor.010
+    second: {fileID: 2100000, guid: 4f653535c342ee44c851339931cbbb85, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneFloor.011
+    second: {fileID: 2100000, guid: 448152307c828144693b4e2113485875, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneFloor.012
+    second: {fileID: 2100000, guid: 6fe0f3727d9cec14680deb426b04e678, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneFloor.013
+    second: {fileID: 2100000, guid: e5cec58ee05a0db4cbdb9b968b5088d5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneFloor.014
+    second: {fileID: 2100000, guid: f6aa8aac402cd464491d3fa669314e22, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneFloor.015
+    second: {fileID: 2100000, guid: 647e0441f94ac114fa142e5dd32c11ec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneFloor.016
+    second: {fileID: 2100000, guid: 4f3beb2180200ec46ad9c2bbabbc298d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneFloor.017
+    second: {fileID: 2100000, guid: dc5da897ea405814e9c553fade238269, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneFloor.018
+    second: {fileID: 2100000, guid: c882d192d4d7cd748b510633a29859d1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneFloor.055
+    second: {fileID: 2100000, guid: cd11566a2affb2d4ab359a7c33d8b766, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall
+    second: {fileID: 2100000, guid: 4ac8e97f8a2126a49b081a3d395b3594, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall.001
+    second: {fileID: 2100000, guid: 8d7deb455bf294c4a8178abda1e7b956, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall.002
+    second: {fileID: 2100000, guid: c11fab25e463b8b4da927f4f97ba3e9c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall.003
+    second: {fileID: 2100000, guid: 1acecfcc5cd27f142a54fa015db951a3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall.004
+    second: {fileID: 2100000, guid: e0a5197b6e84b8644a78c4834016366c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall.005
+    second: {fileID: 2100000, guid: 948139419db5a9749be2f946b57eff89, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall.006
+    second: {fileID: 2100000, guid: 30d77e358f96a3548b048d294c90844c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall.007
+    second: {fileID: 2100000, guid: dfb64a70b2f91b94e8864e05ee5b263a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall.008
+    second: {fileID: 2100000, guid: 2c4b794d677389e469d5fe221835e2fd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall.009
+    second: {fileID: 2100000, guid: b301e06e3b40327409c775c9910cd9d6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall.010
+    second: {fileID: 2100000, guid: 2bad765f51332dd42ac2966fafe85dbe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall.011
+    second: {fileID: 2100000, guid: 87e006d6c6b76934e86eb304b4009d63, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall.012
+    second: {fileID: 2100000, guid: 7dbf5ee9294b2b840b78f31456624457, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall.013
+    second: {fileID: 2100000, guid: 02ed2b7b65c433e44b8ea66b1c0ebf1b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall.014
+    second: {fileID: 2100000, guid: 1e9fe73a3938f1c47b8681cdb53a6603, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall.015
+    second: {fileID: 2100000, guid: 8469352923f0d4543a545c7b10e8f0ec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall.016
+    second: {fileID: 2100000, guid: e89afb12005fbe447b50868c643ea22c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall.017
+    second: {fileID: 2100000, guid: 8e208f0062af6f146a14ac8ece35bb52, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall.018
+    second: {fileID: 2100000, guid: ca21962d4139e644d8923d89a43687f1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall.019
+    second: {fileID: 2100000, guid: bc3d1703b96b2004a950face42f1b338, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall.020
+    second: {fileID: 2100000, guid: 13803225e3b4b004ca1f432653158b3d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall.021
+    second: {fileID: 2100000, guid: 956802648877324409dbf7ec963ae554, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall.022
+    second: {fileID: 2100000, guid: bda1d7f026e8f06439f23e68d1ce83e7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall.023
+    second: {fileID: 2100000, guid: 29f2654baa58a6747bb18c531abba672, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall.024
+    second: {fileID: 2100000, guid: 125d4b8e2fc2d884b959662330df77c5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall.027
+    second: {fileID: 2100000, guid: 2f51e052f2367ae4dac8628355c82be9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall.028
+    second: {fileID: 2100000, guid: 128a5eb82b09f2d4ab1fad0fb71644d0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall.029
+    second: {fileID: 2100000, guid: c13bab84e25c4b64bbbbc57de747cc6c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall.030
+    second: {fileID: 2100000, guid: 7078311af9968e54dbb7d0b0ef8ac77a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall.031
+    second: {fileID: 2100000, guid: 565b85b291f7f7a4fbcc650c931e9788, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall.032
+    second: {fileID: 2100000, guid: 7c45440386a7bfb4b90ef21641dd3b1f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall.033
+    second: {fileID: 2100000, guid: aacbb7bf4c27dc54a973704beadd92e7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall.034
+    second: {fileID: 2100000, guid: 284ba4851838915488429ea4334ec1ad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall.041
+    second: {fileID: 2100000, guid: 84507a234849a9d49859aae44e2367f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall.042
+    second: {fileID: 2100000, guid: c8d9065ec6012404fbd361a943396dd9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SwampWater
+    second: {fileID: 2100000, guid: 8573648f34e9d2c4fb83b07d3849b104, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SwampWater.001
+    second: {fileID: 2100000, guid: 381eec64efd5f97428446362af634774, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SwampWater.002
+    second: {fileID: 2100000, guid: 5cdbd55835bf05c40b3a35946ebbc54b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SwampWater.003
+    second: {fileID: 2100000, guid: a9058f4616cf58d48adab129414a3f41, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SwampWater.004
+    second: {fileID: 2100000, guid: 28e449884127b674f93acad2b867070b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SwampWater.005
+    second: {fileID: 2100000, guid: d4748f718954a294aab1754f6bf30b50, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SwampWater.006
+    second: {fileID: 2100000, guid: cf070409ad3725245bc5e4a88046287c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SwampWater.007
+    second: {fileID: 2100000, guid: 01bd7e2c0c6b3cc4c84313b8be787958, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SwampWater.008
+    second: {fileID: 2100000, guid: a8eaf0922a81f5346a87344d0aa3d4e1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SwampWater.009
+    second: {fileID: 2100000, guid: a31ec4d89162680418ce709aac811c95, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SwampWater.010
+    second: {fileID: 2100000, guid: 98a66a5da18fa32488c6c1f377791bb8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SwampWater.011
+    second: {fileID: 2100000, guid: 36e2f3d3c7dd9274bafcf73103f5d90b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SwampWater.012
+    second: {fileID: 2100000, guid: ad8fa75654602294db9c9dfb4b2fde43, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SwampWater.013
+    second: {fileID: 2100000, guid: 6cf3f6cee50a8d4459a5ab75d4ce3989, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SwampWater.014
+    second: {fileID: 2100000, guid: 9c80cf9baa30f184793d2a02e4be8ac0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SwampWater.015
+    second: {fileID: 2100000, guid: 57f346a8680c55f4583d66c57a78346a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SwampWater.016
+    second: {fileID: 2100000, guid: df31a0462bef7cf40b6315b88c4e1939, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SwampWater.017
+    second: {fileID: 2100000, guid: 8aa25c2297448d74589a5fd76d5e9c09, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SwampWater.018
+    second: {fileID: 2100000, guid: e32b0072f932b3d48b43709bb00c82e0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SwampWater.019
+    second: {fileID: 2100000, guid: 481e1f4fa5dba9741a01bbf21f8f1daa, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 0
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 0
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
