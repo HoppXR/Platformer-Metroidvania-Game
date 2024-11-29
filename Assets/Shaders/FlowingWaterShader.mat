@@ -35,7 +35,7 @@ Material:
     - _WobbleHeight: 0.01
     - _WobbleSpeed: 16
     m_Colors:
-    - _VoronoiSpeed: {r: 0, g: 0.5, b: 0, a: 0}
+    - _VoronoiSpeed: {r: -0.27, g: 0.5, b: 0, a: 0}
     - _VoronoiTiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &2120108434966900979
