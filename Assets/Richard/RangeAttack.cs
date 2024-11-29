@@ -20,6 +20,8 @@ public class RangedAttack : StateMachineBehaviour
     private LayerMask SightLayers;
     [SerializeField]
     private float AttackDelay = 5f;
+    private Transform ProjectileSpawnPoint;
+    [SerializeField] private Vector3 SpawnPoint;
 
     [SerializeField]
     private bool UseMovementPrediction;
@@ -33,7 +35,7 @@ public class RangedAttack : StateMachineBehaviour
     private float HistoricalPositionInterval;
     private float LastHistoryRecordedTime;
 
-    private CharacterController PlayerCharacterController;
+    public PlayerMovementData PlayerMovementData;
     private float SpherecastRadius = 0.5f;
     private float LastAttackTime;
 
@@ -42,9 +44,10 @@ public class RangedAttack : StateMachineBehaviour
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        AI = animator.GetComponent<NavMeshAgent>();
+        AI = animator.GetComponentInParent<NavMeshAgent>();
         AI.speed = 0f;
         Target = GameObject.FindGameObjectWithTag("Player").transform;
+        PlayerMovementData = Target.GetComponent<PlayerMovementData>();
 
         AttackProjectile.useGravity = false;
         AttackProjectile.isKinematic = true;
@@ -61,6 +64,7 @@ public class RangedAttack : StateMachineBehaviour
 
         // Reset the attack state
         hasFiredProjectile = false;
+        
 
         animator.SetBool("isAttacking", true);
         animator.SetBool("hasAttacked", false);
@@ -110,15 +114,11 @@ public class RangedAttack : StateMachineBehaviour
 
     public void Attack()
     {
-        if (PlayerCharacterController == null)
-        {
-            PlayerCharacterController = Target.GetComponent<CharacterController>();
-        }
 
         // Instantiate the projectile at the AI's position
         Rigidbody projectileInstance = Instantiate(
             AttackProjectile, 
-            AI.transform.position + new Vector3(0, 0.5f, 0), // Adjusted spawn position
+            AI.transform.position + SpawnPoint, // Adjusted spawn position
             Quaternion.identity
         );
 
@@ -133,7 +133,7 @@ public class RangedAttack : StateMachineBehaviour
         else // 40% chance for movement prediction
         {
             throwData = CalculateThrowData(
-                Target.position + PlayerCharacterController.center,
+                Target.position + PlayerMovementData.center,
                 projectileInstance.position
             );
             throwData = GetPredictedPositionThrowData(throwData);
@@ -157,7 +157,7 @@ public class RangedAttack : StateMachineBehaviour
 
         if (MovementPredictionMode == PredictionMode.CurrentVelocity)
         {
-            playerMovement = PlayerCharacterController.velocity * time;
+            playerMovement = PlayerMovementData.velocity * time;
         }
         else
         {
@@ -172,9 +172,9 @@ public class RangedAttack : StateMachineBehaviour
         }
 
         Vector3 newTargetPosition = new Vector3(
-            Target.position.x + PlayerCharacterController.center.x + playerMovement.x,
-            Target.position.y + PlayerCharacterController.center.y + playerMovement.y,
-            Target.position.z + PlayerCharacterController.center.z + playerMovement.z
+            Target.position.x + PlayerMovementData.center.x + playerMovement.x,
+            Target.position.y + PlayerMovementData.center.y + playerMovement.y,
+            Target.position.z + PlayerMovementData.center.z + playerMovement.z
         );
 
         // Recalculate the trajectory based on the new target position
