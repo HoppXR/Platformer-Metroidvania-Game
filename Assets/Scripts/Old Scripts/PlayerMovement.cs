@@ -38,8 +38,14 @@ namespace Platformer
         [SerializeField] private float jumpMaxHeight;
         [SerializeField] private float gravityMultiplier;
         [SerializeField] private int maxNumberOfJumps;
-        private int _numberOfJumps;
         private float _jumpVelocity;
+        private bool _doubleJump;
+        
+        [SerializeField] private float coyoteTime = 0.2f;
+        private float _coyoteTimer;
+        
+        [SerializeField] private float jumpBufferTime = 0.2f;
+        private float jumpBufferTimer;
 
         [Header("Crouching")]
         [SerializeField] private float crouchSpeed;
@@ -111,8 +117,7 @@ namespace Platformer
 
         private void Update()
         {
-            if (_numberOfJumps != 0) StartCoroutine(WaitForLanding());
-            
+            HandleCoyoteTime();
             HandleTimers();
             MyInput();
             SpeedControl();
@@ -126,6 +131,10 @@ namespace Platformer
                 _rb.drag = groundDrag;
             else
                 _rb.drag = 0;
+
+            // handle landing
+            if (!Grounded)
+                StartCoroutine(WaitForLanding());
         }
 
         private void CheckIfGrounded()
@@ -224,17 +233,40 @@ namespace Platformer
             _horizontalInput = Input.GetAxisRaw("Horizontal");
             _verticalInput = Input.GetAxisRaw("Vertical");
 
-            // Start Jump
-            if (Input.GetKeyDown(jumpKey) && !_jumpTimer.IsRunning && !_jumpCooldownTimer.IsRunning && _numberOfJumps < maxNumberOfJumps)
+            // Double Jump
+            if (Grounded && !Input.GetKey(jumpKey))
             {
-                _jumpTimer.Start();
-                _numberOfJumps++;
+                _doubleJump = false;
+            }
+            
+            // Jump buffer
+            if (Input.GetKeyDown(jumpKey))
+            {
+                jumpBufferTimer = jumpBufferTime;
+            }
+            else
+            {
+                jumpBufferTimer -= Time.deltaTime;
+            }
+            
+            // Start Jump
+            if (jumpBufferTimer > 0 && !_jumpCooldownTimer.IsRunning)
+            {
+                if (_coyoteTimer > 0 || _doubleJump)
+                {
+                    _jumpTimer.Start();
+                    
+                    _doubleJump = !_doubleJump;
+
+                    jumpBufferTimer = 0;
+                }
             }
             // Stop Jump
             else if (Input.GetKeyUp(jumpKey) && _jumpTimer.IsRunning)
             {
                 _jumpTimer.Stop();
-                StartCoroutine(WaitForLanding());
+                
+                _coyoteTimer = 0;
             }
             // start crouch
             if (Input.GetKeyDown(crouchKey))
@@ -248,10 +280,22 @@ namespace Platformer
                 transform.localScale = new Vector3(transform.localScale.x, _startYScale, transform.localScale.z);
             }
         }
+
+        private void HandleCoyoteTime()
+        {
+            if (Grounded)
+            {
+                _coyoteTimer = coyoteTime;
+            }
+            else
+            {
+                _coyoteTimer -= Time.deltaTime;
+            }
+        }
         
         private void HandleJump()
         {
-            if (state == MovementState.Dashing || state == MovementState.Swinging)
+            if (state is MovementState.Dashing or MovementState.Swinging)
             {
                 _jumpVelocity = _rb.velocity.y;
                 return;
@@ -289,8 +333,7 @@ namespace Platformer
         {
             yield return new WaitUntil(() => !Grounded);
             yield return new WaitUntil(() => Grounded);
-
-            _numberOfJumps = 0;
+            
             _exitingSlope = false;
             _jumpVelocity = 0;
         }
