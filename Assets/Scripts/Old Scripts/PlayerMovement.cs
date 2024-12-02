@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FMOD.Studio;
+using FMODUnity;
+using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 namespace Platformer
 {
@@ -72,7 +74,10 @@ namespace Platformer
         [SerializeField] private CurrentTerrain currentTerrain;
         private enum CurrentTerrain { Grass, Stone, Water, Pipe }
         private EventInstance playerFootsteps;
+
+        [SerializeField] private EventReference jumpSound;
         
+        [Header("")]
         [SerializeField] private Transform orientation;
 
         private float _horizontalInput;
@@ -255,6 +260,8 @@ namespace Platformer
                 if (_coyoteTimer > 0 || _doubleJump)
                 {
                     _jumpTimer.Start();
+                    
+                    AudioManager.instance.PlayOneShot(jumpSound, transform.position);
                     
                     _doubleJump = !_doubleJump;
 

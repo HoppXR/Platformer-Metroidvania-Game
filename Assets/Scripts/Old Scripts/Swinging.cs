@@ -1,3 +1,4 @@
+using FMODUnity;
 using UnityEngine;
 
 namespace Platformer
@@ -29,6 +30,9 @@ namespace Platformer
         
         [Header("Input")]
         [SerializeField] private KeyCode swingKey;
+        
+        [Header("Sounds")]
+        [SerializeField] private EventReference swingSound;
 
         private void Start()
         {
@@ -57,6 +61,8 @@ namespace Platformer
             if (_predictionHit.point == Vector3.zero) return;
             
             _pm.swinging = true;
+            
+            AudioManager.instance.PlayOneShot(swingSound, transform.position);
 
             _swingPoint = _predictionHit.point;
             _joint = player.gameObject.AddComponent<SpringJoint>();

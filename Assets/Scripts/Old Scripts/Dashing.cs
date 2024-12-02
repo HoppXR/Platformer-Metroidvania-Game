@@ -1,3 +1,4 @@
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,6 +29,9 @@ namespace Platformer
 
         [Header("Input")]
         [SerializeField] private KeyCode dashKey;
+        
+        [Header("Sounds")]
+        [SerializeField] private EventReference dashSound;
 
         private void Start()
         {
@@ -51,9 +55,12 @@ namespace Platformer
         private void Dash()
         {
             if (_dashCdTimer > 0) return;
-            else _dashCdTimer = dashCd;
+            
+            _dashCdTimer = dashCd;
             
             _pm.dashing = true;
+            
+            AudioManager.instance.PlayOneShot(dashSound, transform.position);
 
             Transform forwardT = orientation;
 
