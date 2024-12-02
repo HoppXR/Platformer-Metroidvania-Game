@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="AudioFile" id="{495e0a68-c2ba-4367-b99e-5c4dc7245e1c}">
+	<object class="AudioFile" id="{67366cb2-a453-4531-905c-7a1e0e529509}">
 		<property name="assetPath">
-			<value>stonetest1.wav</value>
+			<value>jump.wav</value>
 		</property>
 		<property name="frequencyInKHz">
-			<value>48</value>
+			<value>44.0999985</value>
 		</property>
 		<property name="channelCount">
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>0.31206250000000002</value>
+			<value>0.20396825396825397</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{6c631783-1b28-4e24-8ef2-ca4eaabe5959}</destination>
