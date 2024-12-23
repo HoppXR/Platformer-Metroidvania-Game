@@ -80,6 +80,15 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Look"",
+                    ""type"": ""Value"",
+                    ""id"": ""edc51cf3-326a-4999-892f-9fab0c19bb1f"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -196,7 +205,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d83bf05c-5aba-49ba-b3c2-69ab8350737e"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -269,6 +278,28 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""action"": ""Crouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2932655b-1ff5-4d23-97e4-3166109e7fc5"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""79262f30-0fec-4523-b9f2-d127172baae9"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -322,6 +353,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         m_Gameplay_Dash = m_Gameplay.FindAction("Dash", throwIfNotFound: true);
         m_Gameplay_Swing = m_Gameplay.FindAction("Swing", throwIfNotFound: true);
         m_Gameplay_Pause = m_Gameplay.FindAction("Pause", throwIfNotFound: true);
+        m_Gameplay_Look = m_Gameplay.FindAction("Look", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Resume = m_UI.FindAction("Resume", throwIfNotFound: true);
@@ -392,6 +424,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Dash;
     private readonly InputAction m_Gameplay_Swing;
     private readonly InputAction m_Gameplay_Pause;
+    private readonly InputAction m_Gameplay_Look;
     public struct GameplayActions
     {
         private @GameInput m_Wrapper;
@@ -402,6 +435,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_Gameplay_Dash;
         public InputAction @Swing => m_Wrapper.m_Gameplay_Swing;
         public InputAction @Pause => m_Wrapper.m_Gameplay_Pause;
+        public InputAction @Look => m_Wrapper.m_Gameplay_Look;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -429,6 +463,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
+            @Look.started += instance.OnLook;
+            @Look.performed += instance.OnLook;
+            @Look.canceled += instance.OnLook;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -451,6 +488,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
+            @Look.started -= instance.OnLook;
+            @Look.performed -= instance.OnLook;
+            @Look.canceled -= instance.OnLook;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -522,6 +562,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnSwing(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnLook(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

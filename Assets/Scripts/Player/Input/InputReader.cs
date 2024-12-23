@@ -34,6 +34,7 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
     }
     
     public event Action<Vector2> MoveEvent;
+    public event Action<Vector2> LookEvent;
 
     public event Action JumpEvent;
     public event Action JumpCancelledEvent;
@@ -54,6 +55,11 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
     public void OnMove(InputAction.CallbackContext context)
     {
         MoveEvent?.Invoke(context.ReadValue<Vector2>());
+    }
+    
+    public void OnLook(InputAction.CallbackContext context)
+    {
+        LookEvent?.Invoke(context.ReadValue<Vector2>());
     }
 
     public void OnJump(InputAction.CallbackContext context)
