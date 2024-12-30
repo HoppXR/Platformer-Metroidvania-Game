@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AbilityCollectable : MonoBehaviour
 {
-    [SerializeField] private AbilityManager.Ability abilityToGive;
+    [SerializeField] private AbilityManager.Abilities abilityToGive;
     
     private void OnTriggerEnter(Collider other)
     {
@@ -14,7 +14,7 @@ public class AbilityCollectable : MonoBehaviour
         }
     }
 
-    private void GiveAbility(AbilityManager.Ability ability)
+    private void GiveAbility(AbilityManager.Abilities ability)
     {
         AbilityManager.Instance.EnableAbility(ability);
     }

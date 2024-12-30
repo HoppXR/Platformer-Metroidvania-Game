@@ -54,7 +54,7 @@ namespace Platformer
 
         private void Dash()
         {
-            if (_dashCdTimer > 0) return;
+            if (_dashCdTimer > 0 || !AbilityManager.DashEnabled) return;
             
             _dashCdTimer = dashCd;
             

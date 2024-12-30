@@ -261,7 +261,8 @@ namespace Platformer
                     
                     AudioManager.instance.PlayOneShot(jumpSound, transform.position);
                     
-                    _doubleJump = !_doubleJump;
+                    if (AbilityManager.DoubleJumpEnabled)
+                        _doubleJump = !_doubleJump;
 
                     jumpBufferTimer = 0;
                 }

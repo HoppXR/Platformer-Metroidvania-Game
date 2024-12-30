@@ -6,8 +6,7 @@ public class AbilityManager : MonoBehaviour
 {
     public static AbilityManager Instance { get; private set; }
     
-    [HideInInspector] public Ability abilityToGive;
-    public enum Ability
+    public enum Abilities
     {
         DoubleJump,
         Slide,
@@ -15,10 +14,10 @@ public class AbilityManager : MonoBehaviour
         Swing
     }
     
-    [SerializeField] private PlayerMovement player;
-    [SerializeField] private Sliding slideAbility;
-    [SerializeField] private Dashing dashAbility;
-    [SerializeField] private Swinging swingAbility;
+    public static bool DoubleJumpEnabled;
+    public static bool SlideEnabled;
+    public static bool DashEnabled;
+    public static bool SwingEnabled;
     
     private void Awake()
     {
@@ -32,22 +31,26 @@ public class AbilityManager : MonoBehaviour
         }
     }
 
-    public void EnableAbility(Ability ability)
+    public void EnableAbility(Abilities ability)
     {
-        if (ability == Ability.DoubleJump)
+        if (ability == Abilities.DoubleJump)
         {
+            DoubleJumpEnabled = true;
             Debug.Log("Double Jump Enabled");
         }
-        else if (ability == Ability.Slide)
+        else if (ability == Abilities.Slide)
         {
+            SlideEnabled = true;
             Debug.Log("Slide Enabled");
         }
-        else if (ability == Ability.Dash)
+        else if (ability == Abilities.Dash)
         {
+            DashEnabled = true;
             Debug.Log("Dash Enabled");
         }
-        else if (ability == Ability.Swing)
+        else if (ability == Abilities.Swing)
         {
+            SwingEnabled = true;
             Debug.Log("Swing Enabled");
         }
     }

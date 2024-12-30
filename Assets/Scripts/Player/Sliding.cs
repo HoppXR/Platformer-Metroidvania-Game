@@ -43,7 +43,7 @@ namespace Platformer
 
         private void StartSlide()
         {
-            if (_pm.swinging) return;
+            if (_pm.swinging || !AbilityManager.SlideEnabled) return;
             
             _pm.sliding = true;
 

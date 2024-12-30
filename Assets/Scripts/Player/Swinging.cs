@@ -61,8 +61,8 @@ namespace Platformer
 
         private void StartSwing()
         {
-            // return if predictionHit not found
-            if (_predictionHit.point == Vector3.zero) return;
+            // return if predictionHit not found or if ability is not enabled
+            if (_predictionHit.point == Vector3.zero || !AbilityManager.SwingEnabled) return;
             
             _pm.swinging = true;
             
@@ -148,7 +148,7 @@ namespace Platformer
 
         private void CheckForSwingPoints()
         {
-            if (_joint != null) return;
+            if (_joint != null || !AbilityManager.SwingEnabled) return;
             
             RaycastHit sphereCastHit;
             Physics.SphereCast(cam.position, predictionSphereCastRadius, cam.forward, out sphereCastHit, _maxSwingDistance, whatIsGrappleable);
