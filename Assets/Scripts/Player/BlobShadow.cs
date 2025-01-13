@@ -2,21 +2,15 @@ using UnityEngine;
 
 public class BlobShadow : MonoBehaviour
 {
-    [SerializeField] private GameObject shadow;
+    [SerializeField] private Transform shadow;
     [SerializeField] private float offset;
-    private RaycastHit hit;
 
     private void Update()
     {
-        Ray ray = new Ray(new Vector3(transform.position.x, transform.position.y - offset, transform.position.z), -Vector3.up);
-
-        Vector3 hitPosition = hit.point;
-
-        shadow.transform.position = hitPosition;
-
-        if (Physics.Raycast(ray, out hit))
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit))
         {
-            
+            shadow.position = hit.point + Vector3.up * offset;
         }
     }
 }

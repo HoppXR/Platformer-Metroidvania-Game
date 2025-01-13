@@ -313,12 +313,14 @@ namespace Platformer
                 else
                     _jumpVelocity += (1 - _jumpTimer.Progress) * jumpForce * Time.fixedDeltaTime;
             }
+            // gravity
             else if (!Grounded && state != MovementState.Swinging || state != MovementState.Freeze || !OnSlope())
             {
+                // limit fall speed
+                if (_jumpVelocity < -45) return;
+                
                 _jumpVelocity += Physics.gravity.y * gravityMultiplier * Time.fixedDeltaTime;
             }
-            else
-                _jumpVelocity = 0;
             
             // applies the force
             _rb.velocity = new Vector3(_rb.velocity.x, _jumpVelocity, _rb.velocity.z);
@@ -328,6 +330,9 @@ namespace Platformer
         {
             yield return new WaitUntil(() => !Grounded);
             yield return new WaitUntil(() => Grounded);
+
+            // prevents canceled double jump
+            if (_jumpTimer.IsRunning) yield break;
             
             _exitingSlope = false;
             _jumpVelocity = 0;
@@ -383,7 +388,7 @@ namespace Platformer
             }
             
             bool desiredMoveSpeedHasChanged = !Mathf.Approximately(_desiredMoveSpeed, _lastDesiredMoveSpeed);
-            if (_lastState == MovementState.Dashing) _keepMomentum = true;
+            if (_lastState is MovementState.Dashing) _keepMomentum = true;
 
             if (desiredMoveSpeedHasChanged)
             {
