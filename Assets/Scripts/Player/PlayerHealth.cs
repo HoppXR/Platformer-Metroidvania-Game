@@ -1,11 +1,11 @@
 using System;
-using System.Globalization;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public event Action OnDeath;
+    
     [SerializeField] private float health;
     [SerializeField] private Slider healthBarSlider;
     [SerializeField] private Image healthBarColor;
@@ -31,6 +31,7 @@ public class PlayerHealth : MonoBehaviour
         if (amount >= health)
         {
             health = 0;
+            OnDeath?.Invoke();
         }
         else
             health -= amount;
@@ -44,11 +45,6 @@ public class PlayerHealth : MonoBehaviour
         }
 
         health += amount;
-    }
-
-    public float GetPlayerHealth()
-    {
-        return health;
     }
 
     private void HealthBar()

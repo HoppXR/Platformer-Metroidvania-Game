@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour
         saveScoreButton.interactable = false;
 
         playerNameInput.onValueChanged.AddListener(OnNameChanged);
+
+        playerHealth.OnDeath += PlayerLose;
     }
 
     private void Update()
@@ -67,25 +69,21 @@ public class GameManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
-        else if (HasPlayerLost())
-        {
-            Time.timeScale = 0;
-            gameLoseUI.SetActive(true);
-            gameUI.SetActive(false);
+    }
 
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
+    private void PlayerLose()
+    {
+        Time.timeScale = 0;
+        gameLoseUI.SetActive(true);
+        gameUI.SetActive(false);
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     private bool HasPlayerWon()
     {
         return _count >= _maxCount;
-    }
-
-    private bool HasPlayerLost()
-    {
-        return playerHealth.GetPlayerHealth() <= 0;
     }
 
     private void SetCountText()

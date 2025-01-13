@@ -56,7 +56,7 @@ namespace Platformer
         [Header("Ground Check")] 
         [SerializeField] private float playerHeight;
         [SerializeField] private LayerMask whatIsGround;
-        private float _groundCheckDistance = 0.8f;
+        [SerializeField] private float groundCheckDistance;
         public static bool Grounded;
         private RaycastHit _groundHit;
 
@@ -138,9 +138,9 @@ namespace Platformer
         {
             Vector3 center = transform.position - new Vector3(0, (playerHeight - 1.2f) * 0.5f, 0);
             
-            Grounded = Physics.SphereCast(center, 0.5f,Vector3.down, out _groundHit, _groundCheckDistance, whatIsGround);
+            Grounded = Physics.SphereCast(center, 0.5f,Vector3.down, out _groundHit, groundCheckDistance, whatIsGround);
             
-            Debug.DrawRay(center, Vector3.down * _groundCheckDistance, Grounded ? Color.green : Color.red);
+            Debug.DrawRay(center, Vector3.down * groundCheckDistance, Grounded ? Color.green : Color.red);
         }
 
         private void FixedUpdate()
@@ -375,7 +375,11 @@ namespace Platformer
             else
             {
                 state = MovementState.Air;
-                _desiredMoveSpeed = walkSpeed;
+                
+                if (_inputDirection != Vector2.zero)
+                    _desiredMoveSpeed = walkSpeed;
+                else
+                    _desiredMoveSpeed = walkSpeed * 0.6f;
             }
             
             bool desiredMoveSpeedHasChanged = !Mathf.Approximately(_desiredMoveSpeed, _lastDesiredMoveSpeed);
@@ -470,7 +474,7 @@ namespace Platformer
         {
             Vector3 center = transform.position - new Vector3(0, (playerHeight - 1.2f) * 0.5f, 0);
 
-            if (Physics.SphereCast(center, 0.5f, Vector3.down, out _slopeHit, _groundCheckDistance))
+            if (Physics.SphereCast(center, 0.5f, Vector3.down, out _slopeHit, groundCheckDistance))
             {
                 float angle = Vector3.Angle(Vector3.up, _slopeHit.normal);
                 return angle < maxSlopeAngle && angle != 0;
