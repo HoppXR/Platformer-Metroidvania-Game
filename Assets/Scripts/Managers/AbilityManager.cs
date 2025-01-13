@@ -1,5 +1,3 @@
-using System;
-using Platformer;
 using UnityEngine;
 
 public class AbilityManager : MonoBehaviour
@@ -14,10 +12,10 @@ public class AbilityManager : MonoBehaviour
         Swing
     }
     
-    public static bool DoubleJumpEnabled;
-    public static bool SlideEnabled;
-    public static bool DashEnabled;
-    public static bool SwingEnabled;
+    public static bool DoubleJumpEnabled = true;
+    public static bool SlideEnabled = true;
+    public static bool DashEnabled = true;
+    public static bool SwingEnabled = true;
     
     private void Awake()
     {
