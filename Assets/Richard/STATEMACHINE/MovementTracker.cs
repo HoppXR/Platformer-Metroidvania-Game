@@ -52,7 +52,7 @@ public class ObjectTracker : MonoBehaviour
         // Projected position: X(t) = X0 + v0 * t + 0.5 * a * t^2
         Vector3 projectedPosition = goTrackingObject.transform.position
                                     + (v3AverageVelocity * fTime)
-                                    + (0.5f * v3AverageAcceleration * fTime * fTime);
+                                    + (v3AverageAcceleration * (0.5f * fTime * fTime));
 
         // Update the indicator's position
         if (goIndicator != null)
