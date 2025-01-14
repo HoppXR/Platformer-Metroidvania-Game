@@ -275,12 +275,6 @@ AnimatorController:
   m_Name: Ranged Kettle
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: isPatroling
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
   - m_Name: isChasing
     m_Type: 4
     m_DefaultFloat: 0
@@ -294,6 +288,12 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
   - m_Name: hasAttacked
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: isPatroling
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -517,20 +517,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52eaad5e85b3b2846b082244165aa3e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 0}
-  AttackProjectile: {fileID: 8532231213697563871, guid: a79179039cb05e6449ce85beb51afa67, type: 3}
-  ForceRatio: 0.267
-  MaxThrowForce: 13.37
-  SightLayers:
-    serializedVersion: 2
-    m_Bits: 8
-  AttackDelay: 5
-  SpawnPoint: {x: 0, y: 0.5, z: 0}
-  UseMovementPrediction: 1
-  MovementPredictionMode: 0
-  HistoricalTime: 5
-  HistoricalResolution: 100
-  PlayerMovementData: {fileID: 0}
+  player: {fileID: 0}
+  projectilePrefab: {fileID: 1688833737320317978, guid: a79179039cb05e6449ce85beb51afa67, type: 3}
+  baseProjectileSpeed: 2
+  heightMultiplier: 2
+  distanceMultiplier: 1
 --- !u!1101 &8830272487703414472
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
