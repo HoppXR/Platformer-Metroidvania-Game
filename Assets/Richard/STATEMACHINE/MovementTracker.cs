@@ -4,29 +4,25 @@ using UnityEngine;
 public class ObjectTracker : MonoBehaviour
 {
     public GameObject goTrackingObject;
-    public GameObject goIndicator; 
+    public GameObject goIndicator;
     public Vector3 v3AverageVelocity;
     public Vector3 v3AverageAcceleration;
 
-    private Rigidbody rb;
-    private Transform trackedTransform;
-    private Vector3 v3PrevVel; 
-    private Vector3 v3PrevPos; 
+    public float smoothingFactor = 0.1f;
+    public float maxAcceleration = 10f;
 
-    // Smoothing factors
-    public float velocitySmoothingFactor = 0.9f;
-    public float accelerationSmoothingFactor = 0.9f;
-    
-    public bool isDashing = false;
-    public float maxDashSpeed = 20f; 
-    public float stopThreshold = 0.1f;
+    private Rigidbody rb;
+    private Vector3 v3PrevVel;
+    private Vector3 v3PrevPos;
+
+    private PlayerMovement playmove;
 
     private void Start()
     {
         if (goTrackingObject != null)
         {
             rb = goTrackingObject.GetComponent<Rigidbody>();
-            trackedTransform = goTrackingObject.transform;
+            playmove = GetComponent<PlayerMovement>();
         }
         else
         {
@@ -34,56 +30,39 @@ public class ObjectTracker : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (rb == null)
             return;
-        
-        Vector3 currentVelocity = rb.velocity;
-        Vector3 acceleration = (currentVelocity - v3PrevVel) / Time.fixedDeltaTime;
-        
-        if (isDashing)
+
+        if (!playmove.isDashing)
         {
-            currentVelocity = Vector3.ClampMagnitude(currentVelocity, maxDashSpeed);
-            v3AverageVelocity = currentVelocity;
-            v3AverageAcceleration = acceleration;
-        }
-        else
-        {
-            v3AverageVelocity = Vector3.Lerp(v3AverageVelocity, currentVelocity, 1f - velocitySmoothingFactor);
-            v3AverageAcceleration = Vector3.Lerp(v3AverageAcceleration, acceleration, 1f - accelerationSmoothingFactor);
+            Vector3 currentVelocity = rb.velocity;
+            v3AverageVelocity = Vector3.Lerp(v3AverageVelocity, currentVelocity, smoothingFactor);
+            Vector3 rawAcceleration = (currentVelocity - v3PrevVel) / Time.deltaTime;
+            rawAcceleration = Vector3.ClampMagnitude(rawAcceleration, maxAcceleration);
+            v3AverageAcceleration = Vector3.Lerp(v3AverageAcceleration, rawAcceleration, smoothingFactor);
+            v3PrevVel = currentVelocity;
         }
         
-        if (currentVelocity.magnitude < stopThreshold && acceleration.magnitude < stopThreshold)
-        {
-
-            if (goIndicator != null)
-            {
-                goIndicator.transform.position = trackedTransform.position;
-            }
-        }
-        else
-        {
-            GetProjectedPosition(1f); // Project 1 second into the future
-        }
-
-
-        v3PrevVel = currentVelocity;
-        v3PrevPos = trackedTransform.position;
+        GetProjectedPosition(1f);
+        
+        v3PrevPos = goTrackingObject.transform.position;
     }
 
     public Vector3 GetProjectedPosition(float fTime)
     {
+        if (rb == null)
+            return Vector3.zero;
         // Projected position: X(t) = X0 + v0 * t + 0.5 * a * t^2
-        Vector3 projectedPosition = trackedTransform.position
+        Vector3 projectedPosition = goTrackingObject.transform.position
                                     + (v3AverageVelocity * fTime)
                                     + (v3AverageAcceleration * (0.5f * fTime * fTime));
-        
+
         if (goIndicator != null)
         {
             goIndicator.transform.position = projectedPosition;
         }
-
         return projectedPosition;
     }
 }
