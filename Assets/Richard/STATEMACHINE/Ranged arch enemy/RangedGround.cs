@@ -61,9 +61,28 @@ public class RangedAttack : StateMachineBehaviour
     {
         Debug.Log("Attacking player!");
         attackCoolDowns.StartCooldown();
-        
+
+        // Decide whether to target the player or the prediction
+        Vector3 targetPosition = ChooseTargetPosition();
+
         // Shoot the projectile
-        ShootProjectile(animator.transform.position, player.position);
+        ShootProjectile(animator.transform.position, targetPosition);
+    }
+
+    Vector3 ChooseTargetPosition()
+    {
+        // Adjust chance to shoot at predicted position as needed
+        float shootAtPredictionChance = 0.5f;
+        Transform predictionTarget = GameObject.Find("Player Prediction").transform;
+
+        if (Random.value <= shootAtPredictionChance && predictionTarget != null)
+        {
+            return predictionTarget.position;
+        }
+        else
+        {
+            return player.position;
+        }
     }
 
     void FacePlayer(Animator animator)

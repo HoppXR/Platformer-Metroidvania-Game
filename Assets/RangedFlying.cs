@@ -81,12 +81,12 @@ public class RangedFlying : StateMachineBehaviour
         float randomChance = Random.value;
         if (randomChance <= shootAtPlayerChance)
         {
-            //Debug.Log("no");
+            //no
             return player.position;
         }
         else
         {
-            //Debug.Log("predictplayer");
+            //predictplayer
             return predictPlayer.position;
         }
     }
@@ -95,13 +95,18 @@ public class RangedFlying : StateMachineBehaviour
     {
         GameObject projectile = Instantiate(projectilePrefab, enemyMesh.position, Quaternion.identity);
         
-        Vector3 direction = targetPosition - enemyMesh.position; 
-        direction.y = targetPosition.y - enemyMesh.position.y; 
-        
+        Vector3 direction = targetPosition - enemyMesh.position;
+        direction.y = targetPosition.y - enemyMesh.position.y;
+
+        // Ensure Rigidbody component is present
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
         if (rb != null)
         {
-            rb.velocity = direction.normalized * baseProjectileSpeed;
+            float timeToTarget = 1f;
+            
+            Vector3 requiredVelocity = direction / timeToTarget;
+            
+            rb.velocity = requiredVelocity;
         }
     }
 }
