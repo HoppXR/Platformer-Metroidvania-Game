@@ -6,29 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="3a59a0d6-60c5-48cd-bea4-bdefa1b22a95" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Mini-Interactive-Project-2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mini-Interactive-Project-2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/mac/lib/fmodstudio.bundle/Contents/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/mac/lib/fmodstudio.bundle/Contents/Info.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/mac/lib/fmodstudioL.bundle/Contents/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/mac/lib/fmodstudioL.bundle/Contents/Info.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/mac/lib/resonanceaudio.bundle/Contents/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/mac/lib/resonanceaudio.bundle/Contents/Info.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/STATEMACHINE/Destroy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/STATEMACHINE/Destroy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/STATEMACHINE/Ranged arch enemy/Flying Ranged Kettle.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/STATEMACHINE/Ranged arch enemy/Flying Ranged Kettle.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/STATEMACHINE/Ranged arch enemy/PlayerData.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/STATEMACHINE/Ranged arch enemy/PlayerData.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/STATEMACHINE/Ranged arch enemy/RangeAttack.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/STATEMACHINE/Ranged arch enemy/RangeAttack.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/STATEMACHINE/Ranged arch enemy/Ranged Kettle.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/STATEMACHINE/Ranged arch enemy/Ranged Kettle.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/STATEMACHINE/Ranged arch enemy/RangedProjectile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/STATEMACHINE/Ranged arch enemy/RangedProjectile.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/STATEMACHINE/TempEnemyPrefabs/Ant_Brown Melee.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/STATEMACHINE/TempEnemyPrefabs/Ant_Brown Melee.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/STATEMACHINE/TempEnemyPrefabs/Ant_Red Ranged.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/STATEMACHINE/TempEnemyPrefabs/Ant_Red Ranged.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/STATEMACHINE/TempEnemyPrefabs/FlyingKettle.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/STATEMACHINE/TempEnemyPrefabs/FlyingKettle.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/ShadersAndMat/WaterFall.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/ShadersAndMat/WaterFall.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/ShadersAndMat/WaterFallFoam.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/ShadersAndMat/WaterFallFoam.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/Stylized Ant Character/Scenes/Demo.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Stylized Ant Character/Scenes/Demo.unity.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shaders/FlowingWater.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shaders/FlowingWater.shadergraph" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shaders/FlowingWaterLargerPipes.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shaders/FlowingWaterLargerPipes.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/UIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,16 +44,17 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
-  },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\Richi\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\DecompilerCache",
-      "C:\\Users\\Richi\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache",
-      "C:\\Users\\Richi\\AppData\\Local\\Symbols\\src"
-    ]
   }
 }]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$USER_HOME$/OneDrive/Desktop/GDW game\Mini-Interactive Project 2.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\brtlh\OneDrive\Desktop\GDW game" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2023.1.12f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath &quot;C:\Users\Richi\Unity Projects\Mini-Interactive-Project-2&quot; -debugCodeOptimization" />
@@ -94,6 +76,9 @@
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list />
+      </option>
       <option name="selectedOptions">
         <list />
       </option>
@@ -104,6 +89,9 @@
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list />
+      </option>
       <option name="selectedOptions">
         <list />
       </option>
@@ -123,6 +111,7 @@
       <workItem from="1736776427667" duration="11044000" />
       <workItem from="1736795957132" duration="1787000" />
       <workItem from="1737338048708" duration="2530000" />
+      <workItem from="1737385007580" duration="1567000" />
     </task>
     <servers />
   </component>

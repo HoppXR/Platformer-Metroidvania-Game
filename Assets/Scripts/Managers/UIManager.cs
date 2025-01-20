@@ -19,7 +19,8 @@ public class UIManager : MonoBehaviour
     {
         input.SetUI();
         
-        pauseMenu.SetActive(true);
+        if (pauseMenu != null)
+            pauseMenu.SetActive(true);
         
         Time.timeScale = 0;
         
@@ -36,7 +37,8 @@ public class UIManager : MonoBehaviour
         
         Time.timeScale = 1;
         
-        pauseMenu.SetActive(false);
+        if (pauseMenu != null)
+            pauseMenu.SetActive(false);
         
         input.SetGameplay();
     }
@@ -45,12 +47,21 @@ public class UIManager : MonoBehaviour
     {
         ResumeGame();
         
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void MainMenu()
     {
+        // make cursor visible before sending to main menu
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        
         SceneManager.LoadScene(0);
+    }
+
+    public void PlayGame()
+    {
+        SceneManager.LoadScene(1);
     }
     
     public void QuitGame()
