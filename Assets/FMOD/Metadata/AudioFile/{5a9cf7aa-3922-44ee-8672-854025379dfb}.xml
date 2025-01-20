@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{5a9cf7aa-3922-44ee-8672-854025379dfb}">
 		<property name="assetPath">
-			<value>prob better.wav</value>
+			<value>old/prob better.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>16</value>
