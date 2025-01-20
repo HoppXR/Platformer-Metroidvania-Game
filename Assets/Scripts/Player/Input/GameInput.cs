@@ -89,6 +89,24 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""e81ca81c-62e1-4a53-a02e-dbfe661b3ae5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwapAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""9862eb5a-61b6-42d9-9fa3-31c22afd8164"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -216,7 +234,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""43a39e76-516d-4a64-837b-da77ec450d3b"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -300,6 +318,61 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""986e63f0-c4b0-4ebf-832f-f3c780c405ce"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3e1a2028-62c4-4806-b4bf-ba3f8954680b"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5da8281b-27a3-42d3-affb-c565603f6b45"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwapAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a1c3306c-08dd-4ac5-82cc-dc49a3014efa"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwapAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d88d5aef-3439-4db4-801e-d82f3709feef"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwapAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -354,6 +427,8 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         m_Gameplay_Swing = m_Gameplay.FindAction("Swing", throwIfNotFound: true);
         m_Gameplay_Pause = m_Gameplay.FindAction("Pause", throwIfNotFound: true);
         m_Gameplay_Look = m_Gameplay.FindAction("Look", throwIfNotFound: true);
+        m_Gameplay_Attack = m_Gameplay.FindAction("Attack", throwIfNotFound: true);
+        m_Gameplay_SwapAttack = m_Gameplay.FindAction("SwapAttack", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Resume = m_UI.FindAction("Resume", throwIfNotFound: true);
@@ -425,6 +500,8 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Swing;
     private readonly InputAction m_Gameplay_Pause;
     private readonly InputAction m_Gameplay_Look;
+    private readonly InputAction m_Gameplay_Attack;
+    private readonly InputAction m_Gameplay_SwapAttack;
     public struct GameplayActions
     {
         private @GameInput m_Wrapper;
@@ -436,6 +513,8 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         public InputAction @Swing => m_Wrapper.m_Gameplay_Swing;
         public InputAction @Pause => m_Wrapper.m_Gameplay_Pause;
         public InputAction @Look => m_Wrapper.m_Gameplay_Look;
+        public InputAction @Attack => m_Wrapper.m_Gameplay_Attack;
+        public InputAction @SwapAttack => m_Wrapper.m_Gameplay_SwapAttack;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -466,6 +545,12 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @Look.started += instance.OnLook;
             @Look.performed += instance.OnLook;
             @Look.canceled += instance.OnLook;
+            @Attack.started += instance.OnAttack;
+            @Attack.performed += instance.OnAttack;
+            @Attack.canceled += instance.OnAttack;
+            @SwapAttack.started += instance.OnSwapAttack;
+            @SwapAttack.performed += instance.OnSwapAttack;
+            @SwapAttack.canceled += instance.OnSwapAttack;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -491,6 +576,12 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @Look.started -= instance.OnLook;
             @Look.performed -= instance.OnLook;
             @Look.canceled -= instance.OnLook;
+            @Attack.started -= instance.OnAttack;
+            @Attack.performed -= instance.OnAttack;
+            @Attack.canceled -= instance.OnAttack;
+            @SwapAttack.started -= instance.OnSwapAttack;
+            @SwapAttack.performed -= instance.OnSwapAttack;
+            @SwapAttack.canceled -= instance.OnSwapAttack;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -563,6 +654,8 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         void OnSwing(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
+        void OnAttack(InputAction.CallbackContext context);
+        void OnSwapAttack(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

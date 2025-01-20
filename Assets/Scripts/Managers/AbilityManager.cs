@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class AbilityManager : MonoBehaviour
@@ -12,10 +13,16 @@ public class AbilityManager : MonoBehaviour
         Swing
     }
     
-    public static bool DoubleJumpEnabled = true;
-    public static bool SlideEnabled = true;
-    public static bool DashEnabled = true;
-    public static bool SwingEnabled = true;
+    public static bool DoubleJumpEnabled;
+    public static bool SlideEnabled;
+    public static bool DashEnabled;
+    public static bool SwingEnabled;
+    
+    [Header("For Easy Debugging")] // might remove later
+    [SerializeField] private bool enableDoubleJump;
+    [SerializeField] private bool enableSlide;
+    [SerializeField] private bool enableDash;
+    [SerializeField] private bool enableSwing;
     
     private void Awake()
     {
@@ -27,6 +34,14 @@ public class AbilityManager : MonoBehaviour
         {
             Instance = this;
         }
+    }
+
+    private void Start()
+    {
+        if (enableDoubleJump) DoubleJumpEnabled = true;
+        if (enableSlide) SlideEnabled = true;
+        if (enableDash) DashEnabled = true;
+        if (enableSwing) SwingEnabled = true;
     }
 
     public void EnableAbility(Abilities ability)

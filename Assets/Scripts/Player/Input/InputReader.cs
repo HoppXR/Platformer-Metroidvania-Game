@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Interactions;
 
 [CreateAssetMenu(menuName = "InputReader")]
 public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInput.IUIActions
@@ -36,6 +35,9 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
     public event Action<Vector2> MoveEvent;
     public event Action<Vector2> LookEvent;
 
+    public event Action AttackEvent;
+    public event Action SwapAttackEvent;
+
     public event Action JumpEvent;
     public event Action JumpCancelledEvent;
     
@@ -60,6 +62,22 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
     public void OnLook(InputAction.CallbackContext context)
     {
         LookEvent?.Invoke(context.ReadValue<Vector2>());
+    }
+
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            AttackEvent?.Invoke();
+        }
+    }
+
+    public void OnSwapAttack(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            SwapAttackEvent?.Invoke();
+        }
     }
 
     public void OnJump(InputAction.CallbackContext context)
