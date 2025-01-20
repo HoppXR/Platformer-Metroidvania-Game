@@ -6,20 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3a59a0d6-60c5-48cd-bea4-bdefa1b22a95" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Mini-Interactive-Project-2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mini-Interactive-Project-2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FMOD/.cache/buildrecords/Desktop/Master.br" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/.cache/buildrecords/Desktop/Master.br" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FMOD/.cache/buildrecords/Desktop/SFX.br" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/.cache/buildrecords/Desktop/SFX.br" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FMOD/.cache/{484f16d1-fcdb-4ddc-b1d5-87f6c1b76791}.pdc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/.cache/{484f16d1-fcdb-4ddc-b1d5-87f6c1b76791}.pdc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FMOD/.unsaved/Metadata/AudioFile/{374db3e4-ccb4-4476-8a57-36ad10abc9bf}.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FMOD/.unsaved/Metadata/AudioFile/{484f16d1-fcdb-4ddc-b1d5-87f6c1b76791}.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FMOD/.unsaved/Metadata/AudioFile/{a6d8ffc4-ca85-4de4-a5c2-06b974c7c855}.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FMOD/.unsaved/Metadata/Event/{24889eff-207d-4158-9609-d5bee9ba067a}.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FMOD/.unsaved/metadataFileMapping.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Build/Desktop/Master.strings.bank" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Build/Desktop/Master.strings.bank" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Build/Desktop/SFX.bank" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Build/Desktop/SFX.bank" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/Event/{24889eff-207d-4158-9609-d5bee9ba067a}.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/Event/{24889eff-207d-4158-9609-d5bee9ba067a}.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/Resources/FMODStudioSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/Resources/FMODStudioSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/FMODEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/FMODEvents.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +111,7 @@
       <workItem from="1736795957132" duration="1787000" />
       <workItem from="1737338048708" duration="2530000" />
       <workItem from="1737385007580" duration="5437000" />
-      <workItem from="1737393261153" duration="2396000" />
+      <workItem from="1737393261153" duration="3621000" />
     </task>
     <servers />
   </component>
