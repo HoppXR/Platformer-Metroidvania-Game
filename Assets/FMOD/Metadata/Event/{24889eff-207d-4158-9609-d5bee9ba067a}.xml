@@ -31,6 +31,9 @@
 		<relationship name="parameters">
 			<destination>{638876d6-bba8-4401-ad69-bb99b78b3359}</destination>
 		</relationship>
+		<relationship name="banks">
+			<destination>{c2923965-8365-4a61-a041-ffd096a74036}</destination>
+		</relationship>
 	</object>
 	<object class="EventMixer" id="{781fd468-56a9-4496-9b07-7dc5d043168a}">
 		<relationship name="masterBus">
@@ -97,8 +100,11 @@
 	</object>
 	<object class="MixerBusPanner" id="{8e55c79d-57e8-452f-b01e-0a58e5144099}" />
 	<object class="SingleSound" id="{6808042a-61d3-4183-87c1-7f435c2c7658}">
+		<property name="looping">
+			<value>true</value>
+		</property>
 		<relationship name="audioFile">
-			<destination>{a6d8ffc4-ca85-4de4-a5c2-06b974c7c855}</destination>
+			<destination>{484f16d1-fcdb-4ddc-b1d5-87f6c1b76791}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{62e5e9b4-0b00-4b15-8639-dd5907e498a4}" />
