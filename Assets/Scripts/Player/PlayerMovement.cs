@@ -296,6 +296,12 @@ namespace Platformer
                 return;
             }
             
+            if (!_jumpTimer.IsRunning && Grounded)
+            {
+                _jumpTimer.Stop();
+                return;
+            }
+            
             if (_jumpTimer.IsRunning)
             {
                 _exitingSlope = true;
@@ -324,8 +330,6 @@ namespace Platformer
         {
             yield return new WaitUntil(() => !Grounded);
             yield return new WaitUntil(() => Grounded);
-            
-            yield return new WaitForSeconds(0.1f);
 
             // prevents canceled double jump
             if (_jumpTimer.IsRunning) yield break;
