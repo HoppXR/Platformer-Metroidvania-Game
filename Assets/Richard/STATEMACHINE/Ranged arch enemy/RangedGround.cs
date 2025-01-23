@@ -47,7 +47,6 @@ public class RangedAttack : StateMachineBehaviour
         float distance = Vector3.Distance(player.position, animator.transform.position);
         if (distance >= StopChasing)
         {
-            Debug.Log("Exiting");
             animator.SetBool("isAttacking", false);
             animator.SetBool("hasAttacked", true);
         }

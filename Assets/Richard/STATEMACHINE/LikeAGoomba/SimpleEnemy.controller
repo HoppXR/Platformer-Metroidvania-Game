@@ -42,6 +42,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRange: 8
+--- !u!114 &-5756710978771347677
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f697c33a7de997e4d9b18282f8eec604, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldownDuration: 2
+  player: {fileID: 0}
 --- !u!114 &-5128774700026760903
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -133,19 +147,6 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!114 &-1184450074994280595
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6b5b450302766342b6574a611c4e663, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cooldownDuration: 2
 --- !u!1102 &-716072703264794864
 AnimatorState:
   serializedVersion: 6
@@ -235,7 +236,7 @@ AnimatorController:
     m_Controller: {fileID: 0}
   - m_Name: RangeToStopChasing
     m_Type: 1
-    m_DefaultFloat: 15
+    m_DefaultFloat: 10
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
@@ -309,7 +310,7 @@ AnimatorState:
   - {fileID: -3932433500388786817}
   - {fileID: 3955982823932136105}
   m_StateMachineBehaviours:
-  - {fileID: -1184450074994280595}
+  - {fileID: -5756710978771347677}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
