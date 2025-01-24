@@ -4,8 +4,13 @@ public class PlayerController : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private InputReader input;
-
-    private Vector2 movementDir;
+    [SerializeField] private Transform orientation;
+    private Vector3 velocity;
+    private Vector2 _inputDir;
+    private Vector2 _movementDir;
+    
+    [Header("Movement")]
+    [SerializeField] private float moveSpeed;
 
     private void Start()
     {
@@ -19,14 +24,18 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        Vector3 velocity = new Vector3(movementDir.x, 0, movementDir.y);
+        Vector3 acceleration = _movementDir * moveSpeed;
+        velocity += acceleration * Time.deltaTime;
         Vector3 displacement = velocity * Time.deltaTime;
         transform.localPosition += displacement;
     }
 
     private void GetInputDirection(Vector2 dir)
     {
-        movementDir = dir;
-        movementDir = Vector2.ClampMagnitude(movementDir, 1f); // same as normalize function
+        _inputDir = dir;
+        
+        // taking camera orientation into account
+        _movementDir = orientation.forward * _inputDir.y + orientation.right * _inputDir.x;
+        _movementDir = Vector2.ClampMagnitude(_movementDir, 1f); // same as normalize function
     }
 }
