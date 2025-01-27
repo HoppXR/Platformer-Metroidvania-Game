@@ -317,7 +317,7 @@ namespace Platformer
             else if (!Grounded && state != MovementState.Swinging || state != MovementState.Freeze || !OnSlope())
             {
                 // limit fall speed
-                if (_jumpVelocity < -45) return;
+                if (_jumpVelocity < -12) return;
                 
                 _jumpVelocity += Physics.gravity.y * gravityMultiplier * Time.fixedDeltaTime;
             }
@@ -331,13 +331,12 @@ namespace Platformer
             yield return new WaitUntil(() => !Grounded);
             yield return new WaitUntil(() => Grounded);
 
-            yield return new WaitForSeconds(0.1f);
-
             // prevents canceled double jump
             if (_jumpTimer.IsRunning) yield break;
             
-            _exitingSlope = false;
+            _jumpTimer.Stop();
             _jumpVelocity = 0;
+            _exitingSlope = false;
         }
 
         private void StateHandler()

@@ -8,7 +8,6 @@ namespace Platformer
         [SerializeField] private Transform orientation;
         [SerializeField] private Transform player;
         [SerializeField] private Transform playerObj;
-        [SerializeField] private Rigidbody rb;
 
         [SerializeField] private float rotationSpeed;
 
