@@ -7,6 +7,7 @@ public class AbilityManager : MonoBehaviour
     
     public enum Abilities
     {
+        Null,
         DoubleJump,
         Slide,
         Dash,

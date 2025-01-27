@@ -16,6 +16,6 @@ public class AbilityCollectable : MonoBehaviour
 
     private void GiveAbility(AbilityManager.Abilities ability)
     {
-        AbilityManager.Instance.EnableAbility(ability);
+        AbilityManager.Instance?.EnableAbility(ability);
     }
 }

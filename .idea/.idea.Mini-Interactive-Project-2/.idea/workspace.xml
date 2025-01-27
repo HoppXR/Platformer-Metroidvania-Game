@@ -6,8 +6,59 @@
   <component name="ChangeListManager">
     <list default="true" id="3a59a0d6-60c5-48cd-bea4-bdefa1b22a95" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Mini-Interactive-Project-2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mini-Interactive-Project-2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Carpet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Carpet.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Carpet_Angle_BL.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Carpet_Angle_BL.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Carpet_Angle_BR.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Carpet_Angle_BR.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Carpet_Angle_TL.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Carpet_Angle_TL.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Carpet_Angle_TR.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Carpet_Angle_TR.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Carpet_Ramp.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Carpet_Ramp.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Ground.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Ground.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Ground_Angle_BL.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Ground_Angle_BL.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Ground_Angle_BR.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Ground_Angle_BR.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Ground_Angle_TL.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Ground_Angle_TL.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Ground_Angle_TR.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Ground_Angle_TR.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Ground_Ramp.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Ground_Ramp.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Angle_BL.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Angle_BL.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Angle_BR.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Angle_BR.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Angle_TL.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Angle_TL.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Angle_TR.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Angle_TR.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Waterfall.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Waterfall.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Waterfall_B.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Waterfall_B.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Waterfall_End.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Waterfall_End.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Waterfall_Start.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Waterfall_Start.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Waterfall_Top.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Waterfall_Top.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Pillar.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Pillar.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Pillar_Bot.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Pillar_Bot.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Pillar_Brok.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Pillar_Brok.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Pillar_Top.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Pillar_Top.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_4way.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_4way.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_Corner_BL.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_Corner_BL.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_Corner_BR.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_Corner_BR.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_Corner_TL.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_Corner_TL.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_Corner_TR.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_Corner_TR.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_End_B.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_End_B.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_End_L.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_End_L.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_End_R.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_End_R.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_End_T.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_End_T.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_Horizontal.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_Horizontal.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_T_B.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_T_B.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_T_L.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_T_L.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_T_R.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_T_R.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_T_T.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_T_T.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_Vert.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_Vert.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Walls/Angled_Wall.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Walls/Angled_Wall.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Walls/Angled_Wall_Half.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Walls/Angled_Wall_Half.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Walls/Ramp_Wall_L.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Walls/Ramp_Wall_L.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Walls/Ramp_Wall_R.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Walls/Ramp_Wall_R.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Walls/Wall.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Walls/Wall.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Walls/Wall_Half.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Walls/Wall_Half.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Map Building.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Map Building.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Movement Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Movement Test.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/AbilityManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/AbilityManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/AbilityCollectable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/AbilityCollectable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,21 +82,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Jaden",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Jaden&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$USER_HOME$/OneDrive/Desktop/GDW game\Mini-Interactive Project 2.exe" />
@@ -113,6 +164,7 @@
       <workItem from="1737338048708" duration="2530000" />
       <workItem from="1737385007580" duration="5437000" />
       <workItem from="1737393261153" duration="3621000" />
+      <workItem from="1738006320915" duration="1313000" />
     </task>
     <servers />
   </component>
