@@ -10,8 +10,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 _movementDir;
     
     [Header("Movement")]
-    [SerializeField] private float maxSpeed;
-    [SerializeField] private float maxAcceleration;
+    [SerializeField] private float moveSpeed;
 
     private void Start()
     {
@@ -25,13 +24,8 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        Vector3 desiredVelocity = new Vector3(_movementDir.x, 0f, _movementDir.y) * maxSpeed;
-        
-        float maxSpeedChange = maxAcceleration * Time.deltaTime;
-
-        velocity.x = Mathf.MoveTowards(velocity.x, desiredVelocity.x, maxSpeedChange);
-        velocity.z = Mathf.MoveTowards(velocity.z, desiredVelocity.z, maxSpeedChange);
-
+        Vector3 acceleration = _movementDir * moveSpeed;
+        velocity += acceleration * Time.deltaTime;
         Vector3 displacement = velocity * Time.deltaTime;
         transform.localPosition += displacement;
     }
@@ -39,7 +33,7 @@ public class PlayerController : MonoBehaviour
     private void GetInputDirection(Vector2 dir)
     {
         _inputDir = dir;
-
+        
         // taking camera orientation into account
         _movementDir = orientation.forward * _inputDir.y + orientation.right * _inputDir.x;
         _movementDir = Vector2.ClampMagnitude(_movementDir, 1f); // same as normalize function
