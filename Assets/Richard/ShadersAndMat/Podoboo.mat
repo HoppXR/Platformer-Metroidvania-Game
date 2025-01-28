@@ -44,4 +44,5 @@ Material:
     m_Colors:
     - _FresnelColor: {r: 0, g: 0, b: 0, a: 0}
     - _Main_Color: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
+    - _Vorcolor: {r: 1.320755, g: 0.9112485, b: 0, a: 0}
   m_BuildTextureStacks: []
