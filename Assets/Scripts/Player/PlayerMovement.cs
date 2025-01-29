@@ -9,31 +9,35 @@ namespace Platformer
 {
     public class PlayerMovement : MonoBehaviour
     {
+        #region Variables
         [Header("References")]
         [SerializeField] private InputReader input;
+        [SerializeField] private Transform orientation;
+        public MovementState state;
         private Rigidbody _rb;
         private List<Timer> _timers;
         private CountdownTimer _jumpTimer;
         private CountdownTimer _jumpCooldownTimer;
 
         [Header("Movement")] 
-        private float _moveSpeed;
         [SerializeField] private float walkSpeed;
         [SerializeField] private float slideSpeed;
         [SerializeField] private float swingSpeed;
-
         [SerializeField] private float dashSpeed;
         [SerializeField] private float dashSpeedChangeFactor;
-
+        [SerializeField] private float groundDrag;
+        [SerializeField] private float turnDelay; // time before turning
+        
+        private MovementState _lastState;
+        private Vector3 _moveDirection;
+        private Vector3 _lastMoveDirection;
+        private Vector2 _inputDirection;
+        private float _moveSpeed;
         private float _desiredMoveSpeed;
         private float _lastDesiredMoveSpeed;
-        private MovementState _lastState;
+        private float _turnTimer;
         private bool _keepMomentum;
-        
-        private Vector3 _moveDirection;
-        private Vector2 _inputDirection;
-        
-        [SerializeField] private float groundDrag;
+        private bool _isTurning;
 
         [Header("Jumping")]
         [SerializeField] private float airMultiplier; // player speed in-air
@@ -48,10 +52,9 @@ namespace Platformer
         private bool _isJumping;
         
         [SerializeField] private float coyoteTime = 0.2f;
-        private float _coyoteTimer;
-        
         [SerializeField] private float jumpBufferTime = 0.2f;
         private float jumpBufferTimer;
+        private float _coyoteTimer;
         
         [Header("Ground Check")] 
         [SerializeField] private float playerHeight;
@@ -72,11 +75,6 @@ namespace Platformer
 
         [SerializeField] private EventReference jumpSound;
         
-        [Header("")]
-        [SerializeField] private Transform orientation;
-
-        public MovementState state;
-        
         public enum MovementState
         {
             Freeze,
@@ -94,7 +92,9 @@ namespace Platformer
         [HideInInspector] public bool swinging;
         [HideInInspector] public bool dashing;
         [HideInInspector] public bool sliding;
+        #endregion
         
+        #region Unity Built-in Methods
         private void Start()
         {
             _rb = GetComponent<Rigidbody>();
@@ -116,7 +116,7 @@ namespace Platformer
         {
             HandleCoyoteTime();
             HandleTimers(); 
-            HandleInput();
+            HandleJumpInput();
             SpeedControl();
             StateHandler();
             CheckIfGrounded();
@@ -133,22 +133,15 @@ namespace Platformer
             if (!Grounded)
                 StartCoroutine(WaitForLanding());
         }
-
-        private void CheckIfGrounded()
-        {
-            Vector3 center = transform.position - new Vector3(0, (playerHeight - 1.2f) * 0.5f, 0);
-            
-            Grounded = Physics.SphereCast(center, 0.5f,Vector3.down, out _groundHit, groundCheckDistance, whatIsGround);
-            
-            Debug.DrawRay(center, Vector3.down * groundCheckDistance, Grounded ? Color.green : Color.red);
-        }
-
+        
         private void FixedUpdate()
         {
             Jump();
             MovePlayer();
         }
+        #endregion
 
+        #region Sound Handling
         private void DetermineTerrain()
         {
             RaycastHit[] hit;
@@ -224,12 +217,58 @@ namespace Platformer
                 playerFootsteps.stop(STOP_MODE.ALLOWFADEOUT);
             }
         }
+        #endregion
 
+        #region Movement Handling
         private void HandleMove(Vector2 dir)
         {
             _inputDirection = dir;
+            
+            // calculate movement direction
+            _moveDirection = orientation.forward * _inputDirection.y + orientation.right * _inputDirection.x;
         }
         
+        private void MovePlayer()
+        {
+            if (state == MovementState.Dashing || swinging || restricted) return;
+
+            if (_moveDirection != Vector3.zero &&
+                Vector3.Dot(_moveDirection.normalized, _lastMoveDirection.normalized) < 0.2f)
+            {
+                if (_isTurning) return;
+                
+                _isTurning = true;
+                _turnTimer = turnDelay;
+            }
+
+            if (_isTurning)
+            {
+                _turnTimer -= Time.deltaTime;
+            }
+            
+            // on slope
+            if (OnSlope() && !_exitingSlope)
+            {
+                _rb.AddForce(GetSlopeMoveDirection(_moveDirection) * (_moveSpeed * 20f), ForceMode.Force);
+                
+                if (_rb.velocity.y > 0)
+                    _rb.AddForce(Vector3.down * 80f, ForceMode.Force);
+            }
+            // on ground
+            else if (Grounded)
+            {
+                _rb.AddForce(_moveDirection.normalized * (_moveSpeed * 10f), ForceMode.Force);
+            }
+            // in air
+            else if (!Grounded)
+                _rb.AddForce(_moveDirection.normalized * (_moveSpeed * 10f * airMultiplier), ForceMode.Force);
+            
+            // turn gravity off while on slope
+            _rb.useGravity = !OnSlope();
+        }
+        #endregion
+        
+        #region Jump Handling
         private void HandleJump()
         {
             jumpBufferTimer = jumpBufferTime;
@@ -242,7 +281,7 @@ namespace Platformer
             _isJumping = false;
         }
         
-        private void HandleInput()
+        private void HandleJumpInput()
         {
             // Double Jump
             if (Grounded && !_isJumping)
@@ -255,17 +294,16 @@ namespace Platformer
             // Start Jump
             if (jumpBufferTimer > 0 && !_jumpCooldownTimer.IsRunning && !swinging)
             {
-                if (_coyoteTimer > 0 || _doubleJump)
-                {
-                    _jumpTimer.Start();
+                if (!(_coyoteTimer > 0) && !_doubleJump) return;
+                
+                _jumpTimer.Start();
                     
-                    AudioManager.instance.PlayOneShot(jumpSound, transform.position);
+                AudioManager.instance.PlayOneShot(jumpSound, transform.position);
                     
-                    if (AbilityManager.DoubleJumpEnabled)
-                        _doubleJump = !_doubleJump;
+                if (AbilityManager.DoubleJumpEnabled)
+                    _doubleJump = !_doubleJump;
 
-                    jumpBufferTimer = 0;
-                }
+                jumpBufferTimer = 0;
             }
             // Stop Jump
             else if (!_isJumping && _jumpTimer.IsRunning)
@@ -305,6 +343,11 @@ namespace Platformer
             if (_jumpTimer.IsRunning)
             {
                 _exitingSlope = true;
+
+                if (_jumpTimer.Progress == 0)
+                {
+                    _rb.velocity = new Vector3(_rb.velocity.x, 0f, _rb.velocity.z);
+                }
                 
                 float launchPoint = 0.9f;
                 
@@ -338,7 +381,23 @@ namespace Platformer
             _jumpVelocity = 0;
             _exitingSlope = false;
         }
+        #endregion
 
+        #region General Handlers
+        private void CheckIfGrounded()
+        {
+            Vector3 center = transform.position - new Vector3(0, (playerHeight - 1.2f) * 0.5f, 0);
+            
+            Grounded = Physics.SphereCast(center, 0.5f,Vector3.down, out _groundHit, groundCheckDistance, whatIsGround);
+
+            if (Grounded && !OnSlope() && Mathf.Abs(_rb.velocity.y) > 0.1f)
+            {
+                Grounded = false;
+            }
+            
+            Debug.DrawRay(center, Vector3.down * groundCheckDistance, Grounded ? Color.green : Color.red);
+        }
+        
         private void StateHandler()
         {
             // Mode - Freeze
@@ -401,34 +460,6 @@ namespace Platformer
             
             _lastDesiredMoveSpeed = _desiredMoveSpeed;
             _lastState = state;
-        }
-        
-        private void MovePlayer()
-        {
-            if (state == MovementState.Dashing || swinging || restricted) return;
-            
-            // calculate movement direction
-            _moveDirection = orientation.forward * _inputDirection.y + orientation.right * _inputDirection.x;
-            
-            // on slope
-            if (OnSlope() && !_exitingSlope)
-            {
-                _rb.AddForce(GetSlopeMoveDirection(_moveDirection) * (_moveSpeed * 20f), ForceMode.Force);
-                
-                if (_rb.velocity.y > 0)
-                    _rb.AddForce(Vector3.down * 80f, ForceMode.Force);
-            }
-            
-            // on ground
-            else if (Grounded)
-                _rb.AddForce(_moveDirection.normalized * (_moveSpeed * 10f), ForceMode.Force);
-            
-            // in air
-            else if (!Grounded)
-                _rb.AddForce(_moveDirection.normalized * (_moveSpeed * 10f * airMultiplier), ForceMode.Force);
-            
-            // turn gravity off while on slope
-            _rb.useGravity = !OnSlope();
         }
 
         private void SpeedControl()
@@ -500,5 +531,6 @@ namespace Platformer
                 timer.Tick(Time.deltaTime);
             }
         }
+        #endregion
     }
 }
