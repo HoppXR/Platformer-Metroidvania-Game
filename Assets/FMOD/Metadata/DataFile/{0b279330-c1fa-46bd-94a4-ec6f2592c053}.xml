@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="DataFile" id="{0b279330-c1fa-46bd-94a4-ec6f2592c053}">
+		<property name="assetPath">
+			<value>old/coin.wav.meta</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{6c631783-1b28-4e24-8ef2-ca4eaabe5959}</destination>
+		</relationship>
+	</object>
+</objects>

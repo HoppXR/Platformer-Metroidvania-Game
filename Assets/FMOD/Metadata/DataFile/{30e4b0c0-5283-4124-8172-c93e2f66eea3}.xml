@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="DataFile" id="{30e4b0c0-5283-4124-8172-c93e2f66eea3}">
+		<property name="assetPath">
+			<value>old/stonetest3.wav.meta</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{6c631783-1b28-4e24-8ef2-ca4eaabe5959}</destination>
+		</relationship>
+	</object>
+</objects>

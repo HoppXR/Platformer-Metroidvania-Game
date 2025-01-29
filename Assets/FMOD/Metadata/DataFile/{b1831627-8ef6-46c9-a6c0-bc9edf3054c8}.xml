@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="DataFile" id="{b1831627-8ef6-46c9-a6c0-bc9edf3054c8}">
+		<property name="assetPath">
+			<value>old/oh god4.wav.meta</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{6c631783-1b28-4e24-8ef2-ca4eaabe5959}</destination>
+		</relationship>
+	</object>
+</objects>
