@@ -26,18 +26,19 @@ namespace Platformer
         [SerializeField] private float dashSpeed;
         [SerializeField] private float dashSpeedChangeFactor;
         [SerializeField] private float groundDrag;
-        [SerializeField] private float turnDelay; // time before turning
+
+        [Header("Movement Settings")] 
+        [SerializeField] private float acceleration;
+        [SerializeField] private float deceleration;
+        [SerializeField] private float turnResistance;
         
         private MovementState _lastState;
         private Vector3 _moveDirection;
-        private Vector3 _lastMoveDirection;
         private Vector2 _inputDirection;
         private float _moveSpeed;
         private float _desiredMoveSpeed;
         private float _lastDesiredMoveSpeed;
-        private float _turnTimer;
         private bool _keepMomentum;
-        private bool _isTurning;
 
         [Header("Jumping")]
         [SerializeField] private float airMultiplier; // player speed in-air
@@ -223,27 +224,25 @@ namespace Platformer
         private void HandleMove(Vector2 dir)
         {
             _inputDirection = dir;
-            
-            // calculate movement direction
-            _moveDirection = orientation.forward * _inputDirection.y + orientation.right * _inputDirection.x;
         }
         
         private void MovePlayer()
         {
             if (state == MovementState.Dashing || swinging || restricted) return;
+            
+            // calculate movement direction
+            _moveDirection = orientation.forward * _inputDirection.y + orientation.right * _inputDirection.x;
 
-            if (_moveDirection != Vector3.zero &&
-                Vector3.Dot(_moveDirection.normalized, _lastMoveDirection.normalized) < 0.2f)
+            if (_inputDirection != Vector2.zero)
             {
-                if (_isTurning) return;
-                
-                _isTurning = true;
-                _turnTimer = turnDelay;
-            }
+                var targetVelocity = _moveDirection * (_moveSpeed * 10f);
+                Vector2 velocityDifference = targetVelocity - _rb.velocity;
 
-            if (_isTurning)
-            {
-                _turnTimer -= Time.deltaTime;
+                // adds opposing force when changing direction
+                if (Vector3.Dot(_rb.velocity.normalized, _moveDirection) < 0)
+                {
+                    _rb.AddForce(-_moveDirection * (turnResistance * 10f), ForceMode.Force);
+                }
             }
             
             // on slope
@@ -261,7 +260,9 @@ namespace Platformer
             }
             // in air
             else if (!Grounded)
+            {
                 _rb.AddForce(_moveDirection.normalized * (_moveSpeed * 10f * airMultiplier), ForceMode.Force);
+            }
             
             // turn gravity off while on slope
             _rb.useGravity = !OnSlope();
