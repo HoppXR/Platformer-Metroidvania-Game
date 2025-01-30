@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &93700104
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -10340,7 +10340,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &595230727
 Transform:
   m_ObjectHideFlags: 0
@@ -15687,7 +15687,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &1143119524
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -25990,7 +25990,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!135 &1662062222
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -26382,7 +26382,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6729406502510494429, guid: e5f3d7880dc822a4999e79035ac2901b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7094272761600164255, guid: e5f3d7880dc822a4999e79035ac2901b, type: 3}
       propertyPath: m_LocalScale.y
