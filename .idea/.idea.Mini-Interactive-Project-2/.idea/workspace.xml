@@ -5,60 +5,62 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a59a0d6-60c5-48cd-bea4-bdefa1b22a95" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/Event/{35087d07-6d07-4a2c-8c45-153e435a145c}.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/Event/{4eda5075-b10b-4629-83db-15d993cb3376}.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/ParameterPreset/{9e351683-7bd3-4acb-8759-8af910aff9a8}.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mini-Interactive-Project-2/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mini-Interactive-Project-2/.idea/projectSettingsUpdater.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Mini-Interactive-Project-2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mini-Interactive-Project-2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Carpet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Carpet.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Carpet_Angle_BL.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Carpet_Angle_BL.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Carpet_Angle_BR.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Carpet_Angle_BR.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Carpet_Angle_TL.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Carpet_Angle_TL.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Carpet_Angle_TR.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Carpet_Angle_TR.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Carpet_Ramp.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Carpet_Ramp.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Ground.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Ground.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Ground_Angle_BL.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Ground_Angle_BL.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Ground_Angle_BR.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Ground_Angle_BR.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Ground_Angle_TL.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Ground_Angle_TL.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Ground_Angle_TR.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Ground_Angle_TR.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Ground_Ramp.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Ground/Ground_Ramp.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Angle_BL.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Angle_BL.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Angle_BR.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Angle_BR.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Angle_TL.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Angle_TL.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Angle_TR.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Angle_TR.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Waterfall.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Waterfall.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Waterfall_B.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Waterfall_B.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Waterfall_End.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Waterfall_End.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Waterfall_Start.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Waterfall_Start.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Waterfall_Top.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Hazzards/Gold_Waterfall_Top.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Pillar.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Pillar.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Pillar_Bot.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Pillar_Bot.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Pillar_Brok.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Pillar_Brok.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Pillar_Top.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Pillar_Top.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_4way.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_4way.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_Corner_BL.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_Corner_BL.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_Corner_BR.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_Corner_BR.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_Corner_TL.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_Corner_TL.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_Corner_TR.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_Corner_TR.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_End_B.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_End_B.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_End_L.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_End_L.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_End_R.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_End_R.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_End_T.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_End_T.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_Horizontal.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_Horizontal.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_T_B.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_T_B.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_T_L.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_T_L.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_T_R.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_T_R.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_T_T.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_T_T.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_Vert.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Platforms/Thin_Vert.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Walls/Angled_Wall.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Walls/Angled_Wall.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Walls/Angled_Wall_Half.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Walls/Angled_Wall_Half.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Walls/Ramp_Wall_L.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Walls/Ramp_Wall_L.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Walls/Ramp_Wall_R.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Walls/Ramp_Wall_R.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Walls/Wall.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Walls/Wall.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Walls/Wall_Half.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Modular Boss Level/Walls/Wall_Half.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Map Building.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Map Building.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Movement Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Movement Test.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/AbilityManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/AbilityManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/AbilityCollectable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/AbilityCollectable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/.unsaved/Metadata/Asset/{aecf79b2-c6a6-4b17-85dc-214848843303}.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/.unsaved/Metadata/AudioFile/{8b7e2f15-ba79-4ef5-89fd-48588e3686e8}.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/.unsaved/Metadata/AudioFile/{fbc8e298-196c-4cb2-a484-69c8627c8765}.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/.unsaved/Metadata/Event/{24889eff-207d-4158-9609-d5bee9ba067a}.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/.unsaved/Metadata/Event/{35087d07-6d07-4a2c-8c45-153e435a145c}.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/.unsaved/Metadata/Event/{35087d07-6d07-4a2c-8c45-153e435a145c}.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/.unsaved/Metadata/Event/{4eda5075-b10b-4629-83db-15d993cb3376}.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/.unsaved/Metadata/Event/{4eda5075-b10b-4629-83db-15d993cb3376}.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/.unsaved/Metadata/ParameterPreset/{1e4ed3bb-db43-4cdf-866f-efa58d56cc8f}.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/.unsaved/Metadata/ParameterPreset/{1e4ed3bb-db43-4cdf-866f-efa58d56cc8f}.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/.unsaved/Metadata/ParameterPreset/{9e351683-7bd3-4acb-8759-8af910aff9a8}.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/.unsaved/metadataFileMapping.data" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/.unsaved/metadataFileMapping.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Assets/player sounds/ground pound normal.wav.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Assets/player sounds/ground pound normal.wav.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Assets/player sounds/ground pound wood.wav.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Assets/player sounds/ground pound wood.wav.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Assets/temp sounds.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Assets/temp sounds.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Assets/temp sounds/waterfall test 1.wav.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Assets/temp sounds/waterfall test 1.wav.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/Asset/{aecf79b2-c6a6-4b17-85dc-214848843303}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/Asset/{aecf79b2-c6a6-4b17-85dc-214848843303}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/AudioFile/{1c913579-7a88-4eaf-8bff-2b3d6ae1eacc}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/AudioFile/{1c913579-7a88-4eaf-8bff-2b3d6ae1eacc}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/AudioFile/{45476012-f6d7-4117-9831-65fca276e8eb}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/AudioFile/{45476012-f6d7-4117-9831-65fca276e8eb}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/AudioFile/{8b7e2f15-ba79-4ef5-89fd-48588e3686e8}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/AudioFile/{8b7e2f15-ba79-4ef5-89fd-48588e3686e8}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{0b279330-c1fa-46bd-94a4-ec6f2592c053}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{0b279330-c1fa-46bd-94a4-ec6f2592c053}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{1505e0ab-49c6-41b9-95da-17b885e9f1ae}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{1505e0ab-49c6-41b9-95da-17b885e9f1ae}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{1cf1a753-5fad-46f6-8eb1-f90b7e7bdef5}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{1cf1a753-5fad-46f6-8eb1-f90b7e7bdef5}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{26f75dc0-c215-49b6-99a2-2d1cfffcea36}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{26f75dc0-c215-49b6-99a2-2d1cfffcea36}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{30e4b0c0-5283-4124-8172-c93e2f66eea3}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{30e4b0c0-5283-4124-8172-c93e2f66eea3}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{326703d9-4244-4c1a-9605-bb0513e8554b}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{326703d9-4244-4c1a-9605-bb0513e8554b}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{39f79a03-640c-4f48-96d6-a0cafb284e8a}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{39f79a03-640c-4f48-96d6-a0cafb284e8a}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{4cb5154f-f23a-4d9a-a7d1-6af9f32a12f5}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{4cb5154f-f23a-4d9a-a7d1-6af9f32a12f5}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{61f5fc42-2ee8-438e-a6bb-87d73509f67b}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{61f5fc42-2ee8-438e-a6bb-87d73509f67b}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{6619ec91-39d4-4e8f-b221-6e24605061c6}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{6619ec91-39d4-4e8f-b221-6e24605061c6}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{6d9880ea-129a-4c7b-b3d3-e86ac011a103}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{6d9880ea-129a-4c7b-b3d3-e86ac011a103}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{70fc811d-5cf7-4fdf-acc7-a59a68fe30d3}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{70fc811d-5cf7-4fdf-acc7-a59a68fe30d3}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{715dbd5c-eb4a-4666-aecc-7d4b3ca33192}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{715dbd5c-eb4a-4666-aecc-7d4b3ca33192}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{81b79aa1-1032-4e64-9a22-412967abe761}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{81b79aa1-1032-4e64-9a22-412967abe761}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{98c4b6d2-6e14-4dfe-81ef-622d9c937d9e}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{98c4b6d2-6e14-4dfe-81ef-622d9c937d9e}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{9944e9dc-8752-4022-9b80-4ec33a269ca9}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{9944e9dc-8752-4022-9b80-4ec33a269ca9}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{9b1dcf98-c1a9-460a-af56-53d0556f43e7}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{9b1dcf98-c1a9-460a-af56-53d0556f43e7}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{9c4e22bd-c0d8-4797-96ca-63ee80512bdf}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{9c4e22bd-c0d8-4797-96ca-63ee80512bdf}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{a0cd0b50-6d57-4a71-99ed-6b9ad08dd3c4}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{a0cd0b50-6d57-4a71-99ed-6b9ad08dd3c4}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{a25fbdf6-133e-44a6-9be2-e9c9fcf64332}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{a25fbdf6-133e-44a6-9be2-e9c9fcf64332}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{a9afa3ef-56a9-47ec-8f52-8256cfc7e595}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{a9afa3ef-56a9-47ec-8f52-8256cfc7e595}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{b1831627-8ef6-46c9-a6c0-bc9edf3054c8}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{b1831627-8ef6-46c9-a6c0-bc9edf3054c8}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{b52cd67c-1bb9-4955-ba45-cff19b19f021}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{b52cd67c-1bb9-4955-ba45-cff19b19f021}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{bd748c7c-151c-4923-a0f7-66ff885e7903}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{bd748c7c-151c-4923-a0f7-66ff885e7903}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{c1955e88-1a95-42df-a8e8-8e687e171aaf}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{c1955e88-1a95-42df-a8e8-8e687e171aaf}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{c9d77ba6-1e35-4aaf-bc05-379ee6cd9e91}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{c9d77ba6-1e35-4aaf-bc05-379ee6cd9e91}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{cc2758f4-df0e-4393-9a22-6f1ac2caea18}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{cc2758f4-df0e-4393-9a22-6f1ac2caea18}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{ccf583f9-9d05-4c6d-9085-a9986e885ed7}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{ccf583f9-9d05-4c6d-9085-a9986e885ed7}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{db28539f-819d-40e7-b0e9-32522dbd393c}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{db28539f-819d-40e7-b0e9-32522dbd393c}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{e327d801-2d11-4a0b-ac72-fe753085f45a}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/DataFile/{e327d801-2d11-4a0b-ac72-fe753085f45a}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/Event/{0ffa80b8-1f90-4412-8678-831a03054321}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/Event/{0ffa80b8-1f90-4412-8678-831a03054321}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/ParameterPreset/{1e4ed3bb-db43-4cdf-866f-efa58d56cc8f}.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/ParameterPreset/{1e4ed3bb-db43-4cdf-866f-efa58d56cc8f}.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/ParameterPreset/{1e4ed3bb-db43-4cdf-866f-efa58d56cc8f}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/ParameterPreset/{1e4ed3bb-db43-4cdf-866f-efa58d56cc8f}.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/ParameterPreset/{78db4e5b-4485-4fd0-8332-d06c9829a3ca}.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/ParameterPreset/{78db4e5b-4485-4fd0-8332-d06c9829a3ca}.xml.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,24 +84,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Jaden&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "estes3",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\xoesm\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\xoesm\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\xoesm\\AppData\\Local\\Symbols\\src"
+    ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$USER_HOME$/OneDrive/Desktop/GDW game\Mini-Interactive Project 2.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../desktop build\Mini-Interactive Project 2.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="C:\Users\brtlh\OneDrive\Desktop\GDW game" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -127,9 +136,6 @@
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="projectPathOnTarget" />
-      <option name="runtimes">
-        <list />
-      </option>
       <option name="selectedOptions">
         <list />
       </option>
@@ -140,9 +146,6 @@
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="projectPathOnTarget" />
-      <option name="runtimes">
-        <list />
-      </option>
       <option name="selectedOptions">
         <list />
       </option>
@@ -165,6 +168,7 @@
       <workItem from="1737385007580" duration="5437000" />
       <workItem from="1737393261153" duration="3621000" />
       <workItem from="1738006320915" duration="1313000" />
+      <workItem from="1738370134182" duration="355000" />
     </task>
     <servers />
   </component>

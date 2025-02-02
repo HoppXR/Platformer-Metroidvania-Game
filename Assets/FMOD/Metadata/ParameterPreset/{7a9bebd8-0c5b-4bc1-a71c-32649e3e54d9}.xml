@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="ParameterPreset" id="{1e4ed3bb-db43-4cdf-866f-efa58d56cc8f}">
+	<object class="ParameterPreset" id="{7a9bebd8-0c5b-4bc1-a71c-32649e3e54d9}">
 		<property name="name">
-			<value>Ground pounds</value>
+			<value>land</value>
 		</property>
 		<relationship name="folder">
 			<destination>{a0c5c681-ab8b-43dd-975c-6ad31b12a22d}</destination>
 		</relationship>
 		<relationship name="parameter">
-			<destination>{04209109-ba45-4fd4-8b15-da9541bd5d10}</destination>
+			<destination>{875b5bdd-6dfa-41b8-b8b3-d8ef0ac745cd}</destination>
 		</relationship>
 	</object>
-	<object class="GameParameter" id="{04209109-ba45-4fd4-8b15-da9541bd5d10}">
+	<object class="GameParameter" id="{875b5bdd-6dfa-41b8-b8b3-d8ef0ac745cd}">
 		<property name="parameterType">
 			<value>2</value>
 		</property>
@@ -32,38 +32,29 @@
 			<value>false</value>
 		</property>
 		<relationship name="automators">
-			<destination>{57b16484-9606-43f2-a5d8-d88cb7585020}</destination>
+			<destination>{0a103bfc-c98b-4ebf-85e8-c2f67b488601}</destination>
 		</relationship>
 	</object>
-	<object class="Automator" id="{57b16484-9606-43f2-a5d8-d88cb7585020}">
+	<object class="Automator" id="{0a103bfc-c98b-4ebf-85e8-c2f67b488601}">
 		<property name="nameOfPropertyBeingAutomated">
 			<value>cursorPosition</value>
 		</property>
 		<relationship name="automationCurves">
-			<destination>{4730efa4-f14f-440e-8451-0f761a0ba181}</destination>
+			<destination>{2723eb2e-2555-4f34-ace6-fe987f18b483}</destination>
 		</relationship>
 	</object>
-	<object class="AutomationCurve" id="{4730efa4-f14f-440e-8451-0f761a0ba181}">
+	<object class="AutomationCurve" id="{2723eb2e-2555-4f34-ace6-fe987f18b483}">
 		<relationship name="parameter">
 			<destination>{07915a38-ab9e-4a72-83de-c6657038b75d}</destination>
 		</relationship>
 		<relationship name="automationPoints">
-			<destination>{82795763-4e48-4f33-a392-fa59564d7b6d}</destination>
-			<destination>{092593d5-ae22-4233-8303-b39796429ceb}</destination>
-			<destination>{109c710c-ecc2-402f-8fab-81282efd7297}</destination>
-			<destination>{8cf16157-5d44-449e-9fee-7b7612cd257d}</destination>
-			<destination>{3b42832c-edf6-4833-8942-8079a2da9dbc}</destination>
+			<destination>{5f9f7e26-00f8-43de-8f36-c23ee66cac28}</destination>
+			<destination>{0dcc9fc5-806f-4bdd-bdb9-ae22f4eb5f5b}</destination>
+			<destination>{f791abc2-3880-48b7-b5bd-b30156b032c5}</destination>
+			<destination>{f6f9f5ff-821c-439a-866d-62a19b5f22ad}</destination>
 		</relationship>
 	</object>
-	<object class="AutomationPoint" id="{82795763-4e48-4f33-a392-fa59564d7b6d}">
-		<property name="position">
-			<value>1</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{092593d5-ae22-4233-8303-b39796429ceb}">
+	<object class="AutomationPoint" id="{5f9f7e26-00f8-43de-8f36-c23ee66cac28}">
 		<property name="position">
 			<value>0</value>
 		</property>
@@ -71,7 +62,15 @@
 			<value>0</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{109c710c-ecc2-402f-8fab-81282efd7297}">
+	<object class="AutomationPoint" id="{0dcc9fc5-806f-4bdd-bdb9-ae22f4eb5f5b}">
+		<property name="position">
+			<value>1</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{f791abc2-3880-48b7-b5bd-b30156b032c5}">
 		<property name="position">
 			<value>2</value>
 		</property>
@@ -79,20 +78,12 @@
 			<value>2</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{8cf16157-5d44-449e-9fee-7b7612cd257d}">
+	<object class="AutomationPoint" id="{f6f9f5ff-821c-439a-866d-62a19b5f22ad}">
 		<property name="position">
 			<value>3</value>
 		</property>
 		<property name="value">
 			<value>3</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{3b42832c-edf6-4833-8942-8079a2da9dbc}">
-		<property name="position">
-			<value>4</value>
-		</property>
-		<property name="value">
-			<value>4</value>
 		</property>
 	</object>
 </objects>

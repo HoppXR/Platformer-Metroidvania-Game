@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{0ffa80b8-1f90-4412-8678-831a03054321}">
 		<property name="name">
-			<value>ground pound</value>
+			<value>Movement</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
@@ -29,7 +29,11 @@
 			<destination>{d419998c-41a4-4b15-adb5-7ccfe191b54c}</destination>
 		</relationship>
 		<relationship name="parameters">
+			<destination>{0624f951-11be-40ed-8117-419f70228694}</destination>
 			<destination>{fec8f656-7904-4046-8745-bf33985f2ecb}</destination>
+			<destination>{62c4e5a2-c713-45c8-ab90-7a8e100fed1d}</destination>
+			<destination>{3fa9f3bc-3156-492d-866d-1eb31bb7fb9c}</destination>
+			<destination>{d39d0dca-f1d7-4bae-9942-60967aab7ae4}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{b259d929-a610-43b2-b5d3-ec8b3fe998af}">
@@ -59,7 +63,16 @@
 	</object>
 	<object class="EventAutomatableProperties" id="{2b810011-859b-47c8-8188-e1a311624455}" />
 	<object class="MarkerTrack" id="{a455b834-5efb-4ff1-ac8b-7da13f959fff}" />
-	<object class="Timeline" id="{d419998c-41a4-4b15-adb5-7ccfe191b54c}" />
+	<object class="Timeline" id="{d419998c-41a4-4b15-adb5-7ccfe191b54c}">
+		<property name="isProxyEnabled">
+			<value>false</value>
+		</property>
+	</object>
+	<object class="ParameterProxy" id="{0624f951-11be-40ed-8117-419f70228694}">
+		<relationship name="preset">
+			<destination>{07915a38-ab9e-4a72-83de-c6657038b75d}</destination>
+		</relationship>
+	</object>
 	<object class="ParameterProxy" id="{fec8f656-7904-4046-8745-bf33985f2ecb}">
 		<relationship name="modules">
 			<destination>{7c47cd43-823e-474e-9a61-6f9cd8ebe5fe}</destination>
@@ -67,6 +80,21 @@
 		</relationship>
 		<relationship name="preset">
 			<destination>{04209109-ba45-4fd4-8b15-da9541bd5d10}</destination>
+		</relationship>
+	</object>
+	<object class="ParameterProxy" id="{62c4e5a2-c713-45c8-ab90-7a8e100fed1d}">
+		<relationship name="preset">
+			<destination>{82930ff5-e5da-4273-a080-634420587bc6}</destination>
+		</relationship>
+	</object>
+	<object class="ParameterProxy" id="{3fa9f3bc-3156-492d-866d-1eb31bb7fb9c}">
+		<relationship name="preset">
+			<destination>{d8a2b271-f726-425c-bc6b-11e319cc13c8}</destination>
+		</relationship>
+	</object>
+	<object class="ParameterProxy" id="{d39d0dca-f1d7-4bae-9942-60967aab7ae4}">
+		<relationship name="preset">
+			<destination>{875b5bdd-6dfa-41b8-b8b3-d8ef0ac745cd}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{99811fae-020b-4ff6-b064-6a62a98392e5}">

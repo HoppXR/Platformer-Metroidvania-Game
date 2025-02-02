@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="ParameterPreset" id="{1e4ed3bb-db43-4cdf-866f-efa58d56cc8f}">
+	<object class="ParameterPreset" id="{26ea8966-ea53-45d8-9d5e-b67bd6a54a32}">
 		<property name="name">
-			<value>Ground pounds</value>
+			<value>rolls</value>
 		</property>
 		<relationship name="folder">
 			<destination>{a0c5c681-ab8b-43dd-975c-6ad31b12a22d}</destination>
 		</relationship>
 		<relationship name="parameter">
-			<destination>{04209109-ba45-4fd4-8b15-da9541bd5d10}</destination>
+			<destination>{82930ff5-e5da-4273-a080-634420587bc6}</destination>
 		</relationship>
 	</object>
-	<object class="GameParameter" id="{04209109-ba45-4fd4-8b15-da9541bd5d10}">
+	<object class="GameParameter" id="{82930ff5-e5da-4273-a080-634420587bc6}">
 		<property name="parameterType">
 			<value>2</value>
 		</property>
@@ -32,38 +32,30 @@
 			<value>false</value>
 		</property>
 		<relationship name="automators">
-			<destination>{57b16484-9606-43f2-a5d8-d88cb7585020}</destination>
+			<destination>{c157ab09-5b9f-4f74-a40f-ddf4bead63a3}</destination>
 		</relationship>
 	</object>
-	<object class="Automator" id="{57b16484-9606-43f2-a5d8-d88cb7585020}">
+	<object class="Automator" id="{c157ab09-5b9f-4f74-a40f-ddf4bead63a3}">
 		<property name="nameOfPropertyBeingAutomated">
 			<value>cursorPosition</value>
 		</property>
 		<relationship name="automationCurves">
-			<destination>{4730efa4-f14f-440e-8451-0f761a0ba181}</destination>
+			<destination>{ae6461c3-b2ca-4977-85b7-9ac145749542}</destination>
 		</relationship>
 	</object>
-	<object class="AutomationCurve" id="{4730efa4-f14f-440e-8451-0f761a0ba181}">
+	<object class="AutomationCurve" id="{ae6461c3-b2ca-4977-85b7-9ac145749542}">
 		<relationship name="parameter">
 			<destination>{07915a38-ab9e-4a72-83de-c6657038b75d}</destination>
 		</relationship>
 		<relationship name="automationPoints">
-			<destination>{82795763-4e48-4f33-a392-fa59564d7b6d}</destination>
-			<destination>{092593d5-ae22-4233-8303-b39796429ceb}</destination>
-			<destination>{109c710c-ecc2-402f-8fab-81282efd7297}</destination>
-			<destination>{8cf16157-5d44-449e-9fee-7b7612cd257d}</destination>
-			<destination>{3b42832c-edf6-4833-8942-8079a2da9dbc}</destination>
+			<destination>{420fb061-df83-47ef-9bce-6cb749ff68e3}</destination>
+			<destination>{94e6b526-cc60-4f93-89ad-43a0d3dbc7ca}</destination>
+			<destination>{cb129bd4-efe9-46c5-be31-82b8f8b8c62e}</destination>
+			<destination>{b2abe5ef-01c7-43cb-a4e7-c9d87724ce8a}</destination>
+			<destination>{85824765-3d06-4cfa-be2f-e267a564ad6f}</destination>
 		</relationship>
 	</object>
-	<object class="AutomationPoint" id="{82795763-4e48-4f33-a392-fa59564d7b6d}">
-		<property name="position">
-			<value>1</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{092593d5-ae22-4233-8303-b39796429ceb}">
+	<object class="AutomationPoint" id="{420fb061-df83-47ef-9bce-6cb749ff68e3}">
 		<property name="position">
 			<value>0</value>
 		</property>
@@ -71,7 +63,15 @@
 			<value>0</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{109c710c-ecc2-402f-8fab-81282efd7297}">
+	<object class="AutomationPoint" id="{94e6b526-cc60-4f93-89ad-43a0d3dbc7ca}">
+		<property name="position">
+			<value>1</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{cb129bd4-efe9-46c5-be31-82b8f8b8c62e}">
 		<property name="position">
 			<value>2</value>
 		</property>
@@ -79,7 +79,7 @@
 			<value>2</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{8cf16157-5d44-449e-9fee-7b7612cd257d}">
+	<object class="AutomationPoint" id="{b2abe5ef-01c7-43cb-a4e7-c9d87724ce8a}">
 		<property name="position">
 			<value>3</value>
 		</property>
@@ -87,7 +87,7 @@
 			<value>3</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{3b42832c-edf6-4833-8942-8079a2da9dbc}">
+	<object class="AutomationPoint" id="{85824765-3d06-4cfa-be2f-e267a564ad6f}">
 		<property name="position">
 			<value>4</value>
 		</property>
