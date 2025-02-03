@@ -25,12 +25,10 @@ namespace Platformer
         [SerializeField] private float swingSpeed;
         [SerializeField] private float dashSpeed;
         [SerializeField] private float dashSpeedChangeFactor;
-        [SerializeField] private float groundDrag;
 
         [Header("Movement Settings")] 
         [SerializeField] private float acceleration;
         [SerializeField] private float deceleration;
-        [SerializeField] private float turnResistance;
         
         private MovementState _lastState;
         private Vector3 _moveDirection;
@@ -123,12 +121,6 @@ namespace Platformer
             CheckIfGrounded();
             DetermineTerrain();
             SelectAndPlayFootstep();
-            
-            // handle drag
-            if (state is MovementState.Walking or MovementState.Crouching)
-                _rb.drag = groundDrag;
-            else
-                _rb.drag = 0;
 
             // handle landing
             if (!Grounded)
@@ -235,33 +227,44 @@ namespace Platformer
 
             if (_inputDirection != Vector2.zero)
             {
-                var targetVelocity = _moveDirection * (_moveSpeed * 10f);
-                Vector2 velocityDifference = targetVelocity - _rb.velocity;
-
-                // adds opposing force when changing direction
-                if (Vector3.Dot(_rb.velocity.normalized, _moveDirection) < 0)
+                var targetVelocity = _moveDirection.normalized * (_moveSpeed * 10f);
+                
+                // on slope
+                if (OnSlope() && !_exitingSlope)
                 {
-                    _rb.AddForce(-_moveDirection * (turnResistance * 10f), ForceMode.Force);
+                    // adds opposing force when changing direction on slope
+                    if (Vector3.Dot(_rb.velocity.normalized, GetSlopeMoveDirection(_moveDirection)) < 0)
+                    {
+                        _rb.AddForce(-GetSlopeMoveDirection(_moveDirection) * (_moveSpeed * 9f * acceleration), ForceMode.Acceleration);
+                    }
+                    
+                    _rb.AddForce(GetSlopeMoveDirection(_moveDirection) * (_moveSpeed * 20f * acceleration) - _rb.velocity, ForceMode.Acceleration);
+                
+                    if (_rb.velocity.y > 0)
+                        _rb.AddForce(Vector3.down * 80f, ForceMode.Acceleration);
+                }
+                else switch (Grounded)
+                {
+                    // on ground
+                    case true:
+                        // adds opposing force when changing direction
+                        if (Vector3.Dot(_rb.velocity.normalized, _moveDirection) < 0)
+                        {
+                            _rb.AddForce(-targetVelocity * (acceleration * 0.45f), ForceMode.Acceleration);
+                        }
+                        
+                        _rb.AddForce(targetVelocity * acceleration, ForceMode.Acceleration);
+                        break;
+                    // in air
+                    case false:
+                        _rb.AddForce(_moveDirection.normalized * (_moveSpeed * 10f * airMultiplier), ForceMode.Acceleration);
+                        break;
                 }
             }
-            
-            // on slope
-            if (OnSlope() && !_exitingSlope)
+            else
             {
-                _rb.AddForce(GetSlopeMoveDirection(_moveDirection) * (_moveSpeed * 20f), ForceMode.Force);
-                
-                if (_rb.velocity.y > 0)
-                    _rb.AddForce(Vector3.down * 80f, ForceMode.Force);
-            }
-            // on ground
-            else if (Grounded)
-            {
-                _rb.AddForce(_moveDirection.normalized * (_moveSpeed * 10f), ForceMode.Force);
-            }
-            // in air
-            else if (!Grounded)
-            {
-                _rb.AddForce(_moveDirection.normalized * (_moveSpeed * 10f * airMultiplier), ForceMode.Force);
+                // slows the player down when they release input
+                _rb.AddForce(-_rb.velocity * (deceleration * 10f), ForceMode.Acceleration);
             }
             
             // turn gravity off while on slope
@@ -361,7 +364,7 @@ namespace Platformer
             else if (!Grounded && state != MovementState.Swinging || state != MovementState.Freeze || !OnSlope())
             {
                 // limit fall speed
-                if (_jumpVelocity < -12) return;
+                if (_jumpVelocity < -99) return;
                 
                 _jumpVelocity += Physics.gravity.y * gravityMultiplier * Time.fixedDeltaTime;
             }
@@ -512,7 +515,7 @@ namespace Platformer
         {
             Vector3 center = transform.position - new Vector3(0, (playerHeight - 1.2f) * 0.5f, 0);
 
-            if (Physics.SphereCast(center, 0.5f, Vector3.down, out _slopeHit, groundCheckDistance))
+            if (Physics.SphereCast(center, 0.5f, Vector3.down, out _slopeHit, groundCheckDistance + 0.25f))
             {
                 float angle = Vector3.Angle(Vector3.up, _slopeHit.normal);
                 return angle < maxSlopeAngle && angle != 0;
