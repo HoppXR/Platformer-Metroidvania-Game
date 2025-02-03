@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="ParameterPreset" id="{26ea8966-ea53-45d8-9d5e-b67bd6a54a32}">
+	<object class="ParameterPreset" id="{0405666f-9e51-4a7f-87dd-633f209b9796}">
 		<property name="name">
-			<value>dash</value>
+			<value>jump</value>
 		</property>
 		<relationship name="folder">
 			<destination>{a0c5c681-ab8b-43dd-975c-6ad31b12a22d}</destination>
 		</relationship>
 		<relationship name="parameter">
-			<destination>{82930ff5-e5da-4273-a080-634420587bc6}</destination>
+			<destination>{9f4d7d4c-0d45-42d9-8b04-9b440fd1fabf}</destination>
 		</relationship>
 	</object>
-	<object class="GameParameter" id="{82930ff5-e5da-4273-a080-634420587bc6}">
+	<object class="GameParameter" id="{9f4d7d4c-0d45-42d9-8b04-9b440fd1fabf}">
 		<property name="parameterType">
 			<value>2</value>
 		</property>
@@ -28,34 +28,31 @@
 		<property name="initialValue">
 			<value>0</value>
 		</property>
-		<property name="isExposedRecursively">
-			<value>false</value>
-		</property>
 		<relationship name="automators">
-			<destination>{c157ab09-5b9f-4f74-a40f-ddf4bead63a3}</destination>
+			<destination>{857e77e6-1993-4777-a5a5-0da85d1174f0}</destination>
 		</relationship>
 	</object>
-	<object class="Automator" id="{c157ab09-5b9f-4f74-a40f-ddf4bead63a3}">
+	<object class="Automator" id="{857e77e6-1993-4777-a5a5-0da85d1174f0}">
 		<property name="nameOfPropertyBeingAutomated">
 			<value>cursorPosition</value>
 		</property>
 		<relationship name="automationCurves">
-			<destination>{ae6461c3-b2ca-4977-85b7-9ac145749542}</destination>
+			<destination>{67b668a8-ea3e-497d-b1fe-64e4370a3e6d}</destination>
 		</relationship>
 	</object>
-	<object class="AutomationCurve" id="{ae6461c3-b2ca-4977-85b7-9ac145749542}">
+	<object class="AutomationCurve" id="{67b668a8-ea3e-497d-b1fe-64e4370a3e6d}">
 		<relationship name="parameter">
 			<destination>{07915a38-ab9e-4a72-83de-c6657038b75d}</destination>
 		</relationship>
 		<relationship name="automationPoints">
-			<destination>{420fb061-df83-47ef-9bce-6cb749ff68e3}</destination>
-			<destination>{94e6b526-cc60-4f93-89ad-43a0d3dbc7ca}</destination>
-			<destination>{cb129bd4-efe9-46c5-be31-82b8f8b8c62e}</destination>
-			<destination>{b2abe5ef-01c7-43cb-a4e7-c9d87724ce8a}</destination>
-			<destination>{85824765-3d06-4cfa-be2f-e267a564ad6f}</destination>
+			<destination>{e18328c9-7ea1-4dfe-a7a7-377a6524a91f}</destination>
+			<destination>{5664b699-ea22-43e9-a1ee-6223c7d4e514}</destination>
+			<destination>{dc322ec5-7cf8-4fee-b49e-9d2fdd769e41}</destination>
+			<destination>{76e689d5-2ef0-42ef-8c28-0d3f887e28a1}</destination>
+			<destination>{340c6824-b12b-4a11-acc1-8eb7cc0a49ab}</destination>
 		</relationship>
 	</object>
-	<object class="AutomationPoint" id="{420fb061-df83-47ef-9bce-6cb749ff68e3}">
+	<object class="AutomationPoint" id="{e18328c9-7ea1-4dfe-a7a7-377a6524a91f}">
 		<property name="position">
 			<value>0</value>
 		</property>
@@ -63,7 +60,7 @@
 			<value>0</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{94e6b526-cc60-4f93-89ad-43a0d3dbc7ca}">
+	<object class="AutomationPoint" id="{5664b699-ea22-43e9-a1ee-6223c7d4e514}">
 		<property name="position">
 			<value>1</value>
 		</property>
@@ -71,7 +68,7 @@
 			<value>1</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{cb129bd4-efe9-46c5-be31-82b8f8b8c62e}">
+	<object class="AutomationPoint" id="{dc322ec5-7cf8-4fee-b49e-9d2fdd769e41}">
 		<property name="position">
 			<value>2</value>
 		</property>
@@ -79,7 +76,7 @@
 			<value>2</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{b2abe5ef-01c7-43cb-a4e7-c9d87724ce8a}">
+	<object class="AutomationPoint" id="{76e689d5-2ef0-42ef-8c28-0d3f887e28a1}">
 		<property name="position">
 			<value>3</value>
 		</property>
@@ -87,7 +84,7 @@
 			<value>3</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{85824765-3d06-4cfa-be2f-e267a564ad6f}">
+	<object class="AutomationPoint" id="{340c6824-b12b-4a11-acc1-8eb7cc0a49ab}">
 		<property name="position">
 			<value>4</value>
 		</property>

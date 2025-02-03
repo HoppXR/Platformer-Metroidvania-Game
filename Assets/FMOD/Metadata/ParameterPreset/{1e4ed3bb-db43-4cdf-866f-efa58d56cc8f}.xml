@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="ParameterPreset" id="{1e4ed3bb-db43-4cdf-866f-efa58d56cc8f}">
 		<property name="name">
-			<value>Ground pounds</value>
+			<value>ground pound</value>
 		</property>
 		<relationship name="folder">
 			<destination>{a0c5c681-ab8b-43dd-975c-6ad31b12a22d}</destination>

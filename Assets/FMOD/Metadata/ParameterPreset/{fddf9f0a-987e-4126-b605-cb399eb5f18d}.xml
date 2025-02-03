@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{fddf9f0a-987e-4126-b605-cb399eb5f18d}">
+		<property name="name">
+			<value>wall kick</value>
+		</property>
+		<relationship name="folder">
+			<destination>{a0c5c681-ab8b-43dd-975c-6ad31b12a22d}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{d3b99b47-8c26-4275-a7ce-be29e661794c}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{d3b99b47-8c26-4275-a7ce-be29e661794c}">
+		<property name="parameterType">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>2</value>
+		</property>
+		<property name="enumerationLabels">
+			<value>Stone</value>
+			<value>Wood</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<relationship name="automators">
+			<destination>{12091543-faab-4e95-8ef7-02ca00f46be3}</destination>
+		</relationship>
+	</object>
+	<object class="Automator" id="{12091543-faab-4e95-8ef7-02ca00f46be3}">
+		<property name="nameOfPropertyBeingAutomated">
+			<value>cursorPosition</value>
+		</property>
+		<relationship name="automationCurves">
+			<destination>{8966648b-775b-47a0-9113-874495e87e35}</destination>
+		</relationship>
+	</object>
+	<object class="AutomationCurve" id="{8966648b-775b-47a0-9113-874495e87e35}">
+		<relationship name="parameter">
+			<destination>{07915a38-ab9e-4a72-83de-c6657038b75d}</destination>
+		</relationship>
+		<relationship name="automationPoints">
+			<destination>{53d7f6b8-b5e6-477d-890d-09e9a5379c82}</destination>
+			<destination>{1a3aeb69-adf8-4c15-b232-5b519d651138}</destination>
+		</relationship>
+	</object>
+	<object class="AutomationPoint" id="{53d7f6b8-b5e6-477d-890d-09e9a5379c82}">
+		<property name="position">
+			<value>1</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{1a3aeb69-adf8-4c15-b232-5b519d651138}">
+		<property name="position">
+			<value>4</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
+</objects>
