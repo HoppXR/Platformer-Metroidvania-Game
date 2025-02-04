@@ -1,81 +1,131 @@
-using TMPro;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    // Highscore
-    [SerializeField] private HighScoreBoard highScoreBoard;
-    [SerializeField] private TMP_Text playerTimeText;
-    [SerializeField] private TMP_InputField playerNameInput;
-    [SerializeField] private Button saveScoreButton;
-    private bool _hasSaved = false;
+    public static GameManager Instance { get; private set; }
     
-    // Collectables
-    [SerializeField] private TMP_Text countText;
-    private int _count = 0;
-    private int _maxCount;
-
-    // Timer
-    [SerializeField] private TMP_Text timerText;
-    private float _timer = 0f;
-    private bool _isRunning = true;
-    
-    // Player Health
+    [Header("References")] 
+    [SerializeField] private InputReader input;
     [SerializeField] private PlayerHealth playerHealth;
+
+    public static int Count = 0;
+    public static int MaxCount;
     
-    // UI
-    [SerializeField] private GameObject gameLoseUI;
-    [SerializeField] private GameObject gameWinUI;
-    [SerializeField] private GameObject gameUI;
+    #region Unity Methods
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
     
     private void Start()
     {
-        Time.timeScale = 1;
-
-        _maxCount = GameObject.FindGameObjectsWithTag("Collectable").Length;
-        SetCountText();
+        input.PauseEvent += PauseGame;
+        input.ResumeEvent += ResumeGame;
         
-        saveScoreButton.onClick.AddListener(OnSaveClicked);
-        saveScoreButton.interactable = false;
-
-        playerNameInput.onValueChanged.AddListener(OnNameChanged);
-
         playerHealth.OnDeath += PlayerLose;
     }
 
     private void Update()
     {
-        HandleTimer();
-        GameOver();
+        PlayerWin();
+    }
+    #endregion
+
+    #region UI Stuff
+    private void PauseGame()
+    {
+        // play ui sound
+        
+        FindFirstObjectByType<UIManager>()?.PauseGame();
+        
+        Time.timeScale = 0;
+        
+        // makes cursor visible and moveable
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
-    private void HandleTimer()
+    public void ResumeGame()
     {
-        if (!_isRunning) return;
-        _timer += Time.deltaTime;
-        timerText.text = _timer.ToString("F3");
+        // play ui sound
+        
+        // locks and hides the cursor
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        
+        Time.timeScale = 1;
+        
+        FindFirstObjectByType<UIManager>()?.ResumeGame();
     }
 
-    private void GameOver()
+    public void RestartGame()
     {
-        if (HasPlayerWon())
-        {
-            _isRunning = false;
-            Time.timeScale = 0;
-            gameWinUI.SetActive(true);
-            gameUI.SetActive(false);
+        // play ui sound
+        
+        // locks and hides the cursor
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        
+        Time.timeScale = 1;
+        
+        // Reset Collectable Score
+        Count = 0;
+        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void QuitGame()
+    {
+        // play ui sound
+        
+        Application.Quit();
+    }
+
+    // for level loads that have animations or need a delay
+    public IEnumerator LoadLevelTimer(int index, float time)
+    {
+        // play ui sound or animation before scene change
+        
+        yield return new WaitForSeconds(time);
+        
+        SceneManager.LoadScene(index);
+    }
+
+    // for instant level loads
+    public void LoadLevel(int index)
+    {
+        SceneManager.LoadScene(index);
+    }
+    #endregion
+
+    #region Game State
+    private void PlayerWin()
+    {
+        if (!HasPlayerWon()) return;
+        
+        FindFirstObjectByType<UIManager>()?.GameWin();
+
+        Time.timeScale = 0;
             
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     private void PlayerLose()
     {
         Time.timeScale = 0;
-        gameLoseUI.SetActive(true);
-        gameUI.SetActive(false);
+        
+        FindFirstObjectByType<UIManager>()?.GameLose();
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -83,29 +133,13 @@ public class GameManager : MonoBehaviour
 
     private bool HasPlayerWon()
     {
-        return _count >= _maxCount;
-    }
-
-    private void SetCountText()
-    {
-        countText.text = _count + "/" + _maxCount;
+        return Count >= MaxCount;
     }
     
     public void IncreaseCount()
     {
-        _count++;
-        SetCountText();
+        Count++;
+        FindFirstObjectByType<UIManager>().SetCountText();
     }
-
-    private void OnSaveClicked()
-    {
-        _hasSaved = true;
-        saveScoreButton.interactable = false;
-        highScoreBoard.AddHighScore(playerNameInput.text, _timer);
-    }
-
-    private void OnNameChanged(string playerName)
-    {
-        saveScoreButton.interactable = !_hasSaved && playerName.Length > 0;
-    }
+    #endregion
 }

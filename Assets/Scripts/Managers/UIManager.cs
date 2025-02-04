@@ -1,71 +1,109 @@
+using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private InputReader input;
+    [SerializeField] private HighScoreBoard highScoreBoard;
     
     [Header("UI")]
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject gameLoseUI;
+    [SerializeField] private GameObject gameWinUI;
+    [SerializeField] private GameObject gameUI;
+    
+    [Header("Collectables")]
+    [SerializeField] private TMP_Text countText;
+    
+    [Header("HighScore Board")]
+    [SerializeField] private TMP_Text playerTimeText;
+    [SerializeField] private TMP_InputField playerNameInput;
+    [SerializeField] private Button saveScoreButton;
+    private bool _hasSaved = false;
+    
+    [Header("Timer")]
+    [SerializeField] private TMP_Text timerText;
+    private float _timer = 0f;
+    private bool _isRunning = true;
     
     private void Start()
     {
-        input.PauseEvent += PauseGame;
-        input.ResumeEvent += ResumeGame;
+        Time.timeScale = 1;
+        
+        gameUI.SetActive(true);
+        pauseMenu.SetActive(false);
+        gameLoseUI.SetActive(false);
+        gameWinUI.SetActive(false);
+        
+        input.SetGameplay();
+        
+        saveScoreButton.onClick.AddListener(OnSaveClicked);
+        saveScoreButton.interactable = false;
+
+        playerNameInput.onValueChanged.AddListener(OnNameChanged);
+        
+        GameManager.MaxCount = GameObject.FindGameObjectsWithTag("Collectable").Length;
+        SetCountText();
     }
 
-    private void PauseGame()
+    private void Update()
     {
-        input.SetUI();
-        
-        if (pauseMenu != null)
-            pauseMenu.SetActive(true);
-        
-        Time.timeScale = 0;
-        
-        // makes cursor visible and moveable
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        HandleTimer();
+    }
+
+    public void PauseGame()
+    {
+        input?.SetUI();
+
+        pauseMenu?.SetActive(true);
     }
 
     public void ResumeGame()
     {
-        // locks and hides the cursor
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        pauseMenu?.SetActive(false);
         
-        Time.timeScale = 1;
-        
-        if (pauseMenu != null)
-            pauseMenu.SetActive(false);
-        
-        input.SetGameplay();
-    }
-    
-    public void Retry()
-    {
-        ResumeGame();
-        
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        input?.SetGameplay();
     }
 
-    public void MainMenu()
+    public void GameLose()
     {
-        // make cursor visible before sending to main menu
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        _isRunning = false;
         
-        SceneManager.LoadScene(0);
+        gameUI?.SetActive(false);
+        gameLoseUI?.SetActive(true);
     }
 
-    public void PlayGame()
+    public void GameWin()
     {
-        SceneManager.LoadScene(1);
+        _isRunning = false;
+        
+        gameUI?.SetActive(false);
+        gameWinUI?.SetActive(true);
     }
     
-    public void QuitGame()
+    public void SetCountText()
     {
-        Application.Quit();
+        countText.text = GameManager.Count + "/" + GameManager.MaxCount;
+    }
+    
+    private void HandleTimer()
+    {
+        if (!_isRunning) return;
+        _timer += Time.deltaTime;
+        timerText.text = _timer.ToString("F2");
+    }
+    
+    private void OnSaveClicked()
+    {
+        _hasSaved = true;
+        saveScoreButton.interactable = false;
+        highScoreBoard.AddHighScore(playerNameInput.text, _timer);
+    }
+
+    private void OnNameChanged(string playerName)
+    {
+        saveScoreButton.interactable = !_hasSaved && playerName.Length > 0;
     }
 }
