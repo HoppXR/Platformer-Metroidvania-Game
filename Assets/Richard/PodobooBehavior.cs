@@ -28,10 +28,9 @@ public class PodobooBehavior : MonoBehaviour
     {
         isCooldown = true;
         yield return StartCoroutine(MoveWithEase(startPosition, startPosition + Vector3.up * height, EaseOutQuint));
-        Quaternion rotation = Quaternion.Euler(90, 0, 0);
+        transform.rotation = Quaternion.Euler(90, 0, 0);
         yield return StartCoroutine(MoveWithEase(startPosition + Vector3.up * height, startPosition, EaseInCubic));
-        rotation = Quaternion.Euler(-90, 0, 0);
-        transform.rotation = rotation;
+        transform.rotation = Quaternion.Euler(-90, 0, 0);
         yield return new WaitForSeconds(cooldownTime);
         isCooldown = false;
     }
