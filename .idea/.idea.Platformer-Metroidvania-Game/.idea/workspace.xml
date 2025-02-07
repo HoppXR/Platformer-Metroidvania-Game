@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="23ecdee6-e53f-4c67-8fa7-c80e246c1084" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Platformer-Metroidvania-Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Platformer-Metroidvania-Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/Richard Test Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Richard Test Scene.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,9 +17,15 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/MeleeAttackCD.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/BossAIStateManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Chase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Idle.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Lunge.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Tired.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Richard/Boss Yippe/Manager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/Fight2.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/Parkour1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Richard/CelShaderEffects.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -102,7 +107,8 @@
       <workItem from="1738121240325" duration="211000" />
       <workItem from="1738203049033" duration="202000" />
       <workItem from="1738203317847" duration="122000" />
-      <workItem from="1738709704110" duration="2023000" />
+      <workItem from="1738709704110" duration="3106000" />
+      <workItem from="1738887500752" duration="738000" />
     </task>
     <servers />
   </component>
