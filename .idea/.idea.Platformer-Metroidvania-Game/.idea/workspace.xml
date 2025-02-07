@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="23ecdee6-e53f-4c67-8fa7-c80e246c1084" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Platformer-Metroidvania-Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Platformer-Metroidvania-Game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Richard/Richard Test Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Richard Test Scene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Richard/ShadersAndMat/Water.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/ShadersAndMat/Water.shadergraph" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +110,10 @@
       <workItem from="1738203049033" duration="202000" />
       <workItem from="1738203317847" duration="122000" />
       <workItem from="1738709704110" duration="3106000" />
-      <workItem from="1738887500752" duration="738000" />
+      <workItem from="1738887500752" duration="768000" />
+      <workItem from="1738907799543" duration="559000" />
+      <workItem from="1738909473548" duration="3000" />
+      <workItem from="1738909508168" duration="19000" />
     </task>
     <servers />
   </component>
