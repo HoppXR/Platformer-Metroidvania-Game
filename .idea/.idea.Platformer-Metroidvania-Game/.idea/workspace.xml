@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="23ecdee6-e53f-4c67-8fa7-c80e246c1084" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Platformer-Metroidvania-Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Platformer-Metroidvania-Game/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Richard/Richard Test Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Richard Test Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/ShadersAndMat/Water.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/ShadersAndMat/Water.shadergraph" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Richard/ShadersAndMat/New Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/ShadersAndMat/New Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Richard/ShadersAndMat/Podobo.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/ShadersAndMat/Podobo.shadergraph" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Richard/ShadersAndMat/SkyBox1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/ShadersAndMat/SkyBox1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Richard/ShadersAndMat/Skybox.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/ShadersAndMat/Skybox.shadergraph" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,6 +116,7 @@
       <workItem from="1738907799543" duration="559000" />
       <workItem from="1738909473548" duration="3000" />
       <workItem from="1738909508168" duration="19000" />
+      <workItem from="1738966690570" duration="280000" />
     </task>
     <servers />
   </component>
@@ -124,5 +127,24 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Richard/ShadersAndMat/LigtDirection.cs</url>
+          <line>11</line>
+          <properties documentPath="C:\Users\Richi\Unity Projects\Platformer-Metroidvania-Game\Assets\Richard\ShadersAndMat\LigtDirection.cs" initialLine="12" containingFunctionPresentation="Method 'Update'">
+            <startOffsets>
+              <option value="224" />
+            </startOffsets>
+            <endOffsets>
+              <option value="283" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

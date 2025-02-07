@@ -21,8 +21,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: SkyBox1
-  m_Shader: {fileID: -6465566751694194690, guid: 63f6ae548c4afe84db0e10c09ac53119, type: 3}
-  m_Parent: {fileID: -876546973899608171, guid: 63f6ae548c4afe84db0e10c09ac53119, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: dbbe22259a874e041b37c32a119a5d95, type: 3}
+  m_Parent: {fileID: -876546973899608171, guid: dbbe22259a874e041b37c32a119a5d95, type: 3}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords:
@@ -36,15 +36,27 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _SampleTexture2D_2f0d9aa888d24ba4934fccc9b109adda_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 59e4c0cef7b0bdc4dbc9a0039933dd9b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _BUILTIN_QueueControl: 0
     - _Day: 1
-    - _HoriContr: 0
-    - _HoriOffset: 0
-    - _StarTiling: 0
+    - _DayTime: 0.524
+    - _HoriContr: 2.45
+    - _HoriOffset: 2.43
+    - _HorizontalContrast: 8.1
+    - _MoonSize: -1.49
+    - _StarTiling: 29.52
+    - _StarUVMix: 1.14
     - _StarsIntense: 0
-    - _StarsUVMix: 0
-    m_Colors: []
+    - _StarsUVMix: 2.3
+    - _sunzSize: 0.26
+    m_Colors:
+    - _MainLightDirection: {r: 0.24882579, g: 0.5184189, b: -0.8181243, a: 0}
+    - _NightSky: {r: 0.33962262, g: 0.07262367, b: 0.07262367, a: 0}
+    - _suncolor: {r: 1, g: 0.61006284, b: 0.61006284, a: 0}
   m_BuildTextureStacks: []
