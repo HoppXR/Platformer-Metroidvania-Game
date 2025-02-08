@@ -45,7 +45,7 @@ Material:
     m_Floats:
     - _BUILTIN_QueueControl: 0
     - _Day: 1
-    - _DayTime: 0.524
+    - _DayTime: 0.403
     - _HoriContr: 2.45
     - _HoriOffset: 2.43
     - _HorizontalContrast: 8.1
@@ -54,9 +54,11 @@ Material:
     - _StarUVMix: 1.14
     - _StarsIntense: 0
     - _StarsUVMix: 2.3
-    - _sunzSize: 0.26
+    - _sunzSize: 0.17
     m_Colors:
-    - _MainLightDirection: {r: 0.24882579, g: 0.5184189, b: -0.8181243, a: 0}
-    - _NightSky: {r: 0.33962262, g: 0.07262367, b: 0.07262367, a: 0}
-    - _suncolor: {r: 1, g: 0.61006284, b: 0.61006284, a: 0}
+    - _Ground: {r: 0, g: 0.015045473, b: 0.5660378, a: 0}
+    - _Horizon: {r: 0.572327, g: 0.7550772, b: 1, a: 0}
+    - _MainLightDirection: {r: 0.2090538, g: 0.286171, b: -0.9350952, a: 0}
+    - _NightSky: {r: 0.20870933, g: 0.07450979, b: 0.34117648, a: 0}
+    - _suncolor: {r: 1, g: 0.6438216, b: 0, a: 0}
   m_BuildTextureStacks: []

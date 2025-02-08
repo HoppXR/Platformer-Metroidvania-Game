@@ -21,8 +21,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: New Material
-  m_Shader: {fileID: -6465566751694194690, guid: dbbe22259a874e041b37c32a119a5d95, type: 3}
-  m_Parent: {fileID: 2100000, guid: de9f8a4197a9dc94ba6efa4026c304b5, type: 2}
+  m_Shader: {fileID: -6465566751694194690, guid: 5dd7e515ce3b6934ca5527f0721c25ed, type: 3}
+  m_Parent: {fileID: -876546973899608171, guid: 5dd7e515ce3b6934ca5527f0721c25ed, type: 3}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords:
@@ -39,16 +39,19 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _Day: 0.647
+    - _BUILTIN_QueueControl: 0
+    - _Day: 0
     - _DayTime: 0
-    - _HoriOffset: 0.48
+    - _HoriOffset: -0.09
     - _HorizontalContrast: 15.98
+    - _MoonSize: 3
     - _StarIntensity: 11.09
     - _StarTiling: 5.97
     - _StarUVMix: 4.56
-    - _SunSize: 0.236
+    - _SunSize: 1.36
     m_Colors:
+    - _MoonColor: {r: 1, g: 0.9839122, b: 0.37421376, a: 0}
     - _NightSky: {r: 1, g: 0.09119487, b: 0.09119487, a: 0}
-    - _SunColor: {r: 0, g: 0, b: 0, a: 0}
+    - _SunColor: {r: 1, g: 0.7963194, b: 0, a: 0}
     - _suncolor: {r: 1, g: 0.8983619, b: 0, a: 0}
   m_BuildTextureStacks: []
