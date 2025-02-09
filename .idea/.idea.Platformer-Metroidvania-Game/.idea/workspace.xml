@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="23ecdee6-e53f-4c67-8fa7-c80e246c1084" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/Richard Test Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Richard Test Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/ShadersAndMat/New Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/ShadersAndMat/New Material.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/ShadersAndMat/Podobo.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/ShadersAndMat/Podobo.shadergraph" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/ShadersAndMat/SkyBox1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/ShadersAndMat/SkyBox1.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/ShadersAndMat/Skybox.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/ShadersAndMat/Skybox.shadergraph" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Platformer-Metroidvania-Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Platformer-Metroidvania-Game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Richard/ShadersAndMat/Skybox.2.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/ShadersAndMat/Skybox.2.shadergraph" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,6 +114,7 @@
       <workItem from="1738909473548" duration="3000" />
       <workItem from="1738909508168" duration="19000" />
       <workItem from="1738966690570" duration="280000" />
+      <workItem from="1739069631390" duration="1369000" />
     </task>
     <servers />
   </component>
