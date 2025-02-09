@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using FMOD.Studio;
-using FMODUnity;
-using STOP_MODE = FMOD.Studio.STOP_MODE;
+using UnityEngine.InputSystem;
 
 namespace Platformer
 {
@@ -13,8 +11,8 @@ namespace Platformer
         [Header("References")]
         [SerializeField] private InputReader input;
         [SerializeField] private Transform orientation;
-        public MovementState state;
         private Rigidbody _rb;
+        private PlayerSound _ps;
         private List<Timer> _timers;
         private CountdownTimer _jumpTimer;
         private CountdownTimer _jumpCooldownTimer;
@@ -67,13 +65,6 @@ namespace Platformer
         private RaycastHit _slopeHit;
         private bool _exitingSlope;
         
-        [Header("Audio")]
-        [SerializeField] private CurrentTerrain currentTerrain;
-        private enum CurrentTerrain { Grass, Stone, Water, Pipe }
-        private EventInstance playerFootsteps;
-
-        [SerializeField] private EventReference jumpSound;
-        
         public enum MovementState
         {
             Freeze,
@@ -84,6 +75,8 @@ namespace Platformer
             Dashing,
             Air
         }
+        
+        [HideInInspector] public MovementState state;
 
         [HideInInspector] public bool freeze;
         [HideInInspector] public bool restricted;
@@ -104,8 +97,6 @@ namespace Platformer
             _timers = new List<Timer>(2) { _jumpTimer, _jumpCooldownTimer };
             _jumpTimer.OnTimerStart += () => _jumpCooldownTimer.Start();
 
-            playerFootsteps = AudioManager.instance.CreateInstance(FMODEvents.Instance.PlayerFootsteps);
-
             input.MoveEvent += HandleMove;
             input.JumpEvent += HandleJump;
             input.JumpCancelledEvent += HandleCancelJump;
@@ -119,8 +110,6 @@ namespace Platformer
             SpeedControl();
             StateHandler();
             CheckIfGrounded();
-            DetermineTerrain();
-            SelectAndPlayFootstep();
 
             // handle landing
             if (!Grounded)
@@ -131,84 +120,6 @@ namespace Platformer
         {
             Jump();
             MovePlayer();
-        }
-        #endregion
-
-        #region Sound Handling
-        private void DetermineTerrain()
-        {
-            RaycastHit[] hit;
-
-            hit = Physics.RaycastAll(transform.position, Vector3.down, 10f);
-            
-            foreach (RaycastHit rayhit in hit)
-            {
-                if (rayhit.transform.gameObject.layer == LayerMask.NameToLayer("Grass"))
-                {
-                    currentTerrain = CurrentTerrain.Grass;
-                    break;
-                }
-                else if (rayhit.transform.gameObject.layer == LayerMask.NameToLayer("Stone"))
-                {
-                    currentTerrain = CurrentTerrain.Stone;
-                    break;
-                }
-                else if (rayhit.transform.gameObject.layer == LayerMask.NameToLayer("Water"))
-                {
-                    currentTerrain = CurrentTerrain.Water;
-                }
-                else if (rayhit.transform.gameObject.layer == LayerMask.NameToLayer("Pipe"))
-                {
-                    currentTerrain = CurrentTerrain.Pipe;
-                }
-            }
-        }
-
-        public void SelectAndPlayFootstep()
-        {
-            switch (currentTerrain)
-            {
-                case CurrentTerrain.Grass:
-                    PlayFootstep(0);
-                    break;
-                
-                case CurrentTerrain.Stone:
-                    PlayFootstep(1);
-                    break;
-                
-                case CurrentTerrain.Water:
-                    PlayFootstep(2);
-                    break;
-                
-                case CurrentTerrain.Pipe:
-                    PlayFootstep(3);
-                    break;
-                
-                default:
-                    PlayFootstep(0);
-                    break;
-            }
-        }
-
-        private void PlayFootstep(int terrain)
-        {
-            playerFootsteps.setParameterByName("Terrain", terrain);
-            playerFootsteps.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
-            
-            if (_inputDirection.y != 0 && Grounded || _inputDirection.x != 0 && Grounded)
-            {
-                PLAYBACK_STATE playbackState;
-                playerFootsteps.getPlaybackState(out playbackState);
-                
-                if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
-                {
-                    playerFootsteps.start();
-                }
-            }
-            else
-            {
-                playerFootsteps.stop(STOP_MODE.ALLOWFADEOUT);
-            }
         }
         #endregion
 
@@ -302,7 +213,7 @@ namespace Platformer
                 
                 _jumpTimer.Start();
                     
-                AudioManager.instance.PlayOneShot(jumpSound, transform.position);
+                _ps.PlayJumpSound();
                     
                 if (AbilityManager.DoubleJumpEnabled)
                     _doubleJump = !_doubleJump;
