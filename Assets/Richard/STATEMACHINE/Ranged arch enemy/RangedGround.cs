@@ -9,6 +9,7 @@ public class RangedAttack : StateMachineBehaviour
     public Transform player;
     private float StopChasing = 16f;
     private AttackCoolDowns attackCoolDowns;
+    private Transform attackTransform;
 
     public GameObject projectilePrefab; // The projectile prefab to shoot
     public float baseProjectileSpeed; // Base speed of the projectile
@@ -21,6 +22,7 @@ public class RangedAttack : StateMachineBehaviour
         AI.speed = 0f;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         StopChasing = animator.GetFloat("RangeToStopChasing");
+        attackTransform = animator.transform.Find("Attack");
 
         // Reference AttackCoolDowns script
         attackCoolDowns = animator.GetComponent<AttackCoolDowns>();
@@ -100,7 +102,7 @@ public class RangedAttack : StateMachineBehaviour
     void ShootProjectile(Vector3 startPosition, Vector3 targetPosition)
     {
         // Instantiate the projectile at the enemy's position
-        GameObject projectile = Instantiate(projectilePrefab, startPosition, Quaternion.identity);
+        GameObject projectile = Instantiate(projectilePrefab, attackTransform.position, Quaternion.identity);
 
         // Calculate the direction and apply the arc using a Rigidbody
         Rigidbody rb = projectile.GetComponent<Rigidbody>();

@@ -39,13 +39,13 @@ public class ObjectTracker : MonoBehaviour
         {
             Vector3 currentVelocity = rb.velocity;
             v3AverageVelocity = Vector3.Lerp(v3AverageVelocity, currentVelocity, smoothingFactor);
-            Vector3 rawAcceleration = (currentVelocity - v3PrevVel) / Time.deltaTime;
+            Vector3 rawAcceleration = (currentVelocity - v3PrevVel) / Time.unscaledDeltaTime;
             rawAcceleration = Vector3.ClampMagnitude(rawAcceleration, maxAcceleration);
             v3AverageAcceleration = Vector3.Lerp(v3AverageAcceleration, rawAcceleration, smoothingFactor);
             v3PrevVel = currentVelocity;
         }
         
-        GetProjectedPosition(1f);
+        GetProjectedPosition(0.5f);
         
         v3PrevPos = goTrackingObject.transform.position;
     }
