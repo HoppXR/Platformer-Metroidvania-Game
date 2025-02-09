@@ -213,7 +213,7 @@ namespace Platformer
                 
                 _jumpTimer.Start();
                     
-                _ps.PlayJumpSound();
+                _ps?.PlayJumpSound();
                     
                 if (AbilityManager.DoubleJumpEnabled)
                     _doubleJump = !_doubleJump;
