@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{1132149f-04dd-45c7-919e-0c67012b1ce2}">
 		<property name="name">
-			<value>TingerCollectedSound</value>
+			<value>Coin</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>

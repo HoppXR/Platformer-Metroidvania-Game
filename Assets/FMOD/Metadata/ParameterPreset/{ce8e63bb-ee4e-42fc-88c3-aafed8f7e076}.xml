@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{ce8e63bb-ee4e-42fc-88c3-aafed8f7e076}">
+		<property name="name">
+			<value>roll jump</value>
+		</property>
+		<relationship name="folder">
+			<destination>{a0c5c681-ab8b-43dd-975c-6ad31b12a22d}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{ca753dc8-2da4-4574-aade-9793e8cf6449}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{ca753dc8-2da4-4574-aade-9793e8cf6449}">
+		<property name="parameterType">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>5</value>
+		</property>
+		<property name="enumerationLabels">
+			<value>Grass</value>
+			<value>Stone</value>
+			<value>Water</value>
+			<value>Pipe</value>
+			<value>Wood</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<relationship name="automators">
+			<destination>{430e4584-4bde-4628-b614-484ff14ea36f}</destination>
+		</relationship>
+	</object>
+	<object class="Automator" id="{430e4584-4bde-4628-b614-484ff14ea36f}">
+		<property name="nameOfPropertyBeingAutomated">
+			<value>cursorPosition</value>
+		</property>
+		<relationship name="automationCurves">
+			<destination>{5d97d8f7-6386-44d5-9915-c8f943b76d44}</destination>
+		</relationship>
+	</object>
+	<object class="AutomationCurve" id="{5d97d8f7-6386-44d5-9915-c8f943b76d44}">
+		<relationship name="parameter">
+			<destination>{07915a38-ab9e-4a72-83de-c6657038b75d}</destination>
+		</relationship>
+		<relationship name="automationPoints">
+			<destination>{db8c47f9-c93a-4bd9-b147-47237b127669}</destination>
+			<destination>{c547edcf-df0a-4676-9381-1137bdc0abc8}</destination>
+			<destination>{36db281b-fbfb-477b-925a-4012c5f222da}</destination>
+			<destination>{349b6cc6-2031-4ce3-a1ed-a19412d8e6cd}</destination>
+			<destination>{807c092e-de96-4298-9aa9-a32453064ce4}</destination>
+		</relationship>
+	</object>
+	<object class="AutomationPoint" id="{db8c47f9-c93a-4bd9-b147-47237b127669}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{c547edcf-df0a-4676-9381-1137bdc0abc8}">
+		<property name="position">
+			<value>1</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{36db281b-fbfb-477b-925a-4012c5f222da}">
+		<property name="position">
+			<value>2</value>
+		</property>
+		<property name="value">
+			<value>2</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{349b6cc6-2031-4ce3-a1ed-a19412d8e6cd}">
+		<property name="position">
+			<value>3</value>
+		</property>
+		<property name="value">
+			<value>3</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{807c092e-de96-4298-9aa9-a32453064ce4}">
+		<property name="position">
+			<value>4</value>
+		</property>
+		<property name="value">
+			<value>4</value>
+		</property>
+	</object>
+</objects>
