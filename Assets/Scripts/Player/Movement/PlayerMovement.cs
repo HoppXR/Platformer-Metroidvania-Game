@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Platformer
 {
@@ -12,6 +11,7 @@ namespace Platformer
         [SerializeField] private InputReader input;
         [SerializeField] private Transform orientation;
         private Rigidbody _rb;
+        private Animator _animator;
         private PlayerSound _ps;
         private List<Timer> _timers;
         private CountdownTimer _jumpTimer;
@@ -50,7 +50,7 @@ namespace Platformer
         
         [SerializeField] private float coyoteTime = 0.2f;
         [SerializeField] private float jumpBufferTime = 0.2f;
-        private float jumpBufferTimer;
+        private float _jumpBufferTimer;
         private float _coyoteTimer;
         
         [Header("Ground Check")] 
@@ -64,6 +64,9 @@ namespace Platformer
         [SerializeField] private float maxSlopeAngle;
         private RaycastHit _slopeHit;
         private bool _exitingSlope;
+        
+        [Header("Animator")]
+        private static readonly int Forward = Animator.StringToHash("Forward");
         
         public enum MovementState
         {
@@ -89,6 +92,7 @@ namespace Platformer
         #region Unity Built-in Methods
         private void Start()
         {
+            _animator = GetComponentInChildren<Animator>();
             _rb = GetComponent<Rigidbody>();
             _rb.freezeRotation = true;
             
@@ -178,6 +182,11 @@ namespace Platformer
                 _rb.AddForce(-_rb.velocity * (deceleration * 10f), ForceMode.Acceleration);
             }
             
+            // Handle animations for movement
+            float forwardValue = Vector3.Dot(_rb.velocity.normalized, _moveDirection);
+            
+            _animator.SetFloat(Forward, forwardValue);
+            
             // turn gravity off while on slope
             _rb.useGravity = !OnSlope();
         }
@@ -186,7 +195,7 @@ namespace Platformer
         #region Jump Handling
         private void HandleJump()
         {
-            jumpBufferTimer = jumpBufferTime;
+            _jumpBufferTimer = jumpBufferTime;
             
             _isJumping = true;
         }
@@ -204,10 +213,10 @@ namespace Platformer
                 _doubleJump = false;
             }
 
-            jumpBufferTimer -= Time.deltaTime;
+            _jumpBufferTimer -= Time.deltaTime;
             
             // Start Jump
-            if (jumpBufferTimer > 0 && !_jumpCooldownTimer.IsRunning && !swinging)
+            if (_jumpBufferTimer > 0 && !_jumpCooldownTimer.IsRunning && !swinging)
             {
                 if (!(_coyoteTimer > 0) && !_doubleJump) return;
                 
@@ -218,7 +227,7 @@ namespace Platformer
                 if (AbilityManager.DoubleJumpEnabled)
                     _doubleJump = !_doubleJump;
 
-                jumpBufferTimer = 0;
+                _jumpBufferTimer = 0;
             }
             // Stop Jump
             else if (!_isJumping && _jumpTimer.IsRunning)
@@ -359,7 +368,7 @@ namespace Platformer
                 if (_inputDirection != Vector2.zero)
                     _desiredMoveSpeed = walkSpeed;
                 else
-                    _desiredMoveSpeed = walkSpeed * 0.6f;
+                    _desiredMoveSpeed = walkSpeed * 0.75f;
             }
             
             bool desiredMoveSpeedHasChanged = !Mathf.Approximately(_desiredMoveSpeed, _lastDesiredMoveSpeed);
