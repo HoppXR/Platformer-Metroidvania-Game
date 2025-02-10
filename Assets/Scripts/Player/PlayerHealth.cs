@@ -6,56 +6,33 @@ public class PlayerHealth : MonoBehaviour
 {
     public event Action OnDeath;
     
-    [SerializeField] private float health;
-    [SerializeField] private Slider healthBarSlider;
-    [SerializeField] private Image healthBarColor;
+    [SerializeField] private float playerLives;
     private float _lerpSpeed;
-    private float _maxHealth;
+    private float _maxPlayerLives;
 
     private void Start()
     {
-        _maxHealth = health;
-        healthBarSlider.maxValue = _maxHealth;
-        healthBarSlider.value = health;
+        _maxPlayerLives = playerLives;
     }
 
-    private void Update()
+    public void TakeDamage()
     {
-        _lerpSpeed = 3f * Time.fixedDeltaTime;
-        HealthBar();
-        ColorChanger();
-    }
-
-    public void TakeDamage(float amount)
-    {
-        if (amount >= health)
+        if (playerLives <= 0)
         {
-            health = 0;
+            playerLives = 0;
             OnDeath?.Invoke();
         }
         else
-            health -= amount;
+            playerLives--;
     }
 
-    public void Heal(float amount)
+    public void Heal()
     {
-        if (amount + health >= _maxHealth)
+        if (playerLives++ >= _maxPlayerLives)
         {
-            health = _maxHealth;
+            playerLives = _maxPlayerLives;
         }
 
-        health += amount;
-    }
-
-    private void HealthBar()
-    {
-        healthBarSlider.value = Mathf.Lerp(healthBarSlider.value, health, _lerpSpeed);
-    }
-
-    private void ColorChanger()
-    {
-        Color healthColor = Color.Lerp(Color.red, Color.green, healthBarSlider.value / _maxHealth);
-
-        healthBarColor.color = healthColor;
+        playerLives++;
     }
 }

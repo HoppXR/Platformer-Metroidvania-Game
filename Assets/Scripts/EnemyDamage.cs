@@ -24,6 +24,6 @@ public class EnemyDamage : MonoBehaviour
 
     private void TickDamage()
     {
-        _pHealth.TakeDamage(damage);
+        _pHealth.TakeDamage();
     }
 }
