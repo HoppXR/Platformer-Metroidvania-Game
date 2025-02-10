@@ -6,33 +6,45 @@ public class PlayerHealth : MonoBehaviour
 {
     public event Action OnDeath;
     
-    [SerializeField] private float playerLives;
-    private float _lerpSpeed;
-    private float _maxPlayerLives;
+    [SerializeField] private int playerLives;
+    [SerializeField] private Sprite[] playerLiveSprites;
+    [SerializeField] private Image playerLiveDisplay;
+    private int _maxPlayerLives;
 
     private void Start()
     {
         _maxPlayerLives = playerLives;
+        
+        UpdateSprite();
     }
 
     public void TakeDamage()
     {
+        playerLives--;
+        
         if (playerLives <= 0)
         {
             playerLives = 0;
             OnDeath?.Invoke();
         }
-        else
-            playerLives--;
+        
+        UpdateSprite();
     }
 
     public void Heal()
     {
-        if (playerLives++ >= _maxPlayerLives)
+        playerLives++;
+        
+        if (playerLives >= _maxPlayerLives)
         {
             playerLives = _maxPlayerLives;
         }
+        
+        UpdateSprite();
+    }
 
-        playerLives++;
+    private void UpdateSprite()
+    {
+        playerLiveDisplay.sprite = playerLiveSprites[playerLives];
     }
 }

@@ -46,6 +46,8 @@ public class UIManager : MonoBehaviour
         
         GameManager.MaxCount = GameObject.FindGameObjectsWithTag("Collectable").Length;
         SetCountText();
+        
+        GameManager.Instance.FindPlayerHealth();
     }
 
     private void Update()
