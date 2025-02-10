@@ -9,6 +9,12 @@ public class MusicManager : MonoBehaviour
     {
         _backgroundMusic = AudioManager.instance.CreateInstance(FMODEvents.Instance.BGM);
         
+        _backgroundMusic.setParameterByName("powerups 1", 0.01f);
+        _backgroundMusic.setParameterByName("powerups 2", 0.01f);
+        _backgroundMusic.setParameterByName("powerups 3", 0.01f);
+        
+        _backgroundMusic.setParameterByName("Underground muffle", 1);
+        
         _backgroundMusic.start();
         _backgroundMusic.release();
     }
