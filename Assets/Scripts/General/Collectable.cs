@@ -31,7 +31,8 @@ public class Collectable : MonoBehaviour
             
             if (collectParticle != null)
             {
-                ParticleSystem particle = Instantiate(collectParticle, transform.position, Quaternion.identity);
+                Quaternion particleRotation = Quaternion.Euler(-90f, 0f, 0f);
+                ParticleSystem particle = Instantiate(collectParticle, transform.position, particleRotation);
                 Destroy(particle.gameObject, 2f);
             }
             
