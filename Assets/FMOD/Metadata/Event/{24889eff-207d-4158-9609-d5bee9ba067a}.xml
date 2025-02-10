@@ -75,7 +75,14 @@
 			<destination>{242a25ae-5348-427f-a603-6e28ab1007d8}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{04372149-2465-47cc-a640-088060dfb594}" />
+	<object class="EventAutomatableProperties" id="{04372149-2465-47cc-a640-088060dfb594}">
+		<property name="isPersistent">
+			<value>true</value>
+		</property>
+		<property name="maxVoices">
+			<value>1</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{e388004c-9278-4014-bb52-0de078ad3bf8}" />
 	<object class="GroupTrack" id="{38e2c707-16f3-4f30-8be0-2d6f6875f570}">
 		<relationship name="modules">
@@ -203,6 +210,12 @@
 	</object>
 	<object class="MixerBusPanner" id="{6ee67701-ae80-4ed3-9fbf-a74a0ef599e2}" />
 	<object class="SingleSound" id="{1a5d612f-9fba-4277-9f24-a571d67cb522}">
+		<property name="volume">
+			<value>-3</value>
+		</property>
+		<property name="looping">
+			<value>true</value>
+		</property>
 		<relationship name="audioFile">
 			<destination>{0c399a35-3a45-439f-b31c-0886f6cbf161}</destination>
 		</relationship>
@@ -230,6 +243,12 @@
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{06d1fcb6-2232-4bf8-818e-fa3d3ea475c3}">
+		<property name="volume">
+			<value>-4.5</value>
+		</property>
+		<property name="looping">
+			<value>true</value>
+		</property>
 		<relationship name="audioFile">
 			<destination>{2d2b0371-79cf-4eea-9115-3319a5499a51}</destination>
 		</relationship>
@@ -257,6 +276,12 @@
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{78dfc2c7-138d-4e15-b09e-83ac1f44a55c}">
+		<property name="volume">
+			<value>-1</value>
+		</property>
+		<property name="looping">
+			<value>true</value>
+		</property>
 		<relationship name="audioFile">
 			<destination>{0a00b2d8-a841-4943-a05e-e11cf8cd30ac}</destination>
 		</relationship>
@@ -317,6 +342,12 @@
 	</object>
 	<object class="MixerBusPanner" id="{8e55c79d-57e8-452f-b01e-0a58e5144099}" />
 	<object class="SingleSound" id="{85b11258-25e7-4aec-bcf5-7270f3479a03}">
+		<property name="volume">
+			<value>-7</value>
+		</property>
+		<property name="looping">
+			<value>true</value>
+		</property>
 		<relationship name="audioFile">
 			<destination>{eceecdce-f20a-4faf-8f16-b303bd3dc178}</destination>
 		</relationship>
@@ -438,7 +469,7 @@
 			<value>1</value>
 		</property>
 		<property name="value">
-			<value>10</value>
+			<value>0</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{f9ffd886-a085-4748-b480-57d8695f283c}">
@@ -446,7 +477,7 @@
 			<value>0</value>
 		</property>
 		<property name="value">
-			<value>10</value>
+			<value>0</value>
 		</property>
 	</object>
 	<object class="Automator" id="{983ee298-0a82-4535-98d8-dfcfacc7374e}">

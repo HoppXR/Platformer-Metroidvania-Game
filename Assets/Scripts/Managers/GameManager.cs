@@ -31,8 +31,6 @@ public class GameManager : MonoBehaviour
     {
         input.PauseEvent += PauseGame;
         input.ResumeEvent += ResumeGame;
-        
-        _playerHealth.OnDeath += PlayerLose;
     }
 
     private void Update()
