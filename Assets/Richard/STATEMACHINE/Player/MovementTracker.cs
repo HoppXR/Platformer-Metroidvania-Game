@@ -46,7 +46,7 @@ public class ObjectTracker : MonoBehaviour
             v3PrevVel = currentVelocity;
         }
         
-        GetProjectedPosition(1f);
+        GetProjectedPosition(0.5f);
         
         v3PrevPos = goTrackingObject.transform.position;
     }

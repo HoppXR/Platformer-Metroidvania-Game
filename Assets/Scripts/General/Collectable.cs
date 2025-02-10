@@ -4,6 +4,7 @@ using FMODUnity;
 public class Collectable : MonoBehaviour
 {
     [SerializeField] private EventReference tingerCollectedSound;
+    [SerializeField] private ParticleSystem collectParticle;
     
     private GameManager _gameManager;
     
@@ -27,6 +28,12 @@ public class Collectable : MonoBehaviour
             // add collectable logic
             AudioManager.instance.PlayOneShot(tingerCollectedSound, this.transform.position);
             _gameManager.IncreaseCount();
+            
+            if (collectParticle != null)
+            {
+                ParticleSystem particle = Instantiate(collectParticle, transform.position, Quaternion.identity);
+                Destroy(particle.gameObject, 2f);
+            }
             
             Destroy(gameObject);
         }

@@ -39,7 +39,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _BUILTIN_QueueControl: 0
-    - _DisplacementScale: 0.2
+    - _DisplacementScale: 0.6
     - _SurfaceDisplacement: 15
     m_Colors: []
   m_BuildTextureStacks: []

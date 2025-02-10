@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 413422206528297665}
   - component: {fileID: 8532231213697563871}
   - component: {fileID: 3911424860936831899}
-  - component: {fileID: 8469266471249552182}
+  - component: {fileID: 5565351915847427294}
   m_Layer: 0
   m_Name: RangedFlying
   m_TagString: Untagged
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e65e162c6ee693f4095c7bd377d0930f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8469266471249552182
+--- !u!114 &5565351915847427294
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,4 +159,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1480be0dadd42343b9ddc3a896f950a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 2

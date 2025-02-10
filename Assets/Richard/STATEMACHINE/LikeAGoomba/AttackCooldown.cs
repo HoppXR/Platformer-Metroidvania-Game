@@ -5,7 +5,7 @@ using UnityEngine.AI;
 public class AttackCooldown : StateMachineBehaviour
 {
     private float cooldownTimer;
-    public float cooldownDuration = 2f; // Example cooldown duration
+    public float cooldownDuration = 2f;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -23,10 +23,5 @@ public class AttackCooldown : StateMachineBehaviour
             animator.SetBool("canAttack", true); // Enable attack again
             animator.SetBool("isPatroling", true);
         }
-    }
-
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        // Optionally handle state exit logic
     }
 }
