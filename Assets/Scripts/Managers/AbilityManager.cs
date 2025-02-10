@@ -1,9 +1,11 @@
-using System;
 using UnityEngine;
 
 public class AbilityManager : MonoBehaviour
 {
     public static AbilityManager Instance { get; private set; }
+
+    private MusicManager _musicManager;
+    private int _numberOfEnabled;
     
     public enum Abilities
     {
@@ -39,6 +41,8 @@ public class AbilityManager : MonoBehaviour
 
     private void Start()
     {
+        _musicManager = FindFirstObjectByType<MusicManager>();
+        
         if (enableDoubleJump) DoubleJumpEnabled = true;
         if (enableSlide) SlideEnabled = true;
         if (enableDash) DashEnabled = true;
@@ -47,6 +51,10 @@ public class AbilityManager : MonoBehaviour
 
     public void EnableAbility(Abilities ability)
     {
+        _numberOfEnabled++;
+        
+        AddTracks();
+        
         if (ability == Abilities.DoubleJump)
         {
             DoubleJumpEnabled = true;
@@ -67,5 +75,10 @@ public class AbilityManager : MonoBehaviour
             SwingEnabled = true;
             Debug.Log("Swing Enabled");
         }
+    }
+
+    private void AddTracks()
+    {
+        _musicManager.AddTrack(_numberOfEnabled - 1);
     }
 }

@@ -1,15 +1,36 @@
 using FMOD.Studio;
 using UnityEngine;
 
-public class BackgroundMusicManager : MonoBehaviour
+public class MusicManager : MonoBehaviour
 {
-    private EventInstance backgroundMusic;
+    private EventInstance _backgroundMusic;
 
     private void Start()
     {
-        backgroundMusic = AudioManager.instance.CreateInstance(FMODEvents.Instance.BGM);
+        _backgroundMusic = AudioManager.instance.CreateInstance(FMODEvents.Instance.BGM);
         
-        backgroundMusic.start();
-        backgroundMusic.release();
+        _backgroundMusic.start();
+        _backgroundMusic.release();
+    }
+
+    public void AddTrack(int index)
+    {
+        if (index == 0)
+        {
+            _backgroundMusic.setParameterByName("powerups 1", 1);
+        }
+        else if (index == 1)
+        {
+            _backgroundMusic.setParameterByName("powerups 2", 1);
+        }
+        else if (index == 2)
+        {
+            _backgroundMusic.setParameterByName("powerups 3", 1);
+        }
+    }
+
+    public void ToggleMuffle(bool enable)
+    {
+        _backgroundMusic.setParameterByName("Underground muffle", enable ? 1 : 0);
     }
 }

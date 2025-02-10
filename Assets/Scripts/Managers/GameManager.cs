@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     
     [Header("References")] 
     [SerializeField] private InputReader input;
-    [SerializeField] private PlayerHealth playerHealth;
+    private PlayerHealth _playerHealth;
 
     public static int Count = 0;
     public static int MaxCount;
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         input.PauseEvent += PauseGame;
         input.ResumeEvent += ResumeGame;
         
-        playerHealth.OnDeath += PlayerLose;
+        _playerHealth.OnDeath += PlayerLose;
     }
 
     private void Update()
@@ -41,6 +41,12 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    public void FindPlayerHealth()
+    {
+        _playerHealth = FindFirstObjectByType<PlayerHealth>();
+        _playerHealth.OnDeath += PlayerLose;
+    }
+    
     #region UI Stuff
     private void PauseGame()
     {
