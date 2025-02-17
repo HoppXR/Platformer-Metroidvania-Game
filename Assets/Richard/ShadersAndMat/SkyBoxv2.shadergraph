@@ -529,7 +529,7 @@
     },
     "m_ActiveTargets": [
         {
-            "m_Id": "8fa6149f3036440aac24fb8976d2e1c7"
+            "m_Id": "f856d529fef0478b9398f57cfbd21056"
         }
     ]
 }
@@ -1722,12 +1722,6 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.Rendering.BuiltIn.ShaderGraph.BuiltInUnlitSubTarget",
-    "m_ObjectId": "3c7f0e458a454ef8b82596db16e3b82f"
-}
-
-{
-    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicValueMaterialSlot",
     "m_ObjectId": "3df509d118bc4762a1533b3cc7d8b4ce",
     "m_Id": 1,
@@ -2178,6 +2172,12 @@
 }
 
 {
+    "m_SGVersion": 2,
+    "m_Type": "UnityEditor.Rendering.Universal.ShaderGraph.UniversalUnlitSubTarget",
+    "m_ObjectId": "63fcf50d7ab6407291cc8a4cc9e6b714"
+}
+
+{
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "6746216f70464eceaab5f095216954a5",
@@ -2624,23 +2624,6 @@
         "z": 0.0,
         "w": 0.0
     }
-}
-
-{
-    "m_SGVersion": 2,
-    "m_Type": "UnityEditor.Rendering.BuiltIn.ShaderGraph.BuiltInTarget",
-    "m_ObjectId": "8fa6149f3036440aac24fb8976d2e1c7",
-    "m_ActiveSubTarget": {
-        "m_Id": "3c7f0e458a454ef8b82596db16e3b82f"
-    },
-    "m_AllowMaterialOverride": false,
-    "m_SurfaceType": 0,
-    "m_ZWriteControl": 0,
-    "m_ZTestMode": 4,
-    "m_AlphaMode": 0,
-    "m_RenderFace": 2,
-    "m_AlphaClip": false,
-    "m_CustomEditorGUI": ""
 }
 
 {
@@ -4198,6 +4181,28 @@
     },
     "m_Labels": [],
     "m_Space": 0
+}
+
+{
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.Rendering.Universal.ShaderGraph.UniversalTarget",
+    "m_ObjectId": "f856d529fef0478b9398f57cfbd21056",
+    "m_Datas": [],
+    "m_ActiveSubTarget": {
+        "m_Id": "63fcf50d7ab6407291cc8a4cc9e6b714"
+    },
+    "m_AllowMaterialOverride": false,
+    "m_SurfaceType": 0,
+    "m_ZTestMode": 4,
+    "m_ZWriteControl": 0,
+    "m_AlphaMode": 0,
+    "m_RenderFace": 2,
+    "m_AlphaClip": false,
+    "m_CastShadows": false,
+    "m_ReceiveShadows": true,
+    "m_SupportsLODCrossFade": false,
+    "m_CustomEditorGUI": "",
+    "m_SupportVFX": false
 }
 
 {
