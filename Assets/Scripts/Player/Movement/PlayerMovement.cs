@@ -17,7 +17,7 @@ namespace Platformer
         private CountdownTimer _jumpTimer;
         private CountdownTimer _jumpCooldownTimer;
 
-        [Header("Movement")] 
+        [Header("Movement Speed")] 
         [SerializeField] private float walkSpeed;
         [SerializeField] private float slideSpeed;
         [SerializeField] private float swingSpeed;
@@ -27,7 +27,6 @@ namespace Platformer
         [Header("Movement Settings")] 
         [SerializeField] private float acceleration;
         [SerializeField] private float deceleration;
-        
         private MovementState _lastState;
         private Vector3 _moveDirection;
         private Vector2 _inputDirection;
@@ -47,18 +46,18 @@ namespace Platformer
         private float _jumpVelocity;
         private bool _doubleJump;
         private bool _isJumping;
-        
         [SerializeField] private float coyoteTime = 0.2f;
         [SerializeField] private float jumpBufferTime = 0.2f;
         private float _jumpBufferTimer;
         private float _coyoteTimer;
-        
+
         [Header("Ground Check")] 
-        [SerializeField] private float playerHeight;
+        [SerializeField] private Transform groundCheckPoint;
         [SerializeField] private LayerMask whatIsGround;
         [SerializeField] private float groundCheckDistance;
         public static bool Grounded;
         private RaycastHit _groundHit;
+        private Vector3 _groundCheckOffset;
 
         [Header("Slope Handling")] 
         [SerializeField] private float maxSlopeAngle;
@@ -108,6 +107,8 @@ namespace Platformer
 
         private void Update()
         {
+            _groundCheckOffset = groundCheckPoint.position + new Vector3(0f, groundCheckDistance, 0f);
+            
             HandleCoyoteTime();
             HandleTimers(); 
             HandleJumpInput();
@@ -125,6 +126,18 @@ namespace Platformer
             Jump();
             MovePlayer();
         }
+        
+        #if UNITY_EDITOR
+        private void OnDrawGizmos()
+        {
+            if (groundCheckPoint != null)
+            {
+                Gizmos.color = Grounded ? Color.green : Color.red;
+                Gizmos.DrawWireSphere(_groundCheckOffset, 0.45f);
+            }
+        }
+        #endif
+        
         #endregion
 
         #region Movement Handling
@@ -310,16 +323,7 @@ namespace Platformer
         #region General Handlers
         private void CheckIfGrounded()
         {
-            Vector3 center = transform.position - new Vector3(0, (playerHeight - 1.2f) * 0.5f, 0);
-            
-            Grounded = Physics.SphereCast(center, 0.5f,Vector3.down, out _groundHit, groundCheckDistance, whatIsGround);
-
-            if (Grounded && !OnSlope() && Mathf.Abs(_rb.velocity.y) > 0.1f)
-            {
-                Grounded = false;
-            }
-            
-            Debug.DrawRay(center, Vector3.down * groundCheckDistance, Grounded ? Color.green : Color.red);
+            Grounded = Physics.OverlapSphere(_groundCheckOffset, 0.45f, whatIsGround).Length > 0;
         }
         
         private void StateHandler()
@@ -433,9 +437,7 @@ namespace Platformer
         
         public bool OnSlope()
         {
-            Vector3 center = transform.position - new Vector3(0, (playerHeight - 1.2f) * 0.5f, 0);
-
-            if (Physics.SphereCast(center, 0.5f, Vector3.down, out _slopeHit, groundCheckDistance + 0.25f))
+            if (Physics.SphereCast(_groundCheckOffset, 0.5f, Vector3.down, out _slopeHit, groundCheckDistance + 0.25f))
             {
                 float angle = Vector3.Angle(Vector3.up, _slopeHit.normal);
                 return angle < maxSlopeAngle && angle != 0;
