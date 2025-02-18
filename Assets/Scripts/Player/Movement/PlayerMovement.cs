@@ -38,7 +38,6 @@ namespace Platformer
         [Header("Jumping")]
         [SerializeField] private float airMultiplier; // player speed in-air
         [SerializeField] private float jumpForce;
-        [SerializeField] private float jumpBoostForce;
         [SerializeField] private float jumpDuration;
         [SerializeField] private float jumpCooldown;
         [SerializeField] private float jumpMaxHeight;
@@ -61,6 +60,7 @@ namespace Platformer
 
         [Header("Slope Handling")] 
         [SerializeField] private float maxSlopeAngle;
+        [SerializeField] private float slopeCheckDistance;
         private RaycastHit _slopeHit;
         private bool _exitingSlope;
         
@@ -108,6 +108,9 @@ namespace Platformer
         private void Update()
         {
             _groundCheckOffset = groundCheckPoint.position + new Vector3(0f, groundCheckDistance, 0f);
+            
+            // turn gravity off while on slope
+            _rb.useGravity = !OnSlope();
             
             HandleCoyoteTime();
             HandleTimers(); 
@@ -199,9 +202,6 @@ namespace Platformer
             float forwardValue = Vector3.Dot(_rb.velocity.normalized, _moveDirection);
             
             _animator.SetFloat(Forward, forwardValue);
-            
-            // turn gravity off while on slope
-            _rb.useGravity = !OnSlope();
         }
         #endregion
         
@@ -280,18 +280,17 @@ namespace Platformer
             if (_jumpTimer.IsRunning)
             {
                 _exitingSlope = true;
-
-                if (_jumpTimer.Progress == 0)
-                {
-                    _rb.velocity = new Vector3(_rb.velocity.x, 0f, _rb.velocity.z);
-                }
                 
-                float launchPoint = 0.9f;
+                float launchPoint = 0.45f;
                 
                 if (_jumpTimer.Progress > launchPoint)
+                {
                     _jumpVelocity = Mathf.Sqrt(2 * jumpMaxHeight * Mathf.Abs(Physics.gravity.y));
+                }
                 else
+                {
                     _jumpVelocity += (1 - _jumpTimer.Progress) * jumpForce * Time.fixedDeltaTime;
+                }
             }
             // gravity
             else if (!Grounded && state != MovementState.Swinging || state != MovementState.Freeze || !OnSlope())
@@ -437,7 +436,9 @@ namespace Platformer
         
         public bool OnSlope()
         {
-            if (Physics.SphereCast(_groundCheckOffset, 0.5f, Vector3.down, out _slopeHit, groundCheckDistance + 0.25f))
+            Debug.DrawRay(_groundCheckOffset, Vector3.down * slopeCheckDistance, Color.cyan);
+            
+            if (Physics.Raycast(_groundCheckOffset, Vector3.down, out _slopeHit, slopeCheckDistance))
             {
                 float angle = Vector3.Angle(Vector3.up, _slopeHit.normal);
                 return angle < maxSlopeAngle && angle != 0;
