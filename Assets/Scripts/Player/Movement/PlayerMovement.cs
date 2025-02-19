@@ -265,7 +265,7 @@ namespace Platformer
         
         private void Jump()
         {
-            if (state is MovementState.Dashing or MovementState.Swinging)
+            if (state is MovementState.Swinging)
             {
                 _jumpVelocity = _rb.velocity.y;
                 return;
@@ -280,6 +280,11 @@ namespace Platformer
             if (_jumpTimer.IsRunning)
             {
                 _exitingSlope = true;
+
+                if (_jumpTimer.Progress == 0)
+                {
+                    _rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z);
+                }
                 
                 float launchPoint = 0.45f;
                 
@@ -289,7 +294,7 @@ namespace Platformer
                 }
                 else
                 {
-                    _jumpVelocity += (1 - _jumpTimer.Progress) * jumpForce * Time.fixedDeltaTime;
+                    _jumpVelocity += (1.5f - _jumpTimer.Progress) * jumpForce * Time.fixedDeltaTime;
                 }
             }
             // gravity
@@ -423,7 +428,6 @@ namespace Platformer
             while (time < difference)
             {
                 _moveSpeed = Mathf.Lerp(startValue, _desiredMoveSpeed, time / difference);
-                
                 time += Time.deltaTime * boostFactor;
                 
                 yield return null;
