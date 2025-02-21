@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class BossAIState
 {
     protected BossAIManager boss;
+    public GameObject player;
 
     public BossAIState(BossAIManager boss)
     {

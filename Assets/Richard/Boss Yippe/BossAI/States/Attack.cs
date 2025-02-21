@@ -48,7 +48,8 @@ public class Attack : BossAIState
 
     private void SDashAttack()
     {
-
+        Vector3 targetPosition = boss.player.transform.position;
+        boss.GetComponent<DashAttack>().StartDash(targetPosition);
     }
 
     private void SRainProjectiles()

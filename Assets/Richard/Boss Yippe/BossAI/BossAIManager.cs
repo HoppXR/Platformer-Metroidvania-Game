@@ -9,12 +9,16 @@ public class BossAIManager : MonoBehaviour
 
     public BossPhase currentPhase = BossPhase.Phase1;
     public BossState currentState = BossState.Idle;
+    
+    public Transform player;
 
     private BossAIState activeState;
     private float attackTimer = 3f;
     
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = player.transform;
         SetState(BossState.Idle);
     }
 
