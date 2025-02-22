@@ -3,16 +3,13 @@ using FMODUnity;
 
 public class Collectable : MonoBehaviour
 {
-    [SerializeField] private EventReference tingerCollectedSound;
+    [SerializeField] private EventReference collectedSound;
     [SerializeField] private ParticleSystem collectParticle;
-    
-    private GameManager _gameManager;
     
     private float _initialY;
 
     private void Start()
     {
-        _gameManager = FindFirstObjectByType<GameManager>();
         _initialY = transform.position.y;
     }
 
@@ -26,8 +23,8 @@ public class Collectable : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             // add collectable logic
-            AudioManager.instance.PlayOneShot(tingerCollectedSound, this.transform.position);
-            _gameManager.IncreaseCount();
+            AudioManager.instance.PlayOneShot(collectedSound, this.transform.position);
+            GameManager.Instance.IncreaseCount();
             
             if (collectParticle != null)
             {
