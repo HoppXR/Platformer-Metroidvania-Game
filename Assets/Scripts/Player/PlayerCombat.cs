@@ -5,11 +5,12 @@ public class PlayerCombat : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private InputReader input;
+    [SerializeField] private Transform player;
     private PlayerMovement _pm;
-    private Animator animator;
+    private Animator _animator;
     
     [Header("Combat")]
-    [SerializeField] private float damage;
+    [SerializeField] private int damage;
     [SerializeField] private float atkSpeed;
     [SerializeField] private float range;
     private bool _isMeleeAttack;
@@ -53,6 +54,14 @@ public class PlayerCombat : MonoBehaviour
     private void MeleeAttack()
     {
         Debug.Log("Melee Attack");
+
+        Collider[] enemies = Physics.OverlapSphere(player.position, range);
+        foreach (var enemy in enemies)
+        {
+            enemy.GetComponent<EnemyHealth>().TakeDamage(damage);
+            Debug.Log(enemies.Length);
+        }
+
         // animations are needed to implement attacks
     }
 
