@@ -47,8 +47,11 @@ namespace Platformer
             
             _pm.sliding = true;
 
-            playerObj.localScale = new Vector3(playerObj.localScale.x, slideYScale, playerObj.localScale.z);
-            _rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
+            if (playerObj != null)
+                playerObj.localScale = new Vector3(playerObj.localScale.x, slideYScale, playerObj.localScale.z);
+         
+            if (_rb != null)
+                _rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
         }
 
         private void SlidingMovement()
@@ -74,7 +77,8 @@ namespace Platformer
             
             _pm.sliding = false;
             
-            playerObj.localScale = new Vector3(playerObj.localScale.x, _startYScale, playerObj.localScale.z);
+            if (playerObj != null)
+                playerObj.localScale = new Vector3(playerObj.localScale.x, _startYScale, playerObj.localScale.z);
         }
     }
 }

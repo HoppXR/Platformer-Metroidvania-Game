@@ -92,7 +92,9 @@ namespace Platformer
         {
             _pm.swinging = false;
             
-            lr.positionCount = 0;
+            if (lr != null)
+                lr.positionCount = 0;
+            
             Destroy(_joint);
         }
 

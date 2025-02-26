@@ -60,7 +60,7 @@ namespace Platformer
             
             _pm.dashing = true;
             
-            AudioManager.instance.PlayOneShot(dashSound, transform.position);
+            AudioManager.instance?.PlayOneShot(dashSound, transform.position);
 
             Transform forwardT = orientation;
 
