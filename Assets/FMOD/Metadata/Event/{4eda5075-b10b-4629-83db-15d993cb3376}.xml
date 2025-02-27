@@ -5,7 +5,7 @@
 			<value>Waterfall</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{c78d1b02-7198-4708-85e5-76093e8366f8}</destination>
@@ -27,6 +27,9 @@
 		</relationship>
 		<relationship name="timeline">
 			<destination>{2e7c3d6a-21ce-4fd8-8d44-d010b9154969}</destination>
+		</relationship>
+		<relationship name="banks">
+			<destination>{115f991f-fafc-448e-90c4-f3d2e34dd533}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{4190f11e-e7d9-41a8-8b53-f803fddb2c62}">
@@ -127,6 +130,7 @@
 	<object class="MixerBusEffectChain" id="{b0a2c181-fe6d-494d-9997-ee10d42893b2}">
 		<relationship name="effects">
 			<destination>{3298c415-b089-4d9d-bc56-00215e1d09bd}</destination>
+			<destination>{8cc7f451-8b00-4b56-8447-b1949b0b1f4a}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{9fe11ae9-8cc4-412b-b0dd-7605a74eb0f4}" />
@@ -148,6 +152,11 @@
 	</object>
 	<object class="MixerBusFader" id="{75d8c41d-b13c-43ae-97d2-17cf710f028a}" />
 	<object class="MixerBusFader" id="{3298c415-b089-4d9d-bc56-00215e1d09bd}" />
+	<object class="SpatialiserEffect" id="{8cc7f451-8b00-4b56-8447-b1949b0b1f4a}">
+		<property name="distanceRolloffType">
+			<value>1</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{a8eb5a5e-ea85-42c8-a169-ea85892b4682}">
 		<property name="position">
 			<value>52.5</value>

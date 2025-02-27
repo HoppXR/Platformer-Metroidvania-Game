@@ -43,8 +43,8 @@ GameObject:
   - component: {fileID: 8648570678975102786}
   - component: {fileID: 6758917616309066001}
   - component: {fileID: 6142971665460858027}
-  - component: {fileID: 8005644411594800142}
   - component: {fileID: 7198779214872091533}
+  - component: {fileID: 4391439322685064174}
   m_Layer: 0
   m_Name: coin
   m_TagString: Collectable
@@ -117,8 +117,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8005644411594800142
-MeshCollider:
+--- !u!114 &7198779214872091533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3392809322597053934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0bfeae6c15d47d46afbd6b0081e2edf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectedSound:
+    Guid:
+      Data1: 288494751
+      Data2: 1170670813
+      Data3: 1728880273
+      Data4: -501470463
+    Path: event:/Coin
+  collectParticle: {fileID: 0}
+--- !u!135 &4391439322685064174
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -135,27 +155,6 @@ MeshCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5216581434543980006, guid: be7fb4cf5ba61104c828d7f1d34245e2, type: 3}
---- !u!114 &7198779214872091533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3392809322597053934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0bfeae6c15d47d46afbd6b0081e2edf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collectedSound:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  collectParticle: {fileID: 0}
+  serializedVersion: 3
+  m_Radius: 1.218631
+  m_Center: {x: 0.00022304058, y: 1.238373, z: 0.00027245283}

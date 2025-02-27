@@ -9,11 +9,12 @@ public class MusicManager : MonoBehaviour
     {
         _backgroundMusic = AudioManager.instance.CreateInstance(FMODEvents.Instance.BGM);
         
-        _backgroundMusic.setParameterByName("powerups 1", 0.01f);
-        _backgroundMusic.setParameterByName("powerups 2", 0.01f);
-        _backgroundMusic.setParameterByName("powerups 3", 0.01f);
+        _backgroundMusic.setParameterByName("main", 1);
+        _backgroundMusic.setParameterByName("powerups 1", 0);
+        _backgroundMusic.setParameterByName("powerups 2", 0);
+        _backgroundMusic.setParameterByName("powerups 3", 0);
         
-        _backgroundMusic.setParameterByName("Underground muffle", 1);
+        _backgroundMusic.setParameterByName("Underground muffle", 0);
         
         _backgroundMusic.start();
         _backgroundMusic.release();
@@ -23,14 +24,17 @@ public class MusicManager : MonoBehaviour
     {
         if (index == 0)
         {
+            _backgroundMusic.setParameterByName("main", 0);
             _backgroundMusic.setParameterByName("powerups 1", 1);
         }
         else if (index == 1)
         {
+            _backgroundMusic.setParameterByName("powerups 1", 0);
             _backgroundMusic.setParameterByName("powerups 2", 1);
         }
         else if (index == 2)
         {
+            _backgroundMusic.setParameterByName("powerups 2", 0);
             _backgroundMusic.setParameterByName("powerups 3", 1);
         }
     }

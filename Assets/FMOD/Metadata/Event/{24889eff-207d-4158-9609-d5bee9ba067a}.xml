@@ -225,6 +225,9 @@
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{b6739d63-8cf5-4e5f-b06a-0a02d5984818}">
+		<property name="looping">
+			<value>true</value>
+		</property>
 		<relationship name="audioFile">
 			<destination>{1865c7d1-834d-4c73-88be-4bf31c563b4b}</destination>
 		</relationship>
@@ -255,6 +258,9 @@
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{f29903c0-2a3f-4dab-a9b1-d3780386e942}">
+		<property name="looping">
+			<value>true</value>
+		</property>
 		<relationship name="audioFile">
 			<destination>{3c298e95-18d5-4b4d-933f-cb8642491837}</destination>
 		</relationship>
@@ -282,6 +288,9 @@
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{0a17a7a8-d813-4ea0-9914-3d9ae1c93ae7}">
+		<property name="looping">
+			<value>true</value>
+		</property>
 		<relationship name="audioFile">
 			<destination>{d628b13d-c2ca-4f75-b505-d7774f1bfa92}</destination>
 		</relationship>
@@ -331,6 +340,9 @@
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{f7f8ce3b-db4e-4933-aaac-84fbebd41590}">
+		<property name="looping">
+			<value>true</value>
+		</property>
 		<relationship name="audioFile">
 			<destination>{681929a6-227f-4708-a8d3-2e30795c9e8b}</destination>
 		</relationship>
