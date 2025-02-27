@@ -4,7 +4,7 @@ using UnityEngine.AI; // Required for NavMeshAgent
 
 public class GroundPound : MonoBehaviour
 {
-    public float jumpHeight = 10f;      // How high the boss jumps
+    public float jumpHeight = 7f;      // How high the boss jumps
     public float slamSpeed = 40f;       // Speed of the slam down
     public GameObject shockwavePrefab;  // The expanding sphere attack prefab
     public Transform shockwaveSpawnPoint; // Where the sphere appears on landing
@@ -36,24 +36,24 @@ public class GroundPound : MonoBehaviour
     {
         if (navMeshAgent != null)
         {
-            navMeshAgent.enabled = false; // Disable navigation before jumping
+            navMeshAgent.enabled = false; 
         }
 
-        FreezeXZConstraints(true); // Lock X and Z movement
+        FreezeXZConstraints(true); 
 
         for (int i = 0; i < attackCount; i++)
         {
             hasLanded = false;
             yield return StartCoroutine(GroundSlam());
-            yield return new WaitUntil(() => hasLanded); // Wait for the boss to land
-            yield return new WaitForSeconds(attackDelay); // Delay before next attack
+            yield return new WaitUntil(() => hasLanded); 
+            yield return new WaitForSeconds(attackDelay); 
         }
 
-        FreezeXZConstraints(false); // Unlock X and Z movement
+        FreezeXZConstraints(false);
 
         if (navMeshAgent != null)
         {
-            navMeshAgent.enabled = true; // Re-enable navigation after all attacks
+            navMeshAgent.enabled = true;
         }
     }
 

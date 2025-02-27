@@ -16095,6 +16095,7 @@ GameObject:
   - component: {fileID: 1300036548}
   - component: {fileID: 1300036549}
   - component: {fileID: 1300036550}
+  - component: {fileID: 1300036551}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -16271,6 +16272,31 @@ MonoBehaviour:
   shockwaveSpawnPoint: {fileID: 1300036547}
   attackCount: 4
   attackDelay: 1
+--- !u!114 &1300036551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300036542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c95a25eb08a178840b9cc31eae2ccac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 2808681583556718681, guid: 6ebf4dc5d801df443ac8ba9749adf8c1, type: 3}
+  projectileSpawnPoint: {fileID: 1300036547}
+  player: {fileID: 404507345}
+  playerPrediction: {fileID: 235037099}
+  totalSkyProjectiles: 15
+  totalTargetedProjectiles: 10
+  skySpawnRadius: 15.73
+  skyHeight: 10
+  skyFireRate: 0.2
+  targetedFireRate: 0.3
+  projectileSpeed: 15
+  predictionChance: 0.3
+  arcVerticalAngle: 30
 --- !u!1 &1334726159
 GameObject:
   m_ObjectHideFlags: 0

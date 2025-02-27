@@ -1,30 +1,61 @@
 using UnityEngine;
+using UnityEngine.AI;
+using System.Collections;
 
 public class Lunge : BossAIState
 {
     private Transform player;
+    private NavMeshAgent navAgent;
     private bool hasLunged = false;
+    private float lungeSpeed = 25f;
+    private float lungeDuration = 0.3f;
+    private float postLungeWait = 1f;
 
-    public Lunge(BossAIManager boss) : base(boss) { }
+    public Lunge(BossAIManager boss) : base(boss) 
+    {
+        navAgent = boss.GetComponent<NavMeshAgent>();
+    }
 
     public override void EnterState()
     {
         player = GameObject.FindWithTag("Player").transform;
         hasLunged = false;
+
+        if (navAgent != null)
+        {
+            navAgent.isStopped = true;
+        }
+
+        boss.StartCoroutine(PerformLunge());
     }
 
-    public override void StateUpdate()
+    private IEnumerator PerformLunge()
     {
-        if (!hasLunged && player != null)
+        if (player == null) yield break;
+
+        Vector3 lungeDirection = (player.position - boss.transform.position).normalized;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < lungeDuration)
         {
-            boss.transform.position = Vector3.Lerp(boss.transform.position, player.position, 0.5f);
-            hasLunged = true;
+            boss.transform.position += lungeDirection * (lungeSpeed * Time.deltaTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
         }
-        else
+
+        hasLunged = true;
+
+        yield return new WaitForSeconds(postLungeWait);
+
+        boss.SetState(BossAIManager.BossState.Attack);
+
+        if (navAgent != null)
         {
-            boss.SetState(BossAIManager.BossState.Tired);
+            navAgent.isStopped = false;
         }
     }
+
+    public override void StateUpdate() { }
 
     public override void ExitState() { }
 }

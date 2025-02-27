@@ -27,7 +27,7 @@ public class DashAttack : MonoBehaviour
 
     void Update()
     {
-        // Manually trigger the dash attack when pressing 'I'
+
         if (Input.GetKeyDown(KeyCode.I) && boss != null && boss.player != null)
         {
             StartDash(boss.player.position); 

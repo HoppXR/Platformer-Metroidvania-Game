@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Tired : BossAIState
 {
-    private float timer = 3f;
+    private float timer = 6f;
 
     public Tired(BossAIManager boss) : base(boss) { }
 
@@ -16,10 +16,7 @@ public class Tired : BossAIState
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
-            if (boss.currentPhase == BossAIManager.BossPhase.Phase1)
-                boss.SetState(BossAIManager.BossState.Idle);
-            else
-                boss.SetState(BossAIManager.BossState.Chase);
+            boss.SetState(BossAIManager.BossState.Idle);
         }
     }
 

@@ -6,11 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="23ecdee6-e53f-4c67-8fa7-c80e246c1084" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Platformer-Metroidvania-Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Platformer-Metroidvania-Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/BossAIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/BossAIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/BossAIStateManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/BossAIStateManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attack.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/DashAttack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/DashAttack.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/GroundPound.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/GroundPound.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/ProjectileVolly.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/ProjectileVolly.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Chase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Chase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Idle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Idle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Lunge.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Lunge.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Tired.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Tired.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Richard/Richard Test Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Richard Test Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,6 +125,9 @@
       <workItem from="1739069631390" duration="1648000" />
       <workItem from="1740013476367" duration="1759000" />
       <workItem from="1740098079430" duration="2455000" />
+      <workItem from="1740187846313" duration="1167000" />
+      <workItem from="1740530533160" duration="1105000" />
+      <workItem from="1740625561590" duration="825000" />
     </task>
     <servers />
   </component>
@@ -147,6 +154,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Lunge.cs</url>
+          <line>40</line>
+          <properties documentPath="C:\Users\Richi\Unity Projects\Platformer-Metroidvania-Game\Assets\Richard\Boss Yippe\BossAI\States\Lunge.cs" initialLine="40" containingFunctionPresentation="Method 'PerformLunge'">
+            <startOffsets>
+              <option value="987" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1061" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
