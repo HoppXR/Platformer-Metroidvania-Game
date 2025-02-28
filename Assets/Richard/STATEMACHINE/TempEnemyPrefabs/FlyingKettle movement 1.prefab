@@ -191,9 +191,13 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -5568371526223589888, guid: 0211b10555bc9d14b9dff0b65de2560c, type: 3}
+      propertyPath: m_Name
+      value: mm
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0211b10555bc9d14b9dff0b65de2560c, type: 3}
       propertyPath: m_Name
-      value: teapot
+      value: mesh
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0211b10555bc9d14b9dff0b65de2560c, type: 3}
       propertyPath: m_Layer
@@ -207,6 +211,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 9e793535032a42c4ab2fe674f66fbd4f, type: 2}
+    - target: {fileID: 8513859187771203891, guid: 0211b10555bc9d14b9dff0b65de2560c, type: 3}
+      propertyPath: m_Name
+      value: mm
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -5,24 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="26468c4e-c306-476c-86c3-86255bc744b3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/FMOD/.cache/buildrecords/Desktop/Master.br" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/.cache/buildrecords/Desktop/Master.br" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FMOD/.cache/buildrecords/Desktop/Music.br" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/.cache/buildrecords/Desktop/Music.br" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FMOD/.cache/buildrecords/Desktop/SFX.br" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/.cache/buildrecords/Desktop/SFX.br" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FMOD/.cache/{1865c7d1-834d-4c73-88be-4bf31c563b4b}.pdc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/.cache/{1865c7d1-834d-4c73-88be-4bf31c563b4b}.pdc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FMOD/.cache/{3c298e95-18d5-4b4d-933f-cb8642491837}.pdc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/.cache/{3c298e95-18d5-4b4d-933f-cb8642491837}.pdc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FMOD/.cache/{681929a6-227f-4708-a8d3-2e30795c9e8b}.pdc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/.cache/{681929a6-227f-4708-a8d3-2e30795c9e8b}.pdc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FMOD/.cache/{8b7e2f15-ba79-4ef5-89fd-48588e3686e8}.pdc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/.cache/{8b7e2f15-ba79-4ef5-89fd-48588e3686e8}.pdc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FMOD/.cache/{d628b13d-c2ca-4f75-b505-d7774f1bfa92}.pdc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/.cache/{d628b13d-c2ca-4f75-b505-d7774f1bfa92}.pdc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Build/Desktop/Master.bank" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Build/Desktop/Master.bank" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Build/Desktop/Master.strings.bank" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Build/Desktop/Master.strings.bank" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Build/Desktop/Music.bank" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Build/Desktop/Music.bank" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Build/Desktop/SFX.bank" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Build/Desktop/SFX.bank" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/Event/{24889eff-207d-4158-9609-d5bee9ba067a}.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/Event/{24889eff-207d-4158-9609-d5bee9ba067a}.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FMOD/Metadata/Event/{4eda5075-b10b-4629-83db-15d993cb3376}.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FMOD/Metadata/Event/{4eda5075-b10b-4629-83db-15d993cb3376}.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/Resources/FMODStudioSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/Resources/FMODStudioSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/ShadersAndMat/SkyBox1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/ShadersAndMat/SkyBox1.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/ShadersAndMat/WaterFall.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/ShadersAndMat/WaterFall.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/MusicManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/MusicManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GDW year 2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GDW year 2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Meshes/mesh water 2.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Meshes/mesh water 2.fbx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Richard/STATEMACHINE/TempEnemyPrefabs/FlyingKettle movement 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/STATEMACHINE/TempEnemyPrefabs/FlyingKettle movement 1.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,35 +20,35 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Sound/MuffleZone.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2tbnTbKnnbSZQ67Nwg3TUYDmxda" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\xoesm\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\xoesm\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\xoesm\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\xoesm\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\xoesm\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\xoesm\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/../desktop build\Mini-Interactive Project 2.exe" />
@@ -119,6 +104,8 @@
       <option name="presentableId" value="Default" />
       <updated>1740629650413</updated>
       <workItem from="1740629653635" duration="1575000" />
+      <workItem from="1740733635255" duration="72000" />
+      <workItem from="1740733770569" duration="365000" />
     </task>
     <servers />
   </component>
