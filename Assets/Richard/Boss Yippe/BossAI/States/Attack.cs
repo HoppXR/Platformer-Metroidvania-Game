@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Attack : BossAIState
 {
@@ -17,16 +18,16 @@ public class Attack : BossAIState
     {
         Debug.Log("Boss is attacking!");
         AdjustAttackForPhase();
-        PerformAttack();
+        boss.StartCoroutine(PerformAttack());
     }
 
     private void AdjustAttackForPhase()
     {
         if (boss.currentPhase == BossAIManager.BossPhase.Phase1)
         {
-            projectileVolley.totalSkyProjectiles = 15;
-            dashAttack.dashSpeed = 15;
-            groundPound.jumpHeight = 10;
+            //projectileVolley.totalSkyProjectiles = 15;
+            //dashAttack.dashSpeed = 15;
+            //groundPound.jumpHeight = 10;
             
         }
         else
@@ -36,45 +37,31 @@ public class Attack : BossAIState
         }
     }
 
-    private void PerformAttack()
+    private IEnumerator PerformAttack()
     {
         int attackType = Random.Range(0, 3);
 
-        if (boss.currentPhase == BossAIManager.BossPhase.Phase1)
+        switch (attackType)
         {
-            switch (attackType)
-            {
-                case 0:
-                    dashAttack.StartDash(boss.player.position);
-                    break;
-                case 1:
-                    projectileVolley.StartCoroutine("FireVolley");
-                    break;
-                case 2:
-                    groundPound.StartCoroutine("GroundSlamSequence");
-                    break;
-            }
+            case 0:
+                if (boss.dashAttack != null) 
+                    yield return boss.StartCoroutine(boss.dashAttack.DashRoutine(boss.player.position));
+                break;
+            case 1:
+                if (boss.projectileVolley != null) 
+                    yield return boss.StartCoroutine(boss.projectileVolley.FireVolleyRoutine());
+                break;
+            case 2:
+                if (boss.groundPound != null) 
+                    yield return boss.StartCoroutine(boss.groundPound.GroundSlamSequence());
+                break;
         }
-        else
-        {
-            switch (attackType)
-            {
-                case 0:
-                    dashAttack.StartDash(boss.player.position);
-                    break;
-                case 1:
-                    projectileVolley.StartCoroutine("FireVolley");
-                    break;
-                case 2:
-                    groundPound.StartCoroutine("GroundSlamSequence");
-                    break;
-            }
-        }
+        
+        boss.SetState(BossAIManager.BossState.Tired);
     }
 
     public override void StateUpdate()
     {
-        boss.SetState(BossAIManager.BossState.Tired);
     }
 
     public override void ExitState() { }

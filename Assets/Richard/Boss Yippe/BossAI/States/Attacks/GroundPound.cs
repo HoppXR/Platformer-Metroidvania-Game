@@ -20,19 +20,10 @@ public class GroundPound : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        navMeshAgent = GetComponent<NavMeshAgent>(); // Get NavMeshAgent
+        navMeshAgent = GetComponent<NavMeshAgent>(); // Get NavMeshAgentA
     }
 
-    void Update()
-    {
-        // Press "O" to trigger ground slam sequence
-        if (Input.GetKeyDown(KeyCode.O) && !isJumping && !isSlamming)
-        {
-            StartCoroutine(GroundSlamSequence());
-        }
-    }
-
-    IEnumerator GroundSlamSequence()
+    public IEnumerator GroundSlamSequence()
     {
         if (navMeshAgent != null)
         {
@@ -57,7 +48,7 @@ public class GroundPound : MonoBehaviour
         }
     }
 
-    IEnumerator GroundSlam()
+    public IEnumerator GroundSlam()
     {
         isJumping = true;
 

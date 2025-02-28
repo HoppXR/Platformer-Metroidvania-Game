@@ -11,6 +11,10 @@ public class BossAIManager : MonoBehaviour
     public BossState currentState = BossState.Idle;
     
     public Transform player;
+    
+    public DashAttack dashAttack;
+    public ProjectileVolley projectileVolley;
+    public GroundPound groundPound;
 
     private BossAIState activeState;
     private float attackTimer = 3f;
@@ -18,7 +22,10 @@ public class BossAIManager : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        player = player.transform;
+        dashAttack = GetComponent<DashAttack>();
+        projectileVolley = GetComponent<ProjectileVolley>();
+        groundPound = GetComponent<GroundPound>();
+
         SetState(BossState.Idle);
     }
 
@@ -57,12 +64,6 @@ public class BossAIManager : MonoBehaviour
                 break;
         }
 
-        activeState.EnterState();
-    }
-
-    public void TransitionToPhase2()
-    {
-        currentPhase = BossPhase.Phase2;
-        SetState(BossState.Chase);
+        if (activeState != null) activeState.EnterState();
     }
 }

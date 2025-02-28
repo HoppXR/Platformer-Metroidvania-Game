@@ -105,4 +105,9 @@ public class ProjectileVolley : MonoBehaviour
             rb.velocity = rotation * Vector3.forward * projectileSpeed;
         }
     }
+    
+    public IEnumerator FireVolleyRoutine()
+    {
+        yield return StartCoroutine(FireVolley());
+    }
 }

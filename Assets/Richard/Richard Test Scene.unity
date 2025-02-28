@@ -15682,7 +15682,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &961495727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15718,14 +15718,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 961495726}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f73e51addf547724b9b0e805cd63bdc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentPhase: 0
   currentState: 0
-  player: {fileID: 0}
+  player: {fileID: 404507345}
+  dashAttack: {fileID: 0}
+  projectileVolley: {fileID: 0}
+  groundPound: {fileID: 0}
 --- !u!1 &1084463796
 GameObject:
   m_ObjectHideFlags: 0
@@ -16092,9 +16095,10 @@ GameObject:
   - component: {fileID: 1300036545}
   - component: {fileID: 1300036544}
   - component: {fileID: 1300036543}
-  - component: {fileID: 1300036548}
   - component: {fileID: 1300036549}
   - component: {fileID: 1300036550}
+  - component: {fileID: 1300036553}
+  - component: {fileID: 1300036552}
   - component: {fileID: 1300036551}
   m_Layer: 0
   m_Name: Boss
@@ -16212,21 +16216,6 @@ Transform:
   - {fileID: 1778663505}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1300036548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1300036542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95993e01b1a016b4eb03aeb3a325542e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dashSpeed: 20
-  dashDuration: 7
-  maxBounces: 5
 --- !u!54 &1300036549
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -16263,16 +16252,49 @@ MonoBehaviour:
   m_GameObject: {fileID: 1300036542}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f73e51addf547724b9b0e805cd63bdc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPhase: 0
+  currentState: 0
+  player: {fileID: 404507345}
+  dashAttack: {fileID: 0}
+  projectileVolley: {fileID: 0}
+  groundPound: {fileID: 0}
+--- !u!114 &1300036551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300036542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 852cead638074c2419e873eed7be3bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpHeight: 50.63
+  jumpHeight: 7
   slamSpeed: 40
   shockwavePrefab: {fileID: 2808681583556718681, guid: 09cc6188ad5bd4b47a490fae79c433c7, type: 3}
   shockwaveSpawnPoint: {fileID: 1300036547}
   attackCount: 4
   attackDelay: 1
---- !u!114 &1300036551
+--- !u!114 &1300036552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300036542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95993e01b1a016b4eb03aeb3a325542e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashSpeed: 20
+  dashDuration: 11
+  maxBounces: 5
+--- !u!114 &1300036553
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -16290,13 +16312,13 @@ MonoBehaviour:
   playerPrediction: {fileID: 235037099}
   totalSkyProjectiles: 15
   totalTargetedProjectiles: 10
-  skySpawnRadius: 15.73
+  skySpawnRadius: 5
   skyHeight: 10
   skyFireRate: 0.2
   targetedFireRate: 0.3
   projectileSpeed: 15
   predictionChance: 0.3
-  arcVerticalAngle: 30
+  arcVerticalAngle: 45
 --- !u!1 &1334726159
 GameObject:
   m_ObjectHideFlags: 0

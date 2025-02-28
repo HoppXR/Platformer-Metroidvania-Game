@@ -14,18 +14,40 @@ public class Idle : BossAIState
     public override void EnterState()
     {
         Debug.Log("Boss is now Idle");
-        if (navAgent != null)
+        
+        boss.transform.position = new Vector3(-2f, 2f, 2f);
+
+        if (navAgent != null && navAgent.isOnNavMesh)
         {
-            navAgent.speed = 0;
-            navAgent.isStopped = true;
+            if (!navAgent.isStopped)
+            {
+                navAgent.speed = 0;
+                navAgent.isStopped = true;
+            }
         }
+
         boss.StartCoroutine(TransitionState());
+    }
+
+    public override void StateUpdate()
+    {
+        LookAtPlayer();
+    }
+
+    private void LookAtPlayer()
+    {
+        if (boss.player != null)
+        {
+            Vector3 direction = (boss.player.position - boss.transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+            boss.transform.rotation = Quaternion.Slerp(boss.transform.rotation, lookRotation, Time.deltaTime * 3f);
+        }
     }
 
     private IEnumerator TransitionState()
     {
         yield return new WaitForSeconds(2f);
-        
+
         if (boss.currentPhase == BossAIManager.BossPhase.Phase1)
         {
             boss.SetState(BossAIManager.BossState.Attack);
@@ -36,13 +58,14 @@ public class Idle : BossAIState
         }
     }
 
-    public override void StateUpdate() { }
-
     public override void ExitState()
     {
-        if (navAgent != null)
+        if (navAgent != null && navAgent.isOnNavMesh)
         {
-            navAgent.isStopped = false;
+            if (navAgent.isStopped)
+            {
+                navAgent.isStopped = false;
+            }
         }
     }
 }

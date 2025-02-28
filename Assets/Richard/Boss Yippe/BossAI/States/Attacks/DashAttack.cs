@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class DashAttack : MonoBehaviour
@@ -88,4 +89,10 @@ public class DashAttack : MonoBehaviour
             transform.rotation = targetRotation;
         }
     }
+    public IEnumerator DashRoutine(Vector3 targetPosition)
+    {
+        StartDash(targetPosition);
+        yield return new WaitUntil(() => !isDashing); 
+    }
+
 }
