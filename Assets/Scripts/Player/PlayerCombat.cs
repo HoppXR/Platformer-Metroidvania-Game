@@ -1,3 +1,4 @@
+using System;
 using Platformer;
 using UnityEngine;
 
@@ -6,13 +7,16 @@ public class PlayerCombat : MonoBehaviour
     [Header("References")]
     [SerializeField] private InputReader input;
     [SerializeField] private Transform player;
+    [SerializeField] private float attackPositionOffset;
+    [SerializeField] private LayerMask enemyLayer;
     private PlayerMovement _pm;
     private Animator _animator;
+    private Vector3 _attackOffset;
     
     [Header("Combat")]
     [SerializeField] private int damage;
     [SerializeField] private float atkSpeed;
-    [SerializeField] private float range;
+    [SerializeField] private float atkRange;
     private bool _isMeleeAttack;
     
     private void Start()
@@ -22,6 +26,22 @@ public class PlayerCombat : MonoBehaviour
         input.AttackEvent += Attack;
         input.SwapAttackEvent += SwapAttackType;
     }
+
+    private void Update()
+    {
+        _attackOffset = player.position + new Vector3(0f, attackPositionOffset, 0f);
+    }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        if (player != null)
+        {
+            Gizmos.color = Color.white;
+            Gizmos.DrawWireSphere(_attackOffset, atkRange);
+        }
+    }
+    #endif
 
     private void SwapAttackType()
     {
@@ -55,11 +75,11 @@ public class PlayerCombat : MonoBehaviour
     {
         Debug.Log("Melee Attack");
 
-        Collider[] enemies = Physics.OverlapSphere(player.position, range);
+        Collider[] enemies = Physics.OverlapSphere(_attackOffset, atkRange, enemyLayer);
         foreach (var enemy in enemies)
         {
-            enemy.GetComponent<EnemyHealth>().TakeDamage(damage);
-            Debug.Log(enemies.Length);
+                enemy.GetComponent<EnemyHealth>()?.TakeDamage(damage);
+            Debug.Log("Enemies hit: " + enemies.Length);
         }
 
         // animations are needed to implement attacks

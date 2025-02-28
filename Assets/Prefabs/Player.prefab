@@ -74,6 +74,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7222744572238283125}
   - component: {fileID: 3593482322763352338}
+  - component: {fileID: 7344835728310131556}
   - component: {fileID: 3238370329580262186}
   - component: {fileID: 8987336289196688416}
   - component: {fileID: 6222688916528342523}
@@ -121,9 +122,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93741f52cbf19db4ca6c56689fff0c64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
-  healthBarSlider: {fileID: 0}
-  healthBarColor: {fileID: 0}
+  playerLives: 5
+  playerLiveSprites:
+  - {fileID: -1488996026, guid: 9b2dd06d42521a846b75d494f5412215, type: 3}
+  - {fileID: -2010322829, guid: 9b2dd06d42521a846b75d494f5412215, type: 3}
+  - {fileID: 161092839, guid: 9b2dd06d42521a846b75d494f5412215, type: 3}
+  - {fileID: 1137661786, guid: 9b2dd06d42521a846b75d494f5412215, type: 3}
+  - {fileID: 1553770636, guid: 9b2dd06d42521a846b75d494f5412215, type: 3}
+  - {fileID: -836429500, guid: 9b2dd06d42521a846b75d494f5412215, type: 3}
+  playerLiveDisplay: {fileID: 0}
+--- !u!114 &7344835728310131556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5163581559121146808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b78847ca0339964581f80c2481dddec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 11400000, guid: f0af528ef787f524f906f2f46802fbbb, type: 2}
+  player: {fileID: 2088367267408673784}
+  attackPositionOffset: 1
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 4096
+  damage: 5
+  atkSpeed: 0
+  atkRange: 1.5
 --- !u!114 &3238370329580262186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,20 +174,20 @@ MonoBehaviour:
   acceleration: 0.75
   deceleration: 0.8
   airMultiplier: 0.5
-  jumpForce: 35
-  jumpBoostForce: 25
+  jumpForce: 25
   jumpDuration: 0.15
   jumpCooldown: 0.1
-  jumpMaxHeight: 3.75
+  jumpMaxHeight: 4
   gravityMultiplier: 3
   coyoteTime: 0.2
   jumpBufferTime: 0.2
-  playerHeight: 2
+  groundCheckPoint: {fileID: 2088367267408673784}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 3608
-  groundCheckDistance: 0.7
+  groundCheckDistance: 0.35
   maxSlopeAngle: 65
+  slopeCheckDistance: 0.45
   state: 0
   freeze: 0
   restricted: 0
@@ -248,7 +276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {fileID: 11400000, guid: f0af528ef787f524f906f2f46802fbbb, type: 2}
   lr: {fileID: 5841564504364244808}
-  gunTip: {fileID: 0}
+  gunTip: {fileID: 462420710797207234}
   cam: {fileID: 0}
   player: {fileID: 7222744572238283125}
   whatIsGrappleable:
@@ -663,6 +691,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3c6e535b13f58546bf97f5d81e66f60, type: 3}
+--- !u!4 &462420710797207234 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7876023681238672744, guid: c3c6e535b13f58546bf97f5d81e66f60, type: 3}
+  m_PrefabInstance: {fileID: 7721308176558212010}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7830952289147757633 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c3c6e535b13f58546bf97f5d81e66f60, type: 3}

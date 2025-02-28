@@ -34,6 +34,9 @@ public class EnemyHealth : MonoBehaviour
 
     private void Die()
     {
+        // play death animation
         
+        // TEMP logic
+        Destroy(gameObject);
     }
 }

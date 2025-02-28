@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 1191842980651454322}
   - component: {fileID: 3629573348147099725}
   - component: {fileID: 1474815881328880281}
-  m_Layer: 0
+  - component: {fileID: 3931866867182219523}
+  - component: {fileID: 3213113707143151054}
+  m_Layer: 12
   m_Name: FlyingKettle movement 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,6 +93,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 188da75c05f31fc4a8d549746e66b35a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &3931866867182219523
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7554850061191394566}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 3.25, z: 0}
+--- !u!114 &3213113707143151054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7554850061191394566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d84781b3d5f6dfb42bddf6a476564dea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
 --- !u!1001 &2084932916071000232
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -158,6 +194,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0211b10555bc9d14b9dff0b65de2560c, type: 3}
       propertyPath: m_Name
       value: teapot
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0211b10555bc9d14b9dff0b65de2560c, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7071182760956848314, guid: 0211b10555bc9d14b9dff0b65de2560c, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'

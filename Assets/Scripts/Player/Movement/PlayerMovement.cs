@@ -301,9 +301,8 @@ namespace Platformer
             else if (!Grounded && state != MovementState.Swinging || state != MovementState.Freeze || !OnSlope())
             {
                 // limit fall speed
-                if (_jumpVelocity < -99) return;
-                
-                _jumpVelocity += Physics.gravity.y * gravityMultiplier * Time.fixedDeltaTime;
+                if (_jumpVelocity > -25)
+                    _jumpVelocity += Physics.gravity.y * gravityMultiplier * Time.fixedDeltaTime;
             }
             
             // applies the force
