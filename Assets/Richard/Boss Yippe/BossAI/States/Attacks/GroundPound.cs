@@ -1,15 +1,15 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.AI; // Required for NavMeshAgent
+using UnityEngine.AI;
 
 public class GroundPound : MonoBehaviour
 {
-    public float jumpHeight = 7f;      // How high the boss jumps
-    public float slamSpeed = 40f;       // Speed of the slam down
-    public GameObject shockwavePrefab;  // The expanding sphere attack prefab
-    public Transform shockwaveSpawnPoint; // Where the sphere appears on landing
-    public int attackCount = 4;         // Number of times the attack should repeat
-    public float attackDelay = 1f;      // Delay between each attack
+    public float jumpHeight = 7f;
+    public float slamSpeed = 40f;
+    public GameObject shockwavePrefab;
+    public Transform shockwaveSpawnPoint;
+    public int attackCount = 4;
+    public float attackDelay = 1f;
 
     private Rigidbody rb;
     private NavMeshAgent navMeshAgent;
@@ -20,24 +20,24 @@ public class GroundPound : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        navMeshAgent = GetComponent<NavMeshAgent>(); // Get NavMeshAgentA
+        navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
     public IEnumerator GroundSlamSequence()
     {
         if (navMeshAgent != null)
         {
-            navMeshAgent.enabled = false; 
+            navMeshAgent.enabled = false;
         }
 
-        FreezeXZConstraints(true); 
+        FreezeXZConstraints(true);
 
         for (int i = 0; i < attackCount; i++)
         {
             hasLanded = false;
             yield return StartCoroutine(GroundSlam());
-            yield return new WaitUntil(() => hasLanded); 
-            yield return new WaitForSeconds(attackDelay); 
+            yield return new WaitUntil(() => hasLanded);
+            yield return new WaitForSeconds(attackDelay);
         }
 
         FreezeXZConstraints(false);
@@ -51,44 +51,47 @@ public class GroundPound : MonoBehaviour
     public IEnumerator GroundSlam()
     {
         isJumping = true;
-
-
         rb.velocity = Vector3.up * jumpHeight;
-        yield return new WaitForSeconds(0.6f); 
+        yield return new WaitForSeconds(0.6f);
 
         isJumping = false;
         isSlamming = true;
-
-
         rb.velocity = Vector3.down * slamSpeed;
 
         yield return new WaitUntil(() => hasLanded);
 
         isSlamming = false;
-        
-        if (shockwavePrefab != null && shockwaveSpawnPoint != null)
+
+        if (shockwavePrefab != null)
         {
-            GameObject shockwave = Instantiate(shockwavePrefab, shockwaveSpawnPoint.position, Quaternion.identity);
+            Vector3 shockwavePosition = new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z);
+            GameObject shockwave = Instantiate(shockwavePrefab, shockwavePosition, Quaternion.identity);
+
             StartCoroutine(ExpandAndDestroy(shockwave));
         }
     }
 
     IEnumerator ExpandAndDestroy(GameObject obj)
     {
-        float expandTime = 5f;
-        float maxSize = 10f;
+        float expandTime = 8f; 
+        float maxSize = 13f;
+        float descendSpeed = 0.9f;
 
         float timer = 0f;
-        Vector3 startScale = Vector3.one;
+        Vector3 startScale = obj.transform.localScale;
+        Vector3 startPosition = obj.transform.position;
 
         while (timer < expandTime)
         {
             timer += Time.deltaTime;
-            obj.transform.localScale = Vector3.Lerp(startScale, Vector3.one * maxSize, timer / expandTime);
+            float progress = timer / expandTime;
+            obj.transform.localScale = Vector3.Lerp(startScale, new Vector3(maxSize, maxSize, maxSize), progress);
+            obj.transform.position -= Vector3.up * (descendSpeed * Time.deltaTime);
+
             yield return null;
         }
 
-        Destroy(obj); 
+        Destroy(obj);
     }
 
     private void FreezeXZConstraints(bool freeze)
@@ -102,7 +105,7 @@ public class GroundPound : MonoBehaviour
             rb.constraints = RigidbodyConstraints.FreezeRotation;
         }
     }
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if (isSlamming && other.gameObject.CompareTag("Ground"))

@@ -8,7 +8,7 @@ public class Chase : BossAIState
     private NavMeshAgent navAgent;
     private float chaseDuration = 6f;
     private float chaseTimer = 0f;
-    private float lungeDistance = 3f;
+    private float lungeDistance = 7f;
 
     public Chase(BossAIManager boss) : base(boss) 
     {

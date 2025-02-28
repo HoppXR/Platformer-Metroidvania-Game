@@ -9,11 +9,11 @@ public class ProjectileVolley : MonoBehaviour
     public Transform playerPrediction;
 
     public int totalSkyProjectiles = 15;
-    public int totalTargetedProjectiles = 10;
-    public float skySpawnRadius = 5f;
-    public float skyHeight = 10f;
-    public float skyFireRate = 0.2f;
-    public float targetedFireRate = 0.3f; 
+    public int totalTargetedProjectiles = 7;
+    public float skySpawnRadius = 25f;
+    public float skyHeight = 20f;
+    public float skyFireRate = 0.5f;
+    public float targetedFireRate = 1f; 
     public float projectileSpeed = 15f;
     public float predictionChance = 0.3f; 
     public float arcVerticalAngle = 45f;
@@ -34,15 +34,7 @@ public class ProjectileVolley : MonoBehaviour
             if (predictionObj != null) playerPrediction = predictionObj.transform;
         }
     }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P) && !isShooting)
-        {
-            StartCoroutine(FireVolley());
-        }
-    }
-
+    
     IEnumerator FireVolley()
     {
         isShooting = true;
@@ -66,12 +58,8 @@ public class ProjectileVolley : MonoBehaviour
     {
         for (int i = 0; i < totalTargetedProjectiles; i++)
         {
-            FireArchedAtTarget(player);
-
-            if (Random.value < predictionChance)
-            {
-                FireArchedAtTarget(playerPrediction);
-            }
+            Transform target = (Random.value < predictionChance) ? playerPrediction : player;
+            FireArchedAtTarget(target);
 
             yield return new WaitForSeconds(targetedFireRate);
         }

@@ -3,12 +3,21 @@ using UnityEngine;
 public class Tired : BossAIState
 {
     private float timer = 6f;
+    private Rigidbody rb;
 
-    public Tired(BossAIManager boss) : base(boss) { }
+    public Tired(BossAIManager boss) : base(boss) 
+    {
+        rb = boss.GetComponent<Rigidbody>();
+    }
 
     public override void EnterState()
     {
         Debug.Log("Boss is tired...");
+        
+        if (rb != null)
+        {
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+        }
     }
 
     public override void StateUpdate()
@@ -20,5 +29,11 @@ public class Tired : BossAIState
         }
     }
 
-    public override void ExitState() { }
+    public override void ExitState()
+    {
+        if (rb != null)
+        {
+            rb.constraints = RigidbodyConstraints.None;
+        }
+    }
 }

@@ -9,7 +9,9 @@ public class Lunge : BossAIState
     private bool hasLunged = false;
     private float lungeSpeed = 25f;
     private float lungeDuration = 0.3f;
-    private float postLungeWait = 1f;
+    private float preLungeWait = 1f;
+    private float postLungeWait = 2f;
+    private Vector3 resetPosition = new Vector3(-2f, 2f, 2f);
 
     public Lunge(BossAIManager boss) : base(boss) 
     {
@@ -32,6 +34,8 @@ public class Lunge : BossAIState
     private IEnumerator PerformLunge()
     {
         if (player == null) yield break;
+        
+        yield return new WaitForSeconds(preLungeWait);
 
         Vector3 lungeDirection = (player.position - boss.transform.position).normalized;
         float elapsedTime = 0f;
@@ -48,14 +52,20 @@ public class Lunge : BossAIState
         yield return new WaitForSeconds(postLungeWait);
 
         boss.SetState(BossAIManager.BossState.Attack);
+    }
+    
+    public override void StateUpdate()
+    {
+    }
+
+
+    public override void ExitState()
+    {
+        boss.transform.position = resetPosition;
 
         if (navAgent != null)
         {
             navAgent.isStopped = false;
         }
     }
-
-    public override void StateUpdate() { }
-
-    public override void ExitState() { }
 }

@@ -6,12 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="23ecdee6-e53f-4c67-8fa7-c80e246c1084" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Platformer-Metroidvania-Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Platformer-Metroidvania-Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/BossAIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/BossAIManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attack.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/DashAttack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/DashAttack.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/GroundPound.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/GroundPound.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/ProjectileVolly.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/ProjectileVolly.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Idle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Idle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/Sphere (1) 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/Sphere (1) 1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Chase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Chase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Lunge.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Lunge.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Tired.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Tired.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Richard/Richard Test Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Richard Test Scene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +130,9 @@
       <workItem from="1740187846313" duration="1167000" />
       <workItem from="1740530533160" duration="1105000" />
       <workItem from="1740625561121" duration="595000" />
-      <workItem from="1740699437219" duration="4589000" />
+      <workItem from="1740699437219" duration="4922000" />
+      <workItem from="1740717835438" duration="1334000" />
+      <workItem from="1740781520333" duration="4432000" />
     </task>
     <servers />
   </component>

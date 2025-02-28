@@ -28,12 +28,6 @@ public class DashAttack : MonoBehaviour
 
     void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.I) && boss != null && boss.player != null)
-        {
-            StartDash(boss.player.position); 
-        }
-
         if (isDashing)
         {
             dashTimer -= Time.deltaTime;
@@ -59,7 +53,7 @@ public class DashAttack : MonoBehaviour
     {
         isDashing = false;
         rb.velocity = Vector3.zero;
-        Debug.Log("Dash ended");
+        //Debug.Log("Dash ended");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -71,12 +65,18 @@ public class DashAttack : MonoBehaviour
                 Vector3 normal = other.ClosestPoint(transform.position) - transform.position;
                 normal = normal.normalized;
                 dashDirection = Vector3.Reflect(dashDirection, normal).normalized;
-                rb.velocity = dashDirection * dashSpeed;
                 
+                if (boss != null && boss.player != null)
+                {
+                    Vector3 toPlayer = (boss.player.position - transform.position).normalized;
+                    dashDirection = Vector3.Lerp(dashDirection, toPlayer, 0.75f).normalized;
+                }
+
+                rb.velocity = dashDirection * dashSpeed;
                 RotateTowards(dashDirection);
 
                 bounceCount++;
-                Debug.Log("Bounced! Count: " + bounceCount);
+                //Debug.Log("Bounced! Count: " + bounceCount);
             }
         }
     }
@@ -89,10 +89,10 @@ public class DashAttack : MonoBehaviour
             transform.rotation = targetRotation;
         }
     }
+
     public IEnumerator DashRoutine(Vector3 targetPosition)
     {
         StartDash(targetPosition);
         yield return new WaitUntil(() => !isDashing); 
     }
-
 }
