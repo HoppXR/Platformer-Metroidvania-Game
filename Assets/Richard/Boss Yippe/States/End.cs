@@ -1,29 +1,37 @@
-using System.Collections;
 using UnityEngine;
+using System.Collections;
+using UnityEngine.AI;
 
 public class End : BaseState
 {
     private BossStateManager bossManager;
 
-    public End(BossStateManager bossManager) : base(bossManager)
+    public End(BossStateManager bossManager) : base(bossManager) 
     {
         this.bossManager = bossManager;
     }
 
     public override void EnterState()
     {
-        bossManager.StartCoroutine(EndSequence());
-    }
+        Debug.Log("Game end or something");
 
-    private IEnumerator EndSequence()
-    {
-        yield return new WaitForSeconds(2f);
         if (bossManager.bossAI != null)
         {
-            Object.Destroy(bossManager.bossAI.gameObject);
+            bossManager.bossAI.GetComponent<NavMeshAgent>().enabled = false;
+            bossManager.bossAI.GetComponent<ProjectileVolley>().enabled = false;
+            bossManager.bossAI.GetComponent<DashAttack>().enabled = false;
+            bossManager.bossAI.GetComponent<GroundPound>().enabled = false;
+            bossManager.bossAI.enabled = false;
         }
 
-        // Placeholder
+        bossManager.bossAI.StartCoroutine(DelayedEnd());
+    }
+
+    private IEnumerator DelayedEnd()
+    {
+        yield return new WaitForSeconds(2f);
+        
+        // Placeholder for whatever happens after the boss dies
     }
 
     public override void StateUpdate() { }

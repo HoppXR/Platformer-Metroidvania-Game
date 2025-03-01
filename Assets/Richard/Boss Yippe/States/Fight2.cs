@@ -1,20 +1,44 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+
 public class Fight2 : BaseState
 {
-    public Fight2(BossStateManager bossManager) : base(bossManager) { }// when the boss reaches 0 health or less it will switch to the lkast phase which is exit
+    private BossStateManager bossManager;
+    private EnemyHealth bossHealth;
+
+    public Fight2(BossStateManager bossManager) : base(bossManager) 
+    {
+        this.bossManager = bossManager;
+    }
 
     public override void EnterState()
     {
         Debug.Log("Entered Fight 2");
-        // Enable boss final phase
+
+        if (bossManager.bossAI != null)
+        {
+            bossManager.bossAI.enabled = true;
+
+            bossManager.bossAI.GetComponent<NavMeshAgent>().enabled = true;
+            bossManager.bossAI.GetComponent<ProjectileVolley>().enabled = true;
+            bossManager.bossAI.GetComponent<DashAttack>().enabled = true;
+            bossManager.bossAI.GetComponent<GroundPound>().enabled = true;
+
+            bossHealth = bossManager.bossAI.GetComponent<EnemyHealth>();
+
+            if (bossHealth != null)
+            {
+                bossHealth.HealBoss(35); // Heal boss by 35 HP
+            }
+        }
+        
+        if (bossManager.arenaColliders != null)
+        {
+            bossManager.arenaColliders.SetActive(true);
+        }
     }
 
-    public override void StateUpdate()
-    {
-
-    }
+    public override void StateUpdate() { }
 
     public override void ExitState()
     {

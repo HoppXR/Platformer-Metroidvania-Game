@@ -30,10 +30,6 @@ public class Fight1 : BaseState
 
     public override void StateUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.T)) 
-        {
-            bossManager.SetState(BossStateManager.BossState.Transition);
-        }
     }
 
     public override void ExitState()

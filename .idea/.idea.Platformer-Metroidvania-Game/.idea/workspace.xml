@@ -6,20 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="23ecdee6-e53f-4c67-8fa7-c80e246c1084" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Platformer-Metroidvania-Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Platformer-Metroidvania-Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attack.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/DashAttack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/DashAttack.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/GroundPound.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/GroundPound.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/New Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/New Material.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/ProjectileVolly.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/ProjectileVolly.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/Sphere (1) 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/Sphere (1) 1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossStateManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossStateManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/End.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/End.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/Fight1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/Fight1.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/Fight2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/Fight2.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/Parkour1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/Parkour1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/Parkour2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/Parkour2.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/Transition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/Transition.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/Richard Test Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Richard Test Scene.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +25,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Idle.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Lunge.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Tired.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossHealth.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Richard/Boss Yippe/Manager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/Fight2.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/Park1 to Fight1.cs" root0="FORCE_HIGHLIGHTING" />
