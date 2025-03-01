@@ -32,11 +32,6 @@ public class GameManager : MonoBehaviour
         input.PauseEvent += PauseGame;
         input.ResumeEvent += ResumeGame;
     }
-
-    private void Update()
-    {
-        //PlayerWin();
-    }
     #endregion
 
     public void FindPlayerHealth()
@@ -117,10 +112,8 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region Game State
-    private void PlayerWin()
+    public void PlayerWin()
     {
-        if (!HasPlayerWon()) return;
-        
         FindFirstObjectByType<UIManager>()?.GameWin();
 
         Time.timeScale = 0;

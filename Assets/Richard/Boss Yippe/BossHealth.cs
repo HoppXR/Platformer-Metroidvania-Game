@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -23,6 +22,7 @@ public class BossHealth : MonoBehaviour
         if (damage >= health)
         {
             health = 0;
+            Die();
         }
         else
         {
@@ -53,7 +53,7 @@ public class BossHealth : MonoBehaviour
 
     private void Die()
     {
-        // Play death animation (if needed)
+        GameManager.Instance.PlayerWin();
         Destroy(gameObject);
     }
 

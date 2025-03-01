@@ -81,6 +81,11 @@ public class PlayerCombat : MonoBehaviour
             {
                 enemyHealth.TakeDamage(damage);
             }
+
+            if (enemy.TryGetComponent(out BossHealth bossHealth))
+            {
+                bossHealth.TakeDamage(damage);
+            }
             
             // remove when animations are added
             Debug.Log("Enemies hit: " + enemies.Length);

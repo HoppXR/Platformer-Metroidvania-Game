@@ -20,8 +20,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject interactionUI;
     [SerializeField] private TMP_Text interactionText;
     
-    [Header("Collectables")]
-    [SerializeField] private TMP_Text countText;
+    //[Header("Collectables")]
+    //[SerializeField] private TMP_Text countText;
     
     [Header("HighScore Board")]
     [SerializeField] private TMP_InputField playerNameInput;
@@ -104,7 +104,7 @@ public class UIManager : MonoBehaviour
     
     public void SetCountText()
     {
-        countText.text = GameManager.Count + "/" + GameManager.MaxCount;
+        //countText.text = GameManager.Count + "/" + GameManager.MaxCount;
     }
     #endregion
     
