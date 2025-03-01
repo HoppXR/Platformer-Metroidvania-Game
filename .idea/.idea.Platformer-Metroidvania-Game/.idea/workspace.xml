@@ -9,14 +9,17 @@
       <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attack.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/DashAttack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/DashAttack.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/GroundPound.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/GroundPound.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/New Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/New Material.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/ProjectileVolly.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/ProjectileVolly.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/Sphere (1) 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/Sphere (1) 1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Chase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Chase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Lunge.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Lunge.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Tired.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Tired.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossStateManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossStateManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/End.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/End.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/Fight1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/Fight1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/Fight2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/Fight2.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/Parkour1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/Parkour1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/Parkour2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/Parkour2.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/Transition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/Transition.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Richard/Richard Test Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Richard Test Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,13 +32,14 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/BossAIStateManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/DashAttack.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Attacks/Ground.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Chase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Idle.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Lunge.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Richard/Boss Yippe/BossAI/States/Tired.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Richard/Boss Yippe/Manager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/Fight2.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/Park1 to Fight1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/Park2 to Fight2.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/Parkour1.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
@@ -132,7 +136,9 @@
       <workItem from="1740625561121" duration="595000" />
       <workItem from="1740699437219" duration="4922000" />
       <workItem from="1740717835438" duration="1334000" />
-      <workItem from="1740781520333" duration="4432000" />
+      <workItem from="1740781520333" duration="4477000" />
+      <workItem from="1740791341501" duration="4079000" />
+      <workItem from="1740798247516" duration="5036000" />
     </task>
     <servers />
   </component>
@@ -141,6 +147,17 @@
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>

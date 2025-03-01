@@ -11,14 +11,11 @@ public class Parkour1 : BaseState
 
     public override void StateUpdate()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            bossManager.SetState(BossStateManager.BossState.Fight1);
-        }
+
     }
 
     public override void ExitState()
     {
         Debug.Log("Exiting Parkour 1");
     }
-}
+}//this should be the starting phase where the boss is dormant meaning all script on boss is off, there will be a collider that will trigger part 2 which means switching pase to fight 1

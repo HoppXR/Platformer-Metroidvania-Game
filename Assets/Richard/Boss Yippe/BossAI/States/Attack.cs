@@ -19,7 +19,7 @@ public class Attack : BossAIState
 
     public override void EnterState()
     {
-        Debug.Log("Boss is attacking!");
+        //Debug.Log("Boss is attacking!");
         boss.transform.position = resetPosition;
         Rigidbody rb = boss.GetComponent<Rigidbody>();
         rb.velocity = Vector3.zero;
@@ -47,13 +47,15 @@ public class Attack : BossAIState
     {
         if (boss.currentPhase == BossAIManager.BossPhase.Phase1)
         {
-            boss.projectileVolley.totalSkyProjectiles = 14;
+            boss.projectileVolley.totalSkyProjectiles = 17;
             boss.projectileVolley.totalTargetedProjectiles = 7;
-            boss.projectileVolley.skyFireRate = 0.5f;
+            boss.projectileVolley.skyFireRate = 0.4f;
             boss.projectileVolley.targetedFireRate = 1f;
-            boss.projectileVolley.projectileSpeed = 10;
+            boss.projectileVolley.projectileSpeed = 15;
+            boss.projectileVolley.skySpawnRadius = 11;
             
-            boss.dashAttack.dashSpeed = 15;
+            
+            boss.dashAttack.dashSpeed = 11;
             
             boss.groundPound.attackCount = 3;
             boss.groundPound.attackDelay = 1.2f;
@@ -62,16 +64,15 @@ public class Attack : BossAIState
         }
         else
         {
-            boss.projectileVolley.totalSkyProjectiles = 18;
-            boss.projectileVolley.totalTargetedProjectiles = 10;
-            boss.projectileVolley.skyFireRate = 0.3f;
-            boss.projectileVolley.targetedFireRate = 0.8f;
-            boss.projectileVolley.projectileSpeed = 15;
+            boss.projectileVolley.totalSkyProjectiles = 19;
+            boss.projectileVolley.totalTargetedProjectiles = 7;
+            boss.projectileVolley.skyFireRate = 0.35f;
+            boss.projectileVolley.targetedFireRate = 0.9f;
             boss.projectileVolley.predictionChance = 0.5f;
             
-            boss.dashAttack.dashSpeed = 23;
+            boss.dashAttack.dashSpeed = 16;
             boss.dashAttack.dashDuration = 16;
-            boss.dashAttack.maxBounces = 8;
+            boss.dashAttack.maxBounces = 7;
             
             boss.groundPound.attackCount = 5;
             boss.groundPound.attackDelay = 1f;

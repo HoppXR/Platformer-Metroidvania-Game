@@ -1,27 +1,26 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Parkour2 : BaseState
 {
-    public Parkour2(BossStateManager bossManager) : base(bossManager) { }
+    private BossStateManager bossManager;
+
+    public Parkour2(BossStateManager bossManager) : base(bossManager)
+    {
+        this.bossManager = bossManager;
+    }
 
     public override void EnterState()
     {
-        Debug.Log("Entered Parkour 2");
-        // Replace old parkour with new
-    }
-
-    public override void StateUpdate()
-    {
-        if (Input.GetMouseButtonDown(0)) // Placeholder for reaching the top
+        if (bossManager.parkour2Trigger != null)
         {
-            bossManager.SetState(BossStateManager.BossState.Fight2);
+            bossManager.parkour2Trigger.SetActive(true);
         }
     }
 
+    public override void StateUpdate() { }
+
     public override void ExitState()
     {
-        Debug.Log("Exiting Parkour 2");
     }
 }

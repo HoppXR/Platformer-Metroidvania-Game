@@ -73,9 +73,9 @@ public class GroundPound : MonoBehaviour
 
     IEnumerator ExpandAndDestroy(GameObject obj)
     {
-        float expandTime = 8f; 
-        float maxSize = 13f;
-        float descendSpeed = 0.9f;
+        float expandTime = 6f; 
+        float maxSize = 11f;
+        float descendSpeed = 0.95f;
 
         float timer = 0f;
         Vector3 startScale = obj.transform.localScale;

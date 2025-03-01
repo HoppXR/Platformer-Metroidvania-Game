@@ -18,12 +18,14 @@ public class DashAttack : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        
+    
         boss = GetComponent<BossAIManager>();
         if (boss == null)
         {
             boss = FindObjectOfType<BossAIManager>(); 
         }
+        
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
     }
 
     void Update()
@@ -53,7 +55,8 @@ public class DashAttack : MonoBehaviour
     {
         isDashing = false;
         rb.velocity = Vector3.zero;
-        //Debug.Log("Dash ended");
+        // Unfreeze rotation after dash ends (if needed)
+        rb.constraints = RigidbodyConstraints.None;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -65,7 +68,7 @@ public class DashAttack : MonoBehaviour
                 Vector3 normal = other.ClosestPoint(transform.position) - transform.position;
                 normal = normal.normalized;
                 dashDirection = Vector3.Reflect(dashDirection, normal).normalized;
-                
+            
                 if (boss != null && boss.player != null)
                 {
                     Vector3 toPlayer = (boss.player.position - transform.position).normalized;
@@ -76,7 +79,6 @@ public class DashAttack : MonoBehaviour
                 RotateTowards(dashDirection);
 
                 bounceCount++;
-                //Debug.Log("Bounced! Count: " + bounceCount);
             }
         }
     }

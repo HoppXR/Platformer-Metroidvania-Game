@@ -1,22 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Fight1 : BaseState
 {
-    public Fight1(BossStateManager bossManager) : base(bossManager) { }
+    private BossStateManager bossManager;
+
+    public Fight1(BossStateManager bossManager) : base(bossManager) 
+    {
+        this.bossManager = bossManager;
+    }
 
     public override void EnterState()
     {
-        Debug.Log("Entered Fight 1");
-        // Enable boss UI
-        // Start boss attacks
+        if (bossManager.bossAI != null)
+        {
+            bossManager.bossAI.enabled = true;
+            
+            bossManager.bossAI.GetComponent<NavMeshAgent>().enabled = true;
+            bossManager.bossAI.GetComponent<ProjectileVolley>().enabled = true;
+            bossManager.bossAI.GetComponent<DashAttack>().enabled = true;
+            bossManager.bossAI.GetComponent<GroundPound>().enabled = true;
+        }
+        
+        if (bossManager.arenaColliders != null)
+        {
+            bossManager.arenaColliders.SetActive(true);
+        }
     }
 
     public override void StateUpdate()
     {
-        // Placeholder: Switch state when boss health is depleted
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.T)) 
         {
             bossManager.SetState(BossStateManager.BossState.Transition);
         }
@@ -24,6 +38,5 @@ public class Fight1 : BaseState
 
     public override void ExitState()
     {
-        Debug.Log("Exiting Fight 1");
     }
 }

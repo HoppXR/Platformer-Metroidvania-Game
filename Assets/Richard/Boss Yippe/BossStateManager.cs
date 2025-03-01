@@ -1,11 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BossStateManager : MonoBehaviour
 {
     public enum BossState { Parkour1, Fight1, Transition, Parkour2, Fight2, End }
     public BossState currentState = BossState.Parkour1;
+
+    public BossAIManager bossAI;
+    public GameObject player;
+    public GameObject playerCamera;
+    public GameObject transitionCamera;
+    public GameObject arenaColliders;
+    public GameObject parkour1;
+    public GameObject parkour2;
+    public Transform parkour2StartPos;
+    
+    // **Add this line**
+    public GameObject parkour2Trigger;
 
     private BaseState activeState;
 

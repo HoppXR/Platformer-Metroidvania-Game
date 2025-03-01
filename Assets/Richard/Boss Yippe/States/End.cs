@@ -1,14 +1,29 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class End : BaseState
 {
-    public End(BossStateManager bossManager) : base(bossManager) { }
+    private BossStateManager bossManager;
+
+    public End(BossStateManager bossManager) : base(bossManager)
+    {
+        this.bossManager = bossManager;
+    }
 
     public override void EnterState()
     {
-        Debug.Log("Game end or something");
+        bossManager.StartCoroutine(EndSequence());
+    }
+
+    private IEnumerator EndSequence()
+    {
+        yield return new WaitForSeconds(2f);
+        if (bossManager.bossAI != null)
+        {
+            Object.Destroy(bossManager.bossAI.gameObject);
+        }
+
+        // Placeholder
     }
 
     public override void StateUpdate() { }

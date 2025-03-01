@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Fight2 : BaseState
 {
-    public Fight2(BossStateManager bossManager) : base(bossManager) { }
+    public Fight2(BossStateManager bossManager) : base(bossManager) { }// when the boss reaches 0 health or less it will switch to the lkast phase which is exit
 
     public override void EnterState()
     {
@@ -13,10 +13,7 @@ public class Fight2 : BaseState
 
     public override void StateUpdate()
     {
-        if (Input.GetMouseButtonDown(0)) // Placeholder for boss death
-        {
-            bossManager.SetState(BossStateManager.BossState.End);
-        }
+
     }
 
     public override void ExitState()

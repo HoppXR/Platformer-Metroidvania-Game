@@ -10,7 +10,7 @@ public class ProjectileVolley : MonoBehaviour
 
     public int totalSkyProjectiles = 15;
     public int totalTargetedProjectiles = 7;
-    public float skySpawnRadius = 25f;
+    public float skySpawnRadius = 10f;
     public float skyHeight = 20f;
     public float skyFireRate = 0.5f;
     public float targetedFireRate = 1f; 
