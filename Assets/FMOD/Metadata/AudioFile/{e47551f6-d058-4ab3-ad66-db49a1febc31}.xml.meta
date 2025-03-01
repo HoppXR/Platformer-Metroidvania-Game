@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/FMOD/Metadata/AudioFile/{e47551f6-d058-4ab3-ad66-db49a1febc31}.xml.meta
 guid: 729bb40e1e6055044a713b4767d3771a
 TextScriptImporter:
+========
+guid: 210d41cb4275c744f8eeaa0f30af3472
+NativeFormatImporter:
+>>>>>>>> Jaden:Assets/Shaders/Volumes/Vault.asset.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

@@ -4,9 +4,11 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    #region Variables
     [Header("References")]
     [SerializeField] private InputReader input;
     [SerializeField] private HighScoreBoard highScoreBoard;
+    [SerializeField] private PlayerInteract playerInteract;
     
     [Header("UI")]
     [SerializeField] private GameObject pauseMenu;
@@ -14,11 +16,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject gameWinUI;
     [SerializeField] private GameObject gameUI;
     
+    [Header("Interaction")]
+    [SerializeField] private GameObject interactionUI;
+    [SerializeField] private TMP_Text interactionText;
+    
     [Header("Collectables")]
     [SerializeField] private TMP_Text countText;
     
     [Header("HighScore Board")]
-    [SerializeField] private TMP_Text playerTimeText;
     [SerializeField] private TMP_InputField playerNameInput;
     [SerializeField] private Button saveScoreButton;
     private bool _hasSaved = false;
@@ -27,6 +32,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text timerText;
     private float _timer = 0f;
     private bool _isRunning = true;
+    #endregion
     
     private void Start()
     {
@@ -36,6 +42,7 @@ public class UIManager : MonoBehaviour
         pauseMenu.SetActive(false);
         gameLoseUI.SetActive(false);
         gameWinUI.SetActive(false);
+        interactionUI.SetActive(false);
         
         input.SetGameplay();
         
@@ -49,12 +56,22 @@ public class UIManager : MonoBehaviour
         
         GameManager.Instance.FindPlayerHealth();
     }
-
+    
     private void Update()
     {
         HandleTimer();
-    }
 
+        if (playerInteract.GetInteractable() != null)
+        {
+            ShowInteractUI(playerInteract.GetInteractable());
+        }
+        else
+        {
+            HideInteractUI();
+        }
+    }
+    
+    #region Public methods
     public void PauseGame()
     {
         input?.SetUI();
@@ -89,6 +106,19 @@ public class UIManager : MonoBehaviour
     {
         countText.text = GameManager.Count + "/" + GameManager.MaxCount;
     }
+    #endregion
+    
+    #region Private methods
+    private void ShowInteractUI(IInteractable interactable)
+    {
+        interactionUI?.SetActive(true);
+        interactionText.text = interactable.GetInteractText();
+    }
+
+    private void HideInteractUI()
+    {
+        interactionUI?.SetActive(false);
+    }
     
     private void HandleTimer()
     {
@@ -108,4 +138,5 @@ public class UIManager : MonoBehaviour
     {
         saveScoreButton.interactable = !_hasSaved && playerName.Length > 0;
     }
+    #endregion
 }

@@ -51,6 +51,8 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
     public event Action SwingShortenEvent;
     public event Action SwingExtendEvent;
     
+    public event Action InteractEvent;
+    
     public event Action PauseEvent;
     public event Action ResumeEvent;
     
@@ -77,6 +79,14 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
         if (context.phase == InputActionPhase.Started)
         {
             SwapAttackEvent?.Invoke();
+        }
+    }
+
+    public void OnInteraction(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            InteractEvent?.Invoke();
         }
     }
 
