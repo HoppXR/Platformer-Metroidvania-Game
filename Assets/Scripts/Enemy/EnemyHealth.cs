@@ -1,9 +1,19 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] private int health;
+    [SerializeField] private Material damageMaterial;
+    private Material _originalMaterial;
+    private Renderer _renderer;
+    
+    private void Start()
+    {
+        _renderer = GetComponentInChildren<Renderer>();
+        _originalMaterial = _renderer.material;
+    }
 
     public void TakeDamage(int damage)
     {
@@ -16,6 +26,8 @@ public class EnemyHealth : MonoBehaviour
         {
             health -= damage;
         }
+
+        StartCoroutine(EDamageFlicker());
     }
 
     public void Squish()
@@ -38,5 +50,14 @@ public class EnemyHealth : MonoBehaviour
         
         // TEMP logic
         Destroy(gameObject);
+    }
+
+    private IEnumerator EDamageFlicker()
+    {
+        _renderer.material = damageMaterial;
+        
+        yield return new WaitForSeconds(0.25f);
+        
+        _renderer.material = _originalMaterial;
     }
 }

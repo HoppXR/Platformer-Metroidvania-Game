@@ -8,7 +8,6 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private InputReader input;
     [SerializeField] private Transform player;
     [SerializeField] private float attackPositionOffset;
-    [SerializeField] private LayerMask enemyLayer;
     private PlayerMovement _pm;
     private Animator _animator;
     private Vector3 _attackOffset;
@@ -17,7 +16,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private int damage;
     [SerializeField] private float atkSpeed;
     [SerializeField] private float atkRange;
-    private bool _isMeleeAttack;
+    private bool _isRangedAttack;
     
     private void Start()
     {
@@ -45,7 +44,7 @@ public class PlayerCombat : MonoBehaviour
 
     private void SwapAttackType()
     {
-        _isMeleeAttack = !_isMeleeAttack;
+        _isRangedAttack = !_isRangedAttack;
         
         Debug.Log("Attack Swapped");
         
@@ -54,7 +53,7 @@ public class PlayerCombat : MonoBehaviour
 
     private void Attack()
     {
-        if (_isMeleeAttack)
+        if (!_isRangedAttack)
         {
             MeleeAttack();
         }
@@ -75,14 +74,17 @@ public class PlayerCombat : MonoBehaviour
     {
         Debug.Log("Melee Attack");
 
-        Collider[] enemies = Physics.OverlapSphere(_attackOffset, atkRange, enemyLayer);
+        Collider[] enemies = Physics.OverlapSphere(_attackOffset, atkRange);
         foreach (var enemy in enemies)
         {
-                enemy.GetComponent<EnemyHealth>()?.TakeDamage(damage);
+            if (enemy.TryGetComponent(out EnemyHealth enemyHealth))
+            {
+                enemyHealth.TakeDamage(damage);
+            }
+            
+            // remove when animations are added
             Debug.Log("Enemies hit: " + enemies.Length);
         }
-
-        // animations are needed to implement attacks
     }
 
     private void RangedAttack()

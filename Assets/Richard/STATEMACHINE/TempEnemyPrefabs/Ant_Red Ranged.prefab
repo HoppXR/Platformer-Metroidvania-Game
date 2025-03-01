@@ -1256,7 +1256,7 @@ GameObject:
   - component: {fileID: 6662186607858598913}
   - component: {fileID: 2809817949207515213}
   - component: {fileID: 6635832373392243562}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Ant_Red Ranged
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1371,6 +1371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
+  damageMaterial: {fileID: 2100000, guid: 92896a7937dd1c94baa675ea8fb3e8be, type: 2}
 --- !u!1 &8529691141859321892
 GameObject:
   m_ObjectHideFlags: 0

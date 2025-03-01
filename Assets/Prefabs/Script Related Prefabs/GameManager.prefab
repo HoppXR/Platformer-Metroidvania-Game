@@ -45,10 +45,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 11400000, guid: f0af528ef787f524f906f2f46802fbbb, type: 2}
-  playerHealth: {fileID: 0}
-  highScoreBoard: {fileID: 0}
-  playerTimeText: {fileID: 0}
-  playerNameInput: {fileID: 0}
-  saveScoreButton: {fileID: 0}
-  countText: {fileID: 0}
-  timerText: {fileID: 0}

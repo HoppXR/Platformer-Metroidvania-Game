@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        PlayerWin();
+        //PlayerWin();
     }
     #endregion
 
@@ -96,7 +96,11 @@ public class GameManager : MonoBehaviour
     }
 
     // for level loads that have animations or need a delay
-    public IEnumerator LoadLevelTimer(int index, float time)
+    public void LoadLevelTimer(int index, float time)
+    {
+        StartCoroutine(ELoadLevelTimer(index, time));
+    }
+    private IEnumerator ELoadLevelTimer(int index, float time)
     {
         // play ui sound or animation before scene change
         

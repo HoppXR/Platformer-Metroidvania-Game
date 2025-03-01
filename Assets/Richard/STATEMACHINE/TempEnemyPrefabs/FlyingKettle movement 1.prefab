@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1474815881328880281}
   - component: {fileID: 3931866867182219523}
   - component: {fileID: 3213113707143151054}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: FlyingKettle movement 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  damageMaterial: {fileID: 2100000, guid: 92896a7937dd1c94baa675ea8fb3e8be, type: 2}
 --- !u!1001 &2084932916071000232
 PrefabInstance:
   m_ObjectHideFlags: 0

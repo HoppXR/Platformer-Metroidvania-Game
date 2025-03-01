@@ -75,13 +75,13 @@ GameObject:
   - component: {fileID: 7222744572238283125}
   - component: {fileID: 3593482322763352338}
   - component: {fileID: 7344835728310131556}
+  - component: {fileID: 3336774183408497758}
   - component: {fileID: 3238370329580262186}
   - component: {fileID: 8987336289196688416}
   - component: {fileID: 6222688916528342523}
   - component: {fileID: 438522503146741698}
   - component: {fileID: 2824042561884400607}
   - component: {fileID: 5370380502167197569}
-  - component: {fileID: 6007765954329050153}
   - component: {fileID: 6946117532497048197}
   - component: {fileID: 5841564504364244808}
   - component: {fileID: 3677352457047037229}
@@ -146,12 +146,23 @@ MonoBehaviour:
   input: {fileID: 11400000, guid: f0af528ef787f524f906f2f46802fbbb, type: 2}
   player: {fileID: 2088367267408673784}
   attackPositionOffset: 1
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 4096
   damage: 5
   atkSpeed: 0
   atkRange: 1.5
+--- !u!114 &3336774183408497758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5163581559121146808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6150368ea9d40e84f81ede2a92e8f2c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 11400000, guid: f0af528ef787f524f906f2f46802fbbb, type: 2}
+  interactRange: 2
 --- !u!114 &3238370329580262186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,20 +322,6 @@ MonoBehaviour:
   velocityToActivate: 1
   particleOffset: 0.1
   landingParticle: {fileID: 2666578256002895913}
---- !u!114 &6007765954329050153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5163581559121146808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83b686f8d7d52f64fbb84dbd16ef8a08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shadow: {fileID: 3390900390955864596}
-  offset: 0
 --- !u!54 &6946117532497048197
 Rigidbody:
   m_ObjectHideFlags: 0
