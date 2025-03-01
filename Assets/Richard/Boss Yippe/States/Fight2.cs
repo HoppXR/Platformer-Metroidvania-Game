@@ -18,7 +18,6 @@ public class Fight2 : BaseState
         if (bossManager.bossAI != null)
         {
             bossManager.bossAI.enabled = true;
-
             bossManager.bossAI.GetComponent<NavMeshAgent>().enabled = true;
             bossManager.bossAI.GetComponent<ProjectileVolley>().enabled = true;
             bossManager.bossAI.GetComponent<DashAttack>().enabled = true;

@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="23ecdee6-e53f-4c67-8fa7-c80e246c1084" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Platformer-Metroidvania-Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Platformer-Metroidvania-Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/End.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/End.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/Fight1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/Fight1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/Fight2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Richard/Boss Yippe/States/Fight2.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,6 +126,7 @@
       <workItem from="1740781520333" duration="4477000" />
       <workItem from="1740791341501" duration="4079000" />
       <workItem from="1740798247516" duration="5036000" />
+      <workItem from="1740806015400" duration="11000" />
     </task>
     <servers />
   </component>
