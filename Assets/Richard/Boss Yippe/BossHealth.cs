@@ -36,6 +36,7 @@ public class BossHealth : MonoBehaviour
         // If health is 10 or less, switch to Phase 2
         if (health <= 10 && bossStateManager.currentState == BossStateManager.BossState.Fight1)
         {
+            HealBoss(health);
             bossStateManager.SetState(BossStateManager.BossState.Transition);
         }
 

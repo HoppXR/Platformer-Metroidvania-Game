@@ -33,6 +33,7 @@ public class Transition : BaseState
         }
         if (bossManager.player != null)
         {
+            Debug.Log("player should have teleported");
             bossManager.player.transform.position = bossManager.parkour2StartPos.position;
         }
         
