@@ -13,7 +13,7 @@ public class Collectable : MonoBehaviour
         _initialY = transform.position.y;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         HandleMovement();
     }
@@ -24,7 +24,6 @@ public class Collectable : MonoBehaviour
         {
             // add collectable logic
             AudioManager.instance.PlayOneShot(collectedSound, this.transform.position);
-            GameManager.Instance.IncreaseCount();
             
             if (collectParticle != null)
             {

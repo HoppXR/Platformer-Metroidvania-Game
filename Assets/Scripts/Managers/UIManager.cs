@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,9 +21,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject interactionUI;
     [SerializeField] private TMP_Text interactionText;
     
-    //[Header("Collectables")]
-    //[SerializeField] private TMP_Text countText;
-    
     [Header("HighScore Board")]
     [SerializeField] private TMP_InputField playerNameInput;
     [SerializeField] private Button saveScoreButton;
@@ -32,17 +30,19 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text timerText;
     private float _timer = 0f;
     private bool _isRunning = true;
+    
+    [Header("Abilities")]
+    [SerializeField] private GameObject dashAbility;
+    [SerializeField] private GameObject swingAbility;
+    [SerializeField] private GameObject doubleJumpAbility;
+    [SerializeField] private GameObject slideAbility;
     #endregion
     
     private void Start()
     {
         Time.timeScale = 1;
         
-        gameUI.SetActive(true);
-        pauseMenu.SetActive(false);
-        gameLoseUI.SetActive(false);
-        gameWinUI.SetActive(false);
-        interactionUI.SetActive(false);
+        DisableUI();
         
         input.SetGameplay();
         
@@ -50,9 +50,6 @@ public class UIManager : MonoBehaviour
         saveScoreButton.interactable = false;
 
         playerNameInput.onValueChanged.AddListener(OnNameChanged);
-        
-        GameManager.MaxCount = GameObject.FindGameObjectsWithTag("Collectable").Length;
-        SetCountText();
         
         GameManager.Instance.FindPlayerHealth();
     }
@@ -72,6 +69,28 @@ public class UIManager : MonoBehaviour
     }
     
     #region Public methods
+    public void EnableAbilityUI(AbilityManager.Abilities ability)
+    {
+        switch (ability)
+        {
+            case AbilityManager.Abilities.Dash:
+                dashAbility.SetActive(true);
+                break;
+            case AbilityManager.Abilities.Swing:
+                swingAbility.SetActive(true);
+                break;
+            case AbilityManager.Abilities.DoubleJump:
+                doubleJumpAbility.SetActive(true);
+                break;
+            case AbilityManager.Abilities.Slide:
+                slideAbility.SetActive(true);
+                break;
+            case AbilityManager.Abilities.Null:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(ability), ability, null);
+        }
+    }
     public void PauseGame()
     {
         input?.SetUI();
@@ -101,14 +120,23 @@ public class UIManager : MonoBehaviour
         gameUI?.SetActive(false);
         gameWinUI?.SetActive(true);
     }
-    
-    public void SetCountText()
-    {
-        //countText.text = GameManager.Count + "/" + GameManager.MaxCount;
-    }
     #endregion
     
     #region Private methods
+    private void DisableUI()
+    {
+        gameUI.SetActive(true);
+        pauseMenu.SetActive(false);
+        gameLoseUI.SetActive(false);
+        gameWinUI.SetActive(false);
+        interactionUI.SetActive(false);
+        
+        dashAbility.SetActive(false);
+        swingAbility.SetActive(false);
+        doubleJumpAbility.SetActive(false);
+        slideAbility.SetActive(false);
+    }
+    
     private void ShowInteractUI(IInteractable interactable)
     {
         interactionUI?.SetActive(true);

@@ -9,9 +9,6 @@ public class GameManager : MonoBehaviour
     [Header("References")] 
     [SerializeField] private InputReader input;
     private PlayerHealth _playerHealth;
-
-    public static int Count = 0;
-    public static int MaxCount;
     
     #region Unity Methods
     private void Awake()
@@ -77,9 +74,6 @@ public class GameManager : MonoBehaviour
         
         Time.timeScale = 1;
         
-        // Reset Collectable Score
-        Count = 0;
-        
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -130,17 +124,6 @@ public class GameManager : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-    }
-
-    private bool HasPlayerWon()
-    {
-        return Count >= MaxCount;
-    }
-    
-    public void IncreaseCount()
-    {
-        Count++;
-        FindFirstObjectByType<UIManager>().SetCountText();
     }
     #endregion
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class AbilityManager : MonoBehaviour
@@ -55,25 +56,32 @@ public class AbilityManager : MonoBehaviour
         
         AddTracks();
         
-        if (ability == Abilities.DoubleJump)
+        switch (ability)
         {
-            DoubleJumpEnabled = true;
-            Debug.Log("Double Jump Enabled");
-        }
-        else if (ability == Abilities.Slide)
-        {
-            SlideEnabled = true;
-            Debug.Log("Slide Enabled");
-        }
-        else if (ability == Abilities.Dash)
-        {
-            DashEnabled = true;
-            Debug.Log("Dash Enabled");
-        }
-        else if (ability == Abilities.Swing)
-        {
-            SwingEnabled = true;
-            Debug.Log("Swing Enabled");
+            case Abilities.DoubleJump:
+                DoubleJumpEnabled = true;
+                FindFirstObjectByType<UIManager>()?.EnableAbilityUI(Abilities.DoubleJump);
+                Debug.Log("Double Jump Enabled");
+                break;
+            case Abilities.Slide:
+                SlideEnabled = true;
+                FindFirstObjectByType<UIManager>()?.EnableAbilityUI(Abilities.Slide);
+                Debug.Log("Slide Enabled");
+                break;
+            case Abilities.Dash:
+                DashEnabled = true;
+                FindFirstObjectByType<UIManager>()?.EnableAbilityUI(Abilities.Dash);
+                Debug.Log("Dash Enabled");
+                break;
+            case Abilities.Swing:
+                SwingEnabled = true;
+                FindFirstObjectByType<UIManager>()?.EnableAbilityUI(Abilities.Swing);
+                Debug.Log("Swing Enabled");
+                break;
+            case Abilities.Null:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(ability), ability, null);
         }
     }
 
