@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="AudioFile" id="{e16b449f-88b3-44d4-ae3f-cf2db9fd8a51}">
-		<property name="assetPath" />
+	<object class="AudioFile" id="{1b89b5e1-2499-43e8-905e-5365f018e9fc}">
+		<property name="assetPath">
+			<value>player sounds/attack1.wav</value>
+		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>
 		</property>
@@ -9,7 +11,7 @@
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>3.4249433106575964</value>
+			<value>0.20589569160997731</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{6c631783-1b28-4e24-8ef2-ca4eaabe5959}</destination>
