@@ -22,9 +22,9 @@ public class AbilityCollectable : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GiveAbility(abilityToGive);
-            
             Destroy(gameObject);
+            
+            GiveAbility(abilityToGive);
         }
     }
 
@@ -35,7 +35,7 @@ public class AbilityCollectable : MonoBehaviour
 
     private void HandleMovement()
     {
-        transform.Rotate(0.1f, 1f, 0.1f);
+        transform.Rotate(0f, 1f, 0f);
         transform.position = new Vector3(transform.position.x, 0.35f * Mathf.Sin(Time.time * 1f) + _initialY, transform.position.z);
     }
 }
