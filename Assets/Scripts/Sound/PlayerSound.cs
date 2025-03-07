@@ -8,7 +8,9 @@ public class PlayerSound : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private InputReader input;
+    [SerializeField] private float groundCheckDistance;
     private Vector2 _inputDir;
+    private Vector3 _groundCheckOffset;
     
     [Header("Audio")]
     [SerializeField] private CurrentTerrain currentTerrain;
@@ -26,6 +28,8 @@ public class PlayerSound : MonoBehaviour
 
     private void Update()
     {
+        _groundCheckOffset = transform.position + new Vector3(0, groundCheckDistance, 0);
+        
         DetermineTerrain();
         SelectAndPlayFootstep();
     }
@@ -39,7 +43,8 @@ public class PlayerSound : MonoBehaviour
         {
             RaycastHit[] hit;
 
-            hit = Physics.RaycastAll(transform.position, Vector3.down, 10f);
+            hit = Physics.RaycastAll(_groundCheckOffset, Vector3.down, groundCheckDistance);
+            Debug.DrawRay(_groundCheckOffset, Vector3.down * groundCheckDistance, Color.magenta);
             
             foreach (RaycastHit rayhit in hit)
             {
