@@ -19,10 +19,16 @@ public class BossHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        
+        if (health <= 0) return;
+        
         if (damage >= health)
         {
             health = 0;
-            Die();
+            if (bossStateManager.currentState == BossStateManager.BossState.Fight2)
+            {
+                Die();
+            }
         }
         else
         {
@@ -32,15 +38,12 @@ public class BossHealth : MonoBehaviour
         StartCoroutine(EDamageFlicker());
 
         if (bossStateManager == null) return;
-
-        // If health is 10 or less, switch to Phase 2
+        
         if (health <= 10 && bossStateManager.currentState == BossStateManager.BossState.Fight1)
         {
-            HealBoss(health);
-            bossStateManager.SetState(BossStateManager.BossState.Transition);
+            StartCoroutine(WaitForAttackToEndThenTransition());
         }
-
-        // If health reaches 0 in Fight2, switch to End
+        
         if (health <= 0 && bossStateManager.currentState == BossStateManager.BossState.Fight2)
         {
             bossStateManager.SetState(BossStateManager.BossState.End);
@@ -63,5 +66,22 @@ public class BossHealth : MonoBehaviour
         _renderer.material = damageMaterial;
         yield return new WaitForSeconds(0.25f);
         _renderer.material = _originalMaterial;
+    }
+    
+    private IEnumerator WaitForAttackToEndThenTransition()
+    {
+        BossAIManager bossAI = GetComponent<BossAIManager>();
+
+        if (bossAI != null)
+        {
+            while (bossAI.currentState == BossAIManager.BossState.Attack)
+            {
+                yield return null; 
+            }
+        }
+        
+        HealBoss(health);
+        bossStateManager.SetState(BossStateManager.BossState.Transition);
+        bossStateManager.bossAI.SetState(BossAIManager.BossState.Idle);
     }
 }

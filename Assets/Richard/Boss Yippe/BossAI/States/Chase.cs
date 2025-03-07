@@ -19,10 +19,8 @@ public class Chase : BossAIState
     {
         player = GameObject.FindWithTag("Player").transform;
         chaseTimer = 0f;
-
         if (navAgent != null)
         {
-            navAgent.isStopped = false;
             navAgent.speed = 5f;
         }
     }

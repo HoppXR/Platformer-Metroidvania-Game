@@ -5,6 +5,7 @@ public class Fight2 : BaseState
 {
     private BossStateManager bossManager;
     private BossHealth bossHealth;
+    
 
     public Fight2(BossStateManager bossManager) : base(bossManager) 
     {
@@ -22,8 +23,9 @@ public class Fight2 : BaseState
             bossManager.bossAI.GetComponent<ProjectileVolley>().enabled = true;
             bossManager.bossAI.GetComponent<DashAttack>().enabled = true;
             bossManager.bossAI.GetComponent<GroundPound>().enabled = true;
-
             bossHealth = bossManager.bossAI.GetComponent<BossHealth>();
+            
+            bossManager.bossAI.currentPhase = BossAIManager.BossPhase.Phase2;
 
             if (bossHealth != null)
             {

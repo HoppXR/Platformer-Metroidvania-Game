@@ -1,13 +1,16 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Idle : BossAIState
 {
     private NavMeshAgent navAgent;
+    private BossStateManager bossStateManager;
 
-    public Idle(BossAIManager boss) : base(boss) 
+    public Idle(BossAIManager boss, BossStateManager bossStateManager) : base(boss) 
     {
+        this.bossStateManager = bossStateManager;
         navAgent = boss.GetComponent<NavMeshAgent>();
     }
 
@@ -15,18 +18,17 @@ public class Idle : BossAIState
     {
         Debug.Log("Boss is now Idle");
         
-        boss.transform.position = new Vector3(-12.6899996f,52f,-177.639999f);
+        boss.transform.position = new Vector3(-12.6899996f,52.1f,-177.639999f);
 
-        if (navAgent != null && navAgent.isOnNavMesh)
+        if (bossStateManager.currentState != BossStateManager.BossState.Transition)
         {
-            if (!navAgent.isStopped)
-            {
-                navAgent.speed = 0;
-                navAgent.isStopped = true;
-            }
+            boss.StartCoroutine(TransitionState());
         }
 
-        boss.StartCoroutine(TransitionState());
+        if (navAgent != null)
+        {
+            navAgent.speed = 0;
+        }
     }
 
     public override void StateUpdate()
@@ -47,7 +49,6 @@ public class Idle : BossAIState
     private IEnumerator TransitionState()
     {
         yield return new WaitForSeconds(2f);
-
         if (boss.currentPhase == BossAIManager.BossPhase.Phase1)
         {
             boss.SetState(BossAIManager.BossState.Attack);

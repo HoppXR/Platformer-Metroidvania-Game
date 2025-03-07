@@ -6,7 +6,7 @@ public class Attack : BossAIState
     private DashAttack dashAttack;
     private ProjectileVolley projectileVolley;
     private GroundPound groundPound;
-    private Vector3 resetPosition = new Vector3(-12.6899996f,52f,-177.639999f);
+    private Vector3 resetPosition = new Vector3(-12.6899996f,52.1f,-177.639999f);
 
     private static int attackIndex = 0;
 

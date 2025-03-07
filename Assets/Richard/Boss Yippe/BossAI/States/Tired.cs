@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Tired : BossAIState
 {
     private float timer = 6f;
     private Rigidbody rb;
+    private NavMeshAgent navAgent;
 
     public Tired(BossAIManager boss) : base(boss) 
     {

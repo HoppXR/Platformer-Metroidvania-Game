@@ -16,11 +16,14 @@ public class GroundPound : MonoBehaviour
     private bool isJumping = false;
     private bool isSlamming = false;
     private bool hasLanded = false;
+    
+    private BossAIManager boss;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         navMeshAgent = GetComponent<NavMeshAgent>();
+        boss = GetComponent<BossAIManager>();
     }
 
     public IEnumerator GroundSlamSequence()
@@ -41,11 +44,7 @@ public class GroundPound : MonoBehaviour
         }
 
         FreezeXZConstraints(false);
-
-        if (navMeshAgent != null)
-        {
-            navMeshAgent.enabled = true;
-        }
+        
     }
 
     public IEnumerator GroundSlam()
@@ -112,11 +111,5 @@ public class GroundPound : MonoBehaviour
         {
             hasLanded = true;
         }
-    }
-    public void StopGroundPound()
-    {
-        isJumping = false;
-        isSlamming = false;
-        StopAllCoroutines();
     }
 }

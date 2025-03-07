@@ -15,12 +15,14 @@ public class BossAIManager : MonoBehaviour
     public DashAttack dashAttack;
     public ProjectileVolley projectileVolley;
     public GroundPound groundPound;
+    private BossStateManager bossStateManager;
 
     private BossAIState activeState;
     private float attackTimer = 3f;
     
     private void Start()
     {
+        bossStateManager = FindObjectOfType<BossStateManager>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         dashAttack = GetComponent<DashAttack>();
         projectileVolley = GetComponent<ProjectileVolley>();
@@ -45,7 +47,7 @@ public class BossAIManager : MonoBehaviour
         switch (newState)
         {
             case BossState.Idle:
-                activeState = new Idle(this);
+                activeState = new Idle(this, bossStateManager);
                 break;
             case BossState.Attack:
                 activeState = new Attack(this);

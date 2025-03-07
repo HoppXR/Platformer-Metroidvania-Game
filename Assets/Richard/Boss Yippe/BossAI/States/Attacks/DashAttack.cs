@@ -18,18 +18,19 @@ public class DashAttack : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-    
         boss = GetComponent<BossAIManager>();
         if (boss == null)
         {
             boss = FindObjectOfType<BossAIManager>(); 
         }
-        
-        rb.constraints = RigidbodyConstraints.FreezeRotation;
     }
 
     void Update()
     {
+        if (rb.freezeRotation != true)
+        {
+            rb.freezeRotation = true;
+        }
         if (isDashing)
         {
             dashTimer -= Time.unscaledDeltaTime;
@@ -55,7 +56,6 @@ public class DashAttack : MonoBehaviour
     {
         isDashing = false;
         rb.velocity = Vector3.zero;
-        // Unfreeze rotation after dash ends (if needed)
         rb.constraints = RigidbodyConstraints.None;
     }
 
