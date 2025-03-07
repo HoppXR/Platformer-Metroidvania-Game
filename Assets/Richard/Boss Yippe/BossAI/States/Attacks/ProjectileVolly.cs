@@ -98,4 +98,10 @@ public class ProjectileVolley : MonoBehaviour
     {
         yield return StartCoroutine(FireVolley());
     }
+    public void StopVolley()
+    {
+        isShooting = false;
+        StopAllCoroutines();
+    }
+
 }

@@ -113,4 +113,10 @@ public class GroundPound : MonoBehaviour
             hasLanded = true;
         }
     }
+    public void StopGroundPound()
+    {
+        isJumping = false;
+        isSlamming = false;
+        StopAllCoroutines();
+    }
 }

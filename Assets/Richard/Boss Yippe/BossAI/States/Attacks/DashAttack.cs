@@ -51,7 +51,7 @@ public class DashAttack : MonoBehaviour
         RotateTowards(dashDirection);
     }
 
-    private void StopDash()
+    public void StopDash()
     {
         isDashing = false;
         rb.velocity = Vector3.zero;

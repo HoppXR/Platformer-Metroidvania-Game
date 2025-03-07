@@ -520,7 +520,7 @@ MonoBehaviour:
   player: {fileID: 0}
   projectilePrefab: {fileID: 1688833737320317978, guid: a79179039cb05e6449ce85beb51afa67, type: 3}
   baseProjectileSpeed: 4
-  heightMultiplier: 2
+  heightMultiplier: 1
   distanceMultiplier: 1.05
 --- !u!1101 &8830272487703414472
 AnimatorStateTransition:

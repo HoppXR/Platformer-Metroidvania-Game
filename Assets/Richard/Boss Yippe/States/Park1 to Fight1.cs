@@ -6,7 +6,15 @@ public class Parkour1ToFight1 : MonoBehaviour
 
     private void Start()
     {
-        bossStateManager = GetComponentInParent<BossStateManager>();
+        bossStateManager = FindObjectOfType<BossStateManager>();
+        if (bossStateManager.bossAI != null)
+        {
+            bossStateManager.bossAI.StopAllCoroutines();
+            bossStateManager.bossAI.dashAttack?.StopDash();
+            bossStateManager.bossAI.projectileVolley?.StopVolley();
+            bossStateManager.bossAI.groundPound?.StopGroundPound();
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)

@@ -7,6 +7,13 @@ public class Park2toFight2 : MonoBehaviour
     private void Start()
     {
         bossStateManager = FindObjectOfType<BossStateManager>();
+        if (bossStateManager.bossAI != null)
+        {
+            bossStateManager.bossAI.StopAllCoroutines();
+            bossStateManager.bossAI.dashAttack?.StopDash();
+            bossStateManager.bossAI.projectileVolley?.StopVolley();
+            bossStateManager.bossAI.groundPound?.StopGroundPound();
+        }
     }
 
     private void OnTriggerEnter(Collider other)

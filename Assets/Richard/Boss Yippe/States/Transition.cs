@@ -33,8 +33,10 @@ public class Transition : BaseState
         }
         if (bossManager.player != null)
         {
-            Debug.Log("player should have teleported");
-            bossManager.player.transform.position = bossManager.parkour2StartPos.position;
+            Rigidbody rb = bossManager.player.GetComponent<Rigidbody>();
+            rb.position = bossManager.parkour2StartPos.position;
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
         }
         
         if (bossManager.arenaColliders != null) bossManager.arenaColliders.SetActive(false);
