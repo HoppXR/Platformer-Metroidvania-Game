@@ -75,7 +75,8 @@ namespace Platformer
             Crouching,
             Sliding,
             Dashing,
-            Air
+            Air,
+            Falling
         }
         
         [HideInInspector] public MovementState state;
@@ -91,6 +92,7 @@ namespace Platformer
         #region Unity Built-in Methods
         private void Start()
         {
+            _ps = GetComponent<PlayerSound>();
             _animator = GetComponentInChildren<Animator>();
             _rb = GetComponent<Rigidbody>();
             _rb.freezeRotation = true;
@@ -338,6 +340,11 @@ namespace Platformer
                 _desiredMoveSpeed = 0;
                 _rb.velocity = Vector3.zero;
             }
+            // Mode - Falling
+            else if (_jumpVelocity < 0)
+            {
+                state = MovementState.Falling;
+            }
             // Mode - Swinging
             else if (swinging)
             {
@@ -350,6 +357,11 @@ namespace Platformer
                 state = MovementState.Dashing;
                 _desiredMoveSpeed = dashSpeed;
                 _speedChangeFactor = dashSpeedChangeFactor;
+            }
+            // Mode - Crouching
+            else if (sliding && _inputDirection == Vector2.zero)
+            {
+                state = MovementState.Crouching;
             }
             // Mode - Sliding
             else if (sliding)

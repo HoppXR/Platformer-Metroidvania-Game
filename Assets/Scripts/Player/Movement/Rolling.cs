@@ -63,7 +63,6 @@ namespace Platformer
             {
                 _rb.AddForce(inputDirection.normalized * slideForce, ForceMode.Force);
             }
-            
             // sliding down a slope
             else
             {
