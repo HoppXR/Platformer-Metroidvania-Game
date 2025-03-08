@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Platformer
 {
-    public class Sliding : MonoBehaviour
+    public class Rolling : MonoBehaviour
     {
         [Header("References")] 
         [SerializeField] private InputReader input;

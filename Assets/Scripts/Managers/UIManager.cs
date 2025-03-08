@@ -7,7 +7,6 @@ public class UIManager : MonoBehaviour
 {
     #region Variables
     [Header("References")]
-    [SerializeField] private InputReader input;
     [SerializeField] private HighScoreBoard highScoreBoard;
     [SerializeField] private PlayerInteract playerInteract;
     
@@ -43,8 +42,6 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1;
         
         DisableUI();
-        
-        input.SetGameplay();
         
         saveScoreButton.onClick.AddListener(OnSaveClicked);
         saveScoreButton.interactable = false;
@@ -93,16 +90,12 @@ public class UIManager : MonoBehaviour
     }
     public void PauseGame()
     {
-        input?.SetUI();
-
         pauseMenu?.SetActive(true);
     }
 
     public void ResumeGame()
     {
         pauseMenu?.SetActive(false);
-        
-        input?.SetGameplay();
     }
 
     public void GameLose()

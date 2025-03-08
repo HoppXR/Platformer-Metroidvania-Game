@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     
-    [Header("References")] 
+    [Header("References")]
     [SerializeField] private InputReader input;
     private PlayerHealth _playerHealth;
     
@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour
         
         Time.timeScale = 0;
         
+        input.SetUI();
+        
         // makes cursor visible and moveable
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -59,6 +61,9 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         
+        // sets back to game controls
+        input.SetGameplay();
+        
         Time.timeScale = 1;
         
         FindFirstObjectByType<UIManager>()?.ResumeGame();
@@ -71,6 +76,9 @@ public class GameManager : MonoBehaviour
         // locks and hides the cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        
+        // sets back to game controls
+        input.SetGameplay();
         
         Time.timeScale = 1;
         
@@ -101,6 +109,8 @@ public class GameManager : MonoBehaviour
     // for instant level loads
     public void LoadLevel(int index)
     {
+        input.SetGameplay();
+        
         SceneManager.LoadScene(index);
     }
     #endregion
