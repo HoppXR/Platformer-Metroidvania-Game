@@ -1,92 +1,95 @@
 using System;
 using UnityEngine;
 
-public class AbilityManager : MonoBehaviour
+namespace Managers
 {
-    public static AbilityManager Instance { get; private set; }
+    public class AbilityManager : MonoBehaviour
+    {
+        public static AbilityManager Instance { get; private set; }
 
-    private MusicManager _musicManager;
-    private int _numberOfEnabled;
+        private MusicManager _musicManager;
+        private int _numberOfEnabled;
     
-    public enum Abilities
-    {
-        Null,
-        DoubleJump,
-        Slide,
-        Dash,
-        Swing
-    }
-    
-    public static bool DoubleJumpEnabled;
-    public static bool SlideEnabled;
-    public static bool DashEnabled;
-    public static bool SwingEnabled;
-    
-    [Header("For Easy Debugging")] // might remove later
-    [SerializeField] private bool enableDoubleJump;
-    [SerializeField] private bool enableSlide;
-    [SerializeField] private bool enableDash;
-    [SerializeField] private bool enableSwing;
-    
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
+        public enum Abilities
         {
-            Destroy(this);
+            Null,
+            DoubleJump,
+            Slide,
+            Dash,
+            Swing
         }
-        else
+    
+        public static bool DoubleJumpEnabled;
+        public static bool SlideEnabled;
+        public static bool DashEnabled;
+        public static bool SwingEnabled;
+    
+        [Header("For Easy Debugging")] // might remove later
+        [SerializeField] private bool enableDoubleJump;
+        [SerializeField] private bool enableSlide;
+        [SerializeField] private bool enableDash;
+        [SerializeField] private bool enableSwing;
+    
+        private void Awake()
         {
-            Instance = this;
+            if (Instance != null && Instance != this)
+            {
+                Destroy(this);
+            }
+            else
+            {
+                Instance = this;
+            }
         }
-    }
 
-    private void Start()
-    {
-        _musicManager = FindFirstObjectByType<MusicManager>();
-        
-        if (enableDoubleJump) DoubleJumpEnabled = true;
-        if (enableSlide) SlideEnabled = true;
-        if (enableDash) DashEnabled = true;
-        if (enableSwing) SwingEnabled = true;
-    }
-
-    public void EnableAbility(Abilities ability)
-    {
-        _numberOfEnabled++;
-        
-        AddTracks();
-        
-        switch (ability)
+        private void Start()
         {
-            case Abilities.DoubleJump:
-                DoubleJumpEnabled = true;
-                FindFirstObjectByType<UIManager>()?.EnableAbilityUI(Abilities.DoubleJump);
-                Debug.Log("Double Jump Enabled");
-                break;
-            case Abilities.Slide:
-                SlideEnabled = true;
-                FindFirstObjectByType<UIManager>()?.EnableAbilityUI(Abilities.Slide);
-                Debug.Log("Slide Enabled");
-                break;
-            case Abilities.Dash:
-                DashEnabled = true;
-                FindFirstObjectByType<UIManager>()?.EnableAbilityUI(Abilities.Dash);
-                Debug.Log("Dash Enabled");
-                break;
-            case Abilities.Swing:
-                SwingEnabled = true;
-                FindFirstObjectByType<UIManager>()?.EnableAbilityUI(Abilities.Swing);
-                Debug.Log("Swing Enabled");
-                break;
-            case Abilities.Null:
-                break;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(ability), ability, null);
+            _musicManager = FindFirstObjectByType<MusicManager>();
+        
+            if (enableDoubleJump) DoubleJumpEnabled = true;
+            if (enableSlide) SlideEnabled = true;
+            if (enableDash) DashEnabled = true;
+            if (enableSwing) SwingEnabled = true;
         }
-    }
 
-    private void AddTracks()
-    {
-        _musicManager.AddTrack(_numberOfEnabled - 1);
+        public void EnableAbility(Abilities ability)
+        {
+            _numberOfEnabled++;
+        
+            AddTracks();
+        
+            switch (ability)
+            {
+                case Abilities.DoubleJump:
+                    DoubleJumpEnabled = true;
+                    FindFirstObjectByType<UIManager>()?.EnableAbilityUI(Abilities.DoubleJump);
+                    Debug.Log("Double Jump Enabled");
+                    break;
+                case Abilities.Slide:
+                    SlideEnabled = true;
+                    FindFirstObjectByType<UIManager>()?.EnableAbilityUI(Abilities.Slide);
+                    Debug.Log("Slide Enabled");
+                    break;
+                case Abilities.Dash:
+                    DashEnabled = true;
+                    FindFirstObjectByType<UIManager>()?.EnableAbilityUI(Abilities.Dash);
+                    Debug.Log("Dash Enabled");
+                    break;
+                case Abilities.Swing:
+                    SwingEnabled = true;
+                    FindFirstObjectByType<UIManager>()?.EnableAbilityUI(Abilities.Swing);
+                    Debug.Log("Swing Enabled");
+                    break;
+                case Abilities.Null:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(ability), ability, null);
+            }
+        }
+
+        private void AddTracks()
+        {
+            _musicManager.AddTrack(_numberOfEnabled - 1);
+        }
     }
 }

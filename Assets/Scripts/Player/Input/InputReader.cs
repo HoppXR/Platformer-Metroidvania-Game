@@ -2,164 +2,167 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[CreateAssetMenu(menuName = "InputReader")]
-public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInput.IUIActions
+namespace Player.Input
 {
-    private GameInput _gameInput;
-
-    private void OnEnable()
+    [CreateAssetMenu(menuName = "InputReader")]
+    public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInput.IUIActions
     {
-        if (_gameInput == null)
+        private GameInput _gameInput;
+
+        private void OnEnable()
         {
-            _gameInput = new GameInput();
+            if (_gameInput == null)
+            {
+                _gameInput = new GameInput();
             
-            _gameInput.Gameplay.SetCallbacks(this);
-            _gameInput.UI.SetCallbacks(this);
+                _gameInput.Gameplay.SetCallbacks(this);
+                _gameInput.UI.SetCallbacks(this);
             
-            SetGameplay();
+                SetGameplay();
+            }
         }
-    }
 
-    public void SetGameplay()
-    {
-        _gameInput.Gameplay.Enable();
-        _gameInput.UI.Disable();
-    }
+        public void SetGameplay()
+        {
+            _gameInput.Gameplay.Enable();
+            _gameInput.UI.Disable();
+        }
 
-    public void SetUI()
-    {
-        _gameInput.UI.Enable();
-        _gameInput.Gameplay.Disable();
-    }
+        public void SetUI()
+        {
+            _gameInput.UI.Enable();
+            _gameInput.Gameplay.Disable();
+        }
     
-    public event Action<Vector2> MoveEvent;
-    public event Action<Vector2> LookEvent;
+        public event Action<Vector2> MoveEvent;
+        public event Action<Vector2> LookEvent;
 
-    public event Action AttackEvent;
-    public event Action SwapAttackEvent;
+        public event Action AttackEvent;
+        public event Action SwapAttackEvent;
 
-    public event Action JumpEvent;
-    public event Action JumpCancelledEvent;
+        public event Action JumpEvent;
+        public event Action JumpCancelledEvent;
     
-    public event Action CrouchEvent;
-    public event Action CrouchCancelledEvent;
+        public event Action CrouchEvent;
+        public event Action CrouchCancelledEvent;
     
-    public event Action DashEvent;
+        public event Action DashEvent;
     
-    public event Action SwingEvent;
-    public event Action SwingCancelledEvent;
-    public event Action SwingShortenEvent;
-    public event Action SwingExtendEvent;
+        public event Action SwingEvent;
+        public event Action SwingCancelledEvent;
+        public event Action SwingShortenEvent;
+        public event Action SwingExtendEvent;
     
-    public event Action InteractEvent;
+        public event Action InteractEvent;
     
-    public event Action PauseEvent;
-    public event Action ResumeEvent;
+        public event Action PauseEvent;
+        public event Action ResumeEvent;
     
-    public void OnMove(InputAction.CallbackContext context)
-    {
-        MoveEvent?.Invoke(context.ReadValue<Vector2>());
-    }
+        public void OnMove(InputAction.CallbackContext context)
+        {
+            MoveEvent?.Invoke(context.ReadValue<Vector2>());
+        }
     
-    public void OnLook(InputAction.CallbackContext context)
-    {
-        LookEvent?.Invoke(context.ReadValue<Vector2>());
-    }
-
-    public void OnAttack(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Started)
+        public void OnLook(InputAction.CallbackContext context)
         {
-            AttackEvent?.Invoke();
-        }
-    }
-
-    public void OnSwapAttack(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Started)
-        {
-            SwapAttackEvent?.Invoke();
-        }
-    }
-
-    public void OnInteraction(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Started)
-        {
-            InteractEvent?.Invoke();
-        }
-    }
-
-    public void OnJump(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Started)
-        {
-            JumpEvent?.Invoke();
+            LookEvent?.Invoke(context.ReadValue<Vector2>());
         }
 
-        if (context.phase == InputActionPhase.Performed)
+        public void OnAttack(InputAction.CallbackContext context)
         {
-            SwingShortenEvent?.Invoke();
+            if (context.phase == InputActionPhase.Started)
+            {
+                AttackEvent?.Invoke();
+            }
         }
 
-        if (context.phase == InputActionPhase.Canceled)
+        public void OnSwapAttack(InputAction.CallbackContext context)
         {
-            JumpCancelledEvent?.Invoke();
-        }
-    }
-
-    public void OnCrouch(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Started)
-        {
-            CrouchEvent?.Invoke();
+            if (context.phase == InputActionPhase.Started)
+            {
+                SwapAttackEvent?.Invoke();
+            }
         }
 
-        if (context.phase == InputActionPhase.Performed)
+        public void OnInteraction(InputAction.CallbackContext context)
         {
-            SwingExtendEvent?.Invoke();
+            if (context.phase == InputActionPhase.Started)
+            {
+                InteractEvent?.Invoke();
+            }
         }
 
-        if (context.phase == InputActionPhase.Canceled)
+        public void OnJump(InputAction.CallbackContext context)
         {
-            CrouchCancelledEvent?.Invoke();
-        }
-    }
+            if (context.phase == InputActionPhase.Started)
+            {
+                JumpEvent?.Invoke();
+            }
 
-    public void OnDash(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Started)
-        {
-            DashEvent?.Invoke();
-        }
-    }
+            if (context.phase == InputActionPhase.Performed)
+            {
+                SwingShortenEvent?.Invoke();
+            }
 
-    public void OnSwing(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Started)
-        {
-            SwingEvent?.Invoke();
+            if (context.phase == InputActionPhase.Canceled)
+            {
+                JumpCancelledEvent?.Invoke();
+            }
         }
 
-        if (context.phase == InputActionPhase.Canceled)
+        public void OnCrouch(InputAction.CallbackContext context)
         {
-            SwingCancelledEvent?.Invoke();
-        }
-    }
+            if (context.phase == InputActionPhase.Started)
+            {
+                CrouchEvent?.Invoke();
+            }
 
-    public void OnPause(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Performed)
-        {
-            PauseEvent?.Invoke();
-        }
-    }
+            if (context.phase == InputActionPhase.Performed)
+            {
+                SwingExtendEvent?.Invoke();
+            }
 
-    public void OnResume(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Performed)
+            if (context.phase == InputActionPhase.Canceled)
+            {
+                CrouchCancelledEvent?.Invoke();
+            }
+        }
+
+        public void OnDash(InputAction.CallbackContext context)
         {
-            ResumeEvent?.Invoke();
+            if (context.phase == InputActionPhase.Started)
+            {
+                DashEvent?.Invoke();
+            }
+        }
+
+        public void OnSwing(InputAction.CallbackContext context)
+        {
+            if (context.phase == InputActionPhase.Started)
+            {
+                SwingEvent?.Invoke();
+            }
+
+            if (context.phase == InputActionPhase.Canceled)
+            {
+                SwingCancelledEvent?.Invoke();
+            }
+        }
+
+        public void OnPause(InputAction.CallbackContext context)
+        {
+            if (context.phase == InputActionPhase.Performed)
+            {
+                PauseEvent?.Invoke();
+            }
+        }
+
+        public void OnResume(InputAction.CallbackContext context)
+        {
+            if (context.phase == InputActionPhase.Performed)
+            {
+                ResumeEvent?.Invoke();
+            }
         }
     }
 }

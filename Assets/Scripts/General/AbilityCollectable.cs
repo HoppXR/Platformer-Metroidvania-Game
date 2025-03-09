@@ -1,41 +1,45 @@
 using FMODUnity;
+using Managers;
 using UnityEngine;
 
-public class AbilityCollectable : MonoBehaviour
+namespace General
 {
-    [SerializeField] private AbilityManager.Abilities abilityToGive;
-    [SerializeField] private EventReference collectedSound;
-
-    private float _initialY;
-
-    private void Start()
+    public class AbilityCollectable : MonoBehaviour
     {
-        _initialY = transform.position.y;
-    }
+        [SerializeField] private AbilityManager.Abilities abilityToGive;
+        [SerializeField] private EventReference collectedSound;
 
-    private void Update()
-    {
-        HandleMovement();
-    }
+        private float _initialY;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
+        private void Start()
         {
-            Destroy(gameObject);
-            
-            GiveAbility(abilityToGive);
+            _initialY = transform.position.y;
         }
-    }
 
-    private void GiveAbility(AbilityManager.Abilities ability)
-    {
-        AbilityManager.Instance?.EnableAbility(ability);
-    }
+        private void Update()
+        {
+            HandleMovement();
+        }
 
-    private void HandleMovement()
-    {
-        transform.Rotate(0f, 1f, 0f);
-        transform.position = new Vector3(transform.position.x, 0.35f * Mathf.Sin(Time.time * 1f) + _initialY, transform.position.z);
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                Destroy(gameObject);
+            
+                GiveAbility(abilityToGive);
+            }
+        }
+
+        private void GiveAbility(AbilityManager.Abilities ability)
+        {
+            AbilityManager.Instance?.EnableAbility(ability);
+        }
+
+        private void HandleMovement()
+        {
+            transform.Rotate(0f, 1f, 0f);
+            transform.position = new Vector3(transform.position.x, 0.35f * Mathf.Sin(Time.time * 1f) + _initialY, transform.position.z);
+        }
     }
 }

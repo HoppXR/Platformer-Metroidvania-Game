@@ -1,4 +1,5 @@
 using Cinemachine;
+using Player.Input;
 using UnityEngine;
 
 public class CameraInput : MonoBehaviour

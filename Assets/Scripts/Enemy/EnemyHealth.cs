@@ -1,63 +1,65 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour
+namespace Enemy
 {
-    [SerializeField] private int health;
-    [SerializeField] private Material damageMaterial;
-    private Material _originalMaterial;
-    private Renderer _renderer;
+    public class EnemyHealth : MonoBehaviour
+    {
+        [SerializeField] private int health;
+        [SerializeField] private Material damageMaterial;
+        private Material _originalMaterial;
+        private Renderer _renderer;
     
-    private void Start()
-    {
-        _renderer = GetComponentInChildren<Renderer>();
-        _originalMaterial = _renderer.material;
-    }
-
-    public void TakeDamage(int damage)
-    {
-        if (damage >= health)
+        private void Start()
         {
-            health = 0;
-            Die();
-        }
-        else
-        {
-            health -= damage;
+            _renderer = GetComponentInChildren<Renderer>();
+            _originalMaterial = _renderer.material;
         }
 
-        StartCoroutine(EDamageFlicker());
-    }
+        public void TakeDamage(int damage)
+        {
+            if (damage >= health)
+            {
+                health = 0;
+                Die();
+            }
+            else
+            {
+                health -= damage;
+            }
 
-    public void Squish()
-    {
-        StartCoroutine(ESquish());
-    }
+            StartCoroutine(EDamageFlicker());
+        }
 
-    private IEnumerator ESquish()
-    {
-        // play squish animation
-        
-        yield return null; // wait for animation time
-        
-        // death logic
-    }
+        public void Squish()
+        {
+            StartCoroutine(ESquish());
+        }
 
-    private void Die()
-    {
-        // play death animation
+        private IEnumerator ESquish()
+        {
+            // play squish animation
         
-        // TEMP logic
-        Destroy(gameObject);
-    }
+            yield return null; // wait for animation time
+        
+            // death logic
+        }
 
-    private IEnumerator EDamageFlicker()
-    {
-        _renderer.material = damageMaterial;
+        private void Die()
+        {
+            // play death animation
         
-        yield return new WaitForSeconds(0.25f);
+            // TEMP logic
+            Destroy(gameObject);
+        }
+
+        private IEnumerator EDamageFlicker()
+        {
+            _renderer.material = damageMaterial;
         
-        _renderer.material = _originalMaterial;
+            yield return new WaitForSeconds(0.25f);
+        
+            _renderer.material = _originalMaterial;
+        }
     }
 }

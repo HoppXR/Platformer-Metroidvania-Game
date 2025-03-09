@@ -1,7 +1,9 @@
 using FMODUnity;
+using Managers;
+using Player.Input;
 using UnityEngine;
 
-namespace Platformer
+namespace Player.Movement
 {
     public class Swinging : MonoBehaviour
     {

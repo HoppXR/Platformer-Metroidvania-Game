@@ -1,8 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Managers;
+using Platformer;
+using Player.Animation;
+using Player.Input;
+using Sound;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-namespace Platformer
+namespace Player.Movement
 {
     public class PlayerMovement : MonoBehaviour
     {
@@ -10,8 +16,8 @@ namespace Platformer
         [Header("References")]
         [SerializeField] private InputReader input;
         [SerializeField] private Transform orientation;
+        private PlayerAnimation _playerAnimation;
         private Rigidbody _rb;
-        private Animator _animator;
         private PlayerSound _ps;
         private List<Timer> _timers;
         private CountdownTimer _jumpTimer;
@@ -64,16 +70,13 @@ namespace Platformer
         private RaycastHit _slopeHit;
         private bool _exitingSlope;
         
-        [Header("Animator")]
-        private static readonly int Forward = Animator.StringToHash("Forward");
-        
         public enum MovementState
         {
             Freeze,
             Swinging,
             Walking,
             Crouching,
-            Sliding,
+            Rolling,
             Dashing,
             Air,
             Falling
@@ -86,14 +89,14 @@ namespace Platformer
 
         [HideInInspector] public bool swinging;
         [HideInInspector] public bool dashing;
-        [HideInInspector] public bool sliding;
+        [HideInInspector] public bool crouching;
         #endregion
         
         #region Unity Built-in Methods
         private void Start()
         {
+            _playerAnimation = GetComponent<PlayerAnimation>();
             _ps = GetComponent<PlayerSound>();
-            _animator = GetComponentInChildren<Animator>();
             _rb = GetComponent<Rigidbody>();
             _rb.freezeRotation = true;
             
@@ -113,17 +116,20 @@ namespace Platformer
             
             // turn gravity off while on slope
             _rb.useGravity = !OnSlope();
+            HandleTimers(); 
+            SpeedControl();
+            CheckIfGrounded();
             
             HandleCoyoteTime();
-            HandleTimers(); 
             HandleJumpInput();
-            SpeedControl();
+
             StateHandler();
-            CheckIfGrounded();
 
             // handle landing
             if (!Grounded)
                 StartCoroutine(WaitForLanding());
+            
+            HandleAnimation();
         }
         
         private void FixedUpdate()
@@ -199,11 +205,6 @@ namespace Platformer
                 // slows the player down when they release input
                 _rb.AddForce(-_rb.velocity * (deceleration * 10f), ForceMode.Acceleration);
             }
-            
-            // Handle animations for movement
-            float forwardValue = Vector3.Dot(_rb.velocity.normalized, _moveDirection);
-            
-            _animator.SetFloat(Forward, forwardValue);
         }
         #endregion
         
@@ -236,9 +237,10 @@ namespace Platformer
                 if (!(_coyoteTimer > 0) && !_doubleJump) return;
                 
                 _jumpTimer.Start();
-                    
+                
+                _playerAnimation.ChangeAnimation("Jump");
+                
                 _ps?.PlayJumpSound();
-                _animator.SetTrigger("Jumping");
                     
                 if (AbilityManager.DoubleJumpEnabled)
                     _doubleJump = !_doubleJump;
@@ -316,9 +318,9 @@ namespace Platformer
         {
             yield return new WaitUntil(() => !Grounded);
             yield return new WaitUntil(() => Grounded);
-            
-            _animator.SetTrigger("Landing");
 
+            _playerAnimation.ChangeAnimation("Landing");
+            
             // prevents canceled double jump
             if (_jumpTimer.IsRunning) yield break;
             
@@ -329,6 +331,29 @@ namespace Platformer
         #endregion
 
         #region General Handlers
+
+        public void HandleAnimation()
+        {
+            if (PlayerAnimation.CurrentAnimation == "Attack" || PlayerAnimation.CurrentAnimation == "Jump" || PlayerAnimation.CurrentAnimation == "Fall")
+                return;
+            
+            if (Grounded && _inputDirection.x >= 0.1f || _inputDirection.y >= 0.1f || _inputDirection.x <= -0.1f || _inputDirection.y <= -0.1f)
+            {
+                if (!crouching)
+                    _playerAnimation.ChangeAnimation("Run", 0.15f);
+                else
+                    _playerAnimation.ChangeAnimation("Roll");
+            }
+            // Idle will be at the bottom as default animation
+            else if (Grounded && PlayerAnimation.CurrentAnimation != "Landing")
+            {
+                if (!crouching)
+                    _playerAnimation.ChangeAnimation("Idle");
+                else
+                    _playerAnimation.ChangeAnimation("Crouch", 0.1f);
+            }
+        }
+        
         private void CheckIfGrounded()
         {
             Grounded = Physics.OverlapSphere(_groundCheckOffset, 0.45f, whatIsGround).Length > 0;
@@ -348,7 +373,7 @@ namespace Platformer
             {
                 state = MovementState.Falling;
                 
-                _animator.SetTrigger("Falling");
+                _playerAnimation.ChangeAnimation("Fall");
             }
             // Mode - Swinging
             else if (swinging)
@@ -364,18 +389,14 @@ namespace Platformer
                 _speedChangeFactor = dashSpeedChangeFactor;
             }
             // Mode - Crouching
-            else if (sliding && _inputDirection == Vector2.zero)
+            else if (crouching && _inputDirection == Vector2.zero)
             {
                 state = MovementState.Crouching;
-                
-                _animator.SetTrigger("Crouching");
             }
-            // Mode - Sliding
-            else if (sliding)
+            // Mode - Rolling
+            else if (crouching)
             {
-                state = MovementState.Sliding;
-                
-                _animator.SetTrigger("Crouching");
+                state = MovementState.Rolling;
 
                 if (OnSlope() && _rb.velocity.y < 0.1f)
                     _desiredMoveSpeed = slideSpeed;

@@ -1,13 +1,15 @@
+using Managers;
+using Player.Input;
 using UnityEngine;
 
-namespace Platformer
+namespace Player.Movement
 {
     public class Rolling : MonoBehaviour
     {
         [Header("References")] 
         [SerializeField] private InputReader input;
         [SerializeField] private Transform orientation;
-        [SerializeField] private Transform playerObj;
+        [SerializeField] private Transform playerCollider;
         private Rigidbody _rb;
         private PlayerMovement _pm;
 
@@ -23,7 +25,7 @@ namespace Platformer
             _rb = GetComponent<Rigidbody>();
             _pm = GetComponent<PlayerMovement>();
 
-            _startYScale = playerObj.localScale.y;
+            _startYScale = playerCollider.localScale.y;
 
             input.MoveEvent += HandleInput;
             input.CrouchEvent += StartSlide;
@@ -32,7 +34,7 @@ namespace Platformer
 
         private void FixedUpdate()
         {
-            if (_pm.sliding)
+            if (_pm.crouching)
                 SlidingMovement();
         }
 
@@ -45,10 +47,10 @@ namespace Platformer
         {
             if (_pm.swinging || !AbilityManager.SlideEnabled) return;
             
-            _pm.sliding = true;
+            _pm.crouching = true;
 
-            if (playerObj != null)
-                playerObj.localScale = new Vector3(playerObj.localScale.x, slideYScale, playerObj.localScale.z);
+            if (playerCollider != null)
+                playerCollider.localScale = new Vector3(playerCollider.localScale.x, slideYScale, playerCollider.localScale.z);
          
             if (_rb != null)
                 _rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
@@ -72,12 +74,12 @@ namespace Platformer
         
         private void StopSlide()
         {
-            if (!_pm.sliding) return;
+            if (!_pm.crouching) return;
             
-            _pm.sliding = false;
+            _pm.crouching = false;
             
-            if (playerObj != null)
-                playerObj.localScale = new Vector3(playerObj.localScale.x, _startYScale, playerObj.localScale.z);
+            if (playerCollider != null)
+                playerCollider.localScale = new Vector3(playerCollider.localScale.x, _startYScale, playerCollider.localScale.z);
         }
     }
 }

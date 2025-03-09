@@ -1,8 +1,11 @@
 using UnityEngine;
 
-public interface IInteractable
+namespace Player.Interaction
 {
-    void Interact();
-    string GetInteractText();
-    Transform GetTransform();
+    public interface IInteractable
+    {
+        void Interact();
+        string GetInteractText();
+        Transform GetTransform();
+    }
 }

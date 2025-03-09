@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using Player.Input;
+using Player.Interaction;
 using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour

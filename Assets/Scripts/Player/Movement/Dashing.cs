@@ -1,8 +1,10 @@
 using FMODUnity;
+using Managers;
+using Player.Input;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Platformer
+namespace Player.Movement
 {
     public class Dashing : MonoBehaviour
     {

@@ -1,3 +1,5 @@
+using Managers;
+using Player.Interaction;
 using UnityEngine;
 
 public class DoorInteractable : MonoBehaviour, IInteractable
