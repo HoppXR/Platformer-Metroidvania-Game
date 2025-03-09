@@ -238,7 +238,7 @@ namespace Platformer
                 _jumpTimer.Start();
                     
                 _ps?.PlayJumpSound();
-                _animator.SetTrigger("Jump");
+                _animator.SetTrigger("Jumping");
                     
                 if (AbilityManager.DoubleJumpEnabled)
                     _doubleJump = !_doubleJump;
@@ -316,6 +316,8 @@ namespace Platformer
         {
             yield return new WaitUntil(() => !Grounded);
             yield return new WaitUntil(() => Grounded);
+            
+            _animator.SetTrigger("Landing");
 
             // prevents canceled double jump
             if (_jumpTimer.IsRunning) yield break;
@@ -345,6 +347,8 @@ namespace Platformer
             else if (_jumpVelocity < 0 && !swinging)
             {
                 state = MovementState.Falling;
+                
+                _animator.SetTrigger("Falling");
             }
             // Mode - Swinging
             else if (swinging)
@@ -363,11 +367,15 @@ namespace Platformer
             else if (sliding && _inputDirection == Vector2.zero)
             {
                 state = MovementState.Crouching;
+                
+                _animator.SetTrigger("Crouching");
             }
             // Mode - Sliding
             else if (sliding)
             {
                 state = MovementState.Sliding;
+                
+                _animator.SetTrigger("Crouching");
 
                 if (OnSlope() && _rb.velocity.y < 0.1f)
                     _desiredMoveSpeed = slideSpeed;
