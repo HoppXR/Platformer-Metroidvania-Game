@@ -31,24 +31,31 @@ public class DashAttack : MonoBehaviour
         {
             rb.freezeRotation = true;
         }
+    
         if (isDashing)
         {
             dashTimer -= Time.unscaledDeltaTime;
+            transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
+
             if (dashTimer <= 0 || bounceCount >= maxBounces)
             {
                 StopDash();
             }
         }
     }
-
     public void StartDash(Vector3 targetPosition)
     {
-        dashDirection = (targetPosition - transform.position).normalized;
+        rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
+
+        Vector3 toTarget = targetPosition - transform.position;
+        dashDirection = toTarget.normalized;
+
         isDashing = true;
         dashTimer = dashDuration;
         bounceCount = 0;
-        rb.velocity = dashDirection * dashSpeed;
         
+        rb.velocity = dashDirection * dashSpeed;
+
         RotateTowards(dashDirection);
     }
 
@@ -56,7 +63,8 @@ public class DashAttack : MonoBehaviour
     {
         isDashing = false;
         rb.velocity = Vector3.zero;
-        rb.constraints = RigidbodyConstraints.None;
+        rb.angularVelocity = Vector3.zero;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
     }
 
     private void OnTriggerEnter(Collider other)
