@@ -32,7 +32,8 @@ public class GroundPound : MonoBehaviour
         {
             navMeshAgent.enabled = false;
         }
-
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
         FreezeXZConstraints(true);
 
         for (int i = 0; i < attackCount; i++)
@@ -50,11 +51,16 @@ public class GroundPound : MonoBehaviour
     public IEnumerator GroundSlam()
     {
         isJumping = true;
+        rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
+        yield return new WaitForSeconds(0.1f); 
+        rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
         rb.velocity = Vector3.up * jumpHeight;
+    
         yield return new WaitForSeconds(0.6f);
 
         isJumping = false;
         isSlamming = true;
+    
         rb.velocity = Vector3.down * slamSpeed;
 
         yield return new WaitUntil(() => hasLanded);
@@ -69,6 +75,7 @@ public class GroundPound : MonoBehaviour
             StartCoroutine(ExpandAndDestroy(shockwave));
         }
     }
+
 
     IEnumerator ExpandAndDestroy(GameObject obj)
     {
@@ -110,6 +117,8 @@ public class GroundPound : MonoBehaviour
         if (isSlamming && other.gameObject.CompareTag("Ground"))
         {
             hasLanded = true;
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
         }
     }
 }

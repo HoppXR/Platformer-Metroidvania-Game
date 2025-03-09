@@ -7,6 +7,8 @@ public class ProjectileVolley : MonoBehaviour
     public Transform projectileSpawnPoint;
     public Transform player;
     public Transform playerPrediction;
+    
+    private BossAIManager boss;
 
     public int totalSkyProjectiles = 15;
     public int totalTargetedProjectiles = 7;
@@ -19,9 +21,13 @@ public class ProjectileVolley : MonoBehaviour
     public float arcVerticalAngle = 45f;
 
     private bool isShooting = false;
-
+    
+    private Rigidbody rb;
+    
     void Start()
     {
+        boss = GetComponent<BossAIManager>();
+        rb = GetComponent<Rigidbody>();
         if (player == null)
         {
             GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
@@ -42,6 +48,8 @@ public class ProjectileVolley : MonoBehaviour
         StartCoroutine(SpawnSkyProjectiles());
         yield return StartCoroutine(FireTargetedProjectiles());
 
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
         isShooting = false;
     }
 

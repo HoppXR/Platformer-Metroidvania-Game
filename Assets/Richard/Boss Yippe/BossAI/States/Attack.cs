@@ -22,6 +22,7 @@ public class Attack : BossAIState
         //Debug.Log("Boss is attacking!");
         boss.transform.position = resetPosition;
         Rigidbody rb = boss.GetComponent<Rigidbody>();
+        boss.transform.rotation = Quaternion.identity;
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
 
