@@ -238,6 +238,7 @@ namespace Platformer
                 _jumpTimer.Start();
                     
                 _ps?.PlayJumpSound();
+                _animator.SetTrigger("Jump");
                     
                 if (AbilityManager.DoubleJumpEnabled)
                     _doubleJump = !_doubleJump;
@@ -341,7 +342,7 @@ namespace Platformer
                 _rb.velocity = Vector3.zero;
             }
             // Mode - Falling
-            else if (_jumpVelocity < 0)
+            else if (_jumpVelocity < 0 && !swinging)
             {
                 state = MovementState.Falling;
             }
