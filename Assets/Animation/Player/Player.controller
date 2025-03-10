@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextAnimation: 
-  crossFadeTime: 0
+  crossFadeTime: 0.2
 --- !u!206 &2294395880729079572
 BlendTree:
   m_ObjectHideFlags: 1
@@ -235,7 +235,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 1454e02f3ac84274698e1b7384f171fe, type: 2}
+  m_Motion: {fileID: 7400000, guid: eff4936436444a84b9961cd47a52535e, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

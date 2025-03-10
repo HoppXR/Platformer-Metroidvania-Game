@@ -37,7 +37,7 @@ namespace Player.Animation
                 if (CurrentAnimation == "")
                     _playerMovement.HandleAnimation();
                 else
-                    _animator.CrossFade(animationName, crossFadeTime);
+                    _animator?.CrossFade(animationName, crossFadeTime);
             }
         }
     }

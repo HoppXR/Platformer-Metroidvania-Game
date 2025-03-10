@@ -76,7 +76,7 @@ namespace Player
         private void MeleeAttack()
         {
             Debug.Log("Melee Attack");
-            _playerAnimation.ChangeAnimation("Attack", 0.1f);
+            _playerAnimation.ChangeAnimation("Attack");
 
             Collider[] enemies = Physics.OverlapSphere(_attackOffset, atkRange);
             foreach (var enemy in enemies)

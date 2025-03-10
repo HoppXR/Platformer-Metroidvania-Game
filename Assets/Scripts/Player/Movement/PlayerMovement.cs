@@ -25,7 +25,7 @@ namespace Player.Movement
 
         [Header("Movement Speed")] 
         [SerializeField] private float walkSpeed;
-        [SerializeField] private float slideSpeed;
+        [SerializeField] private float rollSpeed;
         [SerializeField] private float swingSpeed;
         [SerializeField] private float dashSpeed;
         [SerializeField] private float dashSpeedChangeFactor;
@@ -238,7 +238,8 @@ namespace Player.Movement
                 
                 _jumpTimer.Start();
                 
-                _playerAnimation.ChangeAnimation("Jump");
+                if (PlayerAnimation.CurrentAnimation != "Attack")
+                    _playerAnimation.ChangeAnimation("Jump");
                 
                 _ps?.PlayJumpSound();
                     
@@ -319,7 +320,8 @@ namespace Player.Movement
             yield return new WaitUntil(() => !Grounded);
             yield return new WaitUntil(() => Grounded);
 
-            _playerAnimation.ChangeAnimation("Landing");
+            if (PlayerAnimation.CurrentAnimation != "Attack")
+                _playerAnimation.ChangeAnimation("Landing");
             
             // prevents canceled double jump
             if (_jumpTimer.IsRunning) yield break;
@@ -334,7 +336,7 @@ namespace Player.Movement
 
         public void HandleAnimation()
         {
-            if (PlayerAnimation.CurrentAnimation == "Attack" || PlayerAnimation.CurrentAnimation == "Jump" || PlayerAnimation.CurrentAnimation == "Fall")
+            if (PlayerAnimation.CurrentAnimation == "Attack" || PlayerAnimation.CurrentAnimation == "Jump" || PlayerAnimation.CurrentAnimation == "Fall" && !Grounded)
                 return;
             
             if (Grounded && _inputDirection.x >= 0.1f || _inputDirection.y >= 0.1f || _inputDirection.x <= -0.1f || _inputDirection.y <= -0.1f)
@@ -369,11 +371,17 @@ namespace Player.Movement
                 _rb.velocity = Vector3.zero;
             }
             // Mode - Falling
-            else if (_jumpVelocity < 0 && !swinging)
+            else if (_jumpVelocity < 0 && !swinging && !Grounded)
             {
                 state = MovementState.Falling;
                 
-                _playerAnimation.ChangeAnimation("Fall");
+                if (_inputDirection != Vector2.zero)
+                    _desiredMoveSpeed = walkSpeed * 1.1f;
+                else
+                    _desiredMoveSpeed = walkSpeed * 0.75f;
+                
+                if (PlayerAnimation.CurrentAnimation != "Attack")
+                    _playerAnimation.ChangeAnimation("Fall");
             }
             // Mode - Swinging
             else if (swinging)
@@ -399,9 +407,9 @@ namespace Player.Movement
                 state = MovementState.Rolling;
 
                 if (OnSlope() && _rb.velocity.y < 0.1f)
-                    _desiredMoveSpeed = slideSpeed;
+                    _desiredMoveSpeed = rollSpeed * 1.25f;
                 else
-                    _desiredMoveSpeed = walkSpeed;
+                    _desiredMoveSpeed = rollSpeed;
             }
             // Mode - Walking
             else if (Grounded)
@@ -415,7 +423,7 @@ namespace Player.Movement
                 state = MovementState.Air;
                 
                 if (_inputDirection != Vector2.zero)
-                    _desiredMoveSpeed = walkSpeed;
+                    _desiredMoveSpeed = walkSpeed * 1.1f;
                 else
                     _desiredMoveSpeed = walkSpeed * 0.75f;
             }
