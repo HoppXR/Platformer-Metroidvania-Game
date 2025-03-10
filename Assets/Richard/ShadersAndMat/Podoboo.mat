@@ -53,10 +53,12 @@ Material:
     m_Floats:
     - _BUILTIN_QueueControl: 0
     - _Matallic: 0
+    - _Normal: 1
     - _QueueControl: 0
-    - _Smooth: 0.5
+    - _Smooth: 1
     m_Colors:
     - _FresnelColor: {r: 0, g: 0, b: 0, a: 0}
-    - _Main_Color: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
+    - _Main_Color: {r: 0.745283, g: 0.053904053, b: 0.053904053, a: 0}
+    - _Tiling: {r: 4.55, g: 6.78, b: 0, a: 0}
     - _Vorcolor: {r: 1.320755, g: 0.9112485, b: 0, a: 0}
   m_BuildTextureStacks: []

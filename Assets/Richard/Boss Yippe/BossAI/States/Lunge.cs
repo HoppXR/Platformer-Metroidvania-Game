@@ -41,7 +41,7 @@ public class Lunge : BossAIState
         lungeDirection = lungeDirection.normalized;
 
         float elapsedTime = 0f;
-        float groundY = boss.transform.position.y
+        float groundY = boss.transform.position.y;
 
         while (elapsedTime < lungeDuration)
         {
