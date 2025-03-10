@@ -420,7 +420,7 @@ namespace Player.Movement
                 state = MovementState.Air;
                 
                 if (_inputDirection != Vector2.zero)
-                    _desiredMoveSpeed = _lastDesiredMoveSpeed * 0.85f;
+                    _desiredMoveSpeed = _lastDesiredMoveSpeed;
                 else
                     _desiredMoveSpeed = walkSpeed * 0.75f;
             }
