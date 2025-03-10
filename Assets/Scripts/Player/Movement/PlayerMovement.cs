@@ -374,11 +374,8 @@ namespace Player.Movement
             else if (_jumpVelocity < 0 && !swinging && !Grounded)
             {
                 state = MovementState.Falling;
-                
-                if (_inputDirection != Vector2.zero)
-                    _desiredMoveSpeed = walkSpeed * 1.1f;
-                else
-                    _desiredMoveSpeed = walkSpeed * 0.75f;
+
+                _desiredMoveSpeed = _lastDesiredMoveSpeed;
                 
                 if (PlayerAnimation.CurrentAnimation != "Attack")
                     _playerAnimation.ChangeAnimation("Fall");
@@ -423,7 +420,7 @@ namespace Player.Movement
                 state = MovementState.Air;
                 
                 if (_inputDirection != Vector2.zero)
-                    _desiredMoveSpeed = walkSpeed * 1.1f;
+                    _desiredMoveSpeed = _lastDesiredMoveSpeed * 0.85f;
                 else
                     _desiredMoveSpeed = walkSpeed * 0.75f;
             }
