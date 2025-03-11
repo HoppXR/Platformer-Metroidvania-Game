@@ -100,15 +100,6 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""SwapAttack"",
-                    ""type"": ""Button"",
-                    ""id"": ""9862eb5a-61b6-42d9-9fa3-31c22afd8164"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Interaction"",
                     ""type"": ""Button"",
                     ""id"": ""55472603-cd87-4015-b270-e1bc069472fb"",
@@ -352,39 +343,6 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""5da8281b-27a3-42d3-affb-c565603f6b45"",
-                    ""path"": ""<Keyboard>/q"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SwapAttack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""a1c3306c-08dd-4ac5-82cc-dc49a3014efa"",
-                    ""path"": ""<Mouse>/middleButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SwapAttack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d88d5aef-3439-4db4-801e-d82f3709feef"",
-                    ""path"": ""<Gamepad>/dpad/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SwapAttack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""0aed7b82-fcc6-4bee-83e0-42a60f59e883"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
@@ -459,7 +417,6 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         m_Gameplay_Pause = m_Gameplay.FindAction("Pause", throwIfNotFound: true);
         m_Gameplay_Look = m_Gameplay.FindAction("Look", throwIfNotFound: true);
         m_Gameplay_Attack = m_Gameplay.FindAction("Attack", throwIfNotFound: true);
-        m_Gameplay_SwapAttack = m_Gameplay.FindAction("SwapAttack", throwIfNotFound: true);
         m_Gameplay_Interaction = m_Gameplay.FindAction("Interaction", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
@@ -533,7 +490,6 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Pause;
     private readonly InputAction m_Gameplay_Look;
     private readonly InputAction m_Gameplay_Attack;
-    private readonly InputAction m_Gameplay_SwapAttack;
     private readonly InputAction m_Gameplay_Interaction;
     public struct GameplayActions
     {
@@ -547,7 +503,6 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         public InputAction @Pause => m_Wrapper.m_Gameplay_Pause;
         public InputAction @Look => m_Wrapper.m_Gameplay_Look;
         public InputAction @Attack => m_Wrapper.m_Gameplay_Attack;
-        public InputAction @SwapAttack => m_Wrapper.m_Gameplay_SwapAttack;
         public InputAction @Interaction => m_Wrapper.m_Gameplay_Interaction;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
@@ -582,9 +537,6 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @Attack.started += instance.OnAttack;
             @Attack.performed += instance.OnAttack;
             @Attack.canceled += instance.OnAttack;
-            @SwapAttack.started += instance.OnSwapAttack;
-            @SwapAttack.performed += instance.OnSwapAttack;
-            @SwapAttack.canceled += instance.OnSwapAttack;
             @Interaction.started += instance.OnInteraction;
             @Interaction.performed += instance.OnInteraction;
             @Interaction.canceled += instance.OnInteraction;
@@ -616,9 +568,6 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @Attack.started -= instance.OnAttack;
             @Attack.performed -= instance.OnAttack;
             @Attack.canceled -= instance.OnAttack;
-            @SwapAttack.started -= instance.OnSwapAttack;
-            @SwapAttack.performed -= instance.OnSwapAttack;
-            @SwapAttack.canceled -= instance.OnSwapAttack;
             @Interaction.started -= instance.OnInteraction;
             @Interaction.performed -= instance.OnInteraction;
             @Interaction.canceled -= instance.OnInteraction;
@@ -695,7 +644,6 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         void OnPause(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
-        void OnSwapAttack(InputAction.CallbackContext context);
         void OnInteraction(InputAction.CallbackContext context);
     }
     public interface IUIActions

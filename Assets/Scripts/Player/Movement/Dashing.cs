@@ -1,3 +1,4 @@
+using System;
 using FMODUnity;
 using Managers;
 using Player.Input;
@@ -54,6 +55,12 @@ namespace Player.Movement
             imageCd.fillAmount = _dashCdTimer / dashCd;
         }
 
+        private void OnDisable()
+        {
+            input.MoveEvent -= HandleDirection;
+            input.DashEvent -= Dash;
+        }
+
         private void Dash()
         {
             if (_dashCdTimer > 0 || !AbilityManager.DashEnabled) return;
@@ -62,7 +69,7 @@ namespace Player.Movement
             
             _pm.dashing = true;
             
-            AudioManager.instance?.PlayOneShot(dashSound, transform.position);
+            AudioManager.Instance?.PlayOneShot(dashSound, transform.position);
 
             Transform forwardT = orientation;
 

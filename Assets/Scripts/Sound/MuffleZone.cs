@@ -1,33 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
+using Managers;
 using UnityEngine;
 
-public class MuffleZone : MonoBehaviour
+namespace Sound
 {
-    private MusicManager _MusicManager;
-
-    void Start()
+    public class MuffleZone : MonoBehaviour
     {
-        _MusicManager = FindObjectOfType<MusicManager>();
-        if (_MusicManager == null)
+        private MusicManager _musicManager;
+
+        private void Start()
         {
-            Debug.LogError("AudioManager not found in the scene!");
+            _musicManager = FindFirstObjectByType<MusicManager>();
+            if (_musicManager == null)
+            {
+                Debug.LogError("Music Manager not found");
+            }
         }
-    }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player")) 
+        private void OnTriggerEnter(Collider other)
         {
-            _MusicManager.ToggleMuffle(true);
+            if (other.CompareTag("Player")) 
+            {
+                _musicManager.ToggleMuffle(true);
+            }
         }
-    }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
+        private void OnTriggerExit(Collider other)
         {
-            _MusicManager.ToggleMuffle(false);
+            if (other.CompareTag("Player"))
+            {
+                _musicManager.ToggleMuffle(false);
+            }
         }
     }
 }

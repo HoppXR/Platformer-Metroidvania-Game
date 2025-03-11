@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Platformer
+namespace Player
 {
     public class ThirdPersonCam : MonoBehaviour
     {
@@ -35,9 +35,9 @@ namespace Platformer
         private void Update()
         {
             // change cam style (remove later)
-            if (Input.GetKeyDown(KeyCode.Alpha1)) SwitchCameraStyle(CameraStyle.Basic);
-            if (Input.GetKeyDown(KeyCode.Alpha2)) SwitchCameraStyle(CameraStyle.Combat);
-            if (Input.GetKeyDown(KeyCode.Alpha3)) SwitchCameraStyle(CameraStyle.Topdown);
+            if (UnityEngine.Input.GetKeyDown(KeyCode.Alpha1)) SwitchCameraStyle(CameraStyle.Basic);
+            if (UnityEngine.Input.GetKeyDown(KeyCode.Alpha2)) SwitchCameraStyle(CameraStyle.Combat);
+            if (UnityEngine.Input.GetKeyDown(KeyCode.Alpha3)) SwitchCameraStyle(CameraStyle.Topdown);
             
             // rotate orientation
             Vector3 viewDir = player.position - new Vector3(transform.position.x, player.position.y, transform.position.z);
@@ -46,8 +46,8 @@ namespace Platformer
             // rotate player object
             if (currentStyle is CameraStyle.Basic or CameraStyle.Topdown)
             {
-                float horizontalInput = Input.GetAxis("Horizontal");
-                float verticalInput = Input.GetAxis("Vertical");
+                float horizontalInput = UnityEngine.Input.GetAxis("Horizontal");
+                float verticalInput = UnityEngine.Input.GetAxis("Vertical");
                 Vector3 inputDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
                 if (inputDir != Vector3.zero)

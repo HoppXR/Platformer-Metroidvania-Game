@@ -1,14 +1,17 @@
 using Managers;
 using UnityEngine;
 
-public class MainMenuAnimations : MonoBehaviour
+namespace Player.Animation
 {
-    [SerializeField] private Animator animator;
-
-    public void BlastOff()
+    public class MainMenuAnimations : MonoBehaviour
     {
-        animator.SetTrigger("BlastOff");
+        [SerializeField] private Animator animator;
+
+        public void BlastOff()
+        {
+            animator?.SetTrigger("BlastOff");
         
-        GameManager.Instance.LoadLevelTimer(1, 2f);
+            GameManager.Instance?.LoadLevelTimer(1, 2f);
+        }
     }
 }

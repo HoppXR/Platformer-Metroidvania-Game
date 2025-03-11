@@ -1,5 +1,6 @@
 using FMOD.Studio;
 using FMODUnity;
+using Managers;
 using Player.Input;
 using Player.Movement;
 using UnityEngine;
@@ -28,7 +29,7 @@ namespace Sound
         {
             input.MoveEvent += HandleInput;
         
-            _playerFootsteps = AudioManager.instance.CreateInstance(FMODEvents.Instance.PlayerFootsteps);
+            _playerFootsteps = AudioManager.Instance.CreateInstance(FMODEvents.Instance.PlayerFootsteps);
         }
 
         private void Update()
@@ -37,6 +38,11 @@ namespace Sound
         
             DetermineTerrain();
             SelectAndPlayFootstep();
+        }
+        
+        private void OnDisable()
+        {
+            input.MoveEvent -= HandleInput;
         }
 
         private void HandleInput(Vector2 dir)
@@ -97,9 +103,9 @@ namespace Sound
         private void PlayFootstep(int terrain)
         {
             _playerFootsteps.setParameterByName("footsteps", terrain);
-            _playerFootsteps.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+            _playerFootsteps.set3DAttributes(gameObject.To3DAttributes());
             
-            if (_inputDir.y != 0 && PlayerMovement.Grounded || _inputDir.x != 0 && PlayerMovement.Grounded)
+            if (PlayerMovement.Grounded && _inputDir.x >= 0.1f || _inputDir.y >= 0.1f || _inputDir.x <= -0.1f || _inputDir.y <= -0.1f)
             {
                 PLAYBACK_STATE playbackState;
                 _playerFootsteps.getPlaybackState(out playbackState);
@@ -111,13 +117,13 @@ namespace Sound
             }
             else
             {
-                _playerFootsteps.stop(STOP_MODE.ALLOWFADEOUT);
+                _playerFootsteps.stop(STOP_MODE.IMMEDIATE);
             }
         }
 
         public void PlayJumpSound()
         {
-            AudioManager.instance.PlayOneShot(jumpSound, transform.position);
+            AudioManager.Instance.PlayOneShot(jumpSound, transform.position);
         }
     }
 }

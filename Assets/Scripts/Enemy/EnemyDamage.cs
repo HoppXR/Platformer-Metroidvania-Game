@@ -1,29 +1,32 @@
 using Player;
 using UnityEngine;
 
-public class EnemyDamage : MonoBehaviour
+namespace Enemy
 {
-    private PlayerHealth _pHealth;
+    public class EnemyDamage : MonoBehaviour
+    {
+        private PlayerHealth _pHealth;
     
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
+        private void OnTriggerEnter(Collider other)
         {
-            _pHealth = other.GetComponentInParent<PlayerHealth>();
-            InvokeRepeating(nameof(TickDamage), 0,1);
+            if (other.gameObject.CompareTag("Player"))
+            {
+                _pHealth = other.GetComponentInParent<PlayerHealth>();
+                InvokeRepeating(nameof(TickDamage), 0,1);
+            }
         }
-    }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
+        private void OnTriggerExit(Collider other)
         {
-            CancelInvoke(nameof(TickDamage));
+            if (other.gameObject.CompareTag("Player"))
+            {
+                CancelInvoke(nameof(TickDamage));
+            }
         }
-    }
 
-    private void TickDamage()
-    {
-        _pHealth.TakeDamage();
+        private void TickDamage()
+        {
+            _pHealth.TakeDamage();
+        }
     }
 }

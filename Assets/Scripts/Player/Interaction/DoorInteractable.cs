@@ -1,25 +1,27 @@
 using Managers;
-using Player.Interaction;
 using UnityEngine;
 
-public class DoorInteractable : MonoBehaviour, IInteractable
+namespace Player.Interaction
 {
-    [SerializeField] private string interactionText;
-    [SerializeField] private int levelIndex;
-    [SerializeField] private float levelTransitionTime;
-
-    public void Interact()
+    public class DoorInteractable : MonoBehaviour, IInteractable
     {
-        GameManager.Instance.LoadLevelTimer(levelIndex, levelTransitionTime);
-    }
+        [SerializeField] private string interactionText;
+        [SerializeField] private int levelIndex;
+        [SerializeField] private float levelTransitionTime;
 
-    public string GetInteractText()
-    {
-        return interactionText;
-    }
+        public void Interact()
+        {
+            GameManager.Instance.LoadLevelTimer(levelIndex, levelTransitionTime);
+        }
 
-    public Transform GetTransform()
-    {
-        return transform;
+        public string GetInteractText()
+        {
+            return interactionText;
+        }
+
+        public Transform GetTransform()
+        {
+            return transform;
+        }
     }
 }

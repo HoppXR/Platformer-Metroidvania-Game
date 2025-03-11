@@ -7,6 +7,7 @@ namespace Player.Movement
 {
     public class Swinging : MonoBehaviour
     {
+        #region Variables
         [Header("References")] 
         [SerializeField] private InputReader input;
         [SerializeField] private LineRenderer lr;
@@ -34,7 +35,9 @@ namespace Player.Movement
         
         [Header("Sounds")]
         [SerializeField] private EventReference swingSound;
+        #endregion
 
+        #region Unity Built-in Methods
         private void Start()
         {
             _pm = GetComponent<PlayerMovement>();
@@ -61,6 +64,18 @@ namespace Player.Movement
             DrawRope();
         }
 
+        private void OnDisable()
+        {
+            input.SwingEvent -= StartSwing;
+            input.SwingCancelledEvent -= StopSwing;
+            
+            input.SwingShortenEvent -= ShortenCable;
+            input.SwingExtendEvent -= ExtendCable;
+            
+            input.MoveEvent -= HandleMove;
+        }
+        #endregion
+
         private void StartSwing()
         {
             // return if predictionHit not found or if ability is not enabled
@@ -68,7 +83,7 @@ namespace Player.Movement
             
             _pm.swinging = true;
             
-            AudioManager.instance.PlayOneShot(swingSound, transform.position);
+            AudioManager.Instance.PlayOneShot(swingSound, transform.position);
 
             _swingPoint = _predictionHit.point;
             _joint = player.gameObject.AddComponent<SpringJoint>();

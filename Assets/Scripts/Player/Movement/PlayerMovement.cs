@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using General;
 using Managers;
-using Platformer;
 using Player.Animation;
 using Player.Input;
 using Sound;
@@ -147,6 +147,13 @@ namespace Player.Movement
             }
         }
         #endif
+        
+        private void OnDisable()
+        {
+            input.MoveEvent -= HandleMove;
+            input.JumpEvent -= HandleJump;
+            input.JumpCancelledEvent -= HandleCancelJump;
+        }
         
         #endregion
 

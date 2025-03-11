@@ -38,6 +38,13 @@ namespace Player.Movement
                 SlidingMovement();
         }
 
+        private void OnDisable()
+        {
+            input.MoveEvent -= HandleInput;
+            input.CrouchEvent -= StartSlide;
+            input.CrouchCancelledEvent -= StopSlide;
+        }
+
         private void HandleInput(Vector2 dir)
         {
             _inputDirection = dir;

@@ -5,6 +5,7 @@ namespace Managers
 {
     public class AbilityManager : MonoBehaviour
     {
+        #region Variables
         public static AbilityManager Instance { get; private set; }
 
         private MusicManager _musicManager;
@@ -29,7 +30,9 @@ namespace Managers
         [SerializeField] private bool enableSlide;
         [SerializeField] private bool enableDash;
         [SerializeField] private bool enableSwing;
-    
+        #endregion
+        
+        #region Unity Built-in Methods
         private void Awake()
         {
             if (Instance != null && Instance != this)
@@ -51,6 +54,7 @@ namespace Managers
             if (enableDash) DashEnabled = true;
             if (enableSwing) SwingEnabled = true;
         }
+        #endregion
 
         public void EnableAbility(Abilities ability)
         {

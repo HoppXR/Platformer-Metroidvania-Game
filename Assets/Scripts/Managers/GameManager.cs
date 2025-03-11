@@ -33,6 +33,12 @@ namespace Managers
             input.PauseEvent += PauseGame;
             input.ResumeEvent += ResumeGame;
         }
+
+        private void OnDestroy()
+        {
+            input.PauseEvent -= PauseGame;
+            input.ResumeEvent -= ResumeGame;
+        }
         #endregion
 
         public void FindPlayerHealth()
@@ -107,7 +113,11 @@ namespace Managers
         
             yield return new WaitForSeconds(time);
         
+            input.SetGameplay();
+            
             SceneManager.LoadScene(index);
+            
+            Time.timeScale = 1;
         }
 
         // for instant level loads
@@ -116,6 +126,8 @@ namespace Managers
             input.SetGameplay();
         
             SceneManager.LoadScene(index);
+
+            Time.timeScale = 1;
         }
         #endregion
 

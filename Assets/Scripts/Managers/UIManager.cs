@@ -1,4 +1,5 @@
 using System;
+using General;
 using Player.Interaction;
 using TMPro;
 using UnityEngine;
@@ -40,10 +41,9 @@ namespace Managers
         [SerializeField] private GameObject slideAbility;
         #endregion
     
+        #region Unity Built-in Methods
         private void Start()
         {
-            Time.timeScale = 1;
-        
             saveScoreButton.onClick.AddListener(OnSaveClicked);
             saveScoreButton.interactable = false;
 
@@ -67,6 +67,7 @@ namespace Managers
                 HideInteractUI();
             }
         }
+        #endregion
     
         #region Public methods
         public void EnableAbilityUI(AbilityManager.Abilities ability)

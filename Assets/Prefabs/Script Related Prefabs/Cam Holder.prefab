@@ -254,7 +254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {fileID: 11400000, guid: f0af528ef787f524f906f2f46802fbbb, type: 2}
   freeLookCam: {fileID: 8333802835667141172}
-  mouseSens: 3
+  mouseSens: 0.25
   controllerSens: 4
 --- !u!1 &2137530723388710934
 GameObject:

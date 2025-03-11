@@ -1,4 +1,5 @@
 using FMODUnity;
+using Managers;
 using UnityEngine;
 
 namespace General
@@ -25,7 +26,7 @@ namespace General
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                AudioManager.instance.PlayOneShot(collectedSound, this.transform.position);
+                AudioManager.Instance.PlayOneShot(collectedSound, this.transform.position);
             
                 if (collectParticle != null)
                 {

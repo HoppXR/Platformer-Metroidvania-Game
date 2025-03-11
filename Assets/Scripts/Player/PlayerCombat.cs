@@ -23,8 +23,13 @@ namespace Player
         private void Start()
         {
             _playerAnimation = GetComponent<PlayerAnimation>();
-            
+
             input.AttackEvent += MeleeAttack;
+        }
+
+        private void OnDisable()
+        {
+            input.AttackEvent -= MeleeAttack;
         }
 
     #if UNITY_EDITOR

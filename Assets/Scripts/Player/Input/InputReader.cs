@@ -34,11 +34,11 @@ namespace Player.Input
             _gameInput.Gameplay.Disable();
         }
     
+        #region Event Actions
         public event Action<Vector2> MoveEvent;
         public event Action<Vector2> LookEvent;
 
         public event Action AttackEvent;
-        public event Action SwapAttackEvent;
 
         public event Action JumpEvent;
         public event Action JumpCancelledEvent;
@@ -57,7 +57,9 @@ namespace Player.Input
     
         public event Action PauseEvent;
         public event Action ResumeEvent;
-    
+        #endregion
+        
+        #region Input Actions
         public void OnMove(InputAction.CallbackContext context)
         {
             MoveEvent?.Invoke(context.ReadValue<Vector2>());
@@ -73,14 +75,6 @@ namespace Player.Input
             if (context.phase == InputActionPhase.Started)
             {
                 AttackEvent?.Invoke();
-            }
-        }
-
-        public void OnSwapAttack(InputAction.CallbackContext context)
-        {
-            if (context.phase == InputActionPhase.Started)
-            {
-                SwapAttackEvent?.Invoke();
             }
         }
 
@@ -164,5 +158,6 @@ namespace Player.Input
                 ResumeEvent?.Invoke();
             }
         }
+        #endregion
     }
 }

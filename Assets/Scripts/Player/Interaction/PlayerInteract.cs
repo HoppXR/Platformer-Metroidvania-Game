@@ -1,60 +1,68 @@
+using System;
 using System.Collections.Generic;
 using Player.Input;
-using Player.Interaction;
 using UnityEngine;
 
-public class PlayerInteract : MonoBehaviour
+namespace Player.Interaction
 {
-    [Header("References")]
-    [SerializeField] private InputReader input;
+    public class PlayerInteract : MonoBehaviour
+    {
+        [Header("References")]
+        [SerializeField] private InputReader input;
     
-    [Header("Interaction")]
-    [SerializeField] private float interactRange;
+        [Header("Interaction")]
+        [SerializeField] private float interactRange;
 
-    private void Start()
-    {
-        input.InteractEvent += Interact;
-    }
-    
-    private void Interact()
-    {
-        IInteractable interactable = GetInteractable();
-        if (interactable != null)
+        private void Start()
         {
-            interactable.Interact();
+            input.InteractEvent += Interact;
         }
-    }
 
-    public IInteractable GetInteractable()
-    {
-        if (!this) return null;
-        
-        List<IInteractable> interactableList = new List<IInteractable>();
-        Collider[] interactables = Physics.OverlapSphere(transform.position, interactRange);
-        foreach (Collider interactable in interactables)
+        private void OnDisable()
         {
-            if (interactable.TryGetComponent(out IInteractable interactableObject))
+            input.InteractEvent -= Interact;
+        }
+
+        private void Interact()
+        {
+            IInteractable interactable = GetInteractable();
+            if (interactable != null)
             {
-                interactableList.Add(interactableObject);
+                interactable.Interact();
             }
         }
-        
-        IInteractable closestInteractable = null;
-        foreach (IInteractable interactable in interactableList)
+
+        public IInteractable GetInteractable()
         {
-            if (closestInteractable == null)
+            if (!this) return null;
+        
+            List<IInteractable> interactableList = new List<IInteractable>();
+            Collider[] interactables = Physics.OverlapSphere(transform.position, interactRange);
+            foreach (Collider interactable in interactables)
             {
-                closestInteractable = interactable;
+                if (interactable.TryGetComponent(out IInteractable interactableObject))
+                {
+                    interactableList.Add(interactableObject);
+                }
             }
-            else
+        
+            IInteractable closestInteractable = null;
+            foreach (IInteractable interactable in interactableList)
             {
-                if (Vector3.Distance(transform.position, interactable.GetTransform().position) <
-                    Vector3.Distance(transform.position, closestInteractable.GetTransform().position))
+                if (closestInteractable == null)
                 {
                     closestInteractable = interactable;
                 }
+                else
+                {
+                    if (Vector3.Distance(transform.position, interactable.GetTransform().position) <
+                        Vector3.Distance(transform.position, closestInteractable.GetTransform().position))
+                    {
+                        closestInteractable = interactable;
+                    }
+                }
             }
+            return closestInteractable;
         }
-        return closestInteractable;
     }
 }
