@@ -44,14 +44,14 @@ namespace Managers
         {
             Time.timeScale = 1;
         
-            DisableUI();
-        
             saveScoreButton.onClick.AddListener(OnSaveClicked);
             saveScoreButton.interactable = false;
 
             playerNameInput.onValueChanged.AddListener(OnNameChanged);
         
             GameManager.Instance.FindPlayerHealth();
+            
+            DisableUI();
         }
     
         private void Update()

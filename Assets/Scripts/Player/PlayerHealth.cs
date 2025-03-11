@@ -2,49 +2,52 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHealth : MonoBehaviour
+namespace Player
 {
-    public event Action OnDeath;
+    public class PlayerHealth : MonoBehaviour
+    {
+        public event Action OnDeath;
     
-    [SerializeField] private int playerLives;
-    [SerializeField] private Sprite[] playerLiveSprites;
-    [SerializeField] private Image playerLiveDisplay;
-    private int _maxPlayerLives;
+        [SerializeField] private int playerLives;
+        [SerializeField] private Sprite[] playerLiveSprites;
+        [SerializeField] private Image playerLiveDisplay;
+        private int _maxPlayerLives;
 
-    private void Start()
-    {
-        _maxPlayerLives = playerLives;
-        
-        UpdateSprite();
-    }
-
-    public void TakeDamage()
-    {
-        playerLives--;
-        
-        if (playerLives <= 0)
+        private void Start()
         {
-            playerLives = 0;
-            OnDeath?.Invoke();
+            _maxPlayerLives = playerLives;
+        
+            UpdateSprite();
         }
-        
-        UpdateSprite();
-    }
 
-    public void Heal()
-    {
-        playerLives++;
-        
-        if (playerLives >= _maxPlayerLives)
+        public void TakeDamage()
         {
-            playerLives = _maxPlayerLives;
-        }
+            playerLives--;
         
-        UpdateSprite();
-    }
+            if (playerLives <= 0)
+            {
+                playerLives = 0;
+                OnDeath?.Invoke();
+            }
+        
+            UpdateSprite();
+        }
 
-    private void UpdateSprite()
-    {
-        playerLiveDisplay.sprite = playerLiveSprites[playerLives];
+        public void Heal()
+        {
+            playerLives++;
+        
+            if (playerLives >= _maxPlayerLives)
+            {
+                playerLives = _maxPlayerLives;
+            }
+        
+            UpdateSprite();
+        }
+
+        private void UpdateSprite()
+        {
+            playerLiveDisplay.sprite = playerLiveSprites[playerLives];
+        }
     }
 }

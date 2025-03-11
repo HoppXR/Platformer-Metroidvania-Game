@@ -220,7 +220,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {fileID: 11400000, guid: f0af528ef787f524f906f2f46802fbbb, type: 2}
   groundCheckPoint: {fileID: 2088367267408673784}
-  groundCheckDistance: 0.45
+  groundCheckDistance: 0.05
+  terrainCheckDistance: 0.2
   currentTerrain: 0
   jumpSound:
     Guid:
@@ -486,6 +487,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61933e5d51b7c85438d691ac23f22804, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 4201028636248309307}
 --- !u!1 &5235409585053648491
 GameObject:
   m_ObjectHideFlags: 0
@@ -1570,6 +1572,11 @@ PrefabInstance:
 --- !u!4 &462420710797207234 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7876023681238672744, guid: c3c6e535b13f58546bf97f5d81e66f60, type: 3}
+  m_PrefabInstance: {fileID: 7721308176558212010}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4201028636248309307 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: c3c6e535b13f58546bf97f5d81e66f60, type: 3}
   m_PrefabInstance: {fileID: 7721308176558212010}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &7830952289147757633 stripped

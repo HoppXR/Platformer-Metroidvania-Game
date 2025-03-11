@@ -6,7 +6,6 @@ using Player.Animation;
 using Player.Input;
 using Sound;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Player.Movement
 {
@@ -239,7 +238,7 @@ namespace Player.Movement
                 _jumpTimer.Start();
                 
                 if (PlayerAnimation.CurrentAnimation != "Attack")
-                    _playerAnimation.ChangeAnimation("Jump");
+                    _playerAnimation?.ChangeAnimation("Jump");
                 
                 _ps?.PlayJumpSound();
                     
@@ -342,23 +341,25 @@ namespace Player.Movement
             if (Grounded && _inputDirection.x >= 0.1f || _inputDirection.y >= 0.1f || _inputDirection.x <= -0.1f || _inputDirection.y <= -0.1f)
             {
                 if (!crouching)
-                    _playerAnimation.ChangeAnimation("Run", 0.15f);
+                    _playerAnimation?.ChangeAnimation("Run", 0.15f);
                 else
-                    _playerAnimation.ChangeAnimation("Roll");
+                    _playerAnimation?.ChangeAnimation("Roll");
             }
             // Idle will be at the bottom as default animation
             else if (Grounded && PlayerAnimation.CurrentAnimation != "Landing")
             {
                 if (!crouching)
-                    _playerAnimation.ChangeAnimation("Idle");
+                    _playerAnimation?.ChangeAnimation("Idle");
                 else
-                    _playerAnimation.ChangeAnimation("Crouch", 0.1f);
+                    _playerAnimation?.ChangeAnimation("Crouch", 0.1f);
             }
         }
         
+        private readonly Collider[] _groundColliders = new Collider[4];
         private void CheckIfGrounded()
         {
-            Grounded = Physics.OverlapSphere(_groundCheckOffset, 0.45f, whatIsGround).Length > 0;
+            var groundCollisions = Physics.OverlapSphereNonAlloc(_groundCheckOffset, 0.45f, _groundColliders, whatIsGround);
+            Grounded = groundCollisions > 0;
         }
         
         private void StateHandler()
@@ -378,7 +379,7 @@ namespace Player.Movement
                 _desiredMoveSpeed = _lastDesiredMoveSpeed;
                 
                 if (PlayerAnimation.CurrentAnimation != "Attack")
-                    _playerAnimation.ChangeAnimation("Fall");
+                    _playerAnimation?.ChangeAnimation("Fall");
             }
             // Mode - Swinging
             else if (swinging)

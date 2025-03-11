@@ -19,19 +19,12 @@ namespace Player
         [SerializeField] private int damage;
         [SerializeField] private float atkSpeed;
         [SerializeField] private float atkRange;
-        private bool _isRangedAttack;
     
         private void Start()
         {
             _playerAnimation = GetComponent<PlayerAnimation>();
             
-            input.AttackEvent += Attack;
-            input.SwapAttackEvent += SwapAttackType;
-        }
-
-        private void Update()
-        {
-            _attackOffset = player.position + new Vector3(0f, attackPositionOffset, 0f);
+            input.AttackEvent += MeleeAttack;
         }
 
     #if UNITY_EDITOR
@@ -45,38 +38,12 @@ namespace Player
         }
     #endif
 
-        private void SwapAttackType()
-        {
-            _isRangedAttack = !_isRangedAttack;
-        
-            Debug.Log("Attack Swapped");
-        
-            // update the ui
-        }
-
-        private void Attack()
-        {
-            if (!_isRangedAttack)
-            {
-                MeleeAttack();
-            }
-            else
-            {
-                RangedAttack();
-            }
-        }
-
-        private void GroundSlam()
-        {
-            // Raycast to check how high the player is
-        
-            // if the player is high enough
-        }
-    
         private void MeleeAttack()
         {
-            Debug.Log("Melee Attack");
-            _playerAnimation.ChangeAnimation("Attack");
+            if (player != null)
+                _attackOffset = player.position + new Vector3(0f, attackPositionOffset, 0f);
+            
+            _playerAnimation?.ChangeAnimation("Attack");
 
             Collider[] enemies = Physics.OverlapSphere(_attackOffset, atkRange);
             foreach (var enemy in enemies)
@@ -90,15 +57,7 @@ namespace Player
                 {
                     bossHealth.TakeDamage(damage);
                 }
-            
-                // remove when animations are added
-                Debug.Log("Enemies hit: " + enemies.Length);
             }
-        }
-
-        private void RangedAttack()
-        {
-            Debug.Log("Ranged Attack");
         }
     }
 }

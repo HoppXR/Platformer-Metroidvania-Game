@@ -1,4 +1,5 @@
 using System.Collections;
+using Player;
 using Player.Input;
 using UnityEngine;
 using UnityEngine.SceneManagement;

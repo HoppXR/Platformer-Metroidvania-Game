@@ -13,6 +13,7 @@ namespace Sound
         [SerializeField] private InputReader input;
         [SerializeField] private Transform groundCheckPoint;
         [SerializeField] private float groundCheckDistance;
+        [SerializeField] private float terrainCheckDistance;
         private Vector2 _inputDir;
         private Vector3 _groundCheckOffset;
     
@@ -45,8 +46,8 @@ namespace Sound
 
         private void DetermineTerrain()
         {
-            var hit = Physics.RaycastAll(_groundCheckOffset, Vector3.down, groundCheckDistance);
-            Debug.DrawRay(_groundCheckOffset, Vector3.down * groundCheckDistance, Color.magenta);
+            var hit = Physics.RaycastAll(_groundCheckOffset, Vector3.down, terrainCheckDistance);
+            Debug.DrawRay(_groundCheckOffset, Vector3.down * terrainCheckDistance, Color.magenta);
             
             foreach (RaycastHit rayhit in hit)
             {
