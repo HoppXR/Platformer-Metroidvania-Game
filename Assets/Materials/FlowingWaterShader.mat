@@ -26,9 +26,9 @@ Material:
     m_Ints: []
     m_Floats:
     - _BUILTIN_QueueControl: 0
-    - _Matallic: 10
+    - _Matallic: 0
     - _QueueControl: 0
-    - _Smoothness: 1.5
+    - _Smoothness: 0
     - _Transparency: 2
     - _TransparencyMask: 0
     - _WobbleAmount: 0.04
