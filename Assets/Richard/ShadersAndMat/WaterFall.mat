@@ -52,15 +52,16 @@ Material:
     m_Ints: []
     m_Floats:
     - _BUILTIN_QueueControl: 0
-    - _BottomBrightness: 4
-    - _BottomStrength: 2
+    - _BottomBrightness: 0.25
+    - _BottomStrength: -0.1
     - _Errosion: 0
     - _QueueControl: 0
     - _RippleAmount: 2.5
-    - _VertexOffsetAmount: 0.1
+    - _Transparency: 0.95
+    - _VertexOffsetAmount: 0.12
     - _VoronoiScale: 10
     - _VoronoiSpeed: -0.3
     m_Colors:
-    - _RippleColor: {r: 0.34258753, g: 0.14779866, b: 1, a: 1}
+    - _RippleColor: {r: 0.6132076, g: 0.14848103, b: 0.5103919, a: 0}
     - _RippleSpeed: {r: 0, g: 0.2, b: 0, a: 0}
   m_BuildTextureStacks: []
