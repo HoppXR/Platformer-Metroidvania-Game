@@ -58,7 +58,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!95 &3629573348147099725
 Animator:
   serializedVersion: 7
@@ -196,6 +196,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: mm
       objectReference: {fileID: 0}
+    - target: {fileID: -5568371526223589888, guid: 0211b10555bc9d14b9dff0b65de2560c, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0211b10555bc9d14b9dff0b65de2560c, type: 3}
       propertyPath: m_Name
       value: mesh
@@ -215,6 +219,10 @@ PrefabInstance:
     - target: {fileID: 8513859187771203891, guid: 0211b10555bc9d14b9dff0b65de2560c, type: 3}
       propertyPath: m_Name
       value: mm
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513859187771203891, guid: 0211b10555bc9d14b9dff0b65de2560c, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

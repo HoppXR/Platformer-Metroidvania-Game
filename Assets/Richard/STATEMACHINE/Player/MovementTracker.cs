@@ -40,7 +40,7 @@ public class ObjectTracker : MonoBehaviour
         {
             Vector3 currentVelocity = rb.velocity;
             v3AverageVelocity = Vector3.Lerp(v3AverageVelocity, currentVelocity, smoothingFactor);
-            Vector3 rawAcceleration = (currentVelocity - v3PrevVel) / Time.unscaledDeltaTime;
+            Vector3 rawAcceleration = (currentVelocity - v3PrevVel) / Mathf.Max(Time.unscaledDeltaTime, 0.0001f);
             rawAcceleration = Vector3.ClampMagnitude(rawAcceleration, maxAcceleration);
             v3AverageAcceleration = Vector3.Lerp(v3AverageAcceleration, rawAcceleration, smoothingFactor);
             v3PrevVel = currentVelocity;

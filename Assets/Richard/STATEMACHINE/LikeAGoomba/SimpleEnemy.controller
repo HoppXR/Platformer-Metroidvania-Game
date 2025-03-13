@@ -41,7 +41,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461040edbe313a64baca75522bf07a92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseRange: 8
+  chaseRange: 12
 --- !u!114 &-5756710978771347677
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -54,7 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f697c33a7de997e4d9b18282f8eec604, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownDuration: 2
+  cooldownDuration: 3
   player: {fileID: 0}
 --- !u!114 &-5128774700026760903
 MonoBehaviour:
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d73a33d0188b1df44a6241435285d64b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseRange: 8
+  chaseRange: 12
 --- !u!114 &-4690495712269434668
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e57fb319d9636c48b4f067a7c48af8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rangeToStopChasingPlayer: 15
+  rangeToStopChasingPlayer: 16
   rangeToAttackPlayer: 3.5
 --- !u!114 &-4296876015904655998
 MonoBehaviour:
@@ -242,7 +242,7 @@ AnimatorController:
     m_Controller: {fileID: 0}
   - m_Name: RangeToStopChasing
     m_Type: 1
-    m_DefaultFloat: 10
+    m_DefaultFloat: 16
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
@@ -254,7 +254,7 @@ AnimatorController:
     m_Controller: {fileID: 0}
   - m_Name: RangeToChasePlayer
     m_Type: 1
-    m_DefaultFloat: 8
+    m_DefaultFloat: 12
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}

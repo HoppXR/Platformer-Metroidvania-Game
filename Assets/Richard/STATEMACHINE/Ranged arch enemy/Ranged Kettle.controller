@@ -96,8 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e57fb319d9636c48b4f067a7c48af8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rangeToStopChasingPlayer: 57.1
-  rangeToAttackPlayer: 12.9
+  rangeToStopChasingPlayer: 24
+  rangeToAttackPlayer: 13
 --- !u!114 &-4600878347574662241
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461040edbe313a64baca75522bf07a92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseRange: 30
+  chaseRange: 20
 --- !u!1107 &-4427235983930088240
 AnimatorStateMachine:
   serializedVersion: 6
@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d73a33d0188b1df44a6241435285d64b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseRange: 8
+  chaseRange: 20
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0
@@ -280,49 +280,49 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: isAttacking
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: hasAttacked
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: isPatroling
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: RangeToStopChasing
     m_Type: 1
-    m_DefaultFloat: 16
+    m_DefaultFloat: 24
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: RangeToAttack
     m_Type: 1
-    m_DefaultFloat: 11
+    m_DefaultFloat: 13
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: RangeToChasePlayer
     m_Type: 1
-    m_DefaultFloat: 15
+    m_DefaultFloat: 20
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: canAttack
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 1
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -348,7 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6b5b450302766342b6574a611c4e663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownDuration: 2
+  cooldownDuration: 3
 --- !u!1101 &1479190100766418024
 AnimatorStateTransition:
   m_ObjectHideFlags: 1

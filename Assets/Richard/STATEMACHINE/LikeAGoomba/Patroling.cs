@@ -9,7 +9,7 @@ public class Patroling : StateMachineBehaviour
     private Transform player;
 
     [SerializeField] private float chaseRange = 8f;
-    private float patrolRadius = 5f;
+    private float patrolRadius = 8f;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
