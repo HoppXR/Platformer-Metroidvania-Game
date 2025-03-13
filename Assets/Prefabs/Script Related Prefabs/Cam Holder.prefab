@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 946046028499058122}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.116304874, y: -0.6974763, z: 0.11630488, w: 0.6974763}
+  m_LocalRotation: {x: -0.08879752, y: -0.70150787, z: -0.088797204, w: 0.70151037}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 3
-  m_FollowOffset: {x: 0, y: 3, z: -6}
+  m_FollowOffset: {x: 0, y: 1.5, z: -6}
   m_XDamping: 0.25
   m_YDamping: 0
   m_ZDamping: 0
@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0, y: 1, z: 0}
+  m_TrackedObjectOffset: {x: 0, y: 2, z: 0}
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
@@ -283,7 +283,7 @@ Transform:
   m_GameObject: {fileID: 2137530723388710934}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.000001, y: 3, z: 0.00000071525574}
+  m_LocalPosition: {x: 6.000001, y: 0.5, z: 0.00000071525574}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -386,12 +386,12 @@ MonoBehaviour:
   m_BindingMode: 3
   m_SplineCurvature: 0.1
   m_Orbits:
-  - m_Height: 7.5
-    m_Radius: 6
-  - m_Height: 3
+  - m_Height: 9
+    m_Radius: 3
+  - m_Height: 1.5
     m_Radius: 6
   - m_Height: -0.9
-    m_Radius: 2.5
+    m_Radius: 1.5
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
   - {fileID: 7600876459315634307}
@@ -440,7 +440,6 @@ GameObject:
   - component: {fileID: 3467056756336889197}
   - component: {fileID: 3131550460710632381}
   - component: {fileID: 4447007571500366957}
-  - component: {fileID: 3690387152906102168}
   - component: {fileID: 3355305649805476381}
   m_Layer: 0
   m_Name: Player Cam
@@ -457,8 +456,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4010958546567111748}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.08312705, y: -0.70220363, z: 0.08312706, w: 0.7022036}
-  m_LocalPosition: {x: 3.3999999, y: 2.4164274, z: 0.00000041711635}
+  m_LocalRotation: {x: -0.0599851, y: -0.70455664, z: -0.0599849, w: 0.7045591}
+  m_LocalPosition: {x: 3.3999999, y: 0.9168311, z: -0.000011554112}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -583,66 +582,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attenuationObject: {fileID: 0}
---- !u!114 &3690387152906102168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4010958546567111748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  volumeTrigger: {fileID: 2056544093783387712}
-  volumeLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  stopNaNPropagation: 1
-  finalBlitToCameraTarget: 0
-  antialiasingMode: 1
-  temporalAntialiasing:
-    jitterSpread: 0.75
-    sharpness: 0.25
-    stationaryBlending: 0.95
-    motionBlending: 0.85
-  subpixelMorphologicalAntialiasing:
-    quality: 2
-  fastApproximateAntialiasing:
-    fastMode: 0
-    keepAlpha: 0
-  fog:
-    enabled: 1
-    excludeSkybox: 1
-  debugLayer:
-    lightMeter:
-      width: 512
-      height: 256
-      showCurves: 1
-    histogram:
-      width: 512
-      height: 256
-      channel: 3
-    waveform:
-      exposure: 0.12
-      height: 256
-    vectorscope:
-      size: 256
-      exposure: 0.12
-    overlaySettings:
-      linearDepth: 0
-      motionColorIntensity: 4
-      motionGridSize: 64
-      colorBlindnessType: 0
-      colorBlindnessStrength: 1
-  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
-  m_ShowToolkit: 0
-  m_ShowCustomSorter: 0
-  breakBeforeColorGrading: 0
-  m_BeforeTransparentBundles: []
-  m_BeforeStackBundles: []
-  m_AfterStackBundles: []
 --- !u!114 &3355305649805476381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -746,7 +685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 3
-  m_FollowOffset: {x: 0, y: 3, z: -6}
+  m_FollowOffset: {x: 0, y: 1.5, z: -6}
   m_XDamping: 0.25
   m_YDamping: 0
   m_ZDamping: 0
@@ -799,7 +738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0, y: 1.6, z: 0}
+  m_TrackedObjectOffset: {x: 0, y: 1.5, z: 0}
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
@@ -839,7 +778,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6704837772457452313}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.116304874, y: -0.6974763, z: 0.11630488, w: 0.6974763}
+  m_LocalRotation: {x: -0.08879752, y: -0.70150787, z: -0.088797204, w: 0.70151037}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -952,7 +891,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 3
-  m_FollowOffset: {x: 0, y: 3, z: -6}
+  m_FollowOffset: {x: 0, y: 1.5, z: -6}
   m_XDamping: 0.25
   m_YDamping: 0
   m_ZDamping: 0
@@ -1005,7 +944,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0, y: 1, z: 0}
+  m_TrackedObjectOffset: {x: 0, y: 2, z: 0}
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
@@ -1045,7 +984,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8908272879480998267}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.08312707, y: -0.70220363, z: 0.08312706, w: 0.70220363}
+  m_LocalRotation: {x: -0.059985105, y: -0.70455676, z: -0.0599849, w: 0.7045591}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
