@@ -109,11 +109,9 @@ public class RangedAttack : StateMachineBehaviour
             float gravity = Physics.gravity.magnitude;
 
             float angle = 45f * Mathf.Deg2Rad;
-
-            // Adjust initial speed to scale properly
             float initialSpeed = Mathf.Sqrt((gravity * distance * distance) / (2 * (distance * Mathf.Tan(angle) - heightDifference))) * baseProjectileSpeed;
 
-            initialSpeed += distance * distanceMultiplier; // Ensure long-range shots reach
+            initialSpeed += distance * distanceMultiplier;
 
             float Vy = (initialSpeed * Mathf.Sin(angle)) * heightMultiplier;
             float Vx = initialSpeed * Mathf.Cos(angle);
