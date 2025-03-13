@@ -342,7 +342,8 @@ namespace Player.Movement
 
         public void HandleAnimation()
         {
-            if (PlayerAnimation.CurrentAnimation == "Attack" || PlayerAnimation.CurrentAnimation == "Jump" || PlayerAnimation.CurrentAnimation == "Fall" && !Grounded)
+            if (PlayerAnimation.CurrentAnimation == "Attack" || PlayerAnimation.CurrentAnimation == "Jump" || PlayerAnimation.CurrentAnimation == "Swing" || 
+                PlayerAnimation.CurrentAnimation == "Fall" && !Grounded)
                 return;
             
             if (Grounded && _inputDirection.x >= 0.1f || _inputDirection.y >= 0.1f || _inputDirection.x <= -0.1f || _inputDirection.y <= -0.1f)
@@ -392,6 +393,9 @@ namespace Player.Movement
             else if (swinging)
             {
                 state = MovementState.Swinging;
+                
+                _playerAnimation?.ChangeAnimation("Swing");
+                
                 _desiredMoveSpeed = swingSpeed;
             }
             // Mode - Dashing
