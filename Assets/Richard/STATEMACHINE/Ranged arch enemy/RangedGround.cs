@@ -11,11 +11,10 @@ public class RangedAttack : StateMachineBehaviour
     private AttackCoolDowns attackCoolDowns;
     private Transform attackTransform;
 
-    public GameObject projectilePrefab;
-    public GameObject indicatorPrefab;
-    public float baseProjectileSpeed;
-    public float heightMultiplier;
-    public float distanceMultiplier;
+    public GameObject projectilePrefab; // The projectile prefab to shoot
+    public float baseProjectileSpeed; // Base speed of the projectile
+    public float heightMultiplier; // Multiplier for height adjustment
+    public float distanceMultiplier; // Multiplier for distance calculation
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -63,12 +62,17 @@ public class RangedAttack : StateMachineBehaviour
     {
         Debug.Log("Attacking player!");
         attackCoolDowns.StartCooldown();
+
+        // Decide whether to target the player or the prediction
         Vector3 targetPosition = ChooseTargetPosition();
+
+        // Shoot the projectile
         ShootProjectile(animator.transform.position, targetPosition);
     }
 
     Vector3 ChooseTargetPosition()
     {
+        // Adjust chance to shoot at predicted position as needed
         float shootAtPredictionChance = 0.5f;
         Transform predictionTarget = GameObject.Find("EnemyPredictionPoint").transform;
 
@@ -91,50 +95,33 @@ public class RangedAttack : StateMachineBehaviour
         animator.transform.rotation = Quaternion.Slerp(
             animator.transform.rotation,
             targetRotation,
-            Time.deltaTime * 5f
+            Time.deltaTime * 5f // Adjust the speed of rotation
         );
     }
 
     void ShootProjectile(Vector3 startPosition, Vector3 targetPosition)
     {
+        // Instantiate the projectile at the enemy's position
         GameObject projectile = Instantiate(projectilePrefab, attackTransform.position, Quaternion.identity);
-        Rigidbody rb = projectile.GetComponent<Rigidbody>();
 
+        // Calculate the direction and apply the arc using a Rigidbody
+        Rigidbody rb = projectile.GetComponent<Rigidbody>();
+        
         if (rb != null)
         {
-            Vector3 direction = targetPosition - startPosition;
+            // Calculate the horizontal distance
             float distance = Vector3.Distance(new Vector3(startPosition.x, 0, startPosition.z), new Vector3(targetPosition.x, 0, targetPosition.z));
-
+            
+            // Calculate the height based on vertical difference between enemy and player
             float heightDifference = targetPosition.y - startPosition.y;
-            float gravity = Physics.gravity.magnitude;
+            
+            // Adjust trajectory based on distance and height difference
+            Vector3 direction = (targetPosition - startPosition).normalized;
+            float height = heightDifference * heightMultiplier; // Adjust height based on the difference in height
+            Vector3 adjustedDirection = new Vector3(direction.x, height, direction.z);
 
-            float angle = 45f * Mathf.Deg2Rad;
-
-            // Adjust initial speed to scale properly
-            float initialSpeed = Mathf.Sqrt((gravity * distance * distance) / (2 * (distance * Mathf.Tan(angle) - heightDifference))) * baseProjectileSpeed;
-
-            initialSpeed += distance * distanceMultiplier; // Ensure long-range shots reach
-
-            float Vy = (initialSpeed * Mathf.Sin(angle)) * heightMultiplier;
-            float Vx = initialSpeed * Mathf.Cos(angle);
-
-            Vector3 flatDirection = new Vector3(direction.x, 0, direction.z).normalized;
-            rb.velocity = (flatDirection * Vx) + (Vector3.up * Vy);
-
-            SpawnIndicatorPrefab(targetPosition);
+            // Apply the velocity to the Rigidbody
+            rb.velocity = adjustedDirection * (baseProjectileSpeed + distance * distanceMultiplier); // Adjust speed based on distance
         }
     }
-
-
-    void SpawnIndicatorPrefab(Vector3 position)
-    {
-        if (indicatorPrefab != null)
-        {
-            Quaternion fixedRotation = Quaternion.Euler(90f, 0f, 0f);
-            GameObject indicator = Instantiate(indicatorPrefab, position, fixedRotation);
-            Destroy(indicator, 2f);
-        }
-    }
-
-
 }
