@@ -103,27 +103,34 @@ public class RangedAttack : StateMachineBehaviour
         if (rb != null)
         {
             Vector3 direction = targetPosition - startPosition;
-            float distance = Vector3.Distance(new Vector3(startPosition.x, 0, startPosition.z), new Vector3(targetPosition.x, 0, targetPosition.z));
+            float distance = Mathf.Max(0.1f, Vector3.Distance(new Vector3(startPosition.x, 0, startPosition.z), 
+                new Vector3(targetPosition.x, 0, targetPosition.z)));
 
             float heightDifference = targetPosition.y - startPosition.y;
             float gravity = Physics.gravity.magnitude;
 
             float angle = 45f * Mathf.Deg2Rad;
-            float initialSpeed = Mathf.Sqrt((gravity * distance * distance) / (2 * (distance * Mathf.Tan(angle) - heightDifference))) * baseProjectileSpeed;
+            float tanAngle = Mathf.Tan(angle);
+            float denominator = 2 * (distance * tanAngle - heightDifference);
+            if (Mathf.Abs(denominator) < 0.1f) denominator = 0.1f;
 
-            initialSpeed += distance * distanceMultiplier;
+            float initialSpeed = Mathf.Sqrt((gravity * distance * distance) / denominator) * baseProjectileSpeed;
+            initialSpeed = Mathf.Clamp(initialSpeed, 5f, 100f);
 
             float Vy = (initialSpeed * Mathf.Sin(angle)) * heightMultiplier;
             float Vx = initialSpeed * Mathf.Cos(angle);
 
             Vector3 flatDirection = new Vector3(direction.x, 0, direction.z).normalized;
-            rb.velocity = (flatDirection * Vx) + (Vector3.up * Vy);
+            Vector3 velocity = (flatDirection * Vx) + (Vector3.up * Vy);
 
+            if (!float.IsNaN(velocity.x) && !float.IsNaN(velocity.y) && !float.IsNaN(velocity.z))
+            {
+                rb.velocity = velocity;
+            }
             SpawnIndicatorPrefab(targetPosition);
         }
     }
-
-
+    
     void SpawnIndicatorPrefab(Vector3 position)
     {
         if (indicatorPrefab != null)

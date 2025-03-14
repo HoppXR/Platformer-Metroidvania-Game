@@ -4,10 +4,11 @@ using UnityEngine;
 public class ProjectileVolley : MonoBehaviour
 {
     public GameObject projectilePrefab;
+    public GameObject skyIndicatorPrefab;
     public Transform projectileSpawnPoint;
     public Transform player;
     public Transform playerPrediction;
-    
+
     private BossAIManager boss;
 
     public int totalSkyProjectiles = 15;
@@ -15,19 +16,19 @@ public class ProjectileVolley : MonoBehaviour
     public float skySpawnRadius = 10f;
     public float skyHeight = 20f;
     public float skyFireRate = 0.5f;
-    public float targetedFireRate = 1f; 
+    public float targetedFireRate = 1f;
     public float projectileSpeed = 15f;
-    public float predictionChance = 0.3f; 
+    public float predictionChance = 0.3f;
     public float arcVerticalAngle = 45f;
 
     private bool isShooting = false;
-    
     private Rigidbody rb;
-    
+
     void Start()
     {
         boss = GetComponent<BossAIManager>();
         rb = GetComponent<Rigidbody>();
+
         if (player == null)
         {
             GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
@@ -40,7 +41,7 @@ public class ProjectileVolley : MonoBehaviour
             if (predictionObj != null) playerPrediction = predictionObj.transform;
         }
     }
-    
+
     IEnumerator FireVolley()
     {
         isShooting = true;
@@ -57,7 +58,9 @@ public class ProjectileVolley : MonoBehaviour
     {
         for (int i = 0; i < totalSkyProjectiles; i++)
         {
-            SpawnFallingProjectile();
+            Vector3 spawnPosition = SpawnFallingProjectile();
+            SpawnSkyIndicator(spawnPosition);
+
             yield return new WaitForSeconds(skyFireRate);
         }
     }
@@ -73,9 +76,10 @@ public class ProjectileVolley : MonoBehaviour
         }
     }
 
-    void SpawnFallingProjectile()
+    Vector3 SpawnFallingProjectile()
     {
-        if (projectilePrefab == null) return;
+        if (projectilePrefab == null) return Vector3.zero;
+
         Vector2 randomOffset = Random.insideUnitCircle * skySpawnRadius;
         Vector3 spawnPosition = new Vector3(transform.position.x + randomOffset.x, transform.position.y + skyHeight, transform.position.z + randomOffset.y);
 
@@ -85,6 +89,19 @@ public class ProjectileVolley : MonoBehaviour
         {
             rb.velocity = Vector3.down * projectileSpeed;
         }
+
+        return spawnPosition;
+    }
+
+    void SpawnSkyIndicator(Vector3 spawnPosition)
+    {
+        if (skyIndicatorPrefab == null) return;
+
+        Vector3 indicatorPosition = new Vector3(spawnPosition.x, 51f, spawnPosition.z);
+        Quaternion fixedRotation = Quaternion.Euler(90f, 0f, 0f);
+
+        GameObject indicator = Instantiate(skyIndicatorPrefab, indicatorPosition, fixedRotation);
+        Destroy(indicator, 2f);
     }
 
     void FireArchedAtTarget(Transform target)
@@ -101,15 +118,15 @@ public class ProjectileVolley : MonoBehaviour
             rb.velocity = rotation * Vector3.forward * projectileSpeed;
         }
     }
-    
+
     public IEnumerator FireVolleyRoutine()
     {
         yield return StartCoroutine(FireVolley());
     }
+
     public void StopVolley()
     {
         isShooting = false;
         StopAllCoroutines();
     }
-
 }

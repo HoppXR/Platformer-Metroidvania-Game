@@ -519,7 +519,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   projectilePrefab: {fileID: 1688833737320317978, guid: a79179039cb05e6449ce85beb51afa67, type: 3}
-  indicatorPrefab: {fileID: 3794433938735800585, guid: 8f8b14a06338d304da583c3e6200a4a4, type: 3}
+  indicatorPrefab: {fileID: 3096505613272234563, guid: c1e9ae7416a2be44aba35136b7705def, type: 3}
   baseProjectileSpeed: 1.2
   heightMultiplier: 1.2
   distanceMultiplier: 0.01
