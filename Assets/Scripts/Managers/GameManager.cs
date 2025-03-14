@@ -52,11 +52,11 @@ namespace Managers
         {
             // play ui sound
         
+            input.SetUI();
+            
             FindFirstObjectByType<UIManager>()?.PauseGame();
         
             Time.timeScale = 0;
-        
-            input.SetUI();
         
             // makes cursor visible and moveable
             Cursor.lockState = CursorLockMode.None;
@@ -71,12 +71,11 @@ namespace Managers
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         
-            // sets back to game controls
-            input.SetGameplay();
-        
             Time.timeScale = 1;
         
             FindFirstObjectByType<UIManager>()?.ResumeGame();
+            
+            input.SetGameplay();
         }
 
         public void RestartGame()
@@ -134,6 +133,8 @@ namespace Managers
         #region Game State
         public void PlayerWin()
         {
+            input.SetUI();
+            
             FindFirstObjectByType<UIManager>()?.GameWin();
 
             Time.timeScale = 0;
@@ -144,6 +145,8 @@ namespace Managers
 
         private void PlayerLose()
         {
+            input.SetUI();
+            
             Time.timeScale = 0;
         
             FindFirstObjectByType<UIManager>()?.GameLose();
