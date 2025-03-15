@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{78db4e5b-4485-4fd0-8332-d06c9829a3ca}">
+		<property name="name">
+			<value>Underground muffle</value>
+		</property>
+		<relationship name="folder">
+			<destination>{a0c5c681-ab8b-43dd-975c-6ad31b12a22d}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{e4025f94-e9f7-4dc5-8c59-214f1fb281f8}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{e4025f94-e9f7-4dc5-8c59-214f1fb281f8}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="seekSpeed">
+			<value>0.91999995708465576</value>
+		</property>
+	</object>
+</objects>
