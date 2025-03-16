@@ -27,7 +27,10 @@ namespace Player.Movement
         [SerializeField] private float rollSpeed;
         [SerializeField] private float swingSpeed;
         [SerializeField] private float dashSpeed;
+        
         [SerializeField] private float dashSpeedChangeFactor;
+        [SerializeField] private float swingSpeedChangeFactor;
+        [SerializeField] private float airSpeedChangeFactor;
 
         [Header("Movement Settings")] 
         [SerializeField] private float acceleration;
@@ -379,16 +382,6 @@ namespace Player.Movement
                 _desiredMoveSpeed = 0;
                 _rb.velocity = Vector3.zero;
             }
-            // Mode - Falling
-            else if (_jumpVelocity < 0 && !swinging && !Grounded)
-            {
-                state = MovementState.Falling;
-
-                _desiredMoveSpeed = _lastDesiredMoveSpeed;
-                
-                if (PlayerAnimation.CurrentAnimation != "Attack")
-                    _playerAnimation?.ChangeAnimation("Fall");
-            }
             // Mode - Swinging
             else if (swinging)
             {
@@ -397,6 +390,7 @@ namespace Player.Movement
                 _playerAnimation?.ChangeAnimation("Swing");
                 
                 _desiredMoveSpeed = swingSpeed;
+                _speedChangeFactor = swingSpeedChangeFactor;
             }
             // Mode - Dashing
             else if (dashing)
@@ -426,26 +420,48 @@ namespace Player.Movement
                 state = MovementState.Walking;
                 _desiredMoveSpeed = walkSpeed;
             }
+            // Mode - Falling
+            else if (_jumpVelocity < 0 && !swinging && !Grounded)
+            {
+                state = MovementState.Falling;
+                _speedChangeFactor = airSpeedChangeFactor;
+                
+                if (_desiredMoveSpeed >= walkSpeed)
+                    _desiredMoveSpeed = _lastDesiredMoveSpeed * 0.99f;
+                
+                if (PlayerAnimation.CurrentAnimation != "Attack")
+                    _playerAnimation?.ChangeAnimation("Fall");
+            }
             // Mode - Air
             else
             {
                 state = MovementState.Air;
-                
+                _speedChangeFactor = airSpeedChangeFactor;
+
                 if (_inputDirection != Vector2.zero)
-                    _desiredMoveSpeed = _lastDesiredMoveSpeed;
+                {
+                    if (_desiredMoveSpeed >= walkSpeed)
+                        _desiredMoveSpeed = _lastDesiredMoveSpeed * 0.99f;
+                }
                 else
                     _desiredMoveSpeed = walkSpeed * 0.75f;
             }
             
             bool desiredMoveSpeedHasChanged = !Mathf.Approximately(_desiredMoveSpeed, _lastDesiredMoveSpeed);
-            if (_lastState is MovementState.Dashing) _keepMomentum = true;
-
+            if (_lastState is not MovementState.Freeze) _keepMomentum = true;
+            
             if (desiredMoveSpeedHasChanged)
             {
                 if (_keepMomentum)
+                {
+                    StopAllCoroutines();
                     StartCoroutine(SmoothlyLerpMoveSpeed());
+                }
                 else
+                {
+                    StopAllCoroutines();
                     _moveSpeed = _desiredMoveSpeed;
+                }
             }
             
             _lastDesiredMoveSpeed = _desiredMoveSpeed;
@@ -473,7 +489,7 @@ namespace Player.Movement
                 }
             }
         }
-        
+
         private float _speedChangeFactor;
         private IEnumerator SmoothlyLerpMoveSpeed()
         {
@@ -481,11 +497,13 @@ namespace Player.Movement
             float time = 0;
             float difference = Mathf.Abs(_desiredMoveSpeed - _moveSpeed);
             float startValue = _moveSpeed;
-            float boostFactor = _speedChangeFactor;
 
+            float boostFactor = _speedChangeFactor;
+            
             while (time < difference)
             {
                 _moveSpeed = Mathf.Lerp(startValue, _desiredMoveSpeed, time / difference);
+                
                 time += Time.deltaTime * boostFactor;
                 
                 yield return null;
@@ -493,7 +511,7 @@ namespace Player.Movement
             
             _moveSpeed = _desiredMoveSpeed;
             _speedChangeFactor = 1f;
-            _keepMomentum = true;
+            _keepMomentum = false;
         }
         
         public bool OnSlope()
