@@ -454,12 +454,12 @@ namespace Player.Movement
             {
                 if (_keepMomentum)
                 {
-                    StopAllCoroutines();
+                    StopCoroutine(SmoothlyLerpMoveSpeed());
                     StartCoroutine(SmoothlyLerpMoveSpeed());
                 }
                 else
                 {
-                    StopAllCoroutines();
+                    StopCoroutine(SmoothlyLerpMoveSpeed());
                     _moveSpeed = _desiredMoveSpeed;
                 }
             }
