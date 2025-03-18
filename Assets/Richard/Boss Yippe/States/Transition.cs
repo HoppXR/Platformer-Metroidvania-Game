@@ -14,8 +14,12 @@ public class Transition : BaseState
         {
             bossManager.bossAI.SetState(BossAIManager.BossState.Idle);
         }
-
+        
         bossManager.bossAI.transform.position = new Vector3(-12.6899996f, 52f, -177.639999f);
+        
+        var freeLookCam = bossManager.cinemachineCamera.GetComponent<Cinemachine.CinemachineFreeLook>();
+        freeLookCam.m_XAxis.Value = 0f;
+        freeLookCam.m_YAxis.Value = 0f;
         if (bossManager.bossAI != null)
         {
             var navAgent = bossManager.bossAI.GetComponent<UnityEngine.AI.NavMeshAgent>();
@@ -26,9 +30,9 @@ public class Transition : BaseState
             bossManager.bossAI.GetComponent<DashAttack>().enabled = false;
             bossManager.bossAI.GetComponent<GroundPound>().enabled = false;
         }
-        if (bossManager.transitionCamera != null && bossManager.playerCamera != null)
+        if (bossManager.transitionCamera != null && bossManager.playercameraParent != null)
         {
-            bossManager.playerCamera.SetActive(false);
+            bossManager.playercameraParent.SetActive(false);
             bossManager.transitionCamera.SetActive(true);
         }
         if (bossManager.player != null)
@@ -50,10 +54,10 @@ public class Transition : BaseState
 
         if (timer > 3f) 
         {
-            if (bossManager.transitionCamera != null && bossManager.playerCamera != null)
+            if (bossManager.transitionCamera != null && bossManager.playercameraParent != null)
             {
                 bossManager.transitionCamera.SetActive(false);
-                bossManager.playerCamera.SetActive(true);
+                bossManager.playercameraParent.SetActive(true);
             }
             bossManager.SetState(BossStateManager.BossState.Parkour2);
         }

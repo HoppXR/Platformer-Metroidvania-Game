@@ -46,14 +46,20 @@ public class DashAttack : MonoBehaviour
     public void StartDash(Vector3 targetPosition)
     {
         rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
+        
+        Vector3 toTarget = new Vector3(targetPosition.x - transform.position.x, 0, targetPosition.z - transform.position.z);
+        
+        if (toTarget.magnitude < 1f) 
+        {
+            toTarget = toTarget.normalized * 1f;
+        }
 
-        Vector3 toTarget = targetPosition - transform.position;
         dashDirection = toTarget.normalized;
 
         isDashing = true;
         dashTimer = dashDuration;
         bounceCount = 0;
-        
+
         rb.velocity = dashDirection * dashSpeed;
 
         RotateTowards(dashDirection);

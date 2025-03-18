@@ -8,7 +8,8 @@ public class BossStateManager : MonoBehaviour
 
     public BossAIManager bossAI;
     public GameObject player;
-    public GameObject playerCamera;
+    public GameObject playercameraParent;
+    public Cinemachine.CinemachineFreeLook cinemachineCamera;
     public GameObject transitionCamera;
     public GameObject arenaColliders;
     public GameObject parkour1;
