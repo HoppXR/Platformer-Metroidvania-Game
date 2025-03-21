@@ -14,12 +14,12 @@ public class Transition : BaseState
         {
             bossManager.bossAI.SetState(BossAIManager.BossState.Idle);
         }
-        
+    
         bossManager.bossAI.transform.position = new Vector3(-12.6899996f, 52f, -177.639999f);
         
-        var freeLookCam = bossManager.cinemachineCamera.GetComponent<Cinemachine.CinemachineFreeLook>();
-        freeLookCam.m_XAxis.Value = 0f;
-        freeLookCam.m_YAxis.Value = 0f;
+        bossManager.transitionCinemachineCamera.Priority = 20;
+        bossManager.playerCinemachineCamera.Priority = 10;
+
         if (bossManager.bossAI != null)
         {
             var navAgent = bossManager.bossAI.GetComponent<UnityEngine.AI.NavMeshAgent>();
@@ -30,11 +30,7 @@ public class Transition : BaseState
             bossManager.bossAI.GetComponent<DashAttack>().enabled = false;
             bossManager.bossAI.GetComponent<GroundPound>().enabled = false;
         }
-        if (bossManager.transitionCamera != null && bossManager.playercameraParent != null)
-        {
-            bossManager.playercameraParent.SetActive(false);
-            bossManager.transitionCamera.SetActive(true);
-        }
+
         if (bossManager.player != null)
         {
             Rigidbody rb = bossManager.player.GetComponent<Rigidbody>();
@@ -42,7 +38,7 @@ public class Transition : BaseState
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
         }
-        
+
         if (bossManager.arenaColliders != null) bossManager.arenaColliders.SetActive(false);
         if (bossManager.parkour1 != null) bossManager.parkour1.SetActive(false);
         if (bossManager.parkour2 != null) bossManager.parkour2.SetActive(true);
@@ -52,16 +48,18 @@ public class Transition : BaseState
     {
         timer += Time.unscaledDeltaTime; 
 
-        if (timer > 3f) 
+        if (timer > 5f) 
         {
-            if (bossManager.transitionCamera != null && bossManager.playercameraParent != null)
-            {
-                bossManager.transitionCamera.SetActive(false);
-                bossManager.playercameraParent.SetActive(true);
-            }
+            bossManager.playerCinemachineCamera.Priority = 20;
+            bossManager.transitionCinemachineCamera.Priority = 10;
+
             bossManager.SetState(BossStateManager.BossState.Parkour2);
         }
     }
+
+
+
+
 
     public override void ExitState()
     {

@@ -46,6 +46,12 @@ namespace Player.Input
                 freeLookCam.m_YAxis.m_InputAxisValue = controllerY;
             }
         }
+        
+        public void SetSensitivity(float newMouseSens, float newControllerSens)
+        {
+            mouseSens = newMouseSens;
+            controllerSens = newControllerSens;
+        }
 
         private void OnDisable()
         {
