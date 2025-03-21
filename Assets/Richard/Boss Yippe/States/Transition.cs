@@ -31,13 +31,6 @@ public class Transition : BaseState
             bossManager.bossAI.GetComponent<GroundPound>().enabled = false;
         }
 
-        if (bossManager.player != null)
-        {
-            Rigidbody rb = bossManager.player.GetComponent<Rigidbody>();
-            rb.position = bossManager.parkour2StartPos.position;
-            rb.velocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
-        }
 
         if (bossManager.arenaColliders != null) bossManager.arenaColliders.SetActive(false);
         if (bossManager.parkour1 != null) bossManager.parkour1.SetActive(false);

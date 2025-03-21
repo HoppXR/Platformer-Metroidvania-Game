@@ -16,6 +16,10 @@ public class Parkour2 : BaseState
         {
             bossManager.parkour2Trigger.SetActive(true);
         }
+        Rigidbody rb = bossManager.player.GetComponent<Rigidbody>();
+        rb.position = bossManager.parkour2StartPos.position;
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
     }
 
     public override void StateUpdate() { }
