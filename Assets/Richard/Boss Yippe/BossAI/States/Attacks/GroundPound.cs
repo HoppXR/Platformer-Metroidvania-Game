@@ -8,15 +8,17 @@ public class GroundPound : MonoBehaviour
     public float slamSpeed = 40f;
     public GameObject shockwavePrefab;
     public Transform shockwaveSpawnPoint;
-    public int attackCount = 4;
+    public int attackCount;
     public float attackDelay = 1f;
+    public float shockwaveSpeed = 12f;
+    public float shockwaveLifetime = 1.5f;
 
     private Rigidbody rb;
     private NavMeshAgent navMeshAgent;
     private bool isJumping = false;
     private bool isSlamming = false;
     private bool hasLanded = false;
-    
+
     private BossAIManager boss;
 
     void Start()
@@ -39,65 +41,84 @@ public class GroundPound : MonoBehaviour
         for (int i = 0; i < attackCount; i++)
         {
             hasLanded = false;
-            yield return StartCoroutine(GroundSlam());
+            yield return StartCoroutine(GroundSlam(i));
             yield return new WaitUntil(() => hasLanded);
             yield return new WaitForSeconds(attackDelay);
         }
 
         FreezeXZConstraints(false);
-        
     }
 
-    public IEnumerator GroundSlam()
+    public IEnumerator GroundSlam(int slamIndex)
     {
         isJumping = true;
         rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
-        yield return new WaitForSeconds(0.1f); 
+        yield return new WaitForSeconds(0.1f);
         rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
         rb.velocity = Vector3.up * jumpHeight;
-    
+
         yield return new WaitForSeconds(0.6f);
 
         isJumping = false;
         isSlamming = true;
-    
+
         rb.velocity = Vector3.down * slamSpeed;
 
         yield return new WaitUntil(() => hasLanded);
 
         isSlamming = false;
+        bool isCardinal = slamIndex % 2 == 0;
+        SpawnShockwaveProjectiles(isCardinal);
+    }
 
-        if (shockwavePrefab != null)
+    private void SpawnShockwaveProjectiles(bool isCardinal)
+    {
+        if (shockwavePrefab == null) return;
+
+        Vector3[] directions;
+        float[] rotations;
+
+        if (isCardinal)
         {
-            Vector3 shockwavePosition = new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z);
-            GameObject shockwave = Instantiate(shockwavePrefab, shockwavePosition, Quaternion.identity);
+            directions = new Vector3[]
+            {
+                Vector3.forward,
+                Vector3.back,
+                Vector3.right,
+                Vector3.left
+            };
+            rotations = new float[] { 0f, 180f, 90f, -90f };
+        }
+        else
+        {
 
-            StartCoroutine(ExpandAndDestroy(shockwave));
+            directions = new Vector3[]
+            {
+                (Vector3.forward + Vector3.right).normalized,
+                (Vector3.forward + Vector3.left).normalized,
+                (Vector3.back + Vector3.right).normalized,
+                (Vector3.back + Vector3.left).normalized
+            };
+            rotations = new float[] { 45f, -45f, 135f, -135f };
+        }
+
+        for (int i = 0; i < directions.Length; i++)
+        {
+            GameObject shockwave = Instantiate(shockwavePrefab, shockwaveSpawnPoint.position, Quaternion.Euler(0, rotations[i], 0));
+            StartCoroutine(MoveShockwave(shockwave, directions[i]));
         }
     }
 
-
-    IEnumerator ExpandAndDestroy(GameObject obj)
+    private IEnumerator MoveShockwave(GameObject shockwave, Vector3 direction)
     {
-        float expandTime = 6f; 
-        float maxSize = 11f;
-        float descendSpeed = 0.95f;
-
         float timer = 0f;
-        Vector3 startScale = obj.transform.localScale;
-        Vector3 startPosition = obj.transform.position;
-
-        while (timer < expandTime)
+        while (timer < shockwaveLifetime)
         {
-            timer += Time.unscaledDeltaTime;
-            float progress = timer / expandTime;
-            obj.transform.localScale = Vector3.Lerp(startScale, new Vector3(maxSize, maxSize, maxSize), progress);
-            obj.transform.position -= Vector3.up * (descendSpeed * Time.deltaTime);
-
+            shockwave.transform.position += direction * (shockwaveSpeed * Time.deltaTime);
+            timer += Time.deltaTime;
             yield return null;
         }
-
-        Destroy(obj);
+        Destroy(shockwave);
     }
 
     private void FreezeXZConstraints(bool freeze)

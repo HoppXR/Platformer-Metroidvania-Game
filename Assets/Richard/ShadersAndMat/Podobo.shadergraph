@@ -1366,7 +1366,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "AngleOffset",
     "m_StageCapability": 3,
-    "m_Value": -14.279999732971192,
+    "m_Value": 1.0,
     "m_DefaultValue": 2.0,
     "m_Labels": []
 }
@@ -1382,8 +1382,8 @@
     "m_ShaderOutputName": "Tiling",
     "m_StageCapability": 3,
     "m_Value": {
-        "x": 1.0,
-        "y": 1.0
+        "x": -3.3499999046325685,
+        "y": -3.0
     },
     "m_DefaultValue": {
         "x": 0.0,
@@ -3017,7 +3017,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "AngleOffset",
     "m_StageCapability": 3,
-    "m_Value": 2.140000104904175,
+    "m_Value": -1.9299999475479127,
     "m_DefaultValue": 2.0,
     "m_Labels": []
 }
@@ -3859,7 +3859,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "CellDensity",
     "m_StageCapability": 3,
-    "m_Value": 2.3499999046325685,
+    "m_Value": 1.1799999475479127,
     "m_DefaultValue": 5.0,
     "m_Labels": []
 }
@@ -3955,7 +3955,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "CellDensity",
     "m_StageCapability": 3,
-    "m_Value": 2.109999895095825,
+    "m_Value": 0.3100000023841858,
     "m_DefaultValue": 5.0,
     "m_Labels": []
 }
