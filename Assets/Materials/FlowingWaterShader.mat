@@ -29,13 +29,15 @@ Material:
     - _Matallic: 0
     - _QueueControl: 0
     - _Smoothness: 0
-    - _Transparency: 2
+    - _Transparency: 6.03
     - _TransparencyMask: 0
-    - _WobbleAmount: 0.04
+    - _WobbleAmount: 5.1
     - _WobbleFrequency: 0.5
     - _WobbleHeight: 0.01
-    - _WobbleSpeed: 16
+    - _WobbleSpeed: 4.5
     m_Colors:
+    - _BaseColor: {r: 0.43208104, g: 0.009807391, b: 2.079162, a: 1}
+    - _VoronoiColor: {r: 0.6675181, g: 0.25698647, b: 0.7075472, a: 1}
     - _VoronoiSpeed: {r: -0.27, g: 0.5, b: 0, a: 0}
     - _VoronoiTiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
