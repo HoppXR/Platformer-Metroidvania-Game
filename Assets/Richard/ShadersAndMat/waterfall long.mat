@@ -129,7 +129,7 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
-    - _Transparency: 0.5
+    - _Transparency: 0.95
     - _VertexOffsetAmount: 0.2
     - _VoronoiSpeed: -0.3
     - _WorkflowMode: 1
