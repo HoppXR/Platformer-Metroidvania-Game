@@ -183,7 +183,7 @@ MonoBehaviour:
   attackPositionOffset: 1
   damage: 5
   atkSpeed: 0
-  atkRange: 1.5
+  atkRange: 3
 --- !u!114 &3336774183408497758
 MonoBehaviour:
   m_ObjectHideFlags: 0
