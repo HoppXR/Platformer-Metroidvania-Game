@@ -5,28 +5,40 @@ using UnityEngine;
 
 namespace Player.Interaction
 {
-    public class SporkInteraction : MonoBehaviour//, IInteractable
+    public class SporkInteraction : MonoBehaviour, IInteractable
     {
+        [SerializeField] private string interactionText;
         [SerializeField] private GameObject TextWindow;
         [SerializeField] private TextMeshProUGUI tutorialText;
-
-        string[] dialogue = { "test 1", "test 2", "Test 3, wow this works! " };
+        
+        string[] dialogue = { "Hey kid, you okay?", "test 2", "Test 3, wow this works! " };
         int dialogueTracker;
         [SerializeField] private int dialogueLoopPoint;
-
+        
         public void Interact()
         {
-            TextWindow.SetActive(true);
-            if (dialogueTracker <= dialogue.Length)
+            
+            if (dialogueTracker <= 2)
             {
                 tutorialText.text = dialogue[dialogueTracker];
+                TextWindow.SetActive(true);
                 dialogueTracker += 1;
             }
-            else
-            {
+
+            else if (dialogueTracker > 2) {
+            
                 TextWindow.SetActive(false);
-                dialogueTracker = dialogueLoopPoint;
+                dialogueTracker = 0;
             }
+        }
+        public string GetInteractText()
+        {
+            return interactionText;
+        }
+
+        public Transform GetTransform()
+        {
+            return transform;
         }
     }
 }
