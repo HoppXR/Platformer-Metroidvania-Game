@@ -357,7 +357,7 @@ namespace Player.Movement
                     _playerAnimation?.ChangeAnimation("Roll");
             }
             // Idle will be at the bottom as default animation
-            else if (Grounded && PlayerAnimation.CurrentAnimation != "Landing")
+            else if (Grounded && PlayerAnimation.CurrentAnimation != "Landing" || PlayerAnimation.CurrentAnimation != "Attack")
             {
                 if (!crouching)
                     _playerAnimation?.ChangeAnimation("Idle");
@@ -387,7 +387,7 @@ namespace Player.Movement
             {
                 state = MovementState.Swinging;
                 
-                _playerAnimation?.ChangeAnimation("Swing");
+                _playerAnimation?.ChangeAnimation("Swing", 0.3f);
                 
                 _desiredMoveSpeed = swingSpeed;
                 _speedChangeFactor = swingSpeedChangeFactor;
@@ -419,6 +419,11 @@ namespace Player.Movement
             {
                 state = MovementState.Walking;
                 _desiredMoveSpeed = walkSpeed;
+
+                if (PlayerAnimation.CurrentAnimation == "Swing")
+                {
+                    _playerAnimation?.ChangeAnimation("Idle");
+                }
             }
             // Mode - Falling
             else if (_jumpVelocity < 0 && !swinging && !Grounded)
@@ -445,6 +450,9 @@ namespace Player.Movement
                 }
                 else
                     _desiredMoveSpeed = walkSpeed * 0.75f;
+                
+                if (PlayerAnimation.CurrentAnimation == "Swing")
+                    _playerAnimation?.ChangeAnimation("Fall", 0.3f);
             }
             
             bool desiredMoveSpeedHasChanged = !Mathf.Approximately(_desiredMoveSpeed, _lastDesiredMoveSpeed);
