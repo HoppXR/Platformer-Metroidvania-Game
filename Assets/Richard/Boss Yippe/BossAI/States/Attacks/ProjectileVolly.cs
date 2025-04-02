@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ProjectileVolley : MonoBehaviour
 {
@@ -113,6 +115,7 @@ public class ProjectileVolley : MonoBehaviour
         Quaternion rotation = Quaternion.LookRotation(direction) * Quaternion.Euler(-heightOffset, 0, 0);
         GameObject projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, rotation);
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
+        FacePlayer();
         if (rb != null)
         {
             rb.velocity = rotation * Vector3.forward * projectileSpeed;
@@ -129,4 +132,17 @@ public class ProjectileVolley : MonoBehaviour
         isShooting = false;
         StopAllCoroutines();
     }
+    public void FacePlayer()
+    {
+        if (player == null) return;
+
+        Vector3 directionToPlayer = player.position - transform.position;
+        directionToPlayer.y = 0;
+        if (directionToPlayer != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);
+            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, targetRotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+        }
+    }
+
 }

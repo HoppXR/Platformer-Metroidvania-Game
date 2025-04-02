@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Enemy;
 using UnityEngine;
 
 public class BossAIManager : MonoBehaviour
@@ -16,6 +17,7 @@ public class BossAIManager : MonoBehaviour
     public ProjectileVolley projectileVolley;
     public GroundPound groundPound;
     private BossStateManager bossStateManager;
+    private EnemyDamage enemyDamage;
 
     private BossAIState activeState;
     private float attackTimer = 3f;
@@ -27,6 +29,7 @@ public class BossAIManager : MonoBehaviour
         dashAttack = GetComponent<DashAttack>();
         projectileVolley = GetComponent<ProjectileVolley>();
         groundPound = GetComponent<GroundPound>();
+        enemyDamage = GetComponent<EnemyDamage>();
 
         SetState(BossState.Idle);
     }

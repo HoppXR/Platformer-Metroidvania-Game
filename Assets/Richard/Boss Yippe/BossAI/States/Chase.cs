@@ -27,6 +27,8 @@ public class Chase : BossAIState
 
     public override void StateUpdate()
     {
+        LookAtPlayer();
+        
         if (player == null) return;
 
         chaseTimer += Time.unscaledDeltaTime;
@@ -55,6 +57,15 @@ public class Chase : BossAIState
         if (navAgent != null)
         {
             navAgent.ResetPath();
+        }
+    }
+    private void LookAtPlayer()
+    {
+        if (boss.player != null)
+        {
+            Vector3 direction = (boss.player.position - boss.transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+            boss.transform.rotation = Quaternion.Slerp(boss.transform.rotation, lookRotation, Time.unscaledDeltaTime * 3f);
         }
     }
 }

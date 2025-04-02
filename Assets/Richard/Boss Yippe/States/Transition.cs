@@ -1,4 +1,5 @@
 using System.Collections;
+using Enemy;
 using UnityEngine;
 
 public class Transition : BaseState
@@ -16,6 +17,7 @@ public class Transition : BaseState
         }
     
         bossManager.bossAI.transform.position = new Vector3(-12.6899996f, 52f, -177.639999f);
+        bossManager.bossAI.transform.rotation = Quaternion.Euler(0, 0, 0);
         
         bossManager.transitionCinemachineCamera.Priority = 20;
         bossManager.playerCinemachineCamera.Priority = 10;
@@ -29,6 +31,8 @@ public class Transition : BaseState
             bossManager.bossAI.GetComponent<ProjectileVolley>().enabled = false;
             bossManager.bossAI.GetComponent<DashAttack>().enabled = false;
             bossManager.bossAI.GetComponent<GroundPound>().enabled = false;
+            bossManager.bossAI.GetComponent<EnemyDamage>().enabled = false;
+            bossManager.bossAI.GetComponent<CapsuleCollider>().enabled = false;
         }
 
 
@@ -49,11 +53,7 @@ public class Transition : BaseState
             bossManager.SetState(BossStateManager.BossState.Parkour2);
         }
     }
-
-
-
-
-
+    
     public override void ExitState()
     {
         Debug.Log("Exiting Transition");
