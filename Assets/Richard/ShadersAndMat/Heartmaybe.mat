@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Heartmaybe
+  m_Shader: {fileID: -6465566751694194690, guid: 1a57148615f8ada46823db1e09414476, type: 3}
+  m_Parent: {fileID: -876546973899608171, guid: 1a57148615f8ada46823db1e09414476, type: 3}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _Alpha: 0.85
+    - _Alpha_Clip: 0.82
+    - _Amboient_Occ: 0.32
+    - _BottomLine: 0.4
+    - _Matallic: 1
+    - _QueueControl: 0
+    - _Smoothness: 1
+    - _TopLine: 0.71
+    m_Colors:
+    - _BaseColor: {r: 0.9300111, g: 0.31760997, b: 1, a: 1}
+    - _BottomColor: {r: 5.3403134, g: 1.2930943, b: 4.017185, a: 0}
+    - _TopColor: {r: 0.95155895, g: 0.43081754, b: 1, a: 0}
+  m_BuildTextureStacks: []
+--- !u!114 &2450406116251717796
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7
