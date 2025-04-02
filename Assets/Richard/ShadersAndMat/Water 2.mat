@@ -45,7 +45,7 @@ Material:
     - _NormalStrength: 2
     - _QueueControl: 0
     - _RippleDissolve: 3.21
-    - _RippleScale: 40.51
+    - _RippleScale: 59.9
     - _RippleSpeed: 0.13
     - _Transparency: 0.37
     m_Colors:
