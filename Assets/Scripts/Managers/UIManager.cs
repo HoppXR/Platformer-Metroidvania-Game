@@ -31,7 +31,7 @@ namespace Managers
     
         [Header("Timer")]
         [SerializeField] private TMP_Text timerText;
-        private float _timer = 0f;
+        static float _timer = 0f;
         private bool _isRunning = true;
     
         [Header("Abilities")]
