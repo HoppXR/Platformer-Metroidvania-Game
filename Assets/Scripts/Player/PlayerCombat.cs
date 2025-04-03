@@ -14,16 +14,17 @@ namespace Player
         private Animator _animator;
         private PlayerAnimation _playerAnimation;
         private Vector3 _attackOffset;
-    
+
         [Header("Combat")]
         [SerializeField] private int damage;
         [SerializeField] private float atkSpeed;
         [SerializeField] private float atkRange;
-    
+
+        private bool _canAttack = true;
+
         private void Start()
         {
             _playerAnimation = GetComponent<PlayerAnimation>();
-
             input.AttackEvent += MeleeAttack;
         }
 
@@ -45,9 +46,13 @@ namespace Player
 
         private void MeleeAttack()
         {
+            if (!_canAttack) return;
+
+            _canAttack = false;
+
             if (player != null)
                 _attackOffset = player.position + new Vector3(0f, attackPositionOffset, 0f);
-            
+            //Debug.Log("Attacked");
             _playerAnimation?.ChangeAnimation("Attack");
 
             Collider[] enemies = Physics.OverlapSphere(_attackOffset, atkRange);
@@ -63,6 +68,13 @@ namespace Player
                     bossHealth.TakeDamage(damage);
                 }
             }
+
+            Invoke(nameof(ResetAttack), atkSpeed);
+        }
+
+        private void ResetAttack()
+        {
+            _canAttack = true;
         }
     }
 }
