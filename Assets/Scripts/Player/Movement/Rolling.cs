@@ -10,6 +10,7 @@ namespace Player.Movement
         [SerializeField] private InputReader input;
         [SerializeField] private Transform orientation;
         [SerializeField] private Transform playerCollider;
+        [SerializeField] private MeshTrail meshTrail;
         private Rigidbody _rb;
         private PlayerMovement _pm;
 
@@ -77,6 +78,8 @@ namespace Player.Movement
             {
                 _rb.AddForce(_pm.GetSlopeMoveDirection(inputDirection) * slideForce, ForceMode.Force);
             }
+
+            meshTrail.StartRollingTrail();
         }
         
         private void StopSlide()

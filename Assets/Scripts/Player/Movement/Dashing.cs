@@ -13,6 +13,7 @@ namespace Player.Movement
         [SerializeField] private InputReader input;
         [SerializeField] private Transform orientation;
         [SerializeField] private Transform playerCam;
+        [SerializeField] private MeshTrail meshTrail;
         private Rigidbody _rb;
         private PlayerMovement _pm;
 
@@ -70,6 +71,8 @@ namespace Player.Movement
             _pm.dashing = true;
             
             AudioManager.Instance?.PlayOneShot(dashSound, transform.position);
+
+            meshTrail.StartDashTrail();
 
             Transform forwardT = orientation;
 

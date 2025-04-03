@@ -13,6 +13,7 @@ namespace Player.Movement
         [SerializeField] private LineRenderer lr;
         [SerializeField] private Transform gunTip, cam, player;
         [SerializeField] private LayerMask whatIsGrappleable;
+        [SerializeField] private MeshTrail meshTrail;
         private PlayerMovement _pm;
         private Rigidbody _rb;
         
@@ -140,6 +141,8 @@ namespace Player.Movement
             if (_inputDirection.x < 0) _rb.AddForce(-orientation.right * (horizontalThrustForce * Time.deltaTime));
             // forward
             if (_inputDirection.y > 0) _rb.AddForce(orientation.forward * (forwardThrustForce * Time.deltaTime));
+
+            meshTrail.StartSwingTrail();
         }
 
         private void ShortenCable()
