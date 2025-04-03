@@ -16,6 +16,11 @@ namespace Player
     
         [Header("Landing Particle")]
         [SerializeField] private ParticleSystem landingParticle;
+        
+        
+        [Header("Jump Particles")]
+        [SerializeField] private ParticleSystem jumpParticle;
+        [SerializeField] private ParticleSystem doubleJumpParticle;
     
         private float _timer;
     
@@ -51,6 +56,16 @@ namespace Player
             yield return new WaitUntil(() => PlayerMovement.Grounded);
         
             landingParticle.Play();
+        }
+        
+        public void PlayJumpParticle()
+        {
+                jumpParticle.Play();
+        }
+
+        public void PlayDoubleJumpParticle()
+        {
+                doubleJumpParticle.Play();
         }
     }
 }

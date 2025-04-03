@@ -44,6 +44,7 @@ namespace Player.Movement
         private bool _keepMomentum;
 
         [Header("Jumping")]
+        [SerializeField] private ParticleController particleController;
         [SerializeField] private float airMultiplier; // player speed in-air
         [SerializeField] private float jumpForce;
         [SerializeField] private float jumpDuration;
@@ -232,26 +233,31 @@ namespace Player.Movement
         
         private void HandleJumpInput()
         {
-            // Double Jump
+            // Double Jump Reset
             if (Grounded && !_isJumping)
             {
                 _doubleJump = false;
             }
 
             _jumpBufferTimer -= Time.deltaTime;
-            
+
             // Start Jump
             if (_jumpBufferTimer > 0 && !_jumpCooldownTimer.IsRunning && !swinging)
             {
                 if (!(_coyoteTimer > 0) && !_doubleJump) return;
-                
+
                 _jumpTimer.Start();
-                
+
                 if (PlayerAnimation.CurrentAnimation != "Attack")
                     _playerAnimation?.ChangeAnimation("Jump");
-                
+
                 _ps?.PlayJumpSound();
-                    
+                
+                if (!_doubleJump)
+                    particleController?.PlayJumpParticle();
+                else
+                    particleController?.PlayDoubleJumpParticle();
+
                 if (AbilityManager.DoubleJumpEnabled)
                     _doubleJump = !_doubleJump;
 
@@ -261,10 +267,10 @@ namespace Player.Movement
             else if (!_isJumping && _jumpTimer.IsRunning)
             {
                 _jumpTimer.Stop();
-                
                 _coyoteTimer = 0;
             }
         }
+
 
         private void HandleCoyoteTime()
         {
