@@ -39,8 +39,13 @@ namespace Managers
         [SerializeField] private GameObject swingAbility;
         [SerializeField] private GameObject doubleJumpAbility;
         [SerializeField] private GameObject slideAbility;
+
+        [Header ("Tutorial")]
+        [SerializeField] private GameObject TextWindow;
+        [SerializeField] private TextMeshProUGUI tutorialText;
+        [SerializeField] private int tutorialActiveTime;
         #endregion
-    
+
         #region Unity Built-in Methods
         private void Start()
         {
@@ -76,15 +81,31 @@ namespace Managers
             {
                 case AbilityManager.Abilities.Dash:
                     dashAbility.SetActive(true);
+                    tutorialText.text = "Press SHIFT or ___ to dash forward with a burst of speed!";
+                    TextWindow.SetActive(true);
+                    //await Task.Delay(tutorialActiveTime);
+                    //TextWindow.SetActive(false);
                     break;
                 case AbilityManager.Abilities.Swing:
                     swingAbility.SetActive(true);
+                    tutorialText.text = "Press and hold RIGHT CLICK or RIGHT TRIGGER to grapple! Pay attention to overhangs and YELLOW objects for the red indicator to see if a surface is grappleable!";
+                    TextWindow.SetActive(true);
+                    //await Task.Delay(tutorialActiveTime);
+                    //TextWindow.SetActive(false);
                     break;
                 case AbilityManager.Abilities.DoubleJump:
                     doubleJumpAbility.SetActive(true);
+                    tutorialText.text = "Press SPACE or ___ in the air to preform a double jump!";
+                    TextWindow.SetActive(true);
+                    //await Task.Delay(tutorialActiveTime);
+                    //TextWindow.SetActive(false);
                     break;
                 case AbilityManager.Abilities.Slide:
                     slideAbility.SetActive(true);
+                    tutorialText.text = "Press and hold CTRL or ____ to roll, allowing you to fit in tight spaces and move faster!";
+                    TextWindow.SetActive(true);
+                    //await Task.Delay(tutorialActiveTime);
+                    //TextWindow.SetActive(false);
                     break;
                 case AbilityManager.Abilities.Null:
                     break;

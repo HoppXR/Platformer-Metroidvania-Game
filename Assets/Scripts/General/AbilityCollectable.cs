@@ -1,5 +1,6 @@
 using FMODUnity;
 using Managers;
+using TMPro;
 using UnityEngine;
 
 namespace General
@@ -8,6 +9,10 @@ namespace General
     {
         [SerializeField] private AbilityManager.Abilities abilityToGive;
         [SerializeField] private EventReference collectedSound;
+
+        [SerializeField] private GameObject TextWindow;
+        [SerializeField] private TextMeshProUGUI tutorialText;
+        [SerializeField] private string abilityDescription;
 
         private float _initialY;
 
@@ -28,6 +33,10 @@ namespace General
                 Destroy(gameObject);
             
                 GiveAbility(abilityToGive);
+
+                tutorialText.text = abilityDescription;
+                TextWindow.SetActive(true);
+                
             }
         }
 

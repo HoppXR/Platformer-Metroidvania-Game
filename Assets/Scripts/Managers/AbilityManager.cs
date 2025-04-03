@@ -1,6 +1,7 @@
 using System;
+using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
-
 namespace Managers
 {
     public class AbilityManager : MonoBehaviour
@@ -31,6 +32,7 @@ namespace Managers
         [SerializeField] private bool enableDash;
         [SerializeField] private bool enableSwing;
         #endregion
+
         
         #region Unity Built-in Methods
         private void Awake()
@@ -56,8 +58,9 @@ namespace Managers
         }
         #endregion
 
-        public void EnableAbility(Abilities ability)
+        public async void EnableAbility(Abilities ability)
         {
+
             _numberOfEnabled++;
         
             AddTracks();
@@ -83,6 +86,7 @@ namespace Managers
                     SwingEnabled = true;
                     FindFirstObjectByType<UIManager>()?.EnableAbilityUI(Abilities.Swing);
                     Debug.Log("Swing Enabled");
+                    
                     break;
                 case Abilities.Null:
                     break;
