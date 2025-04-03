@@ -78,8 +78,6 @@ namespace Player.Movement
             {
                 _rb.AddForce(_pm.GetSlopeMoveDirection(inputDirection) * slideForce, ForceMode.Force);
             }
-
-            meshTrail.StartRollingTrail();
         }
         
         private void StopSlide()

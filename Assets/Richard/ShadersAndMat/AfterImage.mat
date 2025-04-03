@@ -25,13 +25,13 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _Alpha: 0.7
+    - _Alpha: 0.1
     - _Alpha_Clip: 0
     - _Amboient_Occ: 0.32
     - _BottomLine: 0.4
-    - _Matallic: 1
+    - _Matallic: 0
     - _QueueControl: 0
-    - _Smoothness: 1
+    - _Smoothness: 0
     - _TopLine: 0.71
     m_Colors:
     - _BaseColor: {r: 0.5934316, g: 1, b: 0.3176471, a: 1}

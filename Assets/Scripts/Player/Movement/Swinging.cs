@@ -141,8 +141,7 @@ namespace Player.Movement
             if (_inputDirection.x < 0) _rb.AddForce(-orientation.right * (horizontalThrustForce * Time.deltaTime));
             // forward
             if (_inputDirection.y > 0) _rb.AddForce(orientation.forward * (forwardThrustForce * Time.deltaTime));
-
-            meshTrail.StartSwingTrail();
+            
         }
 
         private void ShortenCable()

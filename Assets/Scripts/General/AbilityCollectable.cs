@@ -13,6 +13,8 @@ namespace General
         [SerializeField] private GameObject TextWindow;
         [SerializeField] private TextMeshProUGUI tutorialText;
         [SerializeField] private string abilityDescription;
+        
+        [SerializeField] private ParticleSystem collectParticle;
 
         private float _initialY;
 
@@ -30,12 +32,18 @@ namespace General
         {
             if (other.CompareTag("Player"))
             {
-                Destroy(gameObject);
+                AudioManager.Instance.PlayOneShot(collectedSound, this.transform.position);
             
+                Quaternion particleRotation = Quaternion.Euler(-90f, 0f, 0f);
+                ParticleSystem particle = Instantiate(collectParticle, transform.position, particleRotation);
+                Destroy(particle.gameObject, 2f);
+                
                 GiveAbility(abilityToGive);
 
                 tutorialText.text = abilityDescription;
                 TextWindow.SetActive(true);
+                
+                Destroy(gameObject);
                 
             }
         }

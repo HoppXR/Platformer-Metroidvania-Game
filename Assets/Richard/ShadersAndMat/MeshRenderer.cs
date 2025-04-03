@@ -7,15 +7,7 @@ public class MeshTrail : MonoBehaviour
     public float dashMeshRefreshRate = 0.1f;
     public float dashMeshDestroyDelay = 3f;
 
-    [Header("Swing Trail Settings")]
-    public float swingMeshRefreshRate = 0.05f;
-    public float swingMeshDestroyDelay = 1.5f;
-
-    [Header("Rolling Trail Settings")]
-    public float rollMeshRefreshRate = 0.07f;
-    public float rollMeshDestroyDelay = 2f;
-
-    [Header("Shared Settings")]
+    [Header("Shader Settings")]
     public Transform positionToSpawn;
     public Material mat;
     public string shaderVarRef;
@@ -25,8 +17,6 @@ public class MeshTrail : MonoBehaviour
     private bool isDashActive = false;
     private bool isSwingActive = false;
     private bool isRollActive = false;
-    
-    private bool _joint = false; // Placeholder for actual swing/roll stopping condition
     
     public void StartDashTrail()
     {
@@ -46,32 +36,6 @@ public class MeshTrail : MonoBehaviour
         }
 
         isDashActive = false;
-    }
-    
-    public void StartSwingTrail()
-    {
-        if (!isSwingActive) StartCoroutine(SwingTrail());
-    }
-
-    IEnumerator SwingTrail()
-    {
-        isSwingActive = true;
-        SpawnMeshTrail(swingMeshDestroyDelay);
-        yield return new WaitForSeconds(swingMeshRefreshRate);
-        isSwingActive = false;
-    }
-    
-    public void StartRollingTrail()
-    {
-        if (!isRollActive) StartCoroutine(RollingTrail());
-    }
-
-    IEnumerator RollingTrail()
-    {
-        isRollActive = true;
-        SpawnMeshTrail(rollMeshDestroyDelay);
-        yield return new WaitForSeconds(rollMeshRefreshRate);
-        isRollActive = false;
     }
     
     private void SpawnMeshTrail(float destroyDelay)
