@@ -142,8 +142,12 @@ MonoBehaviour:
   abilityToGive: 0
   collectedSound:
     Guid:
-      Data1: 288494751
-      Data2: 1170670813
-      Data3: 1728880273
-      Data4: -501470463
-    Path: event:/Coin
+      Data1: -1515892048
+      Data2: 1157910608
+      Data3: -1331012211
+      Data4: 1548516812
+    Path: event:/Gem
+  TextWindow: {fileID: 0}
+  tutorialText: {fileID: 0}
+  abilityDescription: 
+  collectParticle: {fileID: 0}

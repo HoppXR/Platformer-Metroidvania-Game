@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{9d78eb1c-a909-42a0-b63b-22594c76debc}">
 		<property name="name">
-			<value>EnemyDeath</value>
+			<value>EnemyDeathTeapot</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
@@ -30,6 +30,9 @@
 		</relationship>
 		<relationship name="parameters">
 			<destination>{09d10981-2f5e-4d63-8056-97e3b97fca8e}</destination>
+		</relationship>
+		<relationship name="banks">
+			<destination>{115f991f-fafc-448e-90c4-f3d2e34dd533}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{f697ea12-9e7e-4b48-8f61-01da2340ace8}">
@@ -69,6 +72,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{0d380ef1-4ee2-46a3-99d2-298b57d9539d}">
+		<property name="volume">
+			<value>10</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{2cc46ae5-f118-4606-b718-b153decfe198}</destination>
 		</relationship>
@@ -79,7 +85,11 @@
 			<destination>{f697ea12-9e7e-4b48-8f61-01da2340ace8}</destination>
 		</relationship>
 	</object>
-	<object class="MultiSound" id="{366fe49a-39d0-4928-9a7c-03588c0dde34}" />
+	<object class="MultiSound" id="{366fe49a-39d0-4928-9a7c-03588c0dde34}">
+		<relationship name="sounds">
+			<destination>{fc4df6db-65df-4baa-b70b-71709848220d}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusEffectChain" id="{d4dc8593-16a2-411b-9094-63aa205200f1}">
 		<relationship name="effects">
 			<destination>{7e29ca53-960b-41b5-8f7b-0601b1331bf2}</destination>
@@ -93,6 +103,11 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{f1ed3f09-6844-4d77-8648-612dc1fab872}" />
+	<object class="SingleSound" id="{fc4df6db-65df-4baa-b70b-71709848220d}">
+		<relationship name="audioFile">
+			<destination>{b11ddddc-03fe-47e1-bba6-b398f21157f6}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusFader" id="{7e29ca53-960b-41b5-8f7b-0601b1331bf2}" />
 	<object class="MixerBusFader" id="{33c7fd7c-4750-42a5-b22b-f4a3867c389f}" />
 	<object class="SpatialiserEffect" id="{7bdc00ff-a3c3-407d-885d-ea73037c4b3e}" />

@@ -133,7 +133,7 @@
 			<value>2</value>
 		</property>
 		<property name="volume">
-			<value>4</value>
+			<value>10</value>
 		</property>
 		<property name="looping">
 			<value>true</value>
@@ -149,7 +149,7 @@
 			<value>3</value>
 		</property>
 		<property name="volume">
-			<value>-10</value>
+			<value>-19.5</value>
 		</property>
 		<property name="looping">
 			<value>true</value>
@@ -165,6 +165,9 @@
 		<property name="start">
 			<value>1</value>
 		</property>
+		<property name="volume">
+			<value>2.5</value>
+		</property>
 		<property name="looping">
 			<value>true</value>
 		</property>
@@ -178,6 +181,12 @@
 	<object class="MultiSound" id="{6ce7b20e-0b96-47f9-8dca-f94571d3e05f}">
 		<property name="start">
 			<value>4</value>
+		</property>
+		<property name="volume">
+			<value>-17.5</value>
+		</property>
+		<property name="looping">
+			<value>true</value>
 		</property>
 		<relationship name="sounds">
 			<destination>{1e71667a-a9da-45b0-91c5-a48b41c72c29}</destination>

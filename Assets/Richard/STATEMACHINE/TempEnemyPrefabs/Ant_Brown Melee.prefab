@@ -277,6 +277,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c76e1dd902d7cfe488a45d500f98d871, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5635829223794306826}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c76e1dd902d7cfe488a45d500f98d871, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -7421954504294217567}
   m_SourcePrefab: {fileID: 100100000, guid: c76e1dd902d7cfe488a45d500f98d871, type: 3}
 --- !u!4 &1545325520138859576 stripped
 Transform:
@@ -392,6 +395,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareIndicator: {fileID: 4006392971593735850}
+--- !u!114 &-7421954504294217567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2177993940736192130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1508892445
+      Data2: 1269287833
+      Data3: 2072454317
+      Data4: 868670523
+    Path: event:/EnemyDeathAnt
+  Event: 
+  PlayEvent: 2
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &2106376867383868097
 PrefabInstance:
   m_ObjectHideFlags: 0

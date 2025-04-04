@@ -1256,6 +1256,7 @@ GameObject:
   - component: {fileID: 6662186607858598913}
   - component: {fileID: 2809817949207515213}
   - component: {fileID: 6635832373392243562}
+  - component: {fileID: 7937792285332596724}
   m_Layer: 0
   m_Name: Ant_Red Ranged
   m_TagString: Untagged
@@ -1372,6 +1373,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   damageMaterial: {fileID: 2100000, guid: 92896a7937dd1c94baa675ea8fb3e8be, type: 2}
+--- !u!114 &7937792285332596724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8185260110924696047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1508892445
+      Data2: 1269287833
+      Data3: 2072454317
+      Data4: 868670523
+    Path: event:/EnemyDeathAnt
+  Event: 
+  PlayEvent: 2
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &8529691141859321892
 GameObject:
   m_ObjectHideFlags: 0
