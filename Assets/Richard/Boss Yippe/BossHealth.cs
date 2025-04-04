@@ -36,7 +36,6 @@ public class BossHealth : MonoBehaviour
         else
         {
             health -= damage;
-            bossHealth.value = health;
         }
 
         StartCoroutine(EDamageFlicker());
@@ -57,12 +56,10 @@ public class BossHealth : MonoBehaviour
     public void HealBoss(int amount)
     {
         health += amount;
-        bossHealth.value = health;
     }
 
     private void Die()
     {
-        bossStateManager.bossHealthBar.SetActive(false);
         GameManager.Instance.PlayerWin();
         Destroy(gameObject);
     }

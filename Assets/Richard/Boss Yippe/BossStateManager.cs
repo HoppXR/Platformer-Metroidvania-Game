@@ -15,7 +15,6 @@ public class BossStateManager : MonoBehaviour
     public GameObject parkour2;
     public Transform parkour2StartPos;
     public GameObject parkour2Trigger;
-    public GameObject bossHealthBar;
 
     private BaseState activeState;
 

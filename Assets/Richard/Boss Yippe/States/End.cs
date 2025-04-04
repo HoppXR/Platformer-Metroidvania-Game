@@ -23,11 +23,7 @@ public class End : BaseState
             bossManager.bossAI.GetComponent<GroundPound>().enabled = false;
             bossManager.bossAI.enabled = false;
         }
-
-        if (bossManager.bossHealthBar != null)
-        {
-            bossManager.bossHealthBar.SetActive(false);
-        }
+        
         bossManager.bossAI.StartCoroutine(DelayedEnd());
     }
 

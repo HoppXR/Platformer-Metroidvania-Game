@@ -23,7 +23,6 @@ public class Transition : BaseState
         bossManager.playerCinemachineCamera.Priority = 10;
         
         
-        bossManager.bossHealthBar.SetActive(false);
         
         if (bossManager.bossAI != null)
         {
