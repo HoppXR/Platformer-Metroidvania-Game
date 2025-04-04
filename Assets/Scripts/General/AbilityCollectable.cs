@@ -39,9 +39,11 @@ namespace General
                 Destroy(particle.gameObject, 2f);
                 
                 GiveAbility(abilityToGive);
-
-                tutorialText.text = abilityDescription;
-                TextWindow.SetActive(true);
+                if (tutorialText != null)
+                {
+                    tutorialText.text = abilityDescription;
+                    TextWindow.SetActive(true);
+                }
                 
                 Destroy(gameObject);
                 

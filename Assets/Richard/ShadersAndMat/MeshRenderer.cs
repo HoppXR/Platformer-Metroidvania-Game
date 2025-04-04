@@ -15,8 +15,6 @@ public class MeshTrail : MonoBehaviour
 
     private SkinnedMeshRenderer[] skinnedRenderers;
     private bool isDashActive = false;
-    private bool isSwingActive = false;
-    private bool isRollActive = false;
     
     public void StartDashTrail()
     {
