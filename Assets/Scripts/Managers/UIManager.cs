@@ -138,6 +138,11 @@ namespace Managers
             gameUI?.SetActive(false);
             gameWinUI?.SetActive(true);
         }
+
+        public void ResetTimer()
+        {
+            _timer = 0f;
+        }
         #endregion
     
         #region Private methods

@@ -48,6 +48,11 @@ namespace Managers
         }
     
         #region UI Stuff
+        public void ResetTimer()
+        {
+            FindFirstObjectByType<UIManager>().ResetTimer();
+        }
+        
         private void PauseGame()
         {
             // play ui sound
