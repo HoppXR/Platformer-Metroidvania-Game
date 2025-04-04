@@ -21,6 +21,8 @@ public class BossAIManager : MonoBehaviour
 
     private BossAIState activeState;
     private float attackTimer = 3f;
+
+    [SerializeField] private ParticleSystem Tired;
     
     private void Start()
     {
@@ -70,5 +72,16 @@ public class BossAIManager : MonoBehaviour
         }
 
         if (activeState != null) activeState.EnterState();
+    }
+    public void PlayTiredEffect()
+    {
+        if (Tired != null)
+            Tired.Play();
+    }
+    
+    public void StopTiredEffect()
+    {
+        if (Tired != null && Tired.isPlaying)
+            Tired.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
     }
 }

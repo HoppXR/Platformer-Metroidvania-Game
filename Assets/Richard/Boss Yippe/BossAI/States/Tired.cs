@@ -5,21 +5,23 @@ public class Tired : BossAIState
 {
     private float timer = 6f;
     private Rigidbody rb;
-    private NavMeshAgent navAgent;
+    private Quaternion originalRotation;
 
     public Tired(BossAIManager boss) : base(boss) 
     {
         rb = boss.GetComponent<Rigidbody>();
+        boss.PlayTiredEffect();
+        originalRotation = boss.transform.rotation; 
     }
 
     public override void EnterState()
     {
-        Debug.Log("Boss is tired...");
-        
         if (rb != null)
         {
             rb.constraints = RigidbodyConstraints.FreezeAll;
         }
+        
+        boss.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
     }
 
     public override void StateUpdate()
@@ -37,5 +39,8 @@ public class Tired : BossAIState
         {
             rb.constraints = RigidbodyConstraints.None;
         }
+        boss.transform.rotation = originalRotation;
+
+        boss.StopTiredEffect();
     }
 }
