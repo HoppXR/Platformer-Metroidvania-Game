@@ -16,7 +16,6 @@ namespace Player
         private void Start()
         {
             _maxPlayerLives = playerLives;
-        
             UpdateSprite();
         }
 
@@ -42,6 +41,12 @@ namespace Player
                 playerLives = _maxPlayerLives;
             }
         
+            UpdateSprite();
+        }
+
+        public void MaxHeal()
+        {
+            playerLives = _maxPlayerLives;
             UpdateSprite();
         }
 

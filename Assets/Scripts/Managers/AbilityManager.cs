@@ -1,5 +1,7 @@
 using System;
 using System.Threading.Tasks;
+using Player;
+using Player.Movement;
 using TMPro;
 using UnityEngine;
 namespace Managers
@@ -18,7 +20,9 @@ namespace Managers
             DoubleJump,
             Slide,
             Dash,
-            Swing
+            Swing,
+            AtkIncrease,
+            MaxHealth,
         }
     
         public static bool DoubleJumpEnabled;
@@ -32,7 +36,6 @@ namespace Managers
         [SerializeField] private bool enableDash;
         [SerializeField] private bool enableSwing;
         #endregion
-
         
         #region Unity Built-in Methods
         private void Awake()
@@ -51,6 +54,7 @@ namespace Managers
         {
             _musicManager = FindFirstObjectByType<MusicManager>();
         
+            // Debug
             if (enableDoubleJump) DoubleJumpEnabled = true;
             if (enableSlide) SlideEnabled = true;
             if (enableDash) DashEnabled = true;
@@ -60,7 +64,6 @@ namespace Managers
 
         public async void EnableAbility(Abilities ability)
         {
-
             _numberOfEnabled++;
         
             AddTracks();
@@ -86,7 +89,14 @@ namespace Managers
                     SwingEnabled = true;
                     FindFirstObjectByType<UIManager>()?.EnableAbilityUI(Abilities.Swing);
                     Debug.Log("Swing Enabled");
-                    
+                    break;
+                case Abilities.AtkIncrease:
+                    AttackIncrease();
+                    Debug.Log("Atk Increase");
+                    break;
+                case Abilities.MaxHealth:
+                    MaxHealth();
+                    Debug.Log("Health Max");
                     break;
                 case Abilities.Null:
                     break;
@@ -98,6 +108,16 @@ namespace Managers
         private void AddTracks()
         {
             _musicManager.AddTrack(_numberOfEnabled - 1);
+        }
+
+        private void AttackIncrease()
+        {
+            FindFirstObjectByType<PlayerCombat>().AttackCollectable();
+        }
+
+        private void MaxHealth()
+        {
+            FindFirstObjectByType<PlayerHealth>().MaxHeal();
         }
     }
 }
