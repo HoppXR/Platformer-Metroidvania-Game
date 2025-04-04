@@ -21,7 +21,10 @@ public class Transition : BaseState
         
         bossManager.transitionCinemachineCamera.Priority = 20;
         bossManager.playerCinemachineCamera.Priority = 10;
-
+        
+        
+        bossManager.bossHealthBar.SetActive(false);
+        
         if (bossManager.bossAI != null)
         {
             var navAgent = bossManager.bossAI.GetComponent<UnityEngine.AI.NavMeshAgent>();

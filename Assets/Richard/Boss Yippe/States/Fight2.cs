@@ -26,12 +26,13 @@ public class Fight2 : BaseState
             bossManager.bossAI.GetComponent<GroundPound>().enabled = true;
             bossManager.bossAI.GetComponent<EnemyDamage>().enabled = true;
             bossHealth = bossManager.bossAI.GetComponent<BossHealth>();
+            bossManager.bossHealthBar.SetActive(true);
             
             bossManager.bossAI.currentPhase = BossAIManager.BossPhase.Phase2;
 
             if (bossHealth != null)
             {
-                bossHealth.HealBoss(35); // Heal boss by 35 HP
+                bossHealth.HealBoss(50);
             }
         }
         

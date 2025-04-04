@@ -1,11 +1,13 @@
 using System.Collections;
 using Managers;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossHealth : MonoBehaviour
 {
     [SerializeField] private int health = 100;
     [SerializeField] private Material damageMaterial;
+    public Slider bossHealth;
     private Material _originalMaterial;
     private Renderer _renderer;
     private BossStateManager bossStateManager;
@@ -34,6 +36,7 @@ public class BossHealth : MonoBehaviour
         else
         {
             health -= damage;
+            bossHealth.value = health;
         }
 
         StartCoroutine(EDamageFlicker());
@@ -54,10 +57,12 @@ public class BossHealth : MonoBehaviour
     public void HealBoss(int amount)
     {
         health += amount;
+        bossHealth.value = health;
     }
 
     private void Die()
     {
+        bossStateManager.bossHealthBar.SetActive(false);
         GameManager.Instance.PlayerWin();
         Destroy(gameObject);
     }
@@ -80,8 +85,7 @@ public class BossHealth : MonoBehaviour
                 yield return null; 
             }
         }
-        
-        HealBoss(health);
+        HealBoss(10);
         bossStateManager.SetState(BossStateManager.BossState.Transition);
         bossStateManager.bossAI.SetState(BossAIManager.BossState.Idle);
     }

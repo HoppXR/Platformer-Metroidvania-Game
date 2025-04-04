@@ -13,8 +13,8 @@ public class End : BaseState
 
     public override void EnterState()
     {
-        Debug.Log("Game end or something");
-
+        //Debug.Log("Game end or something");
+        
         if (bossManager.bossAI != null)
         {
             bossManager.bossAI.GetComponent<NavMeshAgent>().enabled = false;
@@ -24,6 +24,10 @@ public class End : BaseState
             bossManager.bossAI.enabled = false;
         }
 
+        if (bossManager.bossHealthBar != null)
+        {
+            bossManager.bossHealthBar.SetActive(false);
+        }
         bossManager.bossAI.StartCoroutine(DelayedEnd());
     }
 

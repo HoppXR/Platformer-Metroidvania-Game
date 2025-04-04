@@ -21,6 +21,8 @@ public class Fight1 : BaseState
             bossManager.bossAI.GetComponent<DashAttack>().enabled = true;
             bossManager.bossAI.GetComponent<GroundPound>().enabled = true;
         }
+
+        bossManager.bossHealthBar.SetActive(true);
         
         if (bossManager.arenaColliders != null)
         {
