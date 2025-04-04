@@ -70,5 +70,5 @@ Material:
     - _NightSky: {r: 0.20870933, g: 0.07450979, b: 0.34117648, a: 0}
     - _Scale: {r: 1.4, g: 0.5, b: 0, a: 0}
     - _cloudSpeed: {r: 0.13, g: 0.56, b: 0, a: 0}
-    - _suncolor: {r: 0.7490197, g: 0.5960785, b: 0, a: 0}
+    - _suncolor: {r: 1, g: 0.79581153, b: 0, a: 0}
   m_BuildTextureStacks: []
