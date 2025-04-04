@@ -76,5 +76,10 @@ namespace Player
         {
             _canAttack = true;
         }
+
+        public void AttackCollectable()
+        {
+            damage *= 2;
+        }
     }
 }
