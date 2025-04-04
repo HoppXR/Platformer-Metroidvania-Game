@@ -57,12 +57,13 @@ public class MeshTrail : MonoBehaviour
             meshFilter.mesh = mesh;
             meshRenderer.material = mat;
 
-            StartCoroutine(AnimateMaterialFloat(meshRenderer.material, 0, shaderFadeSpeed));
+            //StartCoroutine(AnimateMaterialFloat(meshRenderer.material, 0, shaderFadeSpeed));
 
             Destroy(meshObject, destroyDelay);
         }
     }
     
+    /*
     IEnumerator AnimateMaterialFloat(Material m, float valueGoal, float fadeSpeed)
     {
         float valueToAnimate = m.GetFloat(shaderVarRef);
@@ -73,5 +74,5 @@ public class MeshTrail : MonoBehaviour
             m.SetFloat(shaderVarRef, valueToAnimate);
             yield return null;
         }
-    }
+    }*/
 }
