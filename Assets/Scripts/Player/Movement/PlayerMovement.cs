@@ -371,6 +371,11 @@ namespace Player.Movement
                     _playerAnimation?.ChangeAnimation("Crouch", 0.1f);
             }
         }
+
+        public void ResetAnimation()
+        {
+            _playerAnimation?.ChangeAnimation("Idle");
+        }
         
         private readonly Collider[] _groundColliders = new Collider[4];
         private void CheckIfGrounded()

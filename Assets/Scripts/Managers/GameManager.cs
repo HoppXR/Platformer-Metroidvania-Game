@@ -1,6 +1,7 @@
 using System.Collections;
 using Player;
 using Player.Input;
+using Player.Movement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -90,6 +91,9 @@ namespace Managers
             // locks and hides the cursor
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            
+            // resets player animation to prevent bugs
+            FindFirstObjectByType<PlayerMovement>()?.ResetAnimation();
         
             // sets back to game controls
             input.SetGameplay();
@@ -129,6 +133,9 @@ namespace Managers
         {
             input.SetGameplay();
         
+            // resets player animation to prevent bugs
+            FindFirstObjectByType<PlayerMovement>()?.ResetAnimation();
+            
             SceneManager.LoadScene(index);
 
             Time.timeScale = 1;
