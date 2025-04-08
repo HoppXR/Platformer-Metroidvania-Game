@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{78acd615-0c4e-471f-8e28-4098d015e7af}">
 		<property name="name">
-			<value>Menu</value>
+			<value>UI hover</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
@@ -82,7 +82,11 @@
 			<destination>{1c7ac65c-2666-4708-822b-9826bcd4866d}</destination>
 		</relationship>
 	</object>
-	<object class="MultiSound" id="{001775af-a9d4-4ad5-a42a-60f3888e9f81}" />
+	<object class="MultiSound" id="{001775af-a9d4-4ad5-a42a-60f3888e9f81}">
+		<relationship name="sounds">
+			<destination>{63dfccc1-1573-46e9-a70a-4031ee02c4de}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusEffectChain" id="{04caa38a-dc9b-4a62-8257-8b1503bc4de4}">
 		<relationship name="effects">
 			<destination>{6c7d8fa6-ed25-449a-8df8-0b05d22ad32f}</destination>
@@ -96,6 +100,11 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{14116e87-69b5-4106-841a-68f95e92b860}" />
+	<object class="SingleSound" id="{63dfccc1-1573-46e9-a70a-4031ee02c4de}">
+		<relationship name="audioFile">
+			<destination>{1fad71d6-6cef-4cbb-a387-b29dc50442d1}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusFader" id="{6c7d8fa6-ed25-449a-8df8-0b05d22ad32f}" />
 	<object class="MixerBusFader" id="{02e774e8-de0a-4fc1-8a6c-61bb1918e6b6}" />
 	<object class="SpatialiserEffect" id="{33163c52-6a0d-48e8-a758-f3536501d22b}" />
