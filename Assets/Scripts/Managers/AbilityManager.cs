@@ -107,7 +107,7 @@ namespace Managers
 
         private void AddTracks()
         {
-            _musicManager.AddTrack(_numberOfEnabled - 1);
+            _musicManager?.AddTrack(_numberOfEnabled - 1);
         }
 
         private void AttackIncrease()

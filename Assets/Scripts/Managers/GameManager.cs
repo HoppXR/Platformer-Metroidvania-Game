@@ -14,7 +14,15 @@ namespace Managers
         [Header("References")]
         [SerializeField] private InputReader input;
         private PlayerHealth _playerHealth;
-    
+        
+        [Header("Player Health")]
+        [SerializeField] private int playerLives;
+        public static int CurrentPlayerHealth;
+        public static int MaxPlayerHealth;
+
+        [SerializeField] private int coinsToIncrease;
+        public static int CoinCount;
+        
         #region Unity Methods
         private void Awake()
         {
@@ -26,6 +34,10 @@ namespace Managers
             {
                 Instance = this;
                 DontDestroyOnLoad(gameObject);
+                
+                // set health parameters
+                CurrentPlayerHealth = playerLives;
+                MaxPlayerHealth = playerLives;
             }
         }
     
@@ -46,6 +58,17 @@ namespace Managers
         {
             _playerHealth = FindFirstObjectByType<PlayerHealth>();
             _playerHealth.OnDeath += PlayerLose;
+        }
+
+        public void CoinCollected()
+        {
+            CoinCount++;
+
+            if (CoinCount >= coinsToIncrease)
+            {
+                _playerHealth.IncreaseMaxHealth();
+                CoinCount = 0;
+            }
         }
     
         #region UI Stuff

@@ -161,14 +161,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93741f52cbf19db4ca6c56689fff0c64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerLives: 5
   playerLiveSprites:
-  - {fileID: -1488996026, guid: 9b2dd06d42521a846b75d494f5412215, type: 3}
-  - {fileID: -2010322829, guid: 9b2dd06d42521a846b75d494f5412215, type: 3}
-  - {fileID: 161092839, guid: 9b2dd06d42521a846b75d494f5412215, type: 3}
-  - {fileID: 1137661786, guid: 9b2dd06d42521a846b75d494f5412215, type: 3}
-  - {fileID: 1553770636, guid: 9b2dd06d42521a846b75d494f5412215, type: 3}
-  - {fileID: -836429500, guid: 9b2dd06d42521a846b75d494f5412215, type: 3}
+  - {fileID: -1440562244, guid: 317c3fef5b5d9274a94e04f2042c5799, type: 3}
+  - {fileID: -1703044233, guid: 317c3fef5b5d9274a94e04f2042c5799, type: 3}
+  - {fileID: -516936485, guid: 317c3fef5b5d9274a94e04f2042c5799, type: 3}
+  - {fileID: -1697041175, guid: 317c3fef5b5d9274a94e04f2042c5799, type: 3}
+  - {fileID: 1111001109, guid: 317c3fef5b5d9274a94e04f2042c5799, type: 3}
+  - {fileID: 1430387946, guid: 317c3fef5b5d9274a94e04f2042c5799, type: 3}
+  - {fileID: -436564812, guid: 317c3fef5b5d9274a94e04f2042c5799, type: 3}
+  - {fileID: 1858218829, guid: 317c3fef5b5d9274a94e04f2042c5799, type: 3}
+  - {fileID: 1715117142, guid: 317c3fef5b5d9274a94e04f2042c5799, type: 3}
+  - {fileID: 1974988025, guid: 317c3fef5b5d9274a94e04f2042c5799, type: 3}
+  - {fileID: 1127035710, guid: 317c3fef5b5d9274a94e04f2042c5799, type: 3}
   playerLiveDisplay: {fileID: 0}
 --- !u!114 &7344835728310131556
 MonoBehaviour:

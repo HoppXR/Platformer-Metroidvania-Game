@@ -45,3 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 11400000, guid: f0af528ef787f524f906f2f46802fbbb, type: 2}
+  playerLives: 5
+  coinsToIncrease: 25

@@ -1,4 +1,5 @@
 using System;
+using Managers;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,38 +8,23 @@ namespace Player
     public class PlayerHealth : MonoBehaviour
     {
         public event Action OnDeath;
-    
-        [SerializeField] private int playerLives;
+        
         [SerializeField] private Sprite[] playerLiveSprites;
         [SerializeField] private Image playerLiveDisplay;
-        private int _maxPlayerLives;
 
         private void Start()
         {
-            _maxPlayerLives = playerLives;
             UpdateSprite();
         }
 
         public void TakeDamage()
         {
-            playerLives--;
+            GameManager.CurrentPlayerHealth--;
         
-            if (playerLives <= 0)
+            if (GameManager.CurrentPlayerHealth <= 0)
             {
-                playerLives = 0;
+                GameManager.CurrentPlayerHealth = 0;
                 OnDeath?.Invoke();
-            }
-        
-            UpdateSprite();
-        }
-
-        public void Heal()
-        {
-            playerLives++;
-        
-            if (playerLives >= _maxPlayerLives)
-            {
-                playerLives = _maxPlayerLives;
             }
         
             UpdateSprite();
@@ -46,13 +32,21 @@ namespace Player
 
         public void MaxHeal()
         {
-            playerLives = _maxPlayerLives;
+            GameManager.CurrentPlayerHealth = GameManager.MaxPlayerHealth;
             UpdateSprite();
+        }
+
+        public void IncreaseMaxHealth()
+        {
+            if (GameManager.MaxPlayerHealth < 10)
+                GameManager.MaxPlayerHealth++;
+            
+            MaxHeal();
         }
 
         private void UpdateSprite()
         {
-            playerLiveDisplay.sprite = playerLiveSprites[playerLives];
+            playerLiveDisplay.sprite = playerLiveSprites[GameManager.CurrentPlayerHealth];
         }
     }
 }

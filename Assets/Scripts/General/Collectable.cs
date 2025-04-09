@@ -27,6 +27,8 @@ namespace General
             if (other.gameObject.CompareTag("Player"))
             {
                 AudioManager.Instance.PlayOneShot(collectedSound, this.transform.position);
+                
+                GameManager.Instance.CoinCollected();
             
                 if (collectParticle != null)
                 {
