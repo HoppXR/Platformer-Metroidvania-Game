@@ -24,7 +24,6 @@ public class Fight2 : BaseState
             bossManager.bossAI.GetComponent<ProjectileVolley>().enabled = true;
             bossManager.bossAI.GetComponent<DashAttack>().enabled = true;
             bossManager.bossAI.GetComponent<GroundPound>().enabled = true;
-            bossManager.bossAI.GetComponent<EnemyDamage>().enabled = true;
             bossHealth = bossManager.bossAI.GetComponent<BossHealth>();
             
             bossManager.bossAI.currentPhase = BossAIManager.BossPhase.Phase2;

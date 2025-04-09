@@ -18,6 +18,9 @@ public class BossAIManager : MonoBehaviour
     public GroundPound groundPound;
     private BossStateManager bossStateManager;
     private EnemyDamage enemyDamage;
+    
+    [SerializeField] public CapsuleCollider playerDamageCollider;
+    [SerializeField] public CapsuleCollider collisionDamageCollider;
 
     private BossAIState activeState;
     private float attackTimer = 3f;
@@ -28,6 +31,7 @@ public class BossAIManager : MonoBehaviour
     {
         bossStateManager = FindObjectOfType<BossStateManager>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        playerDamageCollider = GetComponent<CapsuleCollider>();
         dashAttack = GetComponent<DashAttack>();
         projectileVolley = GetComponent<ProjectileVolley>();
         groundPound = GetComponent<GroundPound>();

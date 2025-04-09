@@ -21,7 +21,7 @@ public class Tired : BossAIState
             rb.constraints = RigidbodyConstraints.FreezeAll;
         }
         
-        boss.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
+        boss.collisionDamageCollider.enabled = false;
     }
 
     public override void StateUpdate()
@@ -40,7 +40,7 @@ public class Tired : BossAIState
             rb.constraints = RigidbodyConstraints.None;
         }
         boss.transform.rotation = originalRotation;
-
+        boss.collisionDamageCollider.enabled = true;
         boss.StopTiredEffect();
     }
 }

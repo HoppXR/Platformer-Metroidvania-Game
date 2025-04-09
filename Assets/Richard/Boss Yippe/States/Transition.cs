@@ -10,7 +10,7 @@ public class Transition : BaseState
 
     public override void EnterState()
     {
-        Debug.Log("Entered Transition");
+        //Debug.Log("Entered Transition");
         if (bossManager.bossAI != null)
         {
             bossManager.bossAI.SetState(BossAIManager.BossState.Idle);
@@ -33,8 +33,8 @@ public class Transition : BaseState
             bossManager.bossAI.GetComponent<ProjectileVolley>().enabled = false;
             bossManager.bossAI.GetComponent<DashAttack>().enabled = false;
             bossManager.bossAI.GetComponent<GroundPound>().enabled = false;
-            bossManager.bossAI.GetComponent<EnemyDamage>().enabled = false;
-            bossManager.bossAI.GetComponent<CapsuleCollider>().enabled = false;
+            bossManager.bossAI.playerDamageCollider.enabled = false;
+            bossManager.bossAI.collisionDamageCollider.enabled = false;
         }
 
 
@@ -58,6 +58,8 @@ public class Transition : BaseState
     
     public override void ExitState()
     {
-        Debug.Log("Exiting Transition");
+        //Debug.Log("Exiting Transition");
+        bossManager.bossAI.playerDamageCollider.enabled = true;
+        bossManager.bossAI.collisionDamageCollider.enabled = true;
     }
 }
