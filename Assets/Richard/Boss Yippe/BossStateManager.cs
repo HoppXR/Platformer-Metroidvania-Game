@@ -5,7 +5,7 @@ public class BossStateManager : MonoBehaviour
 {
     public enum BossState { Parkour1, Fight1, Transition, Parkour2, Fight2, End }
     public BossState currentState = BossState.Parkour1;
-
+    public GameObject bossHealthBar;
     public BossAIManager bossAI;
     public GameObject player;
     public Cinemachine.CinemachineFreeLook playerCinemachineCamera;

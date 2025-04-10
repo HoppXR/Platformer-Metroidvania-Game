@@ -25,7 +25,7 @@ public class Fight2 : BaseState
             bossManager.bossAI.GetComponent<DashAttack>().enabled = true;
             bossManager.bossAI.GetComponent<GroundPound>().enabled = true;
             bossHealth = bossManager.bossAI.GetComponent<BossHealth>();
-            
+            bossManager.bossHealthBar.SetActive(true);
             bossManager.bossAI.currentPhase = BossAIManager.BossPhase.Phase2;
 
             if (bossHealth != null)

@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class BossHealth : MonoBehaviour
 {
+    [SerializeField] private int maxHealth = 100;
     [SerializeField] private int health = 100;
     [SerializeField] private Material damageMaterial;
-    public Slider bossHealth;
+    public BossHealthUI bossHealthUI;
     private Material _originalMaterial;
     private Renderer _renderer;
     private BossStateManager bossStateManager;
@@ -16,9 +17,11 @@ public class BossHealth : MonoBehaviour
     {
         _renderer = GetComponentInChildren<Renderer>();
         _originalMaterial = _renderer.material;
-        
         bossStateManager = FindObjectOfType<BossStateManager>();
+        
+        bossHealthUI?.SetMaxHealth(health);
     }
+
 
     public void TakeDamage(int damage)
     {
@@ -36,6 +39,7 @@ public class BossHealth : MonoBehaviour
         else
         {
             health -= damage;
+            bossHealthUI.SetHealth(health);
         }
 
         StartCoroutine(EDamageFlicker());
@@ -55,11 +59,13 @@ public class BossHealth : MonoBehaviour
 
     public void HealBoss(int amount)
     {
-        health += amount;
+        health = Mathf.Min(health + amount, maxHealth);
+        bossHealthUI.SetHealth(health);
     }
 
     private void Die()
     {
+        bossStateManager.bossHealthBar.SetActive(false);
         GameManager.Instance.PlayerWin();
         Destroy(gameObject);
     }

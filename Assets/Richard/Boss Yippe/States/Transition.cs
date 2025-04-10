@@ -37,7 +37,7 @@ public class Transition : BaseState
             bossManager.bossAI.collisionDamageCollider.enabled = false;
         }
 
-
+        bossManager.bossHealthBar.SetActive(false);
         if (bossManager.arenaColliders != null) bossManager.arenaColliders.SetActive(false);
         if (bossManager.parkour1 != null) bossManager.parkour1.SetActive(false);
         if (bossManager.parkour2 != null) bossManager.parkour2.SetActive(true);
