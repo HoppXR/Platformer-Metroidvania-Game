@@ -16,12 +16,13 @@ namespace Managers
         private PlayerHealth _playerHealth;
         
         [Header("Player Health")]
-        [SerializeField] private int playerLives;
-        public static int CurrentPlayerHealth;
-        public static int MaxPlayerHealth;
-
+        public static int CurrentPlayerHealth = 5;
+        public static int MaxPlayerHealth = 5;
         [SerializeField] private int coinsToIncrease;
         public static int CoinCount;
+
+        [Header("Player Combat")] 
+        public static int PlayerDamage = 5;
         
         #region Unity Methods
         private void Awake()
@@ -34,10 +35,6 @@ namespace Managers
             {
                 Instance = this;
                 DontDestroyOnLoad(gameObject);
-                
-                // set health parameters
-                CurrentPlayerHealth = playerLives;
-                MaxPlayerHealth = playerLives;
             }
         }
     
@@ -72,9 +69,19 @@ namespace Managers
         }
     
         #region UI Stuff
-        public void ResetTimer()
+        public void ResetGame()
         {
+            // reset timer
             FindFirstObjectByType<UIManager>().ResetTimer();
+            
+            // reset the variables
+            CoinCount = 0;
+            MaxPlayerHealth = 5;
+            CurrentPlayerHealth = 5;
+            PlayerDamage = 5;
+            
+            // disable all abilities
+            AbilityManager.Instance.DisableAllAbilities();
         }
         
         private void PauseGame()

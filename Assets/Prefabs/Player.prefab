@@ -162,17 +162,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLiveSprites:
-  - {fileID: -1440562244, guid: 317c3fef5b5d9274a94e04f2042c5799, type: 3}
-  - {fileID: -1703044233, guid: 317c3fef5b5d9274a94e04f2042c5799, type: 3}
-  - {fileID: -516936485, guid: 317c3fef5b5d9274a94e04f2042c5799, type: 3}
-  - {fileID: -1697041175, guid: 317c3fef5b5d9274a94e04f2042c5799, type: 3}
-  - {fileID: 1111001109, guid: 317c3fef5b5d9274a94e04f2042c5799, type: 3}
-  - {fileID: 1430387946, guid: 317c3fef5b5d9274a94e04f2042c5799, type: 3}
-  - {fileID: -436564812, guid: 317c3fef5b5d9274a94e04f2042c5799, type: 3}
-  - {fileID: 1858218829, guid: 317c3fef5b5d9274a94e04f2042c5799, type: 3}
-  - {fileID: 1715117142, guid: 317c3fef5b5d9274a94e04f2042c5799, type: 3}
-  - {fileID: 1974988025, guid: 317c3fef5b5d9274a94e04f2042c5799, type: 3}
-  - {fileID: 1127035710, guid: 317c3fef5b5d9274a94e04f2042c5799, type: 3}
+  - {fileID: -758638594, guid: d4cdf148d3030434e9f4fb20549860c9, type: 3}
+  - {fileID: 1965912408, guid: d4cdf148d3030434e9f4fb20549860c9, type: 3}
+  - {fileID: 181300806, guid: d4cdf148d3030434e9f4fb20549860c9, type: 3}
+  - {fileID: 477147841, guid: d4cdf148d3030434e9f4fb20549860c9, type: 3}
+  - {fileID: 1438773384, guid: d4cdf148d3030434e9f4fb20549860c9, type: 3}
+  - {fileID: -1871792706, guid: d4cdf148d3030434e9f4fb20549860c9, type: 3}
+  - {fileID: 812404918, guid: d4cdf148d3030434e9f4fb20549860c9, type: 3}
+  - {fileID: 1663948659, guid: d4cdf148d3030434e9f4fb20549860c9, type: 3}
+  - {fileID: 1066815095, guid: d4cdf148d3030434e9f4fb20549860c9, type: 3}
+  - {fileID: 1597880558, guid: d4cdf148d3030434e9f4fb20549860c9, type: 3}
+  - {fileID: 1872541108, guid: d4cdf148d3030434e9f4fb20549860c9, type: 3}
   playerLiveDisplay: {fileID: 0}
 --- !u!114 &7344835728310131556
 MonoBehaviour:

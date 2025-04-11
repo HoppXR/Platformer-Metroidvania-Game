@@ -91,7 +91,7 @@ namespace Managers
                     Debug.Log("Swing Enabled");
                     break;
                 case Abilities.AtkIncrease:
-                    AttackIncrease();
+                    GameManager.PlayerDamage *= 2;
                     Debug.Log("Atk Increase");
                     break;
                 case Abilities.MaxHealth:
@@ -105,14 +105,17 @@ namespace Managers
             }
         }
 
+        public void DisableAllAbilities()
+        {
+            DoubleJumpEnabled = false;
+            SlideEnabled = false;
+            DashEnabled = false;
+            SwingEnabled = false;
+        }
+
         private void AddTracks()
         {
             _musicManager?.AddTrack(_numberOfEnabled - 1);
-        }
-
-        private void AttackIncrease()
-        {
-            FindFirstObjectByType<PlayerCombat>().AttackCollectable();
         }
 
         private void MaxHealth()

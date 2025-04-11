@@ -1,4 +1,5 @@
 using Enemy;
+using Managers;
 using Player.Animation;
 using Player.Input;
 using UnityEngine;
@@ -16,10 +17,8 @@ namespace Player
         private Vector3 _attackOffset;
 
         [Header("Combat")]
-        [SerializeField] private int damage;
         [SerializeField] private float atkSpeed;
         [SerializeField] private float atkRange;
-
         private bool _canAttack = true;
 
         private void Start()
@@ -60,12 +59,12 @@ namespace Player
             {
                 if (enemy.TryGetComponent(out EnemyHealth enemyHealth))
                 {
-                    enemyHealth.TakeDamage(damage);
+                    enemyHealth.TakeDamage(GameManager.PlayerDamage);
                 }
 
                 if (enemy.TryGetComponent(out BossHealth bossHealth))
                 {
-                    bossHealth.TakeDamage(damage);
+                    bossHealth.TakeDamage(GameManager.PlayerDamage);
                 }
             }
 
@@ -75,11 +74,6 @@ namespace Player
         private void ResetAttack()
         {
             _canAttack = true;
-        }
-
-        public void AttackCollectable()
-        {
-            damage *= 2;
         }
     }
 }
