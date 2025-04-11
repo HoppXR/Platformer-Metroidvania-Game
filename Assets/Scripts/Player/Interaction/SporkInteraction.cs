@@ -13,14 +13,12 @@ namespace Player.Interaction
         
         string[] dialogue = { 
             "Hey kid! you okay?",
-            "I saw the whole thing from right here.",
-            "Those punk Flying Tea-Kettles and their no good lead Sir Earl of Grey “repossessed” your entire house?",
+            "Those no good Flying Tea-Kettles and their leader Sir Earl of Grey “repossessed” your entire house?",
             "Well that just ain’t right! They've been nothin’ but trouble ever since they built their VAULT here in the swamp.",
-            "Say you're a Swamp Wampus right?",
-            "HA HA thought so! The tails give it away.",
+            "Say you're a Swamp Wompus right?",
             "I reckon you could get powerful enough to take the fight right to their doorstep if you powered yourself up a tad.",
-            "I’ve heard talk of power gems around the swamp that you Swamp Wampus’ can use to learn secret skills!",
-            "I bet findin’ some of those might prove useful in taking those self righteous Tea-Kettles down a peg or two",
+            "I’ve heard talk of power gems around the swamp that can give you secret skills!",
+            "I bet findin’ some of those might prove useful to yuh",
             "If you wanna get a lay of the land try pausing the game to check the map!.. Whatever that means...",
         };
         int dialogueTracker;
@@ -29,7 +27,7 @@ namespace Player.Interaction
         public void Interact()
         {
             
-            if (dialogueTracker <= 9)
+            if (dialogueTracker <= 7)
             {
                 tutorialText.text = dialogue[dialogueTracker];
                 TextWindow.SetActive(true);
