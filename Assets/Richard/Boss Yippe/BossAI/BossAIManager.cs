@@ -29,7 +29,7 @@ public class BossAIManager : MonoBehaviour
     
     private void Start()
     {
-        bossStateManager = FindObjectOfType<BossStateManager>();
+        bossStateManager = FindFirstObjectByType<BossStateManager>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         playerDamageCollider = GetComponent<CapsuleCollider>();
         dashAttack = GetComponent<DashAttack>();

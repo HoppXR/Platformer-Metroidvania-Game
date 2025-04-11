@@ -4,7 +4,7 @@ using UnityEngine.AI;
 
 public class Chase : BossAIState
 {
-    private Transform player;
+    private Transform _player;
     private NavMeshAgent navAgent;
     private float chaseDuration = 6f;
     private float chaseTimer = 0f;
@@ -17,7 +17,7 @@ public class Chase : BossAIState
 
     public override void EnterState()
     {
-        player = GameObject.FindWithTag("Player").transform;
+        _player = GameObject.FindWithTag("Player").transform;
         chaseTimer = 0f;
         if (navAgent != null)
         {
@@ -29,16 +29,16 @@ public class Chase : BossAIState
     {
         LookAtPlayer();
         
-        if (player == null) return;
+        if (_player == null) return;
 
         chaseTimer += Time.unscaledDeltaTime;
         
         if (navAgent != null)
         {
-            navAgent.SetDestination(player.position);
+            navAgent.SetDestination(_player.position);
         }
 
-        float distance = Vector3.Distance(boss.transform.position, player.position);
+        float distance = Vector3.Distance(boss.transform.position, _player.position);
         
         if (distance < lungeDistance)
         {

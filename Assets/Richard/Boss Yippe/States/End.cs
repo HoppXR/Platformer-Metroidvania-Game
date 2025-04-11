@@ -4,7 +4,6 @@ using UnityEngine.AI;
 
 public class End : BaseState
 {
-    private BossStateManager bossManager;
 
     public End(BossStateManager bossManager) : base(bossManager) 
     {

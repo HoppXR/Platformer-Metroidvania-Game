@@ -3,8 +3,6 @@ using UnityEngine.AI;
 
 public class Fight1 : BaseState
 {
-    private BossStateManager bossManager;
-
     public Fight1(BossStateManager bossManager) : base(bossManager) 
     {
         this.bossManager = bossManager;

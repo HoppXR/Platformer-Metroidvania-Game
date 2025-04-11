@@ -14,7 +14,7 @@ public class RangedFlying : StateMachineBehaviour
     private AttackCoolDowns attackCoolDowns;
     
     private float shootAtPlayerChance = 0.5f; 
-    private float baseProjectileSpeed = 20f;
+    private float _baseProjectileSpeed = 20f;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -47,7 +47,7 @@ public class RangedFlying : StateMachineBehaviour
         float distance = Vector3.Distance(player.position, animator.transform.position);
         if (distance >= StopChasing)
         {
-            Debug.Log("Exiting");
+            //Debug.Log("Exiting");
             animator.SetBool("isAttacking", false);
             animator.SetBool("hasAttacked", true);
         }
@@ -59,7 +59,7 @@ public class RangedFlying : StateMachineBehaviour
 
     void Attack(Animator animator)
     {
-        Debug.Log("Attacking player!");
+        //Debug.Log("Attacking player!");
         attackCoolDowns.StartCooldown();
         Vector3 targetPosition = ChooseTargetPosition();
         ShootProjectile(animator.transform.position, targetPosition);

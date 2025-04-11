@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Parkour2 : BaseState
 {
-    private BossStateManager bossManager;
 
     public Parkour2(BossStateManager bossManager) : base(bossManager)
     {

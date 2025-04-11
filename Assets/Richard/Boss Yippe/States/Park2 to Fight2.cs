@@ -7,8 +7,8 @@ public class Park2toFight2 : MonoBehaviour
 
     private void Start()
     {
-        bossStateManager = FindObjectOfType<BossStateManager>();
-        boss = FindObjectOfType<BossAIManager>();
+        bossStateManager = FindFirstObjectByType<BossStateManager>();
+        boss = FindFirstObjectByType<BossAIManager>();
     }
 
     private void OnTriggerEnter(Collider other)

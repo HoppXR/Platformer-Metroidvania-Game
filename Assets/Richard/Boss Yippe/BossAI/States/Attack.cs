@@ -54,12 +54,7 @@ public class Attack : BossAIState
             boss.projectileVolley.targetedFireRate = 1f;
             boss.projectileVolley.projectileSpeed = 15;
             boss.projectileVolley.skySpawnRadius = 11;
-            
-            
             boss.dashAttack.dashSpeed = 11;
-            
-            boss.groundPound.attackCount = 3;
-            boss.groundPound.attackDelay = 1.2f;
             
             
         }
@@ -74,9 +69,6 @@ public class Attack : BossAIState
             boss.dashAttack.dashSpeed = 16;
             boss.dashAttack.dashDuration = 16;
             boss.dashAttack.maxBounces = 7;
-            
-            boss.groundPound.attackCount = 5;
-            boss.groundPound.attackDelay = 1f;
             
         }
     }

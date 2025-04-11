@@ -17,8 +17,7 @@ public class BossHealth : MonoBehaviour
     {
         _renderer = GetComponentInChildren<Renderer>();
         _originalMaterial = _renderer.material;
-        bossStateManager = FindObjectOfType<BossStateManager>();
-        
+        bossStateManager = FindFirstObjectByType<BossStateManager>();
         bossHealthUI?.SetMaxHealth(health);
     }
 

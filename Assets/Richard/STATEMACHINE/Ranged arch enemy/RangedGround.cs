@@ -61,7 +61,7 @@ public class RangedAttack : StateMachineBehaviour
 
     void Attack(Animator animator)
     {
-        Debug.Log("Attacking player!");
+        //Debug.Log("Attacking player!");
         attackCoolDowns.StartCooldown();
         Vector3 targetPosition = ChooseTargetPosition();
         ShootProjectile(animator.transform.position, targetPosition);

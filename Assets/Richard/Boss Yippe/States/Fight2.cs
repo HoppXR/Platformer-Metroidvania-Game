@@ -4,7 +4,6 @@ using UnityEngine.AI;
 
 public class Fight2 : BaseState
 {
-    private BossStateManager bossManager;
     private BossHealth bossHealth;
     
 

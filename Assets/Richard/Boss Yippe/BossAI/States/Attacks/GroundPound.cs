@@ -16,7 +16,7 @@ public class GroundPound : MonoBehaviour
 
     private Rigidbody rb;
     private NavMeshAgent navMeshAgent;
-    private bool isJumping = false;
+    private bool isJumping;
     private bool isSlamming = false;
     private bool hasLanded = false;
     private bool attackFinished = false;
@@ -32,10 +32,12 @@ public class GroundPound : MonoBehaviour
 
     public IEnumerator GroundSlamSequence()
     {
+        
         if (navMeshAgent != null)
         {
             navMeshAgent.enabled = false;
         }
+        boss.transform.position = new Vector3(-12.6899996f,52.1f,-177.639999f);
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
         FreezeXZConstraints(true);
