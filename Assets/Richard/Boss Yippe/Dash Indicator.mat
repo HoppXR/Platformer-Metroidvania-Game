@@ -40,6 +40,7 @@ Material:
     m_Floats:
     - _Alpha_Threshold: 0
     - _Border: 0
+    - _QueueControl: 0
     - _Roundness: 0.146
     - _Size: 1
     m_Colors:

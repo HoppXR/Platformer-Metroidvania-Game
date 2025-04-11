@@ -15,14 +15,18 @@ public class DashAttack : MonoBehaviour
 
     private BossAIManager boss;
 
+    private BossLineToPlayer bossLineToPlayer;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         boss = GetComponent<BossAIManager>();
+        bossLineToPlayer = GetComponentInChildren<BossLineToPlayer>();
         if (boss == null)
         {
             boss = FindObjectOfType<BossAIManager>(); 
         }
+        StartCoroutine(bossLineToPlayer.ShowLineRenderer());
     }
 
     void Update()
@@ -45,6 +49,7 @@ public class DashAttack : MonoBehaviour
     }
     public void StartDash(Vector3 targetPosition)
     {
+        
         rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
         
         Vector3 toTarget = new Vector3(targetPosition.x - transform.position.x, 0, targetPosition.z - transform.position.z);
@@ -72,7 +77,6 @@ public class DashAttack : MonoBehaviour
         rb.angularVelocity = Vector3.zero;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (isDashing)

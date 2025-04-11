@@ -16,7 +16,7 @@ public class Idle : BossAIState
 
     public override void EnterState()
     {
-        Debug.Log("Boss is now Idle");
+        //Debug.Log("Boss is now Idle");
         
         boss.transform.position = new Vector3(-12.6899996f,52.1f,-177.639999f);
 

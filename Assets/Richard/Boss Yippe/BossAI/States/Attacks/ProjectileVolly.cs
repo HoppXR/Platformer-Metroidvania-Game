@@ -12,6 +12,7 @@ public class ProjectileVolley : MonoBehaviour
     public Transform playerPrediction;
 
     private BossAIManager boss;
+    private BossLineToPlayer bossLineToPlayer;
 
     public int totalSkyProjectiles = 15;
     public int totalTargetedProjectiles = 7;
@@ -30,7 +31,8 @@ public class ProjectileVolley : MonoBehaviour
     {
         boss = GetComponent<BossAIManager>();
         rb = GetComponent<Rigidbody>();
-
+        bossLineToPlayer = GetComponentInChildren<BossLineToPlayer>();
+        
         if (player == null)
         {
             GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
@@ -108,6 +110,7 @@ public class ProjectileVolley : MonoBehaviour
 
     void FireArchedAtTarget(Transform target)
     {
+        StartCoroutine(bossLineToPlayer.ShowLineRendererLazy());
         if (projectilePrefab == null || projectileSpawnPoint == null || target == null) return;
         Vector3 targetPosition = target.position;
         float heightOffset = Random.Range(arcVerticalAngle * 0.5f, arcVerticalAngle * 1.5f);
