@@ -4,24 +4,28 @@ using System.Collections;
 
 public class Lunge : BossAIState
 {
-    private Transform player;
+    private Transform _player;
     private NavMeshAgent navAgent;
-    private bool hasLunged = false;
+    private bool _hasLunged;
     private float lungeSpeed = 25f;
     private float lungeDuration = 0.3f;
     private float preLungeWait = 1f;
     private float postLungeWait = 2f;
-    private Vector3 resetPosition = new Vector3(-12.6899996f,52f,-177.639999f);
+    private Vector3 resetPosition = new Vector3(-12.6899996f, 52f, -177.639999f);
+    private GameObject dashIndicator;
 
-    public Lunge(BossAIManager boss) : base(boss) 
+    public Lunge(BossAIManager boss) : base(boss)
     {
         navAgent = boss.GetComponent<NavMeshAgent>();
     }
 
     public override void EnterState()
     {
-        player = GameObject.FindWithTag("Player").transform;
-        hasLunged = false;
+        _player = GameObject.FindWithTag("Player").transform;
+        Transform gameObject = boss.transform.Find("DashIndicator");
+        if (gameObject != null)
+            dashIndicator = gameObject.gameObject;
+        _hasLunged = false;
 
         if (navAgent != null)
         {
@@ -33,12 +37,13 @@ public class Lunge : BossAIState
 
     private IEnumerator PerformLunge()
     {
-        if (player == null) yield break;
-    
-        yield return new WaitForSeconds(preLungeWait);
-        Vector3 lungeDirection = (player.position - boss.transform.position);
+        yield return boss.StartCoroutine(ShowIndicator());
+
+        Vector3 lungeDirection = (_player.position - boss.transform.position);
         lungeDirection.y = 0;
         lungeDirection = lungeDirection.normalized;
+
+        yield return new WaitForSeconds(preLungeWait);
 
         float elapsedTime = 0f;
         float groundY = boss.transform.position.y;
@@ -52,16 +57,33 @@ public class Lunge : BossAIState
             yield return null;
         }
 
-        hasLunged = true;
+        _hasLunged = true;
         yield return new WaitForSeconds(postLungeWait);
 
         boss.SetState(BossAIManager.BossState.Attack);
     }
-    
-    public override void StateUpdate()
+
+    private IEnumerator ShowIndicator()
     {
+        if (dashIndicator != null)
+            dashIndicator.SetActive(true);
+
+        yield return new WaitForSeconds(1f);
+
+        if (dashIndicator != null)
+            dashIndicator.SetActive(false);
     }
 
+    public override void StateUpdate()
+    {
+        if (_player != null)
+        {
+            Vector3 lookDirection = _player.position - boss.transform.position;
+            lookDirection.y = 0;
+            if (lookDirection != Vector3.zero)
+                boss.transform.rotation = Quaternion.LookRotation(lookDirection);
+        }
+    }
 
     public override void ExitState()
     {
