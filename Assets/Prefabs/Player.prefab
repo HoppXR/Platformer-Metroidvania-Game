@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 3677352457047037229}
   - component: {fileID: 6671748784568310938}
   - component: {fileID: 5322967906721638662}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,7 +142,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2088367267408673784}
-  - {fileID: 7489852602424693400}
   - {fileID: 1794988442434397353}
   - {fileID: 1805746797406686657}
   - {fileID: 7476561447002403665}
@@ -555,12 +554,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5235409585053648491}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7222744572238283125}
+  m_Father: {fileID: 2088367267408673784}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &4365438842978881944
 CapsuleCollider:
@@ -617,6 +616,7 @@ Transform:
   m_Children:
   - {fileID: 7830952289147757633}
   - {fileID: 6639908403968075038}
+  - {fileID: 7489852602424693400}
   m_Father: {fileID: 7222744572238283125}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8268465089637147739
