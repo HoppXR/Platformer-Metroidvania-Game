@@ -30,11 +30,11 @@ namespace Managers
         public static bool DashEnabled;
         public static bool SwingEnabled;
     
-        [Header("For Easy Debugging")] // might remove later
+        /*[Header("For Easy Debugging")] // might remove later
         [SerializeField] private bool enableDoubleJump;
         [SerializeField] private bool enableSlide;
         [SerializeField] private bool enableDash;
-        [SerializeField] private bool enableSwing;
+        [SerializeField] private bool enableSwing;*/
         #endregion
         
         #region Unity Built-in Methods
@@ -54,11 +54,11 @@ namespace Managers
         {
             _musicManager = FindFirstObjectByType<MusicManager>();
         
-            // Debug
+            /*// Debug
             if (enableDoubleJump) DoubleJumpEnabled = true;
             if (enableSlide) SlideEnabled = true;
             if (enableDash) DashEnabled = true;
-            if (enableSwing) SwingEnabled = true;
+            if (enableSwing) SwingEnabled = true;*/
         }
         #endregion
 

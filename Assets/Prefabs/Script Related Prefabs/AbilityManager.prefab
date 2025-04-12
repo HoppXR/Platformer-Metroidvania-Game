@@ -44,7 +44,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad5ee03d047612944a877cb2ceda6786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableDoubleJump: 0
-  enableSlide: 0
-  enableDash: 0
-  enableSwing: 0

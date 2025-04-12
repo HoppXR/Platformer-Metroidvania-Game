@@ -53,7 +53,7 @@ namespace Player.Movement
             if (_dashCdTimer > 0)
                 _dashCdTimer -= Time.deltaTime;
 
-            imageCd.fillAmount = _dashCdTimer / dashCd;
+            imageCd.fillAmount = Mathf.Clamp01(1f - _dashCdTimer / dashCd);
         }
 
         private void OnDisable()

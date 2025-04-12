@@ -159,7 +159,7 @@ namespace Managers
             gameWinUI.SetActive(false);
             interactionUI.SetActive(false);
         
-            dashAbility?.SetActive(false);
+            dashAbility?.SetActive(AbilityManager.DashEnabled);
             swingAbility?.SetActive(false);
             doubleJumpAbility?.SetActive(false);
             slideAbility?.SetActive(false);
