@@ -19,7 +19,8 @@ namespace Managers
         public static int CurrentPlayerHealth = 5;
         public static int MaxPlayerHealth = 5;
         [SerializeField] private int coinsToIncrease;
-        public static int CoinCount;
+        public static int TotalCoinCount;
+        private static int _coinCount;
 
         [Header("Player Combat")] 
         public static int PlayerDamage = 5;
@@ -59,13 +60,16 @@ namespace Managers
 
         public void CoinCollected()
         {
-            CoinCount++;
+            _coinCount++;
+            TotalCoinCount++;
 
-            if (CoinCount >= coinsToIncrease)
+            if (_coinCount >= coinsToIncrease)
             {
                 _playerHealth.IncreaseMaxHealth();
-                CoinCount = 0;
+                _coinCount = 0;
             }
+            
+            FindFirstObjectByType<UIManager>().UpdateCountText();
         }
     
         #region UI Stuff
@@ -75,7 +79,8 @@ namespace Managers
             FindFirstObjectByType<UIManager>().ResetTimer();
             
             // reset the variables
-            CoinCount = 0;
+            TotalCoinCount = 0;
+            _coinCount = 0;
             MaxPlayerHealth = 5;
             CurrentPlayerHealth = 5;
             PlayerDamage = 5;

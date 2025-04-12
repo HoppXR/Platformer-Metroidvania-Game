@@ -33,6 +33,9 @@ namespace Managers
         [SerializeField] private TMP_Text timerText;
         static float _timer = 0f;
         private bool _isRunning = true;
+        
+        [Header("Collectables")]
+        [SerializeField] private TMP_Text collectableText;
     
         [Header("Abilities")]
         [SerializeField] private GameObject dashAbility;
@@ -49,6 +52,8 @@ namespace Managers
         #region Unity Built-in Methods
         private void Start()
         {
+            UpdateCountText();
+            
             saveScoreButton.onClick.AddListener(OnSaveClicked);
             saveScoreButton.interactable = false;
 
@@ -154,10 +159,10 @@ namespace Managers
             gameWinUI.SetActive(false);
             interactionUI.SetActive(false);
         
-            dashAbility.SetActive(false);
-            swingAbility.SetActive(false);
-            doubleJumpAbility.SetActive(false);
-            slideAbility.SetActive(false);
+            dashAbility?.SetActive(false);
+            swingAbility?.SetActive(false);
+            doubleJumpAbility?.SetActive(false);
+            slideAbility?.SetActive(false);
         }
     
         private void ShowInteractUI(IInteractable interactable)
@@ -176,6 +181,11 @@ namespace Managers
             if (!_isRunning) return;
             _timer += Time.deltaTime;
             timerText.text = _timer.ToString("F2");
+        }
+
+        public void UpdateCountText()
+        {
+            collectableText.text = GameManager.TotalCoinCount.ToString();
         }
     
         private void OnSaveClicked()
