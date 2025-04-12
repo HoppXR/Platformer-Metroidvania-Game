@@ -45,5 +45,10 @@ namespace Managers
         {
             _backgroundMusic.setParameterByName("Underground muffle", enable ? 1 : 0);
         }
+        
+        public void ToggleBoss(bool enable)
+        {
+            _backgroundMusic.setParameterByName("boss", enable ? 1 : 0);
+        }
     }
 }
