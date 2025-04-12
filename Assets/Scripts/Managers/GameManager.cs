@@ -134,6 +134,8 @@ namespace Managers
             input.SetGameplay();
         
             Time.timeScale = 1;
+            
+            CurrentPlayerHealth = MaxPlayerHealth;
         
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
