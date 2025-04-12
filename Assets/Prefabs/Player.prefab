@@ -108,7 +108,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7222744572238283125}
-  - component: {fileID: 3593482322763352338}
   - component: {fileID: 7344835728310131556}
   - component: {fileID: 3336774183408497758}
   - component: {fileID: 3238370329580262186}
@@ -149,31 +148,6 @@ Transform:
   - {fileID: 7476561447002403665}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!114 &3593482322763352338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5163581559121146808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93741f52cbf19db4ca6c56689fff0c64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerLiveSprites:
-  - {fileID: -758638594, guid: d4cdf148d3030434e9f4fb20549860c9, type: 3}
-  - {fileID: 1965912408, guid: d4cdf148d3030434e9f4fb20549860c9, type: 3}
-  - {fileID: 181300806, guid: d4cdf148d3030434e9f4fb20549860c9, type: 3}
-  - {fileID: 477147841, guid: d4cdf148d3030434e9f4fb20549860c9, type: 3}
-  - {fileID: 1438773384, guid: d4cdf148d3030434e9f4fb20549860c9, type: 3}
-  - {fileID: -1871792706, guid: d4cdf148d3030434e9f4fb20549860c9, type: 3}
-  - {fileID: 812404918, guid: d4cdf148d3030434e9f4fb20549860c9, type: 3}
-  - {fileID: 1663948659, guid: d4cdf148d3030434e9f4fb20549860c9, type: 3}
-  - {fileID: 1066815095, guid: d4cdf148d3030434e9f4fb20549860c9, type: 3}
-  - {fileID: 1597880558, guid: d4cdf148d3030434e9f4fb20549860c9, type: 3}
-  - {fileID: 1872541108, guid: d4cdf148d3030434e9f4fb20549860c9, type: 3}
-  playerLiveDisplay: {fileID: 0}
 --- !u!114 &7344835728310131556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,7 +163,6 @@ MonoBehaviour:
   input: {fileID: 11400000, guid: f0af528ef787f524f906f2f46802fbbb, type: 2}
   player: {fileID: 2088367267408673784}
   attackPositionOffset: 1
-  damage: 5
   atkSpeed: 0.5
   atkRange: 3
 --- !u!114 &3336774183408497758
@@ -621,6 +594,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2088367267408673784}
+  - component: {fileID: 8268465089637147739}
   m_Layer: 8
   m_Name: PlayerObject
   m_TagString: Untagged
@@ -645,6 +619,33 @@ Transform:
   - {fileID: 6639908403968075038}
   m_Father: {fileID: 7222744572238283125}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8268465089637147739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6793174829133521692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93741f52cbf19db4ca6c56689fff0c64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerLiveSprites:
+  - {fileID: -758638594, guid: d4cdf148d3030434e9f4fb20549860c9, type: 3}
+  - {fileID: 1965912408, guid: d4cdf148d3030434e9f4fb20549860c9, type: 3}
+  - {fileID: 181300806, guid: d4cdf148d3030434e9f4fb20549860c9, type: 3}
+  - {fileID: 477147841, guid: d4cdf148d3030434e9f4fb20549860c9, type: 3}
+  - {fileID: 1438773384, guid: d4cdf148d3030434e9f4fb20549860c9, type: 3}
+  - {fileID: -1871792706, guid: d4cdf148d3030434e9f4fb20549860c9, type: 3}
+  - {fileID: 812404918, guid: d4cdf148d3030434e9f4fb20549860c9, type: 3}
+  - {fileID: 1663948659, guid: d4cdf148d3030434e9f4fb20549860c9, type: 3}
+  - {fileID: 1066815095, guid: d4cdf148d3030434e9f4fb20549860c9, type: 3}
+  - {fileID: 1597880558, guid: d4cdf148d3030434e9f4fb20549860c9, type: 3}
+  - {fileID: 1872541108, guid: d4cdf148d3030434e9f4fb20549860c9, type: 3}
+  playerLiveDisplay: {fileID: 0}
+  damageMaterial: {fileID: 2100000, guid: 3a63d1e13f06c2146a8c17d880bd468d, type: 2}
+  healMaterial: {fileID: 2100000, guid: 665ede78e9b29184a9bf7287ac0420d8, type: 2}
 --- !u!1 &8495882236523163967
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,13 +7,18 @@ namespace Enemy
     {
         [SerializeField] private int health;
         [SerializeField] private Material damageMaterial;
-        private Material _originalMaterial;
-        private Renderer _renderer;
+        private Material[] _originalMaterials;
+        private Renderer[] _renderers;
     
         private void Start()
         {
-            _renderer = GetComponentInChildren<Renderer>();
-            _originalMaterial = _renderer.material;
+            _renderers = GetComponentsInChildren<Renderer>();
+            _originalMaterials = new Material[_renderers.Length];
+
+            for (int i = 0; i < _renderers.Length; i++)
+            {
+                _originalMaterials[i] = _renderers[i].material;
+            }
         }
 
         public void TakeDamage(int damage)
@@ -55,11 +60,17 @@ namespace Enemy
 
         private IEnumerator EDamageFlicker()
         {
-            _renderer.material = damageMaterial;
-        
+            foreach (Renderer r in _renderers)
+            {
+                r.material = damageMaterial;
+            }
+            
             yield return new WaitForSeconds(0.25f);
-        
-            _renderer.material = _originalMaterial;
+
+            for (int i = 0; i < _renderers.Length; i++)
+            {
+                _renderers[i].material = _originalMaterials[i];
+            }
         }
     }
 }

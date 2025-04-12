@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
-  damageMaterial: {fileID: 2100000, guid: 92896a7937dd1c94baa675ea8fb3e8be, type: 2}
+  damageMaterial: {fileID: 2100000, guid: 3a63d1e13f06c2146a8c17d880bd468d, type: 2}
 --- !u!114 &7937792285332596724
 MonoBehaviour:
   m_ObjectHideFlags: 0
